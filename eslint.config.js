@@ -8,12 +8,13 @@ import tseslint from "typescript-eslint";
 // [config-inspector](https://eslint.org/blog/2024/04/eslint-config-inspector/) experience.
 import eslintConfigPrettier from "eslint-config-prettier/flat";
 
-const baseConfig = tseslint.config(
-  { ignores: ["dist"] },
+export default tseslint.config(
+  { ignores: ["dist", "node_modules"] },
   {
     extends: [
       js.configs.recommended,
       ...tseslint.configs.recommendedTypeChecked,
+      eslintConfigPrettier,
     ],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
@@ -37,5 +38,3 @@ const baseConfig = tseslint.config(
     },
   },
 );
-
-export default [baseConfig, eslintConfigPrettier];
