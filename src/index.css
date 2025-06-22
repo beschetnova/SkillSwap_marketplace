@@ -1,4 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+  font-family: Jost;
+  src:
+    url('/fonts/Jost-Variable.woff2') format('woff2 supports variations'),
+    url('/fonts/Jost-Variable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Roboto;
+  src:
+    url('/fonts/Roboto-Variable.woff2') format('woff2 supports variations'),
+    url('/fonts/Roboto-Variable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-display: swap;
+}
 
 :root {
   --font-main: 'Roboto', sans-serif;
@@ -61,19 +77,19 @@ h4 {
 h1 {
   font-size: 32px;
   line-height: 1.25;
-  letter-spacing: -0.11em;
+  letter-spacing: -0.011em;
 }
 
 h2 {
   font-size: 24px;
   line-height: 1.33;
-  letter-spacing: -0.11em;
+  letter-spacing: -0.011em;
 }
 
 h3 {
   font-size: 20px;
   line-height: 1.2;
-  letter-spacing: -0.11em;
+  letter-spacing: -0.011em;
 }
 
 h4 {
