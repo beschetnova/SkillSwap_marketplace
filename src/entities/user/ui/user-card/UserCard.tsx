@@ -13,15 +13,15 @@ const UserCard = ({ user }: UserCardProps) => {
         <div className={styles.avatar}></div>
         <div className={styles.userInfoText}>
           <img src='/icons/Like.svg' alt='' className={styles.likeIcon} />
-          <h3>{user.name}</h3>
-          <p>
+          <h3 className={styles.name}>{user.name}</h3>
+          <p className={styles.cityAge}>
             {user.city}, {user.age} лет
           </p>
         </div>
       </div>
 
       <div className={styles.skillsSection}>
-        <h4>Может научить:</h4>
+        <h4 className={styles.sectionTitle}>Может научить:</h4>
         <div className={styles.skillsRow}>
           {user.skillsToTeach.slice(0, 2).map((skill, index) => (
             <span key={index} className={styles.skillPill}>
@@ -37,7 +37,7 @@ const UserCard = ({ user }: UserCardProps) => {
       </div>
 
       <div className={styles.skillsSection}>
-        <h4>Хочет научиться:</h4>
+        <h4 className={styles.sectionTitle}>Хочет научиться:</h4>
         <div className={styles.skillsRow}>
           {user.skillsToLearn.slice(0, 2).map((skill, index) => (
             <span key={index} className={styles.skillPill}>
