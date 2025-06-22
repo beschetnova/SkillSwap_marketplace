@@ -7,27 +7,31 @@ import { useInput } from '../../../hooks/useInput';
 
 const Nav = () => {
   const [inputProps, resetTitle] = useInput('');
-  
+
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       console.log('Поиск:', inputProps.value);
-      resetTitle();
     } else if (e.key === 'Escape') {
       resetTitle();
     }
+  };
+
+  const handleSkillsClick = () => {
+
+    console.log('Клик по кнопке Навыки');
   };
 
   return (
     <div className={styles.nav}>
       <Logo />
       <a href='/' className={styles.about}>О проекте</a>
-      <a href='/' className={styles.skills}>
+      <button className={styles.skills} onClick={handleSkillsClick}>
         <p>Навыки</p>
         <img src={skillsIcon} alt='' />
-      </a>
+      </button>
       <div className={styles.search}>
         <img src={searchIcon} alt='Иконка поиска' />
-        <input 
+        <input
           type='text'
           {...inputProps}
           onKeyDown={handleSearch}

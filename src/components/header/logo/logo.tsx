@@ -6,7 +6,7 @@ const Logo = () => {
     <div className={styles.logoContainer}>
       <a href="/" className={styles.logo}>
         <img src={logoImage} alt='Логотип' className={styles.logoImage} />
-        <h1 className={styles.logoText}>SkillSwap</h1>
+        <h1 className={styles.header}>SkillSwap</h1>
       </a>
     </div>
   );

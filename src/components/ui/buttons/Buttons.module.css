@@ -8,34 +8,34 @@
 }
 
 .primary {
-  background-color: #ABD27A;
-  border: 1px solid #ABD27A;
-  color: #253017;
+  background-color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  color: var(--text-color);
 }
 
 .primary:hover {
-  background-color: #DEEBC5;
-  border-color: #DEEBC5;
+  background-color: var(--button-hover-color);
+  border-color: var(--button-hover-color);
 }
 
 .primary:active {
-  background-color: #508826;
-  border-color: #508826;
+  background-color: var(--text-link-button-pressed-color);
+  border-color: var(--text-link-button-pressed-color);
   color: #fff;
 }
 
 .secondary {
-  background-color: #fff;
-  border: 1px solid #ABD27A;
-  color: #253017;
+  background-color: var(--card-input-color);
+  border: 1px solid var(--accent-color);
+  color: var(--text-color);
 }
 
 .secondary:hover {
-  border-color: #DEEBC5;
-  color: #69735D;
+  border-color: var(--button-hover-color);
+  color: var(--caption-color);
 }
 
 .secondary:active {
-  border-color: #508826;
-  color: #253017;
+  border-color: var(--text-link-button-pressed-color);
+  color: var(--text-color);
 }

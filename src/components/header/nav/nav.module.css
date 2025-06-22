@@ -13,14 +13,16 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  color: var(--text-color);
+  font: inherit;
 }
 
 .search {
   display: flex;
   align-items: center;
-  border: 0.0625rem solid #fff;
+  border: 0.0625rem solid var(--card-input-color);
   border-radius: 0.75rem; 
-  background-color: #fff;
+  background-color: var(--card-input-color);
   padding: 0.75rem;
   min-width: 200px;
   max-width: 32.9375rem;
@@ -33,12 +35,13 @@ input {
   height: 2rem;
   padding: 0 0.75rem;
   border-radius: 0.25rem; 
-  border: 0.0625rem solid #fff;
+  border: 0.0625rem solid var(--card-input-color);
   outline: none;
-  caret-color: #508826;
-  color: #253017;
+  caret-color: var(--text-link-button-pressed-color);
+  color: var(--text-color);
+  font-size: 16px;
 }
 
 input::placeholder {
-  color: #69735D;
+  color: var(--caption-color);
 }
