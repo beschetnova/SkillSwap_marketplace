@@ -22,7 +22,7 @@ export default tseslint.config({ ignores: ["dist", "node_modules"] }, {
     ecmaVersion: 2020,
     globals: globals.browser,
     parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
+      project: ["./tsconfig.node.json", "./tsconfig.app.json", "./tsconfig.eslint.json"], //добавил tsconfig.eslint.json чтобы не ругался на файлы в папке .storybook
       tsconfigRootDir: import.meta.dirname,
     },
   },
