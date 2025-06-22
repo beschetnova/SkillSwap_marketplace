@@ -1,9 +1,9 @@
-import styles from './app.module.css';
+import Header from '../header/header';
 
 function App() {
   return (
     <>
-      <p className={styles.p}>SkillSwap project</p>
+    <Header />
     </>
   );
 }

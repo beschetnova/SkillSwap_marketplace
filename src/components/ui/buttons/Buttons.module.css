@@ -1,0 +1,41 @@
+.primary,
+.secondary {
+  border-radius: 0.75rem;
+  padding: 0.75rem 2.125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.primary {
+  background-color: #ABD27A;
+  border: 1px solid #ABD27A;
+  color: #253017;
+}
+
+.primary:hover {
+  background-color: #DEEBC5;
+  border-color: #DEEBC5;
+}
+
+.primary:active {
+  background-color: #508826;
+  border-color: #508826;
+  color: #fff;
+}
+
+.secondary {
+  background-color: #fff;
+  border: 1px solid #ABD27A;
+  color: #253017;
+}
+
+.secondary:hover {
+  border-color: #DEEBC5;
+  color: #69735D;
+}
+
+.secondary:active {
+  border-color: #508826;
+  color: #253017;
+}
