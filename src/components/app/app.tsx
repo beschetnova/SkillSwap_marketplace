@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-import styles from './app.module.css';
 import UserCard from '../../entities/user/ui/user-card/UserCard.tsx';
-=======
 import { useState } from 'react';
 import Aside from '../aside/aside';
-// import styles from './app.module.css';
->>>>>>> 837563ffd4ce920fdd71961f20e94f487bd01fb7
 
 function App() {
   const [bases, setBases] = useState<string[]>([]);
@@ -14,16 +9,18 @@ function App() {
   const [cities, setCities] = useState<string[]>([]);
 
   const filters = {
-    bases, setBases,
-    skills, setSkills,
-    autors, setAuthors,
-    cities, setCities,
+    bases,
+    setBases,
+    skills,
+    setSkills,
+    autors,
+    setAuthors,
+    cities,
+    setCities
   };
   return (
-<<<<<<< HEAD
     <>
-      <p className={styles.p}>SkillSwap project</p>
-
+      <Aside filters={filters} />
       <UserCard
         user={{
           id: 1,
@@ -51,23 +48,20 @@ function App() {
               subcategory: 'yoga-and-meditation'
             },
             {
-              skill: 'Тайм менеджмент',
-              categoryId: 'business-and-career',
-              subcategory: 'time-management'
+              skill: 'Фотография',
+              categoryId: 'creativity-and-art',
+              subcategory: 'photography'
             },
             {
-              skill: 'Тайм менеджмент',
-              categoryId: 'business-and-career',
-              subcategory: 'time-management'
+              skill: 'Видеомонтаж',
+              categoryId: 'creativity-and-art',
+              subcategory: 'video-editing'
             }
           ],
           photo: 'Ivan.png'
         }}
       />
     </>
-=======
-    <Aside filters={filters} />
->>>>>>> 837563ffd4ce920fdd71961f20e94f487bd01fb7
   );
 }
 
