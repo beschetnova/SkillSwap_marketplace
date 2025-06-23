@@ -2,13 +2,17 @@ import styles from './UserCard.module.css';
 import type { User } from '../../model/types';
 import { useCategories } from '../../../../utils/skill-category/useCategories.ts';
 import { getSkillCategory } from '../../../../utils/skill-category/getSkillCategory.ts';
+import {
+  calculateAge,
+  getYearsWord
+} from '../../../../utils/date/dateUtils.ts';
 
 type UserCardProps = {
   user: User;
-  // skillCategories: SkillCategory[];
 };
 
 const UserCard = ({ user }: UserCardProps) => {
+  const age = calculateAge(user.birthDate);
   const categories = useCategories();
   return (
     <div className={styles.userCard}>
@@ -18,7 +22,7 @@ const UserCard = ({ user }: UserCardProps) => {
           <img src='/icons/Like.svg' alt='' className={styles.likeIcon} />
           <h3 className={styles.name}>{user.name}</h3>
           <p className={styles.cityAge}>
-            {user.city}, {user.age} лет
+            {user.city}, {age} {getYearsWord(age)}
           </p>
         </div>
       </div>

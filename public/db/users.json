@@ -3,7 +3,8 @@
     "id": 1,
     "name": "Иван",
     "city": "Санкт-Петербург",
-    "age": 34,
+    "gender": "male",
+    "birthDate": "1990-06-23",
     "bio": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
     "skillsToTeach": [
       {
@@ -13,10 +14,26 @@
       }
     ],
     "skillsToLearn": [
-      "Тайм менеджмент",
-      "Медитация",
-      "Фотография",
-      "Видеомонтаж"
+      {
+        "skill": "Тайм менеджмент",
+        "categoryId": "business-and-career",
+        "subcategory": "time-management"
+      },
+      {
+        "skill": "Медитация",
+        "categoryId": "health-and-lifestyle",
+        "subcategory": "yoga-and-meditation"
+      },
+      {
+        "skill": "Фотография",
+        "categoryId": "creativity-and-art",
+        "subcategory": "photography"
+      },
+      {
+        "skill": "Видеомонтаж",
+        "categoryId": "creativity-and-art",
+        "subcategory": "video-editing"
+      }
     ],
     "photo": "Ivan.png"
   },
@@ -24,14 +41,37 @@
     "id": 2,
     "name": "Анна",
     "city": "Казань",
-    "age": 26,
+    "gender": "female",
+    "birthDate": "1990-06-23",
     "bio": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
-    "skillsToTeach": ["Английский язык"],
+    "skillsToTeach": [
+      {
+        "skill": "Английский язык",
+        "categoryId": "foreign-languages",
+        "subcategory": "english"
+      }
+    ],
     "skillsToLearn": [
-      "Тайм менеджмент",
-      "Медитация",
-      "Фотография",
-      "Видеомонтаж"
+      {
+        "skill": "Тайм менеджмент",
+        "categoryId": "business-and-career",
+        "subcategory": "time-management"
+      },
+      {
+        "skill": "Медитация",
+        "categoryId": "health-and-lifestyle",
+        "subcategory": "yoga-and-meditation"
+      },
+      {
+        "skill": "Фотография",
+        "categoryId": "creativity-and-art",
+        "subcategory": "photography"
+      },
+      {
+        "skill": "Видеомонтаж",
+        "categoryId": "creativity-and-art",
+        "subcategory": "video-editing"
+      }
     ],
     "photo": "Anna.png"
   },
@@ -39,14 +79,37 @@
     "id": 3,
     "name": "Максим",
     "city": "Москва",
-    "age": 23,
+    "gender": "male",
+    "birthDate": "1990-06-23",
     "bio": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
-    "skillsToTeach": ["Бизнес-план"],
+    "skillsToTeach": [
+      {
+        "skill": "Бизнес-план",
+        "categoryId": "business-and-career",
+        "subcategory": "entrepreneurship"
+      }
+    ],
     "skillsToLearn": [
-      "Тайм менеджмент",
-      "Медитация",
-      "Фотография",
-      "Видеомонтаж"
+      {
+        "skill": "Тайм менеджмент",
+        "categoryId": "business-and-career",
+        "subcategory": "time-management"
+      },
+      {
+        "skill": "Медитация",
+        "categoryId": "health-and-lifestyle",
+        "subcategory": "yoga-and-meditation"
+      },
+      {
+        "skill": "Фотография",
+        "categoryId": "creativity-and-art",
+        "subcategory": "photography"
+      },
+      {
+        "skill": "Видеомонтаж",
+        "categoryId": "creativity-and-art",
+        "subcategory": "video-editing"
+      }
     ],
     "photo": "Maxim.png"
   },
@@ -54,14 +117,37 @@
     "id": 4,
     "name": "Илона",
     "city": "Екатеринбург",
-    "age": 33,
+    "gender": "female",
+    "birthDate": "1990-06-23",
     "bio": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
-    "skillsToTeach": ["Английский язык"],
+    "skillsToTeach": [
+      {
+        "skill": "Английский язык",
+        "categoryId": "foreign-languages",
+        "subcategory": "english"
+      }
+    ],
     "skillsToLearn": [
-      "Тайм менеджмент",
-      "Медитация",
-      "Фотография",
-      "Видеомонтаж"
+      {
+        "skill": "Тайм менеджмент",
+        "categoryId": "business-and-career",
+        "subcategory": "time-management"
+      },
+      {
+        "skill": "Медитация",
+        "categoryId": "health-and-lifestyle",
+        "subcategory": "yoga-and-meditation"
+      },
+      {
+        "skill": "Фотография",
+        "categoryId": "creativity-and-art",
+        "subcategory": "photography"
+      },
+      {
+        "skill": "Видеомонтаж",
+        "categoryId": "creativity-and-art",
+        "subcategory": "video-editing"
+      }
     ],
     "photo": "Ilona.png"
   },
@@ -69,14 +155,37 @@
     "id": 5,
     "name": "Михаил",
     "city": "Новосибирск",
-    "age": 29,
+    "gender": "male",
+    "birthDate": "1990-06-23",
     "bio": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
-    "skillsToTeach": ["Английский язык"],
+    "skillsToTeach": [
+      {
+        "skill": "Английский язык",
+        "categoryId": "foreign-languages",
+        "subcategory": "english"
+      }
+    ],
     "skillsToLearn": [
-      "Тайм менеджмент",
-      "Медитация",
-      "Фотография",
-      "Видеомонтаж"
+      {
+        "skill": "Тайм менеджмент",
+        "categoryId": "business-and-career",
+        "subcategory": "time-management"
+      },
+      {
+        "skill": "Медитация",
+        "categoryId": "health-and-lifestyle",
+        "subcategory": "yoga-and-meditation"
+      },
+      {
+        "skill": "Фотография",
+        "categoryId": "creativity-and-art",
+        "subcategory": "photography"
+      },
+      {
+        "skill": "Видеомонтаж",
+        "categoryId": "creativity-and-art",
+        "subcategory": "video-editing"
+      }
     ],
     "photo": "Michael.png"
   },
@@ -84,14 +193,37 @@
     "id": 6,
     "name": "Мария",
     "city": "Краснодар",
-    "age": 21,
+    "gender": "female",
+    "birthDate": "1990-06-23",
     "bio": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
-    "skillsToTeach": ["Английский язык"],
+    "skillsToTeach": [
+      {
+        "skill": "Английский язык",
+        "categoryId": "foreign-languages",
+        "subcategory": "english"
+      }
+    ],
     "skillsToLearn": [
-      "Тайм менеджмент",
-      "Медитация",
-      "Фотография",
-      "Видеомонтаж"
+      {
+        "skill": "Тайм менеджмент",
+        "categoryId": "business-and-career",
+        "subcategory": "time-management"
+      },
+      {
+        "skill": "Медитация",
+        "categoryId": "health-and-lifestyle",
+        "subcategory": "yoga-and-meditation"
+      },
+      {
+        "skill": "Фотография",
+        "categoryId": "creativity-and-art",
+        "subcategory": "photography"
+      },
+      {
+        "skill": "Видеомонтаж",
+        "categoryId": "creativity-and-art",
+        "subcategory": "video-editing"
+      }
     ],
     "photo": "Maria.png"
   },
@@ -99,14 +231,37 @@
     "id": 7,
     "name": "Виктория",
     "city": "Кемерово",
-    "age": 30,
+    "gender": "female",
+    "birthDate": "1990-06-23",
     "bio": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
-    "skillsToTeach": ["Игра на барабанах"],
+    "skillsToTeach": [
+      {
+        "skill": "Игра на барабанах",
+        "categoryId": "creativity-and-art",
+        "subcategory": "music-and-sound"
+      }
+    ],
     "skillsToLearn": [
-      "Тайм менеджмент",
-      "Медитация",
-      "Фотография",
-      "Видеомонтаж"
+      {
+        "skill": "Тайм менеджмент",
+        "categoryId": "business-and-career",
+        "subcategory": "time-management"
+      },
+      {
+        "skill": "Медитация",
+        "categoryId": "health-and-lifestyle",
+        "subcategory": "yoga-and-meditation"
+      },
+      {
+        "skill": "Фотография",
+        "categoryId": "creativity-and-art",
+        "subcategory": "photography"
+      },
+      {
+        "skill": "Видеомонтаж",
+        "categoryId": "creativity-and-art",
+        "subcategory": "video-editing"
+      }
     ],
     "photo": "Victoria.png"
   },
@@ -114,14 +269,37 @@
     "id": 8,
     "name": "Елизавета",
     "city": "Владивосток",
-    "age": 25,
+    "gender": "female",
+    "birthDate": "1990-06-23",
     "bio": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
-    "skillsToTeach": ["Игра на барабанах"],
+    "skillsToTeach": [
+      {
+        "skill": "Игра на барабанах",
+        "categoryId": "creativity-and-art",
+        "subcategory": "music-and-sound"
+      }
+    ],
     "skillsToLearn": [
-      "Тайм менеджмент",
-      "Медитация",
-      "Фотография",
-      "Видеомонтаж"
+      {
+        "skill": "Тайм менеджмент",
+        "categoryId": "business-and-career",
+        "subcategory": "time-management"
+      },
+      {
+        "skill": "Медитация",
+        "categoryId": "health-and-lifestyle",
+        "subcategory": "yoga-and-meditation"
+      },
+      {
+        "skill": "Фотография",
+        "categoryId": "creativity-and-art",
+        "subcategory": "photography"
+      },
+      {
+        "skill": "Видеомонтаж",
+        "categoryId": "creativity-and-art",
+        "subcategory": "video-editing"
+      }
     ],
     "photo": "Elizaveta.png"
   },
@@ -129,14 +307,37 @@
     "id": 9,
     "name": "Виктория",
     "city": "Сочи",
-    "age": 31,
+    "gender": "female",
+    "birthDate": "1990-06-23",
     "bio": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
-    "skillsToTeach": ["Игра на барабанах"],
+    "skillsToTeach": [
+      {
+        "skill": "Игра на барабанах",
+        "categoryId": "creativity-and-art",
+        "subcategory": "music-and-sound"
+      }
+    ],
     "skillsToLearn": [
-      "Тайм менеджмент",
-      "Медитация",
-      "Фотография",
-      "Видеомонтаж"
+      {
+        "skill": "Тайм менеджмент",
+        "categoryId": "business-and-career",
+        "subcategory": "time-management"
+      },
+      {
+        "skill": "Медитация",
+        "categoryId": "health-and-lifestyle",
+        "subcategory": "yoga-and-meditation"
+      },
+      {
+        "skill": "Фотография",
+        "categoryId": "creativity-and-art",
+        "subcategory": "photography"
+      },
+      {
+        "skill": "Видеомонтаж",
+        "categoryId": "creativity-and-art",
+        "subcategory": "video-editing"
+      }
     ],
     "photo": "Victoria-Sochi.png"
   },
@@ -144,14 +345,37 @@
     "id": 10,
     "name": "Елена",
     "city": "Красноярск",
-    "age": 28,
+    "gender": "female",
+    "birthDate": "1990-06-23",
     "bio": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
-    "skillsToTeach": ["Игра на барабанах"],
+    "skillsToTeach": [
+      {
+        "skill": "Игра на барабанах",
+        "categoryId": "creativity-and-art",
+        "subcategory": "music-and-sound"
+      }
+    ],
     "skillsToLearn": [
-      "Тайм менеджмент",
-      "Медитация",
-      "Фотография",
-      "Видеомонтаж"
+      {
+        "skill": "Тайм менеджмент",
+        "categoryId": "business-and-career",
+        "subcategory": "time-management"
+      },
+      {
+        "skill": "Медитация",
+        "categoryId": "health-and-lifestyle",
+        "subcategory": "yoga-and-meditation"
+      },
+      {
+        "skill": "Фотография",
+        "categoryId": "creativity-and-art",
+        "subcategory": "photography"
+      },
+      {
+        "skill": "Видеомонтаж",
+        "categoryId": "creativity-and-art",
+        "subcategory": "video-editing"
+      }
     ],
     "photo": "Elena.png"
   },
@@ -159,14 +383,37 @@
     "id": 11,
     "name": "Константин",
     "city": "Иркутск",
-    "age": 36,
+    "gender": "male",
+    "birthDate": "1990-06-23",
     "bio": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
-    "skillsToTeach": ["Игра на барабанах"],
+    "skillsToTeach": [
+      {
+        "skill": "Игра на барабанах",
+        "categoryId": "creativity-and-art",
+        "subcategory": "music-and-sound"
+      }
+    ],
     "skillsToLearn": [
-      "Тайм менеджмент",
-      "Медитация",
-      "Фотография",
-      "Видеомонтаж"
+      {
+        "skill": "Тайм менеджмент",
+        "categoryId": "business-and-career",
+        "subcategory": "time-management"
+      },
+      {
+        "skill": "Медитация",
+        "categoryId": "health-and-lifestyle",
+        "subcategory": "yoga-and-meditation"
+      },
+      {
+        "skill": "Фотография",
+        "categoryId": "creativity-and-art",
+        "subcategory": "photography"
+      },
+      {
+        "skill": "Видеомонтаж",
+        "categoryId": "creativity-and-art",
+        "subcategory": "video-editing"
+      }
     ],
     "photo": "Konstantin.png"
   },
@@ -174,14 +421,37 @@
     "id": 12,
     "name": "София",
     "city": "Абакан",
-    "age": 24,
+    "gender": "female",
+    "birthDate": "1990-06-23",
     "bio": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
-    "skillsToTeach": ["Игра на барабанах"],
+    "skillsToTeach": [
+      {
+        "skill": "Игра на барабанах",
+        "categoryId": "creativity-and-art",
+        "subcategory": "music-and-sound"
+      }
+    ],
     "skillsToLearn": [
-      "Тайм менеджмент",
-      "Медитация",
-      "Фотография",
-      "Видеомонтаж"
+      {
+        "skill": "Тайм менеджмент",
+        "categoryId": "business-and-career",
+        "subcategory": "time-management"
+      },
+      {
+        "skill": "Медитация",
+        "categoryId": "health-and-lifestyle",
+        "subcategory": "yoga-and-meditation"
+      },
+      {
+        "skill": "Фотография",
+        "categoryId": "creativity-and-art",
+        "subcategory": "photography"
+      },
+      {
+        "skill": "Видеомонтаж",
+        "categoryId": "creativity-and-art",
+        "subcategory": "video-editing"
+      }
     ],
     "photo": "Sofia.png"
   },
@@ -189,14 +459,37 @@
     "id": 13,
     "name": "Екатерина",
     "city": "Пермь",
-    "age": 33,
+    "gender": "female",
+    "birthDate": "1990-06-23",
     "bio": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
-    "skillsToTeach": ["Игра на барабанах"],
+    "skillsToTeach": [
+      {
+        "skill": "Игра на барабанах",
+        "categoryId": "creativity-and-art",
+        "subcategory": "music-and-sound"
+      }
+    ],
     "skillsToLearn": [
-      "Тайм менеджмент",
-      "Медитация",
-      "Фотография",
-      "Видеомонтаж"
+      {
+        "skill": "Тайм менеджмент",
+        "categoryId": "business-and-career",
+        "subcategory": "time-management"
+      },
+      {
+        "skill": "Медитация",
+        "categoryId": "health-and-lifestyle",
+        "subcategory": "yoga-and-meditation"
+      },
+      {
+        "skill": "Фотография",
+        "categoryId": "creativity-and-art",
+        "subcategory": "photography"
+      },
+      {
+        "skill": "Видеомонтаж",
+        "categoryId": "creativity-and-art",
+        "subcategory": "video-editing"
+      }
     ],
     "photo": "Ekaterina.png"
   },
@@ -204,14 +497,37 @@
     "id": 14,
     "name": "Дарья",
     "city": "Ярославль",
-    "age": 26,
+    "gender": "female",
+    "birthDate": "1990-06-23",
     "bio": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
-    "skillsToTeach": ["Игра на барабанах"],
+    "skillsToTeach": [
+      {
+        "skill": "Игра на барабанах",
+        "categoryId": "creativity-and-art",
+        "subcategory": "music-and-sound"
+      }
+    ],
     "skillsToLearn": [
-      "Тайм менеджмент",
-      "Медитация",
-      "Фотография",
-      "Видеомонтаж"
+      {
+        "skill": "Тайм менеджмент",
+        "categoryId": "business-and-career",
+        "subcategory": "time-management"
+      },
+      {
+        "skill": "Медитация",
+        "categoryId": "health-and-lifestyle",
+        "subcategory": "yoga-and-meditation"
+      },
+      {
+        "skill": "Фотография",
+        "categoryId": "creativity-and-art",
+        "subcategory": "photography"
+      },
+      {
+        "skill": "Видеомонтаж",
+        "categoryId": "creativity-and-art",
+        "subcategory": "video-editing"
+      }
     ],
     "photo": "Daria.png"
   },
@@ -219,14 +535,37 @@
     "id": 15,
     "name": "Алла",
     "city": "Архангельск",
-    "age": 22,
+    "gender": "female",
+    "birthDate": "1990-06-23",
     "bio": "Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое",
-    "skillsToTeach": ["Игра на барабанах"],
+    "skillsToTeach": [
+      {
+        "skill": "Игра на барабанах",
+        "categoryId": "creativity-and-art",
+        "subcategory": "music-and-sound"
+      }
+    ],
     "skillsToLearn": [
-      "Тайм менеджмент",
-      "Медитация",
-      "Фотография",
-      "Видеомонтаж"
+      {
+        "skill": "Тайм менеджмент",
+        "categoryId": "business-and-career",
+        "subcategory": "time-management"
+      },
+      {
+        "skill": "Медитация",
+        "categoryId": "health-and-lifestyle",
+        "subcategory": "yoga-and-meditation"
+      },
+      {
+        "skill": "Фотография",
+        "categoryId": "creativity-and-art",
+        "subcategory": "photography"
+      },
+      {
+        "skill": "Видеомонтаж",
+        "categoryId": "creativity-and-art",
+        "subcategory": "video-editing"
+      }
     ],
     "photo": "Alla.png"
   },
@@ -234,14 +573,37 @@
     "id": 16,
     "name": "Мария",
     "city": "Москва",
-    "age": 30,
+    "gender": "female",
+    "birthDate": "1990-06-23",
     "bio": "Люблю учиться новому, особенно если это можно делать за чаем и в пижаме. Всегда готова пообщаться и обменяться чем‑то интересным!",
-    "skillsToTeach": ["Игра на барабанах"],
+    "skillsToTeach": [
+      {
+        "skill": "Игра на барабанах",
+        "categoryId": "creativity-and-art",
+        "subcategory": "music-and-sound"
+      }
+    ],
     "skillsToLearn": [
-      "Тайм менеджмент",
-      "Медитация",
-      "Фотография",
-      "Видеомонтаж"
+      {
+        "skill": "Тайм менеджмент",
+        "categoryId": "business-and-career",
+        "subcategory": "time-management"
+      },
+      {
+        "skill": "Медитация",
+        "categoryId": "health-and-lifestyle",
+        "subcategory": "yoga-and-meditation"
+      },
+      {
+        "skill": "Фотография",
+        "categoryId": "creativity-and-art",
+        "subcategory": "photography"
+      },
+      {
+        "skill": "Видеомонтаж",
+        "categoryId": "creativity-and-art",
+        "subcategory": "video-editing"
+      }
     ],
     "photo": "Maria-Moscow.png"
   }

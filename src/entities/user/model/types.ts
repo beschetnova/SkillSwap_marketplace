@@ -20,7 +20,7 @@ export type User = {
   id: number;
   name: string;
   city: string;
-  age: number;
+  birthDate: string;
   bio: string;
   skillsToTeach: UserCardSkill[];
   skillsToLearn: UserCardSkill[];
