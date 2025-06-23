@@ -16,9 +16,29 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Open Sans';
+  src:
+    url('/fonts/OpenSans-Variable.woff2') format('woff2 supports variations'),
+    url('/fonts/OpenSans-Variable.woff2') format('woff2-variations');
+  font-weight: 300 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  src:
+    url('/fonts/Inter-Variable.woff2') format('woff2 supports variations'),
+    url('/fonts/Inter-Variable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 :root {
   --font-main: 'Roboto', sans-serif;
   --font-heading: 'Jost', sans-serif;
+  --font-card-name: 'Open Sans', sans-serif;
+  --font-more-pictures: 'Inter', sans-serif;
   --caption-font-size: 12px;
   --caption-font-line-height: 1.33;
   --text-color: #253017;
