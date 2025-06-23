@@ -3,5 +3,9 @@ dist
 .DS_Store
 .vscode
 .env
+<<<<<<< HEAD
+.idea
+=======
 *storybook.log
 storybook-static
+>>>>>>> 2ae72c8d1078627f1f18fe2fb147df826426639f
