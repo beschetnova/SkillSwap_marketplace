@@ -12,14 +12,37 @@ function App() {
           name: 'Иван',
           city: 'Санкт-Петербург',
           age: 34,
-          bio: 'Музыкант с 10-летним стажем, учу игре на народных инструментах',
-          skillsToTeach: ['Игра на барабанах'],
+          bio: 'Привет! Люблю ритм, кофе по утрам и людей, которые не боятся пробовать новое',
+          skillsToTeach: [
+            {
+              skill: 'Игра на барабанах',
+              categoryId: 'creativity-and-art',
+              subcategory: 'music-and-sound'
+            }
+          ],
           skillsToLearn: [
-            'Тайм менеджмент',
-            'Медитация',
-            'Фотография',
-            'Видеомонтаж'
-          ]
+            {
+              skill: 'Тайм менеджмент',
+              categoryId: 'business-and-career',
+              subcategory: 'time-management'
+            },
+            {
+              skill: 'Медитация',
+              categoryId: 'health-and-lifestyle',
+              subcategory: 'yoga-and-meditation'
+            },
+            {
+              skill: 'Тайм менеджмент',
+              categoryId: 'business-and-career',
+              subcategory: 'time-management'
+            },
+            {
+              skill: 'Тайм менеджмент',
+              categoryId: 'business-and-career',
+              subcategory: 'time-management'
+            }
+          ],
+          photo: 'Ivan.png'
         }}
       />
     </>

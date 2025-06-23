@@ -10,12 +10,19 @@ export type SkillCategory = {
   skills: Skill[];
 };
 
+export type UserCardSkill = {
+  skill: string;
+  categoryId: string;
+  subcategory: string;
+};
+
 export type User = {
   id: number;
   name: string;
   city: string;
   age: number;
   bio: string;
-  skillsToTeach: string[];
-  skillsToLearn: string[];
+  skillsToTeach: UserCardSkill[];
+  skillsToLearn: UserCardSkill[];
+  photo: string;
 };
