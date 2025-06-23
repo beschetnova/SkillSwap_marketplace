@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 import checkboxCategory from "../../../images/icons/checkbox-remove.svg";
 import checkboxDone from "../../../images/icons/checkbox-done.svg";
 import checkboxEmpty from "../../../images/icons/checkbox-empty.svg";
@@ -7,18 +7,13 @@ import styles from "./skills-item.module.css";
 import useSwitch from "../../../hooks/use-switch";
 import Input from "../Input/input";
 
-type Skill<T> = {
-  title: string;
-  submenu?: Skill<T>[];
-};
-
-type SkillsItemProps<T> = {
-  skill: Skill<T>;
+type SkillsItemProps = {
+  skill: Skills;
   selected: string[];
   onChange: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
-const SkillsItem = <T,>({ skill, selected, onChange }: SkillsItemProps<T>) => {
+const SkillsItem = ({ skill, selected, onChange }: SkillsItemProps) => {
   const [open, toggle] = useSwitch();
 
   const icon = useMemo(() => {
@@ -68,4 +63,4 @@ const SkillsItem = <T,>({ skill, selected, onChange }: SkillsItemProps<T>) => {
   };
 }
 
-export default SkillsItem;
+export default memo(SkillsItem);

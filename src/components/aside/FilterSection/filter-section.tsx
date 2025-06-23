@@ -1,4 +1,4 @@
-import { useMemo, type ReactNode } from 'react';
+import { memo, useMemo, type ReactNode } from 'react';
 import List from '../List/list';
 import styles from './filter-section.module.css';
 import useSwitch from '../../../hooks/use-switch';
@@ -56,4 +56,4 @@ const FilterSection = <T,>(
   );
 }
 
-export default FilterSection;
+export default memo(FilterSection) as typeof FilterSection;

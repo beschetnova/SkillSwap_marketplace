@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import authorsData from '../../data/authors-data.json';
 import baseData from '../../data/base-data.json';
 import citiesData from '../../data/cities-data.json';
@@ -19,6 +20,67 @@ type Filters = {
 };
 
 const Aside = ({ filters }: { filters: Filters }) => {
+
+  const renderBases = useCallback(
+    (base: string) => (
+      <li key={base}>
+        <Input
+          type='radio'
+          name='base'
+          value={base}
+          selected={filters.bases}
+          onChange={filters.setBases}
+        >
+          {base}
+        </Input>
+      </li>
+    ), [filters.bases, filters.setBases]
+  );
+
+  const renderSkills = useCallback(
+    (skill: Skills) => (
+      <li key={skill.title}>
+        <SkillsItem
+          skill={skill}
+          selected={filters.skills}
+          onChange={filters.setSkills}
+        />
+      </li>
+    ), [filters.skills, filters.setSkills]
+  );
+
+  const renderAuthors = useCallback(
+    (author: string) => (
+      <li key={author}>
+        <Input
+          type='radio'
+          name='author'
+          value={author}
+          selected={filters.autors}
+          onChange={filters.setAuthors}
+        >
+          {author}
+        </Input>
+      </li>
+    ), [filters.autors, filters.setAuthors]
+  );
+
+  const renderCities = useCallback(
+    (city: string) => (
+      <li key={city}>
+        <Input
+          type='checkbox'
+          name='city'
+          value={city}
+          selected={filters.cities}
+          onChange={filters.setCities}
+        >
+          {city}
+        </Input>
+      </li>
+    ), [filters.cities, filters.setCities]
+  );
+
   return (
     <aside
       className={styles.aside}
@@ -31,37 +93,13 @@ const Aside = ({ filters }: { filters: Filters }) => {
       <FilterSection
         title=''
         list={baseData}
-        renderItem={
-          (base) => (
-            <li key={base}>
-              <Input
-                type='radio'
-                name='base'
-                value={base}
-                selected={filters.bases}
-                onChange={filters.setBases}
-              >
-                {base}
-              </Input>
-            </li>
-          )
-        }
+        renderItem={renderBases}
         extraStyle={styles.section}
       />
       <FilterSection
         title='Навыки'
         list={skillsData}
-        renderItem={
-          (skill) => (
-            <li key={skill.title}>
-              <SkillsItem
-                skill={skill}
-                selected={filters.skills}
-                onChange={filters.setSkills}
-              />
-            </li>
-          )
-        }
+        renderItem={renderSkills}
         limit={5}
         buttonShow='Все навыки'
         buttonHide='Скрыть'
@@ -70,41 +108,13 @@ const Aside = ({ filters }: { filters: Filters }) => {
       <FilterSection
         title='Пол автора'
         list={authorsData}
-        renderItem={
-          (author) => (
-            <li key={author}>
-              <Input
-                type='radio'
-                name='author'
-                value={author}
-                selected={filters.autors}
-                onChange={filters.setAuthors}
-              >
-                {author}
-              </Input>
-            </li>
-          )
-        }
+        renderItem={renderAuthors}
         extraStyle={styles.section}
       />
       <FilterSection
         title='Город'
         list={citiesData}
-        renderItem={
-          (city) => (
-            <li key={city}>
-              <Input
-                type='checkbox'
-                name='city'
-                value={city}
-                selected={filters.cities}
-                onChange={filters.setCities}
-              >
-                {city}
-              </Input>
-            </li>
-          )
-        }
+        renderItem={renderCities}
         limit={5}
         buttonShow='Все города'
         buttonHide='Скрыть'
