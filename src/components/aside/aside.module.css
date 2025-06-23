@@ -1,0 +1,95 @@
+.aside {
+  padding: 20px;
+  width: 324px;
+  height: 100%;
+  border-radius: 20px;
+  background-color: #fff;
+  overflow: auto;
+}
+
+.title {
+  margin-bottom: 40px;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+/*
+.role {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  margin-bottom: 20px;
+}
+
+.sex {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.sex h3 {
+  margin: 0;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.radio input[type="radio"] {
+  display: none;
+}
+
+.radio::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  background: url(../../images/radio1.svg);
+}
+
+.radio:has(input[type="radio"]:checked)::before {
+  background: url(../../images/radio2.svg);
+}
+
+.checkbox {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  background: url(../../images/checkbox-empty.svg);
+}
+
+.checkbox:has(input[type="checkbox"]:checked)::before {
+  background: url(../../images/checkbox-done.svg);
+}
+
+.button {
+  width: 24px;
+  height: 24px;
+}
+
+.allCategory {
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+} */
