@@ -20,6 +20,7 @@ export type User = {
   id: number;
   name: string;
   city: string;
+  gender: string;
   birthDate: string;
   bio: string;
   skillsToTeach: UserCardSkill[];

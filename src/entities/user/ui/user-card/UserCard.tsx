@@ -17,9 +17,17 @@ const UserCard = ({ user }: UserCardProps) => {
   return (
     <div className={styles.userCard}>
       <div className={styles.userInfo}>
-        <div className={styles.avatar}></div>
+        <img
+          className={styles.avatar}
+          src={`/db/profile-pics/${user.photo}`}
+          alt={user.name}
+        ></img>
         <div className={styles.userInfoText}>
-          <img src='/icons/Like.svg' alt='' className={styles.likeIcon} />
+          <img
+            src='/icons/Like.svg'
+            alt='Иконка лайка'
+            className={styles.likeIcon}
+          />
           <h3 className={styles.name}>{user.name}</h3>
           <p className={styles.cityAge}>
             {user.city}, {age} {getYearsWord(age)}
