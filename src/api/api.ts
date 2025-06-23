@@ -1,9 +1,9 @@
 import type { SkillCategories } from '../utils/types';
 
-const URL = process.env.PUBLIC_URL;
+// const URL = process.env.PUBLIC_URL;
 
-export const fetchSkillAPI = async (): Promise<SkillCategories> => {
-  const response = await fetch(`${URL}/db/skills.json`);
+export const getSkill = async (): Promise<SkillCategories> => {
+  const response = await fetch(`/db/skills.json`);
   if (!response.ok) {
     throw new Error('Не удалость загрузить скиллы. ' + response.status);
   }
