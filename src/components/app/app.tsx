@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Aside from '../aside/aside';
-// import styles from './app.module.css';
 
 function App() {
   const [bases, setBases] = useState<string[]>([]);
@@ -18,7 +17,11 @@ function App() {
     cities,
     setCities
   };
-  return <Aside filters={filters} />;
+  return (
+    <>
+      <Aside filters={filters} />
+    </>
+  );
 }
 
 export default App;
