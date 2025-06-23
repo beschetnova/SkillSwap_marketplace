@@ -1,47 +1,15 @@
+.button {
+  text-wrap: nowrap;
+  font: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: transparent;
+  padding: 0;
+}
+
 .nav {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  width: 100%;
-}
-
-.about {
-  text-wrap: nowrap;
-}
-
-.skills {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  color: var(--text-color);
-  font: inherit;
-}
-
-.search {
-  display: flex;
-  align-items: center;
-  border: 0.0625rem solid var(--card-input-color);
-  border-radius: 0.75rem; 
-  background-color: var(--card-input-color);
-  padding: 0.75rem;
-  min-width: 200px;
-  max-width: 32.9375rem;
-  gap: 0.5rem;
-  width: 100%;
-}
-
-input {
-  width: 100%;
-  height: 2rem;
-  padding: 0 0.75rem;
-  border-radius: 0.25rem; 
-  border: 0.0625rem solid var(--card-input-color);
-  outline: none;
-  caret-color: var(--text-link-button-pressed-color);
-  color: var(--text-color);
-  font-size: 16px;
-}
-
-input::placeholder {
-  color: var(--caption-color);
 }

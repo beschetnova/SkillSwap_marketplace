@@ -1,25 +1,28 @@
-import themeIcon from '../../../images/header-image/theme.svg';
-import SecondaryButton from '../../ui/buttons/SecondaryButton';
-import PrimaryButton from '../../ui/buttons/PrimaryButton';
 import styles from './authButtons.module.css';
+import Button from '../../ui/buttons/button';
 
 type AuthButtonsProps = {
-    setIsAuth: (value: boolean) => void;
+  setIsAuth: (value: boolean) => void;
 };
 
 const AuthButtons = ({ setIsAuth }: AuthButtonsProps) => {
   return (
     <div className={styles.auth}>
-      <button>
-        <img src={themeIcon} alt='Переключить тему' />
-      </button>
       <div className={styles.buttons}>
-        <SecondaryButton onClick={() => setIsAuth(true)}>
+        <Button
+          htmlType='button'
+          type="secondary"
+          onClick={() => setIsAuth(true)}
+        >
           Войти
-        </SecondaryButton>
-        <PrimaryButton onClick={() => setIsAuth(true)}>
+        </Button>
+        <Button
+          htmlType='button'
+          type='primary'
+          onClick={() => setIsAuth(true)}
+        >
           Зарегистрироваться
-        </PrimaryButton>
+        </Button>
       </div>
     </div>
   );

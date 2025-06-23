@@ -1,20 +1,27 @@
 import { useState } from 'react';
 import styles from './header.module.css'
 import Nav from './nav/nav';
-import Profile from './profile/profile';
 import AuthButtons from './auth-buttons/authButtons';
+import Icons from './icons/icons';
+import Logo from './logo/logo';
+import Input from './input/input';
+import Profile from './profile/profile';
 
 const Header = () => {
-    const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
 
-    return (
-        <header className={styles.header}>
-            <Nav />
-            <div className={styles.right}>
-                {isAuth ? <Profile /> : <AuthButtons setIsAuth={setIsAuth} />}
-            </div>
-        </header>
-    );
+  return (
+    <header className={styles.header}>
+      <Logo />
+      <Nav />
+      <Input />
+      <Icons isAuth={isAuth} />
+      {isAuth
+        ? <Profile />
+        : <AuthButtons setIsAuth={setIsAuth} />
+      }
+    </header>
+  );
 }
 
 export default Header;
