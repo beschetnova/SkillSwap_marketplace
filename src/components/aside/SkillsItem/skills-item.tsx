@@ -1,8 +1,8 @@
 import { useMemo } from "react";
-import checkboxCategory from "../../../images/checkbox-category.svg";
-import checkboxDone from "../../../images/checkbox-done.svg";
-import checkboxEmpty from "../../../images/checkbox-empty.svg";
-import chevronUp from "../../../images/chevron-up.svg";
+import checkboxCategory from "../../../images/icons/checkbox-remove.svg";
+import checkboxDone from "../../../images/icons/checkbox-done.svg";
+import checkboxEmpty from "../../../images/icons/checkbox-empty.svg";
+import chevronUp from "../../../images/icons/chevron-up.svg";
 import styles from "./skills-item.module.css";
 import useSwitch from "../../../hooks/use-switch";
 import Input from "../Input/input";
@@ -33,6 +33,7 @@ const SkillsItem = <T,>({ skill, selected, onChange }: SkillsItemProps<T>) => {
     return (
       <>
         <button
+          type="button"
           className={styles.category}
           onClick={toggle}
         >
@@ -42,9 +43,9 @@ const SkillsItem = <T,>({ skill, selected, onChange }: SkillsItemProps<T>) => {
             <img className={styles.chevron} src={chevronUp} alt={skill.title} />
           }
         </button>
-        {open && skill.submenu.map((skill, i) => (
+        {open && skill.submenu.map((skill) => (
           <span
-            key={i.toString()}
+            key={skill.title}
             className={styles.content}
           >
             <SkillsItem skill={skill} selected={selected} onChange={onChange} />

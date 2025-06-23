@@ -42,11 +42,7 @@ const FilterSection = <T,>(
       </h3>
       <List
         list={listToShow}
-        callback={
-          (item) => (
-            renderItem(item)
-          )
-        }
+        callback={renderItem}
       />
       {typeof limit === 'number' && list.length > limit && (
         <button
