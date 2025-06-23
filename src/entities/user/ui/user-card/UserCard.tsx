@@ -1,6 +1,5 @@
 import styles from './UserCard.module.css';
-import type { User } from '../../model/types';
-import { useCategories } from '../../../../utils/skill-category/useCategories.ts';
+import type { SkillCategory, User } from '../../model/types';
 import { getSkillCategory } from '../../../../utils/skill-category/getSkillCategory.ts';
 import {
   calculateAge,
@@ -9,11 +8,14 @@ import {
 
 type UserCardProps = {
   user: User;
+  categories: SkillCategory[];
 };
 
-const UserCard = ({ user }: UserCardProps) => {
+//TODO : получать категории внутри UserList const categories = useCategories();
+
+const UserCard = ({ user, categories }: UserCardProps) => {
   const age = calculateAge(user.birthDate);
-  const categories = useCategories();
+
   return (
     <div className={styles.userCard}>
       <div className={styles.userInfo}>
