@@ -62,15 +62,11 @@
   --tag-plus-color: #e8ecf7;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  border: none;
-}
-
 *,
 *::before,
 *::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 

@@ -1,8 +1,26 @@
+<<<<<<< HEAD
 import styles from './app.module.css';
 import UserCard from '../../entities/user/ui/user-card/UserCard.tsx';
+=======
+import { useState } from 'react';
+import Aside from '../aside/aside';
+// import styles from './app.module.css';
+>>>>>>> 837563ffd4ce920fdd71961f20e94f487bd01fb7
 
 function App() {
+  const [bases, setBases] = useState<string[]>([]);
+  const [skills, setSkills] = useState<string[]>([]);
+  const [autors, setAuthors] = useState<string[]>([]);
+  const [cities, setCities] = useState<string[]>([]);
+
+  const filters = {
+    bases, setBases,
+    skills, setSkills,
+    autors, setAuthors,
+    cities, setCities,
+  };
   return (
+<<<<<<< HEAD
     <>
       <p className={styles.p}>SkillSwap project</p>
 
@@ -47,6 +65,9 @@ function App() {
         }}
       />
     </>
+=======
+    <Aside filters={filters} />
+>>>>>>> 837563ffd4ce920fdd71961f20e94f487bd01fb7
   );
 }
 
