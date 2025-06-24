@@ -1,4 +1,4 @@
-import type { SkillCategory } from '../../entities/user/model/types.ts';
+import type { SkillCategory } from '../types.ts';
 
 export const getSkillCategory = (
   categoryId: string,

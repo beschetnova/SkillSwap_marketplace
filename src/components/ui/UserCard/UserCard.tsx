@@ -1,10 +1,7 @@
 import styles from './UserCard.module.css';
-import type { SkillCategory, User } from '../../model/types';
-import { getSkillCategory } from '../../../../utils/skill-category/getSkillCategory.ts';
-import {
-  calculateAge,
-  getYearsWord
-} from '../../../../utils/date/dateUtils.ts';
+import type { SkillCategory, User } from '../../../utils/types.ts';
+import { getSkillCategory } from '../../../utils/skill-category/getSkillCategory.ts';
+import { calculateAge, getYearsWord } from '../../../utils/date/dateUtils.ts';
 
 type UserCardProps = {
   user: User;

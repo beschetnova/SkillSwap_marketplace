@@ -1,4 +1,4 @@
-export type SkillSubcategory = {
+export type Skill = {
   id: string;
   name: string;
 };
@@ -7,8 +7,27 @@ export type SkillCategory = {
   id: string;
   name: string;
   icon: string;
-  skils: SkillSubcategory[];
+  skills: Skill[];
 };
 
 export type SkillCategories = SkillCategory[];
 
+export type UserCardSkill = {
+  skill: string;
+  categoryId: string;
+  subcategory: string;
+};
+
+export type User = {
+  id: number;
+  name: string;
+  city: string;
+  gender: string;
+  birthDate: string;
+  bio: string;
+  skillsToTeach: UserCardSkill[];
+  skillsToLearn: UserCardSkill[];
+  photo: string;
+};
+
+export type Users = User[];
