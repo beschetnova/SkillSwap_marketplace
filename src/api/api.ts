@@ -1,5 +1,4 @@
-import type { User } from '../entities/user/model/types';
-import type { SkillCategories } from '../utils/types';
+import type { SkillCategories, User } from '../utils/types';
 
 // const URL = process.env.PUBLIC_URL;
 
