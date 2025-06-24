@@ -1,4 +1,4 @@
-import type { SkillCategories } from '../utils/types';
+import type { SkillCategories, User } from '../utils/types';
 
 // const URL = process.env.PUBLIC_URL;
 
@@ -11,3 +11,14 @@ export const getSkill = async (): Promise<SkillCategories> => {
   const data: SkillCategories = await response.json();
   return data;
 };
+
+export const getUsers = async (): Promise<User[]> => {
+  const response = await fetch(`/db/users.json`);
+  if (!response.ok) {
+    throw new Error('Не удалость загрузить пользователей. ' + response.status);
+  }
+
+  const data: User[] = await response.json();
+  return data;
+};
+
