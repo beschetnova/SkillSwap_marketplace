@@ -7,19 +7,27 @@ export type SkillCategory = {
   id: string;
   name: string;
   icon: string;
-  skils: Skill[];
+  skills: Skill[];
 };
 
 export type SkillCategories = SkillCategory[];
 
-// TODO: подправить позже на реальный users.json
+export type UserCardSkill = {
+  skill: string;
+  categoryId: string;
+  subcategory: string;
+};
+
 export type User = {
+  id: number;
   name: string;
   city: string;
-  age: string;
-  description: string;
-  skillsCanTeach: Skill[];
-  skillsCanLearn: Skill[];
+  gender: string;
+  birthDate: string;
+  bio: string;
+  skillsToTeach: UserCardSkill[];
+  skillsToLearn: UserCardSkill[];
+  photo: string;
 };
 
 export type Users = User[];
