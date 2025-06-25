@@ -9,8 +9,6 @@ interface UserCardSectionProps {
   categories: SkillCategories;
 }
 
-//TODO : получать категории внутри UserList const categories = useCategories();
-
 export const UserCardSection = ({
   title,
   users,
