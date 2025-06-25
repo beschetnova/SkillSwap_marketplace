@@ -8,8 +8,6 @@ interface UserCardProps {
   categories: SkillCategories;
 }
 
-//TODO : получать категории внутри UserList const categories = useCategories();
-
 export const UserCard = ({ user, categories }: UserCardProps) => {
   const [liked, setLiked] = useState(false);
 

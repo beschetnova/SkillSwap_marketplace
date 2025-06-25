@@ -1,6 +1,7 @@
-import styles from './UserCardSection.module.scss';
+import styles from './UserCardSection.module.css';
 import { UserCard } from '../UserCard/UserCard';
 import type { SkillCategories, User } from '../../utils/types.ts';
+import { useState } from 'react';
 
 interface UserCardSectionProps {
   title: string;
@@ -8,16 +9,31 @@ interface UserCardSectionProps {
   categories: SkillCategories;
 }
 
+//TODO : получать категории внутри UserList const categories = useCategories();
+
 export const UserCardSection = ({
   title,
   users,
   categories
 }: UserCardSectionProps) => {
+  const [showAll, setShowAll] = useState(false);
+  const visibleUsers = showAll ? users : users.slice(0, 3);
+
+  const handleShowMore = () => {
+    setShowAll(true);
+  };
   return (
     <section className={styles.section}>
-      <h2 className={styles.title}>{title}</h2>
+      <div className={styles.header}>
+        <h2 className={styles.title}>{title}</h2>
+        {!showAll && users.length > 3 && (
+          <button className={styles.button} onClick={handleShowMore}>
+            Смотреть все
+          </button>
+        )}
+      </div>
       <div className={styles.cardsGrid}>
-        {users.map((user) => (
+        {visibleUsers.map((user) => (
           <UserCard key={user.id} user={user} categories={categories} />
         ))}
       </div>
