@@ -36,9 +36,10 @@ export const usersSlice = createSlice({
       });
   },
   selectors: {
-    selectAllUsers: (state) => state.users
+    selectAllUsers: (state) => state.users,
+    selectAllUsersCity: (state) => [...new Set(state.users.map(user => user.city))]
   }
 });
 
-export const { selectAllUsers } = usersSlice.selectors;
+export const { selectAllUsers, selectAllUsersCity } = usersSlice.selectors;
 export default usersSlice.reducer;
