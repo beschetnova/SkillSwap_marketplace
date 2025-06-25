@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchSkills());
     dispatch(fetchUsers());
-    dispatch(fetchCities())
+    dispatch(fetchCities());
   }, []);
 
   return (
