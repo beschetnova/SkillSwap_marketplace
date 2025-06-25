@@ -1,0 +1,8 @@
+.dropdownContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.trigger {
+  cursor: pointer;
+}
