@@ -1,6 +1,6 @@
 import styles from './closeButton.module.css';
-import closeIcon from '../../../images/icons/cross.svg';
-import Button from '../../ui/buttons/button';
+import closeIcon from '../../../../images/icons/cross.svg';
+import Button from '../../../ui/buttons/button';
 
 const CloseButton = () => {
 

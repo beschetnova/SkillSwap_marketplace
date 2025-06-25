@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { useInput } from "../../../hooks/useInput";
+import { useInput } from "../../../../hooks/useInput";
 import styles from "./input.module.css";
 
 const Input = () => {

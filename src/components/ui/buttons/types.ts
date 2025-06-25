@@ -5,4 +5,5 @@ export type ButtonProps = {
   htmlType: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   children?: React.ReactNode;
+  ref?: React.Ref<HTMLButtonElement>;
 };

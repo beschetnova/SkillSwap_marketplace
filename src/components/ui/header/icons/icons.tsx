@@ -1,6 +1,6 @@
-import Button from "../../ui/buttons/button";
-import likeButton from '../../../images/icons/like2.svg';
-import notificationButton from '../../../images/icons/notification.svg';
+import Button from "../../../ui/buttons/button";
+import likeButton from '../../../../images/icons/like2.svg';
+import notificationButton from '../../../../images/icons/notification.svg';
 import styles from './icons.module.css';
 
 type Props = {

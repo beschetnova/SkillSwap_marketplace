@@ -1,6 +1,6 @@
 import styles from './logo.module.css';
-import logoImage from '../../../images/logo.svg';
-import Button from '../../ui/buttons/button';
+import logoImage from '../../../../images/logo.svg';
+import Button from '../../../ui/buttons/button';
 import { memo } from 'react';
 
 const Logo = () => {

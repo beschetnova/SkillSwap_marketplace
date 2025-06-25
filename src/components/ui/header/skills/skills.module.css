@@ -1,0 +1,9 @@
+.skillCategory {
+    margin-bottom: 20px;
+}
+
+.skillsList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+}

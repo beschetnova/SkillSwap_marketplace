@@ -9,6 +9,7 @@ const Button = ({
   htmlType,
   disabled = false,
   children,
+  ref
 }: ButtonProps) => {
   return (
     <button
@@ -16,6 +17,7 @@ const Button = ({
       className={`${styles[type]} ${className}`}
       onClick={onClick}
       disabled={disabled}
+      ref={ref}
     >
       {children}
     </button>

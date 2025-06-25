@@ -1,5 +1,5 @@
 import styles from './authButtons.module.css';
-import Button from '../../ui/buttons/button';
+import Button from '../../../ui/buttons/button';
 
 type AuthButtonsProps = {
   setIsAuth: (value: boolean) => void;
