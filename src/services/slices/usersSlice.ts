@@ -1,6 +1,11 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {
+  createAsyncThunk,
+  createSelector,
+  createSlice
+} from '@reduxjs/toolkit';
 import { getUsers } from '../../api/api';
 import type { Users } from '../../utils/types';
+import type { RootState } from '../store';
 
 type UsersState = {
   users: Users;
@@ -34,14 +39,12 @@ export const usersSlice = createSlice({
         state.isLoading = false;
         state.error = action.error.message;
       });
-  },
-  selectors: {
-    selectAllUsers: (state) => state.users,
-    selectAllUsersCity: (state) => [
-      ...new Set(state.users.map((user) => user.city))
-    ]
   }
 });
 
-export const { selectAllUsers, selectAllUsersCity } = usersSlice.selectors;
+export const selectAllUsers = (state: RootState) => state.users.users;
+export const selectAllUsersCity = createSelector([selectAllUsers], (users) => [
+  ...new Set(users.map((user) => user.city))
+]);
+
 export default usersSlice.reducer;
