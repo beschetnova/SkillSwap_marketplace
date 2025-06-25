@@ -8,7 +8,7 @@ export const getSkill = async (): Promise<SkillCategories> => {
     throw new Error('Не удалость загрузить скиллы. ' + response.status);
   }
 
-  const data: SkillCategories = await response.json();
+  const data = (await response.json()) as SkillCategories;
   return data;
 };
 
@@ -18,7 +18,7 @@ export const getUsers = async (): Promise<Users> => {
     throw new Error('Не удалость загрузить пользователей. ' + response.status);
   }
 
-  const data: Users = await response.json();
+  const data = (await response.json()) as Users;
   return data;
 };
 
@@ -28,6 +28,6 @@ export const getCities = async (): Promise<Cities> => {
     throw new Error('Не удалость загрузить города. ' + response.status);
   }
 
-  const data: Cities = await response.json();
+  const data = (await response.json()) as Cities;
   return data;
 };
