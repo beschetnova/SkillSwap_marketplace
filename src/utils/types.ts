@@ -31,3 +31,10 @@ export type User = {
 };
 
 export type Users = User[];
+
+export type City = {
+  id: number;
+  name: string;
+};
+
+export type Cities = City[];
