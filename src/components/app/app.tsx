@@ -7,10 +7,10 @@ import { fetchCities } from '../../services/slices/citiesSlice';
 function App() {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchSkills());
-    dispatch(fetchUsers());
-    dispatch(fetchCities());
-  }, []);
+    void dispatch(fetchSkills());
+    void dispatch(fetchUsers());
+    void dispatch(fetchCities());
+  }, [dispatch]);
 
   return (
     <>
