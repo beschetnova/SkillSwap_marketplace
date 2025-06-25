@@ -3,7 +3,7 @@ import skillsIcon from '../../../../images/icons/chevron-down.svg';
 import Button from '../../../ui/buttons/button';
 import styles from './nav.module.css';
 import useSwitch from '../../../../hooks/use-switch';
-import Modal from '../../../modal/modal';
+import FakeModal from '../../../fakemodal/fakemodal';
 import Skills from '../skills/skills';
 
 const Nav = () => {
@@ -44,13 +44,13 @@ const Nav = () => {
         <img src={skillsIcon} alt='Иконка' />
       </Button>
       {open &&
-        <Modal 
+        <FakeModal 
         isOpen={open}
         onClose={toggle}
         position={position}
         >
           <Skills />
-        </Modal>
+        </FakeModal>
       }
     </div>
   );

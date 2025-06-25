@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import styles from './modal.module.css'
+import styles from './fakemodal.module.css'
 import { useCallback, useEffect, useRef } from "react";
 
 type Props = {
@@ -8,8 +8,8 @@ type Props = {
     position: { top: number; left: number };
     children?: React.ReactNode;
 };
-
-const Modal = ({ isOpen, onClose, position, children }: Props) => {
+//НЕ ИСПОЛЬЗОВАТЬ ЭТОТ КОМПОНЕНТ!!!
+const FakeModal = ({ isOpen, onClose, position, children }: Props) => {
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     useEffect(() => {
@@ -60,4 +60,4 @@ const Modal = ({ isOpen, onClose, position, children }: Props) => {
         document.body
     );
 }
-export default Modal;
+export default FakeModal;
