@@ -21,6 +21,10 @@
   flex-shrink: 0;
 }
 
+.label {
+  /* i don't like writing styles */
+}
+
 input {
   width: 100%;
   height: 2rem;

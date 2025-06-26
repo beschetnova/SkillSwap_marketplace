@@ -14,7 +14,7 @@ const Header = () => {
     <header className={styles.header}>
       <Logo />
       <Nav />
-      <Input placeholder='Искать навык' type='text' />
+      <Input id='search-skills' label='Поиск' placeholder='Искать навык' type='text' />
       <Icons isAuth={isAuth} />
       {isAuth ? <Profile /> : <AuthButtons setIsAuth={setIsAuth} />}
     </header>

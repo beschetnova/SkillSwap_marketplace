@@ -8,7 +8,7 @@ type InputProps = React.ComponentProps<'input'> & {
   rightIcon?: ReactNode;
 };
 
-const Input = ({label, leftIcon, rightIcon, ...props}: InputProps) => {
+const Input = ({ label, leftIcon, rightIcon, ...props }: InputProps) => {
   // Это по идее должно быть не в инпуте, а в компоненте выше (форме например)
   // const [inputProps, resetTitle] = useInput('');
 
@@ -21,10 +21,18 @@ const Input = ({label, leftIcon, rightIcon, ...props}: InputProps) => {
   // };
 
   return (
-    <label className={styles.search}>
-      {label}
-      <input {...props} />
-    </label>
+    // <label className={styles.search}>
+    //   {label}
+    //   <input {...props} />
+    // </label>
+    <div className={styles.search}>
+      {label && (
+        <label htmlFor={props.id} className={styles.label}>
+          {label}
+        </label>
+      )}
+      <input {...props}></input>
+    </div>
   );
 };
 
