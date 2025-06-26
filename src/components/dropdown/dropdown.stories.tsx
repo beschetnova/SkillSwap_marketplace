@@ -1,6 +1,6 @@
 /* import { Dropdown } from './dropdown';
 import { DropdownUI } from '../ui/dropdown/dropdown';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Dropdown> = {
   title: 'Components/Dropdown',

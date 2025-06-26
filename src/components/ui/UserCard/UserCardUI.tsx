@@ -1,18 +1,24 @@
 import styles from './UserCard.module.css';
-import type { SkillCategory, User } from '../../../utils/types.ts';
+import type { SkillCategories, User } from '../../../utils/types.ts';
 import { getSkillCategory } from '../../../utils/skill-category/getSkillCategory.ts';
-import { calculateAge, getYearsWord } from '../../../utils/date/dateUtils.ts';
 
-type UserCardProps = {
+type UserCardUIProps = {
   user: User;
-  categories: SkillCategory[];
+  ageText: string;
+  liked: boolean;
+  categories: SkillCategories;
+  onLikeClick: () => void;
+  onMoreClick: () => void;
 };
 
-//TODO : получать категории внутри UserList const categories = useCategories();
-
-const UserCard = ({ user, categories }: UserCardProps) => {
-  const age = calculateAge(user.birthDate);
-
+const UserCardUI = ({
+  user,
+  ageText,
+  liked,
+  categories,
+  onLikeClick,
+  onMoreClick
+}: UserCardUIProps) => {
   return (
     <div className={styles.userCard}>
       <div className={styles.userInfo}>
@@ -23,14 +29,13 @@ const UserCard = ({ user, categories }: UserCardProps) => {
         ></img>
         <div className={styles.userInfoText}>
           <img
-            src='/icons/Like.svg'
+            src={liked ? '/icons/LikeFilled.svg' : '/icons/Like.svg'}
             alt='Иконка лайка'
             className={styles.likeIcon}
+            onClick={onLikeClick}
           />
           <h3 className={styles.name}>{user.name}</h3>
-          <p className={styles.cityAge}>
-            {user.city}, {age} {getYearsWord(age)}
-          </p>
+          <p className={styles.cityAge}>{ageText}</p>
         </div>
       </div>
 
@@ -80,9 +85,11 @@ const UserCard = ({ user, categories }: UserCardProps) => {
         </div>
       </div>
 
-      <button className={styles.detailsButton}>Подробнее</button>
+      <button className={styles.detailsButton} onClick={onMoreClick}>
+        Подробнее
+      </button>
     </div>
   );
 };
 
-export default UserCard;
+export default UserCardUI;
