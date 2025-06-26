@@ -1,0 +1,34 @@
+.categoryList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.categoryTitle {
+  font-family: var(--font-heading);
+  color: var(--text-color);
+}
+
+.categorySubtitle {
+  font-family: var(--font-main);
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--text-color);
+}
+
+.categoryIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.categoryIconContainer {
+  width: 40px;
+  height: 40px;
+  background-color: var(--tag-business-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+}
