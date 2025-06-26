@@ -1,4 +1,4 @@
-import { Dropdown } from './dropdown';
+/* import { Dropdown } from './dropdown';
 import { DropdownUI } from '../ui/dropdown/dropdown';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -33,3 +33,4 @@ export const Default: Story = {
     </Dropdown>
   )
 };
+ */

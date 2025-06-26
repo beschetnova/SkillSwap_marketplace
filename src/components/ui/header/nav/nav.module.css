@@ -1,0 +1,20 @@
+.button {
+  text-wrap: nowrap;
+  font: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: transparent;
+  padding: 0;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.buttonSkills {
+  position: relative;
+}
