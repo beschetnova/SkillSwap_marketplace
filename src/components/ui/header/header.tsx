@@ -21,6 +21,7 @@ const Header = () => {
         id='search-skills'
         placeholder='Искать навык'
         type='search'
+        error='Some error message'
         rightIcon={<img src={search2}></img>}
       />
       <Icons isAuth={isAuth} />

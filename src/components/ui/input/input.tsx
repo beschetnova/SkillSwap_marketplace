@@ -5,11 +5,12 @@ import clsx from 'clsx';
 
 type InputProps = React.ComponentProps<'input'> & {
   label?: string;
+  error?: string;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
 };
 
-const Input = ({ label, leftIcon, rightIcon, ...props }: InputProps) => {
+const Input = ({ label, error, leftIcon, rightIcon, ...props }: InputProps) => {
   // Это по идее должно быть не в инпуте, а в компоненте выше (форме например)
   // const [inputProps, resetTitle] = useInput('');
 
@@ -31,13 +32,15 @@ const Input = ({ label, leftIcon, rightIcon, ...props }: InputProps) => {
       <div
         className={clsx(
           styles.inputContainer,
-          props.type === 'search' && styles.typeSearch
+          props.type === 'search' && styles.typeSearch,
+          error && styles.error
         )}
       >
         {leftIcon && <span className={styles.leftIcon}>{leftIcon}</span>}
         <input className={styles.input} {...props}></input>
         {rightIcon && <span className={styles.rightIcon}>{rightIcon}</span>}
       </div>
+      {error && <p className={styles.errorText}>{error}</p>}
     </div>
   );
 };
