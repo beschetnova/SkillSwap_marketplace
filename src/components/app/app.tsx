@@ -4,6 +4,7 @@ import { fetchSkills } from '../../services/slices/skillsSlice';
 import { fetchUsers } from '../../services/slices/usersSlice';
 import Aside from '../aside/aside';
 import { fetchCities } from '../../services/slices/citiesSlice';
+import Header from '../ui/header/header';
 function App() {
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <Aside />
     </>
   );

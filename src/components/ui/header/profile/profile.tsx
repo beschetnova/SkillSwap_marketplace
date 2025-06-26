@@ -1,5 +1,5 @@
 import styles from './profile.module.css';
-import profileIcon from '../../../../images/profile-pics/Maria-Moscow.png';
+import profileIcon from '../../../../../public/db/profile-pics/Maria-Moscow.png';
 import Button from '../../../ui/buttons/button';
 
 const Profile = () => {

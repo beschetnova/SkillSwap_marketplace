@@ -1,33 +1,34 @@
 import { type FC, type ReactNode, useEffect, useRef } from 'react';
-import useSwitch from '../../hooks/use-switch';
-import styles from './dropdown.module.css';
+import { DropdownUI } from '../ui/dropdown/dropdown';
 
 interface DropdownProps {
-  trigger: ReactNode;
+  isOpen: boolean;
+  onClose: () => void;
   children: ReactNode;
 }
 
-export const Dropdown: FC<DropdownProps> = ({ trigger, children }) => {
-  const [isOpen, toggleOpen] = useSwitch(false);
-  const ref = useRef<HTMLDivElement>(null);
+export const Dropdown: FC<DropdownProps> = ({ children, onClose, isOpen }) => {
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        if (isOpen) toggleOpen();
+    if (!isOpen) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        onClose();
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isOpen, toggleOpen]);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen, onClose]);
 
   return (
-    <div ref={ref} className={styles.dropdownContainer}>
-      <div onClick={toggleOpen} className={styles.trigger}>
-        {trigger}
-      </div>
-      {isOpen && children}
-    </div>
+    <DropdownUI children={children} isOpen={isOpen} dropdownRef={dropdownRef} />
   );
 };
