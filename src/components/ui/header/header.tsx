@@ -6,7 +6,7 @@ import Icons from './icons/icons';
 import Logo from '../logo/logo';
 import Input from '../input/input';
 import Profile from './profile/profile';
-import search from './../../../images/icons/search.svg';
+import search2 from './../../../images/icons/search2.svg';
 
 const Header = () => {
   const [isAuth, setIsAuth] = useState(false);
@@ -16,11 +16,12 @@ const Header = () => {
       <Logo />
       <Nav />
       <Input
-        leftIcon={<img src={search}></img>}
+        label='Поиск'
+        leftIcon={<img src={search2}></img>}
         id='search-skills'
         placeholder='Искать навык'
-        type='text'
-        rightIcon={<img src={search}></img>}
+        type='search'
+        rightIcon={<img src={search2}></img>}
       />
       <Icons isAuth={isAuth} />
       {isAuth ? <Profile /> : <AuthButtons setIsAuth={setIsAuth} />}

@@ -1,6 +1,7 @@
 import { memo, type InputHTMLAttributes, type ReactNode } from 'react';
 import { useInput } from '../../../hooks/useInput';
 import styles from './input.module.css';
+import clsx from 'clsx';
 
 type InputProps = React.ComponentProps<'input'> & {
   label?: string;
@@ -27,7 +28,12 @@ const Input = ({ label, leftIcon, rightIcon, ...props }: InputProps) => {
           {label}
         </label>
       )}
-      <div className={styles.inputContainer}>
+      <div
+        className={clsx(
+          styles.inputContainer,
+          props.type === 'search' && styles.typeSearch
+        )}
+      >
         {leftIcon && <span className={styles.leftIcon}>{leftIcon}</span>}
         <input className={styles.input} {...props}></input>
         {rightIcon && <span className={styles.rightIcon}>{rightIcon}</span>}
