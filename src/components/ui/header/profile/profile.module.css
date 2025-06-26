@@ -1,0 +1,21 @@
+.section {
+  display: flex;
+  align-items: center;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-color);
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+}
+
+.button {
+  background-color: transparent;
+  padding: 0;
+}

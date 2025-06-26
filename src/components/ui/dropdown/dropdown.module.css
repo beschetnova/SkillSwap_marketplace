@@ -1,6 +1,9 @@
-.dropdown {
-    padding: 60px;
-    border: 1px solid var(--caption-color);
-    border-radius: 12px;
-    z-index: 100;
+.dropdownContainer {
+  position: absolute;
+  top: 100%;
+
+  /* Позиционирование сейчас относительно nav, поменять позже */
+  left: 0;
+  z-index: 1000;
+  background-color: #fff;
 }

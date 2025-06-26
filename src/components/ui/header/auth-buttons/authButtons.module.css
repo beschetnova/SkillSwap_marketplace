@@ -1,0 +1,15 @@
+.auth {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.button {
+  background-color: transparent;
+}
