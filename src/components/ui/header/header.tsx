@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './header.module.css'
+import styles from './header.module.css';
 import Nav from './nav/nav';
 import AuthButtons from './auth-buttons/authButtons';
 import Icons from './icons/icons';
@@ -14,14 +14,11 @@ const Header = () => {
     <header className={styles.header}>
       <Logo />
       <Nav />
-      <Input />
+      <Input placeholder='Искать навык' type='text' />
       <Icons isAuth={isAuth} />
-      {isAuth
-        ? <Profile />
-        : <AuthButtons setIsAuth={setIsAuth} />
-      }
+      {isAuth ? <Profile /> : <AuthButtons setIsAuth={setIsAuth} />}
     </header>
   );
-}
+};
 
 export default Header;
