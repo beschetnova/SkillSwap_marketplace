@@ -6,23 +6,35 @@ import Icons from './icons/icons';
 import Logo from '../logo/logo';
 import Input from '../input/input';
 import Profile from './profile/profile';
-import search2 from './../../../images/icons/search2.svg';
+import searchIcon from './../../../images/icons/search2.svg';
 
 const Header = () => {
   const [isAuth, setIsAuth] = useState(false);
+  const [search, setSearch] = useState('');
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearch(value);
+  };
+
+  const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      console.log('Поиск:', search);
+    }
+  };
 
   return (
     <header className={styles.header}>
       <Logo />
       <Nav />
       <Input
-        label='Поиск'
-        leftIcon={<img src={search2}></img>}
+        leftIcon={<img src={searchIcon}></img>}
         id='search-skills'
         placeholder='Искать навык'
+        onInput={handleSearch}
+        value={search}
         type='search'
-        info='Пароль должен содержать блаблабла'
-        rightIcon={<img src={search2}></img>}
+        onKeyDown={handleEnter}
       />
       <Icons isAuth={isAuth} />
       {isAuth ? <Profile /> : <AuthButtons setIsAuth={setIsAuth} />}

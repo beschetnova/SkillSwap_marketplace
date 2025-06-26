@@ -1,9 +1,8 @@
-import { memo, type InputHTMLAttributes, type ReactNode } from 'react';
-import { useInput } from '../../../hooks/useInput';
+import { memo, type ReactNode } from 'react';
 import styles from './input.module.css';
 import clsx from 'clsx';
 
-type InputProps = React.ComponentProps<'input'> & {
+type InputProps = React.ComponentPropsWithRef<'input'> & {
   label?: string;
   error?: string;
   info?: string;
@@ -11,18 +10,14 @@ type InputProps = React.ComponentProps<'input'> & {
   rightIcon?: ReactNode;
 };
 
-const Input = ({ label, error, info, leftIcon, rightIcon, ...props }: InputProps) => {
-  // Это по идее должно быть не в инпуте, а в компоненте выше (форме например)
-  // const [inputProps, resetTitle] = useInput('');
-
-  // const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
-  //   if (e.key === 'Enter') {
-  //     console.log('Поиск:', inputProps.value);
-  //   } else if (e.key === 'Escape') {
-  //     resetTitle();
-  //   }
-  // };
-
+const Input = ({
+  label,
+  error,
+  info,
+  leftIcon,
+  rightIcon,
+  ...props
+}: InputProps) => {
   return (
     <div className={styles.container}>
       {label && (
