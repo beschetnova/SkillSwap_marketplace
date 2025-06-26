@@ -6,11 +6,12 @@ import clsx from 'clsx';
 type InputProps = React.ComponentProps<'input'> & {
   label?: string;
   error?: string;
+  info?: string;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
 };
 
-const Input = ({ label, error, leftIcon, rightIcon, ...props }: InputProps) => {
+const Input = ({ label, error, info, leftIcon, rightIcon, ...props }: InputProps) => {
   // Это по идее должно быть не в инпуте, а в компоненте выше (форме например)
   // const [inputProps, resetTitle] = useInput('');
 
@@ -41,6 +42,7 @@ const Input = ({ label, error, leftIcon, rightIcon, ...props }: InputProps) => {
         {rightIcon && <span className={styles.rightIcon}>{rightIcon}</span>}
       </div>
       {error && <p className={styles.errorText}>{error}</p>}
+      {!error && info && <p className={styles.infoText}>{info}</p>}
     </div>
   );
 };

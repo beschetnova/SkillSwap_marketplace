@@ -51,3 +51,9 @@
   font-size: var(--caption-font-size);
   line-height: var(--caprion-font-line-height);
 }
+
+.infoText {
+  color: var(--text-color);
+  font-size: var(--caption-font-size);
+  line-height: var(--caprion-font-line-height);
+}
