@@ -1,5 +1,6 @@
 .dropdownContainer {
   position: absolute;
+
   /* top: 100%; */
 
   /* Позиционирование сейчас относительно nav, поменять позже */
@@ -17,7 +18,7 @@
   border-radius: 12px;
 }
 
-@media (max-width: 660px) {
+@media (width <= 660px) {
   .dropdownContainer {
     grid-template-columns: 1fr;
   }
