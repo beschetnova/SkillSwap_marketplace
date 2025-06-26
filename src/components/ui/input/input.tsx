@@ -21,17 +21,15 @@ const Input = ({ label, leftIcon, rightIcon, ...props }: InputProps) => {
   // };
 
   return (
-    // <label className={styles.search}>
-    //   {label}
-    //   <input {...props} />
-    // </label>
     <div className={styles.search}>
       {label && (
         <label htmlFor={props.id} className={styles.label}>
           {label}
         </label>
       )}
+      {leftIcon && <span className={styles.leftIcon}>{leftIcon}</span>}
       <input {...props}></input>
+      {rightIcon && <span className={styles.rightIcon}>{rightIcon}</span>}
     </div>
   );
 };

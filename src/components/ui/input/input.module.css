@@ -11,7 +11,7 @@
   gap: 0.5rem;
 }
 
-.search::before {
+/* .search::before {
   content: '';
   width: 24px;
   height: 24px;
@@ -19,7 +19,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   flex-shrink: 0;
-}
+} */
 
 .label {
   /* i don't like writing styles */
