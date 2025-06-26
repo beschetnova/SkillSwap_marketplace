@@ -1,9 +1,24 @@
 .dropdownContainer {
   position: absolute;
-  top: 100%;
+  /* top: 100%; */
 
   /* Позиционирование сейчас относительно nav, поменять позже */
-  left: 0;
+  left: 36px;
   z-index: 1000;
   background-color: #fff;
+  max-width: calc(100vw - 72px);
+  width: 1136px;
+  top: 96px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 60px;
+  gap: 40px;
+  border: 1px solid var(--caption-color);
+  border-radius: 12px;
+}
+
+@media (max-width: 660px) {
+  .dropdownContainer {
+    grid-template-columns: 1fr;
+  }
 }

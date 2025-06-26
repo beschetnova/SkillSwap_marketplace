@@ -14,9 +14,20 @@ export const Dropdown: FC<DropdownProps> = ({ children, onClose, isOpen }) => {
     if (!isOpen) return;
 
     const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      const targetParent = target.parentElement;
+      const classesList: DOMTokenList | undefined = targetParent?.classList;
+      let find: boolean = false;
+      classesList?.forEach((item) => {
+        if (item.includes('buttonSkills')) {
+          find = true;
+        }
+      });
+
       if (
         dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
+        !dropdownRef.current.contains(event.target as Node) &&
+        !find
       ) {
         onClose();
       }

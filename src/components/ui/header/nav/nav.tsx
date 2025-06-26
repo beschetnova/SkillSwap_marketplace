@@ -6,24 +6,17 @@ import DropDownSkillsList from '../DropDownSkillsList/DropDownSkillsList';
 import { Dropdown } from '../../../dropdown/dropdown';
 
 const Nav = () => {
-  //TODO: сейчас при открытом дропдауне если нажать на кнопку навыков, то дропдаун мигает. Пока не знаю как исправить
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-    const handleToggle = () => {
-    setDropdownOpen(prev => !prev);
+  const handleToggle = () => {
+    setDropdownOpen((prev) => !prev);
   };
-    const closeDropdown = () => {
+  const closeDropdown = () => {
     setDropdownOpen(false);
   };
 
   return (
-    <div
-      className={styles.nav}
-    >
-      <Button
-        type='tertiary'
-        htmlType='button'
-        className={styles.button}
-      >
+    <div className={styles.nav}>
+      <Button type='tertiary' htmlType='button' className={styles.button}>
         О проекте
       </Button>
       <Button
@@ -35,9 +28,11 @@ const Nav = () => {
         <span>Навыки</span>
         <img src={skillsIcon} alt='Иконка' />
       </Button>
+      {isDropdownOpen && (
         <Dropdown isOpen={isDropdownOpen} onClose={closeDropdown}>
-          <DropDownSkillsList/>
+          <DropDownSkillsList />
         </Dropdown>
+      )}
     </div>
   );
 };
