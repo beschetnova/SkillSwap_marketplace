@@ -1,31 +1,45 @@
-import { memo } from "react";
-import { useInput } from "../../../hooks/useInput";
-import styles from "./input.module.css";
+import { memo, type ReactNode } from 'react';
+import styles from './input.module.css';
+import clsx from 'clsx';
 
-const Input = () => {
-  const [inputProps, resetTitle] = useInput('');
+type InputProps = React.ComponentPropsWithRef<'input'> & {
+  label?: string;
+  error?: string;
+  info?: string;
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
+};
 
-  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      console.log('Поиск:', inputProps.value);
-    } else if (e.key === 'Escape') {
-      resetTitle();
-    }
-  };
-
+const Input = ({
+  label,
+  error,
+  info,
+  leftIcon,
+  rightIcon,
+  ...props
+}: InputProps) => {
   return (
-    <label
-      className={styles.search}
-    >
-      <input
-        name='search'
-        type='text'
-        {...inputProps}
-        onKeyDown={handleSearch}
-        placeholder='Искать навыки'
-      />
-    </label>
-  )
-}
+    <div className={styles.container}>
+      {label && (
+        <label htmlFor={props.id} className={styles.label}>
+          {label}
+        </label>
+      )}
+      <div
+        className={clsx(
+          styles.inputContainer,
+          props.type === 'search' && styles.typeSearch,
+          error && styles.error
+        )}
+      >
+        {leftIcon && <span className={styles.leftIcon}>{leftIcon}</span>}
+        <input className={styles.input} {...props}></input>
+        {rightIcon && <span className={styles.rightIcon}>{rightIcon}</span>}
+      </div>
+      {error && <p className={styles.errorText}>{error}</p>}
+      {!error && info && <p className={styles.infoText}>{info}</p>}
+    </div>
+  );
+};
 
 export default memo(Input);
