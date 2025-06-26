@@ -1,4 +1,4 @@
-.search {
+/* .search {
   display: flex;
   align-items: center;
   border: 0.0625rem solid var(--card-input-color);
@@ -11,7 +11,7 @@
   gap: 0.5rem;
 }
 
-/* .search::before {
+.search::before {
   content: '';
   width: 24px;
   height: 24px;
@@ -19,10 +19,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   flex-shrink: 0;
-} */
-
-.label {
-  /* i don't like writing styles */
 }
 
 input {
@@ -39,4 +35,43 @@ input {
 
 input::placeholder {
   color: var(--caption-color);
+} */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 4px;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+
+  /* justify-content: space-between; */
+  border: 0.0625rem solid var(--card-input-color);
+  border-radius: 0.75rem; 
+  background-color: var(--card-input-color);
+  padding: 0.75rem;
+  min-width: 200px;
+  max-width: 32.9375rem;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  height: 2rem;
+  padding: 0 0.75rem;
+  border-radius: 0.25rem; 
+  border: 0.0625rem solid var(--card-input-color);
+  outline: none;
+  caret-color: var(--text-link-button-pressed-color);
+  color: var(--text-color);
+  font-size: 16px;
+}
+
+.rightIcon {
+  /* really ? */
+  margin-left: auto;
 }
