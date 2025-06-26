@@ -5,7 +5,6 @@ import { fetchUsers } from '../../services/slices/usersSlice';
 import Aside from '../aside/aside';
 import { fetchCities } from '../../services/slices/citiesSlice';
 import Header from '../ui/header/header';
-import { RegisterFormStepOneUI } from '../ui/RegisterFormStepOne/RegisterFormStepOne';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -19,7 +18,6 @@ function App() {
     <>
       <Header />
       <Aside />
-      <RegisterFormStepOneUI />
     </>
   );
 }
