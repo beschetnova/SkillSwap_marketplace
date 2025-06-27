@@ -10,16 +10,8 @@
   max-width: calc(100vw - 72px);
   width: 1136px;
   top: 96px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+
   padding: 60px;
-  gap: 40px;
   border: 1px solid var(--caption-color);
   border-radius: 12px;
-}
-
-@media (width <= 660px) {
-  .dropdownContainer {
-    grid-template-columns: 1fr;
-  }
 }
