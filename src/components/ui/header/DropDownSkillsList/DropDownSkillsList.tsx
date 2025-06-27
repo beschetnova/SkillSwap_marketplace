@@ -6,13 +6,13 @@ import styles from './dropSownSkillsList.module.css';
 const DropDownSkillsList = () => {
   const skillsList = useAppSelector(selectAllSkills);
   return (
-    <>
+    <ul className={styles.categoryList}>
       {skillsList.map((item) => (
-        <div key={item.id} className={styles.singleCategory}>
+        <li key={item.id} className={styles.singleCategory}>
           <ListCategory item={item} />
-        </div>
+        </li>
       ))}
-    </>
+    </ul>
   );
 };
 export default DropDownSkillsList;
