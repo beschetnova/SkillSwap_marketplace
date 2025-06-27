@@ -1,4 +1,9 @@
 import type { SkillCategory } from '../../../utils/types';
+import styles from './filterNested.module.css';
+import chevron from '../../../images/icons/chevron-down.svg';
+import clsx from 'clsx';
+import emptyCheckBox from '../../../images/icons/checkbox-empty.svg';
+import filledCheckBox from '../../../images/icons/checkbox-done.svg';
 
 type Props = {
   title?: string;
@@ -24,43 +29,56 @@ const FilterNestedUI = ({
   buttonName
 }: Props) => {
   const visibleItems = showAll ? items : items.slice(0, 5);
-//TODO: стили сделаны кое-как лишь бы показывало. Надо убрать их отсюда и сделать файл со стилями
+
   return (
-    <div>
-      {title && <h3>{title}</h3>}
+    <div className={styles.filterContainer}>
+      {title && <h3 className={styles.title}>{title}</h3>}
       {visibleItems.map((category) => (
-        <div key={category.id} style={{ marginBottom: '10px' }}>
+        <ul key={category.id} className={styles.mainList}>
           {/* Категория с кнопкой раскрытия */}
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <button
-              onClick={() => toggleCategoryExpand(category.id)}
-              style={{ width: '15px', height: '15px' }}
-            >
+          <li className={styles.mainListPoint}>
+            <button onClick={() => toggleCategoryExpand(category.id)}>
               {expandedCategories.includes(category.id) ? '-' : '+'}
             </button>
-            <span style={{ marginLeft: '8px' }}>{category.name}</span>
-          </div>
+            <span className={styles.mainListCategory}>{category.name}</span>
+          </li>
           {/* Внутри раскрытой категории список навыков */}
           {expandedCategories.includes(category.id) && (
-            <div style={{ marginLeft: '20px', marginTop: '5px' }}>
+            <ul className={styles.extraList}>
               {category.skills.map((skill) => (
-                <div key={skill.id}>
-                  <label>
+                <li key={skill.id}>
+                  <label className={styles.mainListPoint}>
                     <input
                       type='checkbox'
                       checked={checkedItems.includes(skill.id)}
                       onChange={() => toggleSkillCheck(skill.id)}
+                      className={styles.checkboxInput}
                     />
+                    {!checkedItems.includes(skill.id) && (
+                      <img src={emptyCheckBox} />
+                    )}
+                    {checkedItems.includes(skill.id) && (
+                      <img src={filledCheckBox} />
+                    )}
                     {skill.name}
                   </label>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
-        </div>
+        </ul>
       ))}
       {items.length > 5 && (
-        <button onClick={toggleShowAll}>{buttonName}</button>
+        <button onClick={toggleShowAll} className={styles.bottomButton}>
+          {buttonName}
+          <img
+            src={chevron}
+            className={clsx({
+              [styles.bottomButtonIcon]: true,
+              [styles.bottomButtonIconReverse]: showAll
+            })}
+          />
+        </button>
       )}
     </div>
   );

@@ -1,0 +1,59 @@
+.title {
+  color: var(--text-color);
+  margin-bottom: 8px;
+}
+
+.bottomButton {
+  font-family: var(--font-main);
+  color: var(--text-link-button-pressed-color);
+  font-weight: 400;
+  font-size: 16px;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  column-gap: 8px;
+}
+
+.bottomButtonIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.bottomButtonIconReverse {
+  transform: rotate(180deg);
+}
+
+.filterContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.mainList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  list-style-type: none;
+}
+
+.mainListPoint {
+  display: flex;
+  flex-direction: row;
+  /* column-gap: 8px; */
+  color: var(--text-color);
+}
+
+.mainListPoint input {
+  width: 24px;
+  height: 24px;
+  accent-color: var(--accent-color);
+}
+
+.checkboxInput {
+  visibility: hidden;
+  margin-right: -24px;
+}
+
+.checkBoxImage {
+  margin-right: 8px;
+}
