@@ -5,12 +5,37 @@ import Button from '../buttons/button.tsx';
 import DatePicker from '../../DatePicker/DatePicker.tsx';
 import Select from '../Select/Select.tsx';
 import { useState } from 'react';
+import { selectAllSkills } from '../../../services/slices/skillsSlice.ts';
+import { useAppSelector } from '../../../utils/hooks.ts';
 
 const RegisterFormStepTwo = () => {
   const [gender, setGender] = useState('');
   const [city, setCity] = useState('');
   const [category, setCategory] = useState('');
   const [subcategory, setSubcategory] = useState('');
+
+  const skillCategories = useAppSelector(selectAllSkills);
+
+  const skillCategoryOptions = [
+    { value: '', label: 'Выберите категорию' },
+    ...skillCategories.map((cat) => ({
+      value: cat.id,
+      label: cat.name
+    }))
+  ];
+
+  const selectedCategory = skillCategories.find((cat) => cat.id === category);
+
+  // Подготавливаем подкатегории (skills) для второй селектки
+  const subcategoryOptions = selectedCategory
+    ? [
+        { value: '', label: 'Выберите подкатегорию' },
+        ...selectedCategory.skills.map((skill) => ({
+          value: skill.id,
+          label: skill.name
+        }))
+      ]
+    : [{ value: '', label: 'Сначала выберите категорию' }];
 
   return (
     <form className={styles.form}>
@@ -65,12 +90,7 @@ const RegisterFormStepTwo = () => {
           id='categoryInput'
           label='Категория навыка, которому хотите научиться'
           onChange={(e) => setCategory(e.target.value)}
-          options={[
-            { value: '', label: 'Выберете категорию' },
-            { value: 'spb', label: 'Санкт-Петербург' },
-            { value: 'mos', label: 'Москва' },
-            { value: 'other', label: 'Другое' }
-          ]}
+          options={skillCategoryOptions}
           rightIcon={
             <img
               src='/icons/chevron-down.svg'
@@ -83,12 +103,7 @@ const RegisterFormStepTwo = () => {
           id='subcategoryInput'
           label='Подкатегория навыка, которому хотите научиться'
           onChange={(e) => setSubcategory(e.target.value)}
-          options={[
-            { value: '', label: 'Выберете подкатегорию' },
-            { value: 'spb', label: 'Санкт-Петербург' },
-            { value: 'mos', label: 'Москва' },
-            { value: 'other', label: 'Другое' }
-          ]}
+          options={subcategoryOptions}
           rightIcon={
             <img
               src='/icons/chevron-down.svg'

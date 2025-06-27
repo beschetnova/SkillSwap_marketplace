@@ -2,10 +2,9 @@ import React, { memo } from 'react';
 import clsx from 'clsx';
 import styles from './Select.module.css'; // Создайте или адаптируйте стили
 
-interface Option {
-  value: string;
-  label: string;
-}
+type Option =
+  | { value: string; label: string } // обычный option
+  | { label: string; options: { value: string; label: string }[] };
 
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
@@ -37,11 +36,21 @@ const Select = ({
         {leftIcon && <span className={styles.leftIcon}>{leftIcon}</span>}
 
         <select required id={id} className={styles.select} {...props}>
-          {options.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
-          ))}
+          {options.map((opt) =>
+            'options' in opt ? (
+              <optgroup key={opt.label} label={opt.label}>
+                {opt.options.map((item) => (
+                  <option key={item.value} value={item.value}>
+                    {item.label}
+                  </option>
+                ))}
+              </optgroup>
+            ) : (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            )
+          )}
         </select>
 
         {rightIcon && <span className={styles.rightIcon}>{rightIcon}</span>}
