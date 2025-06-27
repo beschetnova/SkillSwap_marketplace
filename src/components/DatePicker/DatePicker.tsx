@@ -6,66 +6,51 @@ import styles from './DatePicker.module.css';
 import Input from '../ui/input/input.tsx';
 import Button from '../ui/buttons/button.tsx';
 
-type CalendarValue = Date | [Date, Date] | null;
-
 const DatePicker = () => {
-  const [date, setDate] = useState<Date | null>(null);
+  const [date, setDate] = useState<Date | null>(new Date(2000, 3, 1));
   const [showCalendar, setShowCalendar] = useState(false);
-  const [activeStartDate, setActiveStartDate] = useState(new Date(2000, 3, 1));
   const ref = useRef<HTMLDivElement>(null);
 
-  const handleDateChange = (value: CalendarValue) => {
-    if (value instanceof Date) {
-      setDate(value);
-      setShowCalendar(false);
+  const handleDateChange = (newDate: Date) => {
+    setDate(newDate);
+  };
+
+  const [showMonthDropdown, setShowMonthDropdown] = useState(false);
+  const [showYearDropdown, setShowYearDropdown] = useState(false);
+
+  const months = [
+    'Январь',
+    'Февраль',
+    'Март',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь'
+  ];
+
+  const years = Array.from({ length: 41 }, (_, i) => 1990 + i);
+
+  const changeMonth = (monthIndex: number) => {
+    if (date) {
+      const newDate = new Date(date);
+      newDate.setMonth(monthIndex);
+      setDate(newDate);
     }
+    setShowMonthDropdown(false);
   };
 
-  const handleMonthChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newDate = new Date(activeStartDate);
-    newDate.setMonth(Number(e.target.value));
-    setActiveStartDate(newDate);
-  };
-
-  const handleYearChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newDate = new Date(activeStartDate);
-    newDate.setFullYear(Number(e.target.value));
-    setActiveStartDate(newDate);
-  };
-
-  const navigationLabel = ({
-    date,
-    locale
-  }: {
-    date: Date;
-    locale: string;
-  }) => {
-    const currentMonth = date.getMonth();
-    const currentYear = date.getFullYear();
-
-    const months = [...Array(12).keys()].map((m) =>
-      new Date(0, m).toLocaleString(locale, { month: 'long' })
-    );
-    const years = Array.from({ length: 30 }, (_, i) => currentYear - 15 + i);
-
-    return (
-      <div style={{ display: 'flex', gap: '0.5rem' }}>
-        <select value={currentMonth} onChange={handleMonthChange}>
-          {months.map((month, index) => (
-            <option value={index} key={index}>
-              {month.charAt(0).toUpperCase() + month.slice(1)}
-            </option>
-          ))}
-        </select>
-        <select value={currentYear} onChange={handleYearChange}>
-          {years.map((year) => (
-            <option value={year} key={year}>
-              {year}
-            </option>
-          ))}
-        </select>
-      </div>
-    );
+  const changeYear = (year: number) => {
+    if (date) {
+      const newDate = new Date(date);
+      newDate.setFullYear(year);
+      setDate(newDate);
+    }
+    setShowYearDropdown(false);
   };
 
   useEffect(() => {
@@ -106,12 +91,49 @@ const DatePicker = () => {
             next2Label={null}
             prev2Label={null}
             className={styles.calendar}
-            navigationLabel={navigationLabel}
-            onActiveStartDateChange={({ activeStartDate }) =>
-              setActiveStartDate(activeStartDate)
-            }
-            // defaultView='month' // Показываем вид месяца
-            activeStartDate={activeStartDate}
+            navigationLabel={({ date }) => (
+              <div className={styles.customNavigation}>
+                <div
+                  className={styles.monthSelector}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowMonthDropdown(!showMonthDropdown);
+                    setShowYearDropdown(false);
+                  }}
+                >
+                  {months[date.getMonth()]}
+                  {showMonthDropdown && (
+                    <div className={styles.dropdown}>
+                      {months.map((month, index) => (
+                        <div key={month} onClick={() => changeMonth(index)}>
+                          {month}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div
+                  className={styles.yearSelector}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowYearDropdown(!showYearDropdown);
+                    setShowMonthDropdown(false);
+                  }}
+                >
+                  {date.getFullYear()}
+                  {showYearDropdown && (
+                    <div className={styles.dropdown}>
+                      {years.map((year) => (
+                        <div key={year} onClick={() => changeYear(year)}>
+                          {year}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
           />
           <div className={styles.calendarButtons}>
             <Button

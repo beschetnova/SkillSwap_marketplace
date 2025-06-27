@@ -74,3 +74,44 @@
 :global(.react-calendar__tile--neighboringMonth) {
   color: var(--caption-color) !important;
 }
+
+.customNavigation {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.monthSelector,
+.yearSelector {
+  position: relative;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.monthSelector:hover,
+.yearSelector:hover {
+  background: #f0f0f0;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown div {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.dropdown div:hover {
+  background: #f0f0f0;
+}
