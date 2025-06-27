@@ -32,6 +32,9 @@ const DatePicker = () => {
     'Ноябрь',
     'Декабрь'
   ];
+  const formatShortWeekday = (locale, date) => {
+    return ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'][date.getDay()];
+  };
 
   const years = Array.from({ length: 41 }, (_, i) => 1990 + i);
 
@@ -88,8 +91,11 @@ const DatePicker = () => {
             value={date}
             selectRange={false}
             locale='ru-RU'
+            prevLabel={null}
+            nextLabel={null}
             next2Label={null}
             prev2Label={null}
+            formatShortWeekday={formatShortWeekday}
             className={styles.calendar}
             navigationLabel={({ date }) => (
               <div className={styles.customNavigation}>
@@ -102,6 +108,11 @@ const DatePicker = () => {
                   }}
                 >
                   {months[date.getMonth()]}
+                  <img
+                    src='/icons/chevron-down.svg'
+                    alt='Стрелка вниз'
+                    className={styles.arrow}
+                  />
                   {showMonthDropdown && (
                     <div className={styles.dropdown}>
                       {months.map((month, index) => (
@@ -122,6 +133,11 @@ const DatePicker = () => {
                   }}
                 >
                   {date.getFullYear()}
+                  <img
+                    src='/icons/chevron-down.svg'
+                    alt='Стрелка вниз'
+                    className={styles.arrow}
+                  />
                   {showYearDropdown && (
                     <div className={styles.dropdown}>
                       {years.map((year) => (
@@ -138,14 +154,14 @@ const DatePicker = () => {
           <div className={styles.calendarButtons}>
             <Button
               type='secondary'
-              className={styles.cancelBtn}
+              className={styles.calendarButton}
               onClick={() => setShowCalendar(false)}
             >
               Отменить
             </Button>
             <Button
               type='primary'
-              className={styles.confirmBtn}
+              className={styles.calendarButton}
               onClick={() => setShowCalendar(false)}
             >
               Выбрать

@@ -9,7 +9,7 @@
   left: 0;
   z-index: 1000; /* выше остальных элементов */
   background: white;
-  margin-top: 8px;
+  margin-top: 4px;
   width: 280px;
   border-radius: 12px;
   border: 1px solid var(--caption-color);
@@ -26,6 +26,7 @@
   font-size: 16px;
   cursor: pointer;
   height: 1.5rem;
+  outline: none;
 }
 
 .calendar {
@@ -37,13 +38,23 @@
   display: flex;
   justify-content: space-between;
   padding-top: 8px;
+  padding-bottom: 16px;
+  padding-inline: 16px;
+  gap: 8px;
+}
+
+.calendarButton {
+  width: 100%;
+  padding-inline: 24px;
+  font-family: var(--font-main);
+  font-size: 16px;
 }
 
 :global(.react-calendar__month-view__weekdays) {
   font-weight: bold;
   font-size: 14px;
   color: var(--caption-color);
-  text-transform: uppercase;
+  text-transform: none;
   text-align: center;
 }
 
@@ -62,7 +73,13 @@
   color: var(--accent-color);
 }
 
-:global(.react-calendar__viewContainer) {
+:global(.react-calendar__tile--active) {
+  border-radius: 50%;
+  color: inherit;
+  background-color: var(--accent-color);
+}
+
+:global(.react-calendar) {
   padding-bottom: 16px;
   padding-inline: 28px;
 }
@@ -75,18 +92,32 @@
   color: var(--caption-color) !important;
 }
 
+:global(.react-calendar__navigation) {
+  margin-top: 14px;
+  height: auto;
+  margin-bottom: 0;
+}
+
+:global(.react-calendar__tile) {
+  font-size: 0.75rem;
+  padding: 7px;
+}
+
 .customNavigation {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  font-weight: bold;
+  font-family: var(--font-main);
 }
 
 .monthSelector,
 .yearSelector {
   position: relative;
+  display: flex;
+  align-items: center;
   cursor: pointer;
-  padding: 5px 10px;
+  padding-left: 16px;
+  padding-block: 8px;
+  padding-right: 8px;
   border-radius: 4px;
 }
 
