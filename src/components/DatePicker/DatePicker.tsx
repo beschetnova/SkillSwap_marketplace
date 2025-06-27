@@ -4,12 +4,14 @@ import 'react-calendar/dist/Calendar.css';
 import styles from './DatePicker.module.css';
 
 import Input from '../ui/input/input.tsx';
+import Button from '../ui/buttons/button.tsx';
 
 type CalendarValue = Date | [Date, Date] | null;
 
 const DatePicker = () => {
   const [date, setDate] = useState<Date | null>(null);
   const [showCalendar, setShowCalendar] = useState(false);
+  const [activeStartDate, setActiveStartDate] = useState(new Date(2000, 3, 1));
   const ref = useRef<HTMLDivElement>(null);
 
   const handleDateChange = (value: CalendarValue) => {
@@ -17,6 +19,53 @@ const DatePicker = () => {
       setDate(value);
       setShowCalendar(false);
     }
+  };
+
+  const handleMonthChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newDate = new Date(activeStartDate);
+    newDate.setMonth(Number(e.target.value));
+    setActiveStartDate(newDate);
+  };
+
+  const handleYearChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newDate = new Date(activeStartDate);
+    newDate.setFullYear(Number(e.target.value));
+    setActiveStartDate(newDate);
+  };
+
+  const navigationLabel = ({
+    date,
+    locale
+  }: {
+    date: Date;
+    locale: string;
+  }) => {
+    const currentMonth = date.getMonth();
+    const currentYear = date.getFullYear();
+
+    const months = [...Array(12).keys()].map((m) =>
+      new Date(0, m).toLocaleString(locale, { month: 'long' })
+    );
+    const years = Array.from({ length: 30 }, (_, i) => currentYear - 15 + i);
+
+    return (
+      <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <select value={currentMonth} onChange={handleMonthChange}>
+          {months.map((month, index) => (
+            <option value={index} key={index}>
+              {month.charAt(0).toUpperCase() + month.slice(1)}
+            </option>
+          ))}
+        </select>
+        <select value={currentYear} onChange={handleYearChange}>
+          {years.map((year) => (
+            <option value={year} key={year}>
+              {year}
+            </option>
+          ))}
+        </select>
+      </div>
+    );
   };
 
   useEffect(() => {
@@ -56,20 +105,29 @@ const DatePicker = () => {
             next2Label={null}
             prev2Label={null}
             showNeighboringMonth={false}
+            className={styles.calendar}
+            navigationLabel={navigationLabel}
+            onActiveStartDateChange={({ activeStartDate }) =>
+              setActiveStartDate(activeStartDate)
+            }
+            // defaultView='month' // Показываем вид месяца
+            activeStartDate={activeStartDate}
           />
           <div className={styles.calendarButtons}>
-            <button
+            <Button
+              type='secondary'
               className={styles.cancelBtn}
               onClick={() => setShowCalendar(false)}
             >
               Отменить
-            </button>
-            <button
+            </Button>
+            <Button
+              type='primary'
               className={styles.confirmBtn}
               onClick={() => setShowCalendar(false)}
             >
               Выбрать
-            </button>
+            </Button>
           </div>
         </div>
       )}

@@ -22,6 +22,13 @@ const RegisterFormStepTwo = () => {
             label='Пол'
             type='select'
             placeholder='Не указан'
+            rightIcon={
+              <img
+                src='/icons/chevron-down.svg'
+                alt='Стрелка вниз'
+                className={styles.arrow}
+              />
+            }
           ></Input>
         </div>
         <Input
@@ -29,18 +36,39 @@ const RegisterFormStepTwo = () => {
           label='Город'
           type='select'
           placeholder='Не указан'
+          rightIcon={
+            <img
+              src='/icons/chevron-down.svg'
+              alt='Стрелка вниз'
+              className={styles.arrow}
+            />
+          }
         ></Input>
         <Input
           id='categoryInput'
           label='Категория навыка, которому хотите научиться'
           type='select'
           placeholder='Выберете категорию'
+          rightIcon={
+            <img
+              src='/icons/chevron-down.svg'
+              alt='Стрелка вниз'
+              className={styles.arrow}
+            />
+          }
         ></Input>
         <Input
           id='subcategoryInput'
           label='Подкатегория навыка, которому хотите научиться'
           type='select'
           placeholder='Выберете подкатегорию'
+          rightIcon={
+            <img
+              src='/icons/chevron-down.svg'
+              alt='Стрелка вниз'
+              className={styles.arrow}
+            />
+          }
         ></Input>
       </div>
       <div className={styles.buttonWrapper}>

@@ -9,8 +9,10 @@
   left: 0;
   z-index: 1000; /* выше остальных элементов */
   background: white;
-  border-radius: 12px;
   margin-top: 8px;
+  width: 280px;
+  border-radius: 12px;
+  border: 1px solid var(--caption-color);
 }
 
 .dateInput {
@@ -26,8 +28,9 @@
   height: 1.5rem;
 }
 
-.react-calendar {
-  border: none;
+.calendar {
+  border: 0;
+  border-radius: 12px;
 }
 
 .react-calendar__tile--active,
@@ -43,20 +46,20 @@
   padding-top: 8px;
 }
 
-.cancelBtn {
-  background: transparent;
-  border: 1px solid #8ce353;
-  color: #8ce353;
-  border-radius: 8px;
-  padding: 6px 12px;
-  cursor: pointer;
-}
+/*.cancelBtn {*/
+/*  background: transparent;*/
+/*  border: 1px solid #8ce353;*/
+/*  color: #8ce353;*/
+/*  border-radius: 8px;*/
+/*  padding: 6px 12px;*/
+/*  cursor: pointer;*/
+/*}*/
 
-.confirmBtn {
-  background: #8ce353;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 6px 12px;
-  cursor: pointer;
-}
+/*.confirmBtn {*/
+/*  background: #8ce353;*/
+/*  color: white;*/
+/*  border: none;*/
+/*  border-radius: 8px;*/
+/*  padding: 6px 12px;*/
+/*  cursor: pointer;*/
+/*}*/
