@@ -9,11 +9,11 @@ export const RegisterFormStepOneUI = () => {
   return (
     <form className={styles.form}>
       <div className={styles.elementList}>
-        <Button type='secondary' htmlType='button' className={styles.button}>
+        <Button type='secondary' className={styles.button}>
           <img src='/Google.svg' alt='Google' className={styles.icon} />
           <span>Продолжить с Google</span>
         </Button>
-        <Button type='secondary' htmlType='button' className={styles.button}>
+        <Button type='secondary' className={styles.button}>
           <img src='/Apple.svg' alt='Apple' className={styles.icon} />
           <span>Продолжить с Apple</span>
         </Button>
