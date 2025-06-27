@@ -6,6 +6,8 @@ import Aside from '../aside/aside';
 import { fetchCities } from '../../services/slices/citiesSlice';
 import Header from '../ui/header/header';
 import Footer from '../footer/footer';
+import RegisterFormStepTwo from '../ui/RegisterFormStepTwo/RegisterFormStepTwo.tsx';
+import { RegisterFormStepOneUI } from '../ui/RegisterFormStepOne/RegisterFormStepOne.tsx';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -19,6 +21,8 @@ function App() {
     <>
       <Header />
       <Aside />
+      <RegisterFormStepOneUI />
+      <RegisterFormStepTwo />
       <Footer />
     </>
   );

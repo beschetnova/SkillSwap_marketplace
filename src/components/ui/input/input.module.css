@@ -24,7 +24,7 @@
 
 .input {
   width: 100%;
-  height: 2rem;
+  height: 1.5rem;
   border-radius: 0.25rem;
   border: 0.0625rem solid var(--card-input-color);
   outline: none;
@@ -34,6 +34,10 @@
 }
 
 .input::placeholder {
+  font-family: var(--font-main);
+  font-weight: 400;
+  padding-left: 6px;
+  letter-spacing: 0.02em;
   color: var(--caption-color);
 }
 

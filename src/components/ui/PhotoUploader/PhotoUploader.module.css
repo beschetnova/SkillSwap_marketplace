@@ -1,0 +1,26 @@
+.wrapper {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  margin: 7px;
+  align-self: center;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.plusIcon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
