@@ -10,6 +10,7 @@ const DatePicker = () => {
   const [date, setDate] = useState<Date | null>(new Date(2000, 3, 1));
   const [showCalendar, setShowCalendar] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const [activeStartDate, setActiveStartDate] = useState(new Date(2000, 3, 1));
 
   const handleDateChange = (newDate: Date) => {
     setDate(newDate);
@@ -39,20 +40,18 @@ const DatePicker = () => {
   const years = Array.from({ length: 41 }, (_, i) => 1990 + i);
 
   const changeMonth = (monthIndex: number) => {
-    if (date) {
-      const newDate = new Date(date);
-      newDate.setMonth(monthIndex);
-      setDate(newDate);
-    }
+    const newDate = new Date(date || activeStartDate);
+    newDate.setMonth(monthIndex);
+    setDate(newDate);
+    setActiveStartDate(newDate); // Обновляем активную дату
     setShowMonthDropdown(false);
   };
 
   const changeYear = (year: number) => {
-    if (date) {
-      const newDate = new Date(date);
-      newDate.setFullYear(year);
-      setDate(newDate);
-    }
+    const newDate = new Date(date || activeStartDate);
+    newDate.setFullYear(year);
+    setDate(newDate);
+    setActiveStartDate(newDate); // Обновляем активную дату
     setShowYearDropdown(false);
   };
 
@@ -80,6 +79,7 @@ const DatePicker = () => {
         onClick={() => setShowCalendar(!showCalendar)}
         className={styles.dateInput}
         rightIcon={<img src='/icons/calendar.svg' alt='calendar' />}
+        required
       />
 
       {showCalendar && (
@@ -95,6 +95,10 @@ const DatePicker = () => {
             nextLabel={null}
             next2Label={null}
             prev2Label={null}
+            activeStartDate={activeStartDate}
+            onActiveStartDateChange={({ activeStartDate }) =>
+              setActiveStartDate(activeStartDate)
+            }
             formatShortWeekday={formatShortWeekday}
             className={styles.calendar}
             navigationLabel={({ date }) => (

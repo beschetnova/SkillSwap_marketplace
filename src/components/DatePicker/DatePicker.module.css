@@ -79,6 +79,16 @@
   background-color: var(--accent-color);
 }
 
+:global(.react-calendar__tile--active:hover) {
+  background-color: var(--accent-color);
+}
+:global(.react-calendar__tile--active:enabled:hover) {
+  background-color: var(--accent-color);
+}
+:global(.react-calendar__tile--active:enabled:focus) {
+  background-color: var(--accent-color);
+}
+
 :global(.react-calendar) {
   padding-bottom: 16px;
   padding-inline: 28px;

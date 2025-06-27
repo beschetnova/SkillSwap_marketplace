@@ -7,6 +7,7 @@ import Select from '../Select/Select.tsx';
 import { useState } from 'react';
 import { selectAllSkills } from '../../../services/slices/skillsSlice.ts';
 import { useAppSelector } from '../../../utils/hooks.ts';
+import { selectAllCities } from '../../../services/slices/citiesSlice.ts';
 
 const RegisterFormStepTwo = () => {
   const [gender, setGender] = useState('');
@@ -36,6 +37,16 @@ const RegisterFormStepTwo = () => {
       ]
     : [{ value: '', label: 'Сначала выберите категорию' }];
 
+  const cities = useAppSelector(selectAllCities);
+
+  const cityOptions = [
+    { value: '', label: 'Не указан' },
+    ...cities.map((city) => ({
+      value: city.id.toString(),
+      label: city.name
+    }))
+  ];
+
   return (
     <form className={styles.form}>
       <PhotoUploader />
@@ -45,6 +56,7 @@ const RegisterFormStepTwo = () => {
           label='Имя'
           type='text'
           placeholder='Введите ваше имя'
+          required
         ></Input>
         <div className={styles.dateWrapper}>
           <DatePicker />
@@ -71,12 +83,7 @@ const RegisterFormStepTwo = () => {
           id='cityInput'
           label='Город'
           onChange={(e) => setCity(e.target.value)}
-          options={[
-            { value: '', label: 'Не указан' },
-            { value: 'spb', label: 'Санкт-Петербург' },
-            { value: 'mos', label: 'Москва' },
-            { value: 'other', label: 'Другое' }
-          ]}
+          options={cityOptions}
           rightIcon={
             <img
               src='/icons/chevron-down.svg'
