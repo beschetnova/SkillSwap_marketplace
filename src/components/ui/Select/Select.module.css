@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.selectContainer {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  border: 0.0625rem solid var(--caption-color);
+  border-radius: 0.75rem;
+  background-color: var(--card-input-color);
+  padding: 11px;
+  min-width: 200px;
+  max-width: 32.9375rem;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.select {
+  width: 100%;
+  height: 1.5rem;
+  border: 0;
+  outline: none;
+  caret-color: var(--text-link-button-pressed-color);
+  color: var(--text-color);
+  font-size: 16px;
+  appearance: none;
+  padding: 0 2rem 0 0.5rem;
+  font-family: var(--font-main);
+}
+
+.select:invalid {
+  color: var(--caption-color);
+}
+
+.select option {
+  color: var(--text-color);
+}
+
+.leftIcon {
+  left: 8px;
+}
+
+.rightIcon {
+  line-height: 0;
+  margin-left: auto;
+  padding-right: 0.5rem;
+  padding-block: 2px;
+}
+
+.errorText {
+  color: red;
+  font-size: 12px;
+}
+
+.infoText {
+  color: gray;
+  font-size: 12px;
+}
+
+.error .select {
+  border-color: red;
+}
