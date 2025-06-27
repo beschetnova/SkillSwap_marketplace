@@ -11,7 +11,7 @@
   border: 0.0625rem solid var(--caption-color);
   border-radius: 0.75rem;
   background-color: var(--card-input-color);
-  padding: 0.75rem;
+  padding: 11px;
   min-width: 200px;
   max-width: 32.9375rem;
   width: 100%;
@@ -43,7 +43,10 @@
 
 .rightIcon {
   /* really ? */
+  line-height: 0;
   margin-left: auto;
+  padding-right: 0.5rem;
+  padding-block: 2px;
 }
 
 .error {

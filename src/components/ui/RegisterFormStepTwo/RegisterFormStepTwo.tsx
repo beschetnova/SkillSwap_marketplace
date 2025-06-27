@@ -2,6 +2,7 @@ import PhotoUploader from '../PhotoUploader/PhotoUploader.tsx';
 import styles from './RegisterFormStepTwo.module.css';
 import Input from '../input/input.tsx';
 import Button from '../buttons/button.tsx';
+import DatePicker from '../../DatePicker/DatePicker.tsx';
 
 const RegisterFormStepTwo = () => {
   return (
@@ -15,11 +16,7 @@ const RegisterFormStepTwo = () => {
           placeholder='Введите ваше имя'
         ></Input>
         <div className={styles.dateWrapper}>
-          <Input
-            id='dateOfBirthInput'
-            label='Дата рождения'
-            type='date'
-          ></Input>
+          <DatePicker />
           <Input
             id='genderInput'
             label='Пол'

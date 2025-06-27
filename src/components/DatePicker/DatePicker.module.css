@@ -1,0 +1,62 @@
+.datePicker {
+  position: relative;
+  width: 100%;
+}
+
+.calendarWrapper {
+  position: absolute;
+  top: 100%; /* ниже инпута */
+  left: 0;
+  z-index: 1000; /* выше остальных элементов */
+  background: white;
+  border-radius: 12px;
+  margin-top: 8px;
+}
+
+.dateInput {
+  width: 100%;
+  border: 0;
+  font-family: var(--font-main);
+  font-weight: 400;
+  padding-left: 6px;
+  letter-spacing: 0.02em;
+  color: var(--caption-color);
+  font-size: 16px;
+  cursor: pointer;
+  height: 1.5rem;
+}
+
+.react-calendar {
+  border: none;
+}
+
+.react-calendar__tile--active,
+.react-calendar__tile--now {
+  background: #8ce353;
+  color: white;
+  border-radius: 50%;
+}
+
+.calendarButtons {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+
+.cancelBtn {
+  background: transparent;
+  border: 1px solid #8ce353;
+  color: #8ce353;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.confirmBtn {
+  background: #8ce353;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
