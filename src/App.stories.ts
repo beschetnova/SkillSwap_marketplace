@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import App from './app'
+import App from './App'
 
 const meta = {
   title: 'Skillswap/ExampleFolder/App',
