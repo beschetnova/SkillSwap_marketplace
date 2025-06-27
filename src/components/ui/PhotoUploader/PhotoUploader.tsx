@@ -24,12 +24,12 @@ const PhotoUploader = () => {
     <div className={styles.wrapper} onClick={handleClick}>
       <div className={styles.avatar}>
         {preview ? (
-          <img src={preview} alt='preview' className={styles.preview} />
+          <img src={preview} alt='preview' className={styles.avatarImage} />
         ) : (
           <img
             src='/icons/user-circle.svg'
             alt='default avatar'
-            className={styles.icon}
+            className={styles.avatarImage}
           />
         )}
         <img src='/icons/Add.svg' alt='add' className={styles.plusIcon} />

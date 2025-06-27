@@ -97,6 +97,7 @@ const DatePicker = () => {
       {showCalendar && (
         <div className={styles.calendarWrapper}>
           <Calendar
+            showNeighboringMonth={true}
             // @ts-ignore
             onChange={handleDateChange}
             value={date}
@@ -104,7 +105,6 @@ const DatePicker = () => {
             locale='ru-RU'
             next2Label={null}
             prev2Label={null}
-            showNeighboringMonth={false}
             className={styles.calendar}
             navigationLabel={navigationLabel}
             onActiveStartDateChange={({ activeStartDate }) =>

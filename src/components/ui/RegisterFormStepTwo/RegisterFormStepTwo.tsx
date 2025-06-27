@@ -26,7 +26,6 @@ const RegisterFormStepTwo = () => {
 
   const selectedCategory = skillCategories.find((cat) => cat.id === category);
 
-  // Подготавливаем подкатегории (skills) для второй селектки
   const subcategoryOptions = selectedCategory
     ? [
         { value: '', label: 'Выберите подкатегорию' },
