@@ -9,16 +9,19 @@ const ListCategory = ({ item }: Props) => {
   return (
     <>
       <div className={styles.categoryIconContainer}>
-        <img src={`src/images/icons/${item.icon}`} className={styles.categoryIcon}/>
+        <img
+          src={`src/images/icons/${item.icon}`}
+          className={styles.categoryIcon}
+        />
       </div>
-      <div className={styles.categoryList}>
+      <ul className={styles.categoryList}>
         <h2 className={styles.categoryTitle}>{item.name}</h2>
         {item.skills.map((item) => (
-          <p key={item.id} className={styles.categorySubtitle}>
+          <li key={item.id} className={styles.categorySubtitle}>
             <ListItem item={item} />
-          </p>
+          </li>
         ))}
-      </div>
+      </ul>
     </>
   );
 };
