@@ -3,7 +3,6 @@
   flex-direction: column;
   max-width: 556px;
   padding: 40px 60px;
-  background-color: #c1c5b9;
   border-radius: 12px;
 }
 
@@ -29,6 +28,6 @@
 .backButton {
   width: 100%;
   font-family: var(--font-main);
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
 }

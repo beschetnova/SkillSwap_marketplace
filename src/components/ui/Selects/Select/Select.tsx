@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 import clsx from 'clsx';
-import styles from './Select.module.css'; // Создайте или адаптируйте стили
+import styles from './Select.module.css';
 
 type Option =
-  | { value: string; label: string } // обычный option
+  | { value: string; label: string }
   | { label: string; options: { value: string; label: string }[] };
 
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {

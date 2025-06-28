@@ -6,14 +6,21 @@ import styles from './DatePicker.module.css';
 import Input from '../ui/input/input.tsx';
 import Button from '../ui/buttons/button.tsx';
 
+type ValuePiece = Date | null;
+type Value = ValuePiece | [ValuePiece, ValuePiece];
+
 const DatePicker = () => {
-  const [date, setDate] = useState<Date | null>(new Date(2000, 3, 1));
+  const initialDate = new Date(2000, 3, 1);
+  const [date, setDate] = useState<Date | null>(initialDate);
   const [showCalendar, setShowCalendar] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const [activeStartDate, setActiveStartDate] = useState(new Date(2000, 3, 1));
+  const [activeStartDate, setActiveStartDate] = useState<Date>(initialDate);
 
-  const handleDateChange = (newDate: Date) => {
-    setDate(newDate);
+  const handleDateChange = (value: Value) => {
+    if (value instanceof Date) {
+      setDate(value);
+      setActiveStartDate(value);
+    }
   };
 
   const [showMonthDropdown, setShowMonthDropdown] = useState(false);
@@ -33,9 +40,6 @@ const DatePicker = () => {
     'Ноябрь',
     'Декабрь'
   ];
-  const formatShortWeekday = (locale, date) => {
-    return ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'][date.getDay()];
-  };
 
   const years = Array.from({ length: 41 }, (_, i) => 1990 + i);
 
@@ -43,7 +47,7 @@ const DatePicker = () => {
     const newDate = new Date(date || activeStartDate);
     newDate.setMonth(monthIndex);
     setDate(newDate);
-    setActiveStartDate(newDate); // Обновляем активную дату
+    setActiveStartDate(newDate);
     setShowMonthDropdown(false);
   };
 
@@ -51,7 +55,7 @@ const DatePicker = () => {
     const newDate = new Date(date || activeStartDate);
     newDate.setFullYear(year);
     setDate(newDate);
-    setActiveStartDate(newDate); // Обновляем активную дату
+    setActiveStartDate(newDate);
     setShowYearDropdown(false);
   };
 
@@ -86,7 +90,6 @@ const DatePicker = () => {
         <div className={styles.calendarWrapper}>
           <Calendar
             showNeighboringMonth={true}
-            // @ts-ignore
             onChange={handleDateChange}
             value={date}
             selectRange={false}
@@ -97,9 +100,8 @@ const DatePicker = () => {
             prev2Label={null}
             activeStartDate={activeStartDate}
             onActiveStartDateChange={({ activeStartDate }) =>
-              setActiveStartDate(activeStartDate)
+              setActiveStartDate(activeStartDate!)
             }
-            formatShortWeekday={formatShortWeekday}
             className={styles.calendar}
             navigationLabel={({ date }) => (
               <div className={styles.customNavigation}>

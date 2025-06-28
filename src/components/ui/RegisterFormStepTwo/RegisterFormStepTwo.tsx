@@ -3,49 +3,17 @@ import styles from './RegisterFormStepTwo.module.css';
 import Input from '../input/input.tsx';
 import Button from '../buttons/button.tsx';
 import DatePicker from '../../DatePicker/DatePicker.tsx';
-import Select from '../Select/Select.tsx';
+import Select from '../Selects/Select/Select.tsx';
 import { useState } from 'react';
-import { selectAllSkills } from '../../../services/slices/skillsSlice.ts';
-import { useAppSelector } from '../../../utils/hooks.ts';
-import { selectAllCities } from '../../../services/slices/citiesSlice.ts';
+import { CategorySelect } from '../Selects/CategorySelect/CategorySelect.tsx';
+import { CitySelect } from '../Selects/CitySelect/CitySelect.tsx';
+import { SubCategorySelect } from '../Selects/SubCategorySelect/SubCategorySelect.tsx';
 
 const RegisterFormStepTwo = () => {
   const [gender, setGender] = useState('');
   const [city, setCity] = useState('');
   const [category, setCategory] = useState('');
   const [subcategory, setSubcategory] = useState('');
-
-  const skillCategories = useAppSelector(selectAllSkills);
-
-  const skillCategoryOptions = [
-    { value: '', label: 'Выберите категорию' },
-    ...skillCategories.map((cat) => ({
-      value: cat.id,
-      label: cat.name
-    }))
-  ];
-
-  const selectedCategory = skillCategories.find((cat) => cat.id === category);
-
-  const subcategoryOptions = selectedCategory
-    ? [
-        { value: '', label: 'Выберите подкатегорию' },
-        ...selectedCategory.skills.map((skill) => ({
-          value: skill.id,
-          label: skill.name
-        }))
-      ]
-    : [{ value: '', label: 'Сначала выберите категорию' }];
-
-  const cities = useAppSelector(selectAllCities);
-
-  const cityOptions = [
-    { value: '', label: 'Не указан' },
-    ...cities.map((city) => ({
-      value: city.id.toString(),
-      label: city.name
-    }))
-  ];
 
   return (
     <form className={styles.form}>
@@ -63,6 +31,7 @@ const RegisterFormStepTwo = () => {
           <Select
             id='genderInput'
             label='Пол'
+            value={gender}
             onChange={(e) => setGender(e.target.value)}
             options={[
               { value: '', label: 'Не указан' },
@@ -79,45 +48,16 @@ const RegisterFormStepTwo = () => {
             }
           ></Select>
         </div>
-        <Select
-          id='cityInput'
-          label='Город'
-          onChange={(e) => setCity(e.target.value)}
-          options={cityOptions}
-          rightIcon={
-            <img
-              src='/icons/chevron-down.svg'
-              alt='Стрелка вниз'
-              className={styles.arrow}
-            />
-          }
-        ></Select>
-        <Select
-          id='categoryInput'
-          label='Категория навыка, которому хотите научиться'
-          onChange={(e) => setCategory(e.target.value)}
-          options={skillCategoryOptions}
-          rightIcon={
-            <img
-              src='/icons/chevron-down.svg'
-              alt='Стрелка вниз'
-              className={styles.arrow}
-            />
-          }
-        ></Select>
-        <Select
-          id='subcategoryInput'
-          label='Подкатегория навыка, которому хотите научиться'
-          onChange={(e) => setSubcategory(e.target.value)}
-          options={subcategoryOptions}
-          rightIcon={
-            <img
-              src='/icons/chevron-down.svg'
-              alt='Стрелка вниз'
-              className={styles.arrow}
-            />
-          }
-        ></Select>
+        <CitySelect city={city} setCity={setCity}></CitySelect>
+        <CategorySelect
+          category={category}
+          setCategory={setCategory}
+        ></CategorySelect>
+        <SubCategorySelect
+          subcategory={subcategory}
+          setSubcategory={setSubcategory}
+          category={category}
+        ></SubCategorySelect>
       </div>
       <div className={styles.buttonWrapper}>
         <Button

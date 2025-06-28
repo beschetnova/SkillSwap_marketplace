@@ -2,17 +2,16 @@
 import Aside from '../aside/aside';
 import Footer from '../footer/footer';
 import Header from '../ui/header/header';
-import RegisterFormStepTwo from '../ui/RegisterFormStepTwo/RegisterFormStepTwo.tsx';
+import styles from './layout.module.css';
 
 const Layout = () => {
   return (
     <>
       <Header />
-      {/*<main className={styles.main}>*/}
-      <Aside />
-      <RegisterFormStepTwo />
-      {/* <UserCardSection /> // Не знаю откуда взять пропсы для UserCardSection */}
-      {/*</main>*/}
+      <main className={styles.main}>
+        <Aside />
+        {/* <UserCardSection /> // Не знаю откуда взять пропсы для UserCardSection */}
+      </main>
       <Footer />
     </>
   );
