@@ -1,11 +1,10 @@
-import { useEffect } from 'react';
-import { useAppDispatch } from '../../utils/hooks';
+import './App.css';
+import { fetchCities } from '../../services/slices/citiesSlice';
 import { fetchSkills } from '../../services/slices/skillsSlice';
 import { fetchUsers } from '../../services/slices/usersSlice';
-import Aside from '../aside/aside';
-import { fetchCities } from '../../services/slices/citiesSlice';
-import Header from '../ui/header/header';
-import Footer from '../footer/footer';
+import { useAppDispatch } from '../../utils/hooks';
+import { useEffect } from 'react';
+import Layout from '../Layout/layout';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -16,11 +15,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
-      <Header />
-      <Aside />
-      <Footer />
-    </>
+    <Layout />
   );
 }
 
