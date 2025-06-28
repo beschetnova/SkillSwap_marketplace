@@ -20,6 +20,7 @@ const FilterRadio = ({ title, items }: Props) => {
       selectedItem={selectedItem}
       nameAttribute={nameAttribute}
       handleChange={handleChange}
+      title={title}
     />
   );
 };

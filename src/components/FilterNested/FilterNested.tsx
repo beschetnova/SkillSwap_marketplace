@@ -41,6 +41,20 @@ const FilterNested = ({ title, items, buttonName }: Props) => {
     });
   };
 
+  const unMarkSkill = (skillId: string) => {
+    setcheckedItem((prev) => {
+      // Удаляем из массива
+      return prev.filter((id) => id !== skillId);
+    });
+  };
+
+  const markSkill = (skillId: string) => {
+    setcheckedItem((prev) => {
+      // Добавляем в массив
+      return [...prev, skillId];
+    });
+  };
+
   return (
     <FilterNestedUI
       title={title}
@@ -52,6 +66,8 @@ const FilterNested = ({ title, items, buttonName }: Props) => {
       toggleCategoryExpand={toggleCategoryExpand}
       toggleSkillCheck={toggleSkillCheck}
       buttonName={buttonName}
+      markSkill={markSkill}
+      unMarkSkill={unMarkSkill}
     />
   );
 };

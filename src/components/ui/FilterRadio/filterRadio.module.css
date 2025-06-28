@@ -1,0 +1,28 @@
+.listTitle {
+  color: var(--text-color);
+  margin-bottom: 8px;
+}
+
+.label {
+  display: flex;
+  flex-direction: row;
+  column-gap: 8px;
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--text-color);
+  line-height: 24px;
+}
+
+.radioButton {
+  width: 24px;
+  height: 24px;
+  accent-color: var(--text-link-button-pressed-color);
+}
+
+.labelList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
