@@ -14,9 +14,7 @@ function App() {
     void dispatch(fetchCities());
   }, [dispatch]);
 
-  return (
-    <Layout />
-  );
+  return <Layout />;
 }
 
 export default App;
