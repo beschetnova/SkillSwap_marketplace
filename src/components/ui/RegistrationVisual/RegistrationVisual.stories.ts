@@ -1,55 +1,54 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from '@storybook/react';
 import { RegistrationVisual } from './RegistrationVisual';
+import type { TRegistrationVisual } from './type';
 
 const meta: Meta<typeof RegistrationVisual> = {
-  title: 'UI/RegistrationVisual',
-  component: RegistrationVisual
+  title: 'Components/RegistrationVisual',
+  component: RegistrationVisual,
+  parameters: {
+    layout: 'centered'
+  }
 };
 
 export default meta;
 
 type Story = StoryObj<typeof RegistrationVisual>;
 
-const mockSteps = [
+const stepContent: TRegistrationVisual['stepContent'] = [
   {
-    image:
-      'https://avatars.mds.yandex.net/i?id=d00dfceb78d207f5083f39e32df17838fd4d5487-5390142-images-thumbs&n=13',
+    image: '/public/light-bulb.svg',
     title: 'Добро пожаловать в SkillSwap!',
-    description:
-      'Присоединяйтесь к SkillSwap и обменивайтесь знаниями и навыками с другими людьми'
+    description: 'Присоединяйтесь к SkillSwap и обменивайтесь знаниями и навыками с другими людьми'
   },
   {
-    image: 'http://risovach.ru/upload/2014/06/mem/smayl_52747546_orig_.jpeg',
+    image: '/public/user info.svg',
     title: 'Расскажите немного о себе',
-    description:
-      'Это поможет другим людям лучше вас узнать, чтобы выбрать для обмена'
+    description: 'Это поможет другим людям лучше вас узнать, чтобы выбрать для обмена'
   },
   {
-    image:
-      'https://oktregion.ru/upload/iblock/cc1/043647a9b05561799d45bc5438ec3833_XL.jpg',
+    image: '/public/school-board.svg',
     title: 'Укажите, чем вы готовы поделиться',
-    description:
-      'Так другие люди смогут увидеть ваши предложения и предложить вам обмен!'
+    description: 'Так другие люди смогут увидеть ваши предложения и предложить вам обмен!'
   }
 ];
 
-export const Default: Story = {
+export const StepOne: Story = {
+  args: {
+    step: 0,
+    stepContent
+  }
+};
+
+export const StepTwo: Story = {
   args: {
     step: 1,
-    stepContent: mockSteps
+    stepContent
   }
 };
 
-export const Step2: Story = {
+export const StepThree: Story = {
   args: {
     step: 2,
-    stepContent: mockSteps
-  }
-};
-
-export const Step3: Story = {
-  args: {
-    step: 3,
-    stepContent: mockSteps
+    stepContent
   }
 };
