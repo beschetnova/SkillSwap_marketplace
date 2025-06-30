@@ -18,7 +18,8 @@ const UserOfferCardUI: FC<TUserOfferCardUI> = ({
   isLiked = false,
   onLikeClick,
   onShareClick,
-  onMoreClick
+  onMoreClick,
+  onButtonClick,
 }) => {
 
   return (
@@ -35,7 +36,7 @@ const UserOfferCardUI: FC<TUserOfferCardUI> = ({
             category={category}
             description={description}
           />
-          <Button type={'primary'} className={styles.button}>Предложить обмен</Button>
+          <Button onClick={onButtonClick} type={'primary'} className={styles.button}>Предложить обмен</Button>
         </div>
         <Carousel images={images}/>
       </div>

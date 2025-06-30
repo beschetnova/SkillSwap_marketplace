@@ -15,6 +15,7 @@ const meta = {
     onLikeClick: fn(),
     onMoreClick: fn(),
     onShareClick: fn(),
+    onButtonClick: fn(),
   }
 } satisfies Meta<typeof UserOfferCard>;
 export default meta;
