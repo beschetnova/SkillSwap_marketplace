@@ -1,0 +1,79 @@
+.dropzone {
+  /* stylelint-disable-next-line color-function-notation */
+  border: 1px dashed rgb(105, 115, 93, 80%);
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--caption-color);
+  font-family: var(--font-main);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5em;
+  letter-spacing: 0.02em;
+}
+
+.content span {
+  color: #8e8e93;
+}
+
+.icon {
+  inline-size: 24px;
+  aspect-ratio: 1/1;
+}
+
+.button {
+  border: none;
+  color: var(--text-link-button-pressed-color);
+  cursor: pointer;
+  display: flex;
+  place-items: center;
+  gap: 4px;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+.previewList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-block-start: 16px;
+  gap: 12px;
+}
+
+.previewItem {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+.previewImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.removeButton {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: var(--card-input-color);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 2px 6px;
+  font-size: 14px;
+  line-height: 1;
+}
