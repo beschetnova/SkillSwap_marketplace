@@ -1,0 +1,28 @@
+.card {
+  font-family: var(--font-main);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: start;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.category {
+  color: var(--caption-color);
+  font-size: 12px;
+}
+
+h1 {
+  font-family: var(--font-heading);
+}
+
+.description {
+  line-height: 24px;
+  letter-spacing: 1px;
+}

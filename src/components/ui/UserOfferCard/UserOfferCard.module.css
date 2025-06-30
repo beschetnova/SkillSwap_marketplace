@@ -1,0 +1,37 @@
+.card {
+  padding: 32px 52px 40px;
+  background-color: var(--card-input-color);
+  width: 1020px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.actions {
+  display: flex;
+  justify-content: end;
+  gap: 16px;
+}
+
+.actions p {
+  width: 20px;
+  height: 20px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  gap: 77px;
+}
+
+.descriptionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 399px;
+  font-family: var(--font-main);
+}
+
+.button {
+  height: 48px;
+}

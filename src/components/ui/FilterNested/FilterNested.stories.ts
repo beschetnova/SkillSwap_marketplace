@@ -1,116 +1,119 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
-import FilterNested from "./FilterNested";
+import FilterNested from './FilterNested';
 
 const meta = {
   title: 'components/Aside/FilterNested',
   component: FilterNested,
   tags: ['autodocs'],
-  args: { toggleShowAll: fn(),
+  args: {
+    toggleShowAll: fn(),
     toggleCategoryExpand: fn(),
-    toggleSkillCheck: fn()
-   }
+    toggleSkillCheck: fn(),
+    markSkill: fn(),
+    unMarkSkill: fn()
+  }
 } satisfies Meta<typeof FilterNested>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 const categories = [
   {
-    id: "business-and-career",
-    name: "Бизнес и карьера",
-    icon: "briefcase-icon.svg",
+    id: 'business-and-career',
+    name: 'Бизнес и карьера',
+    icon: 'briefcase-icon.svg',
     skills: [
-      { id: "team-management", name: "Управление командой" },
-      { id: "marketing-and-advertising", name: "Маркетинг и реклама" },
-      { id: "sales-and-negotiations", name: "Продажи и переговоры" },
-      { id: "personal-brand", name: "Личный бренд" },
-      { id: "resume-and-interview", name: "Резюме и собеседование" },
-      { id: "time-management", name: "Тайм-менеджмент" },
-      { id: "project-management", name: "Проектное управление" },
-      { id: "entrepreneurship", name: "Предпринимательство" }
+      { id: 'team-management', name: 'Управление командой' },
+      { id: 'marketing-and-advertising', name: 'Маркетинг и реклама' },
+      { id: 'sales-and-negotiations', name: 'Продажи и переговоры' },
+      { id: 'personal-brand', name: 'Личный бренд' },
+      { id: 'resume-and-interview', name: 'Резюме и собеседование' },
+      { id: 'time-management', name: 'Тайм-менеджмент' },
+      { id: 'project-management', name: 'Проектное управление' },
+      { id: 'entrepreneurship', name: 'Предпринимательство' }
     ]
   },
   {
-    id: "creativity-and-art",
-    name: "Творчество и искусство",
-    icon: "palette-icon.svg",
+    id: 'creativity-and-art',
+    name: 'Творчество и искусство',
+    icon: 'palette-icon.svg',
     skills: [
-      { id: "drawing-and-illustration", name: "Рисование и иллюстрация" },
-      { id: "photography", name: "Фотография" },
-      { id: "video-editing", name: "Видеомонтаж" },
-      { id: "music-and-sound", name: "Музыка и звук" },
-      { id: "acting", name: "Актёрское мастерство" },
-      { id: "creative-writing", name: "Креативное письмо" },
-      { id: "art-therapy", name: "Арт-терапия" },
-      { id: "decor-and-diy", name: "Декор и DIY" }
+      { id: 'drawing-and-illustration', name: 'Рисование и иллюстрация' },
+      { id: 'photography', name: 'Фотография' },
+      { id: 'video-editing', name: 'Видеомонтаж' },
+      { id: 'music-and-sound', name: 'Музыка и звук' },
+      { id: 'acting', name: 'Актёрское мастерство' },
+      { id: 'creative-writing', name: 'Креативное письмо' },
+      { id: 'art-therapy', name: 'Арт-терапия' },
+      { id: 'decor-and-diy', name: 'Декор и DIY' }
     ]
   },
   {
-    id: "foreign-languages",
-    name: "Иностранные языки",
-    icon: "global-icon.svg",
+    id: 'foreign-languages',
+    name: 'Иностранные языки',
+    icon: 'global-icon.svg',
     skills: [
-      { id: "english", name: "Английский" },
-      { id: "spanish", name: "Испанский" },
-      { id:"french",name:"Французский"},
-      {id:"german",name:"Немецкий"},
-      {id:"chinese",name:"Китайский"},
-      {id:"japanese",name:"Японский"},
+      { id: 'english', name: 'Английский' },
+      { id: 'spanish', name: 'Испанский' },
+      { id: 'french', name: 'Французский' },
+      { id: 'german', name: 'Немецкий' },
+      { id: 'chinese', name: 'Китайский' },
+      { id: 'japanese', name: 'Японский' },
       {
-        id:"exam-preparation-ielts-toefl",
-        name:"Подготовка к экзаменам (IELTS, TOEFL)"
+        id: 'exam-preparation-ielts-toefl',
+        name: 'Подготовка к экзаменам (IELTS, TOEFL)'
       }
     ]
   },
   {
-    id:"education-and-development",
-    name:"Образование и развитие",
-    icon:"book-icon.svg",
-    skills:[
-      {id:"personal-development",name:"Личностное развитие"},
-      {id:"learning-skills",name:"Навыки обучения"},
-      {id:"cognitive-techniques",name:"Когнитивные техники"},
-      {id:"speed-reading",name:"Скорочтение"},
-      {id:"teaching-skills",name:"Навыки преподавания"},
-      {id:"coaching",name:"Коучинг"}
+    id: 'education-and-development',
+    name: 'Образование и развитие',
+    icon: 'book-icon.svg',
+    skills: [
+      { id: 'personal-development', name: 'Личностное развитие' },
+      { id: 'learning-skills', name: 'Навыки обучения' },
+      { id: 'cognitive-techniques', name: 'Когнитивные техники' },
+      { id: 'speed-reading', name: 'Скорочтение' },
+      { id: 'teaching-skills', name: 'Навыки преподавания' },
+      { id: 'coaching', name: 'Коучинг' }
     ]
   },
   {
-    id:"home-and-comfort",
-    name:"Дом и уют",
-    icon:"home-icon.svg",
-    skills:[
-      {id:"cleaning-and-organization",name:"Уборка и организация"},
-      {id:"home-finance",name:"Домашние финансы"},
-      {id:"cooking",name:"Приготовление еды"},
-      {id:"house-plants",name:"Домашние растения"},
-      {id:"home-repair",name:"Ремонт"},
-      {id:"storage-solutions",name:"Хранение вещей"}
+    id: 'home-and-comfort',
+    name: 'Дом и уют',
+    icon: 'home-icon.svg',
+    skills: [
+      { id: 'cleaning-and-organization', name: 'Уборка и организация' },
+      { id: 'home-finance', name: 'Домашние финансы' },
+      { id: 'cooking', name: 'Приготовление еды' },
+      { id: 'house-plants', name: 'Домашние растения' },
+      { id: 'home-repair', name: 'Ремонт' },
+      { id: 'storage-solutions', name: 'Хранение вещей' }
     ]
   },
   {
-    id:'health-and-lifestyle',
-    name:'Здоровье и лайфстайл',
-    icon:'lifestyle-icon.svg',
-    skills:[
-        {id:'yoga-and-meditation',name:'Йога и медитация'},
-        {id:'nutrition-and-healthy-lifestyle',name:'Питание и ЗОЖ'},
-        {id:'mental-health',name:'Ментальное здоровье'},
-        {id:'mindfulness',name:'Осознанность'},
-        {id:'physical-training',name:'Физические тренировки'},
-        {id:'sleep-and-recovery',name:'Сон и восстановление'},
-        {id:'work-life-balance',name:'Баланс жизни и работы'}
+    id: 'health-and-lifestyle',
+    name: 'Здоровье и лайфстайл',
+    icon: 'lifestyle-icon.svg',
+    skills: [
+      { id: 'yoga-and-meditation', name: 'Йога и медитация' },
+      { id: 'nutrition-and-healthy-lifestyle', name: 'Питание и ЗОЖ' },
+      { id: 'mental-health', name: 'Ментальное здоровье' },
+      { id: 'mindfulness', name: 'Осознанность' },
+      { id: 'physical-training', name: 'Физические тренировки' },
+      { id: 'sleep-and-recovery', name: 'Сон и восстановление' },
+      { id: 'work-life-balance', name: 'Баланс жизни и работы' }
     ]
-}
+  }
 ];
 
 export const FilterNestedUI: Story = {
   args: {
-    title: "тестовый заголовок",
+    title: 'тестовый заголовок',
     items: categories,
     checkedItems: [],
     expandedCategories: [],
     showAll: false,
-    buttonName: "тестовое название кнопки"
+    buttonName: 'тестовое название кнопки'
   }
-}
+};

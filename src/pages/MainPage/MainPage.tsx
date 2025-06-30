@@ -1,10 +1,10 @@
 // import { UserCardSection } from "../UserCardSection/UserCardSection";
-import Aside from '../aside/aside';
-import Footer from '../footer/footer';
-import Header from '../ui/header/header';
-import styles from './layout.module.css';
+import Aside from '../../components/aside/aside.tsx';
+import Footer from '../../components/footer/footer.tsx';
+import Header from '../../components/ui/header/header.tsx';
+import styles from './MainPage.module.css';
 
-const Layout = () => {
+const MainPage = () => {
   return (
     <>
       <Header />
@@ -17,4 +17,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default MainPage;

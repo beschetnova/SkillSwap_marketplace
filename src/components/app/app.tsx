@@ -4,7 +4,7 @@ import { fetchSkills } from '../../services/slices/skillsSlice';
 import { fetchUsers } from '../../services/slices/usersSlice';
 import { useAppDispatch } from '../../utils/hooks';
 import { useEffect } from 'react';
-import Layout from '../Layout/layout';
+import MainPage from '../../pages/MainPage/MainPage.tsx';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -14,7 +14,7 @@ function App() {
     void dispatch(fetchCities());
   }, [dispatch]);
 
-  return <Layout />;
+  return <MainPage />;
 }
 
 export default App;
