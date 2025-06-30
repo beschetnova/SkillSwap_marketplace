@@ -10,7 +10,6 @@
   max-width: calc(100vw - 72px);
   width: 1136px;
   top: 96px;
-
   padding: 60px;
   border: 1px solid var(--caption-color);
   border-radius: 12px;
