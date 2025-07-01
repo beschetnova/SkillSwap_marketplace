@@ -1,6 +1,7 @@
 .main {
   height: 100%;
   overflow: auto;
+  display: flex;
   max-width: 1440px;
   margin: 0 auto 32px;
   width: 100%;
