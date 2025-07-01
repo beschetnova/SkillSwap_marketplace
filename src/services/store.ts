@@ -2,11 +2,13 @@ import { combineSlices, configureStore } from '@reduxjs/toolkit';
 import skillsSlice from './slices/skillsSlice';
 import usersSlice from './slices/usersSlice';
 import citiesSlice from './slices/citiesSlice';
+import profileSlice from './slices/profileSlice';
 
 export const rootReducer = combineSlices({
   skills: skillsSlice,
   users: usersSlice,
-  cities: citiesSlice
+  cities: citiesSlice,
+  profile: profileSlice
 });
 
 export const store = configureStore({
