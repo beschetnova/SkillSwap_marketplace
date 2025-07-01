@@ -54,7 +54,7 @@
 }
 
 .tertiary {
-  background-color: var(--card-input-color);
+  background-color: transparent;
   border: 1px solid transparent;
   color: var(--text-color);
 }

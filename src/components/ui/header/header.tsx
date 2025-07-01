@@ -16,7 +16,11 @@ const Header = () => {
       <Nav />
       <SearchInput />
       <Icons isAuth={isAuth} />
-      {isAuth ? <Profile /> : <AuthButtons setIsAuth={setIsAuth} />}
+      {isAuth ? (
+        <Profile profileIcon='/db/profile-pics/Maria-Moscow.png' />
+      ) : (
+        <AuthButtons setIsAuth={setIsAuth} />
+      )}
     </header>
   );
 };
