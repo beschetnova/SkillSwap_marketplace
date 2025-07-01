@@ -11,7 +11,7 @@ type Story = StoryObj<typeof meta>;
 
 
 
-export const FilterRadioUI: Story = {
+export const Default: Story = {
   args: {
     title: 'Игра на барабанах',
     category: 'Творчество и искусство / Музыка и звук',
