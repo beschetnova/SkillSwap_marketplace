@@ -30,6 +30,10 @@ export type User = {
   photo: string;
 };
 
+export type Profile = User & {
+  email: string
+}
+
 export type Users = User[];
 
 export type City = {
