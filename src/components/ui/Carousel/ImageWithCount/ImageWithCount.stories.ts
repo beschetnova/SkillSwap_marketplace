@@ -1,20 +1,18 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import ImageWithCount from "./ImageWithCount";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import ImageWithCount from './ImageWithCount';
 import testImage from '../../../../images/skills/drums/drum-1.jpg';
 
 const meta = {
   title: 'components/ImageWithCount',
   component: ImageWithCount,
-  tags: ['autodocs'],
+  tags: ['autodocs']
 } satisfies Meta<typeof ImageWithCount>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-
-
 export const FilterRadioUI: Story = {
   args: {
     image: testImage,
-    count: 2,
+    count: 2
   }
-}
+};

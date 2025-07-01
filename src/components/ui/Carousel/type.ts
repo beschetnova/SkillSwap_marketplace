@@ -1,4 +1,4 @@
 export type TCarousel = {
-  images: string[]; 
+  images: string[];
   showArrow?: boolean;
-}
+};

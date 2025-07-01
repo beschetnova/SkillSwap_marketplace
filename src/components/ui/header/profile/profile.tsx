@@ -11,11 +11,7 @@ const Profile = () => {
         className={`${styles.button} ${styles.user}`}
       >
         <span>Имя пользователя</span>
-        <img
-          src={profileIcon}
-          alt='Иконка профиля'
-          className={styles.icon}
-        />
+        <img src={profileIcon} alt='Иконка профиля' className={styles.icon} />
       </Button>
     </section>
   );

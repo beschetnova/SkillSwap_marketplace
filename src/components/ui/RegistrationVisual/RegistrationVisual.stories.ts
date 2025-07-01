@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { RegistrationVisual } from './RegistrationVisual';
 import type { TRegistrationVisual } from './type';
 
@@ -18,17 +18,20 @@ const stepContent: TRegistrationVisual['stepContent'] = [
   {
     image: '/public/light-bulb.svg',
     title: 'Добро пожаловать в SkillSwap!',
-    description: 'Присоединяйтесь к SkillSwap и обменивайтесь знаниями и навыками с другими людьми'
+    description:
+      'Присоединяйтесь к SkillSwap и обменивайтесь знаниями и навыками с другими людьми'
   },
   {
     image: '/public/user info.svg',
     title: 'Расскажите немного о себе',
-    description: 'Это поможет другим людям лучше вас узнать, чтобы выбрать для обмена'
+    description:
+      'Это поможет другим людям лучше вас узнать, чтобы выбрать для обмена'
   },
   {
     image: '/public/school-board.svg',
     title: 'Укажите, чем вы готовы поделиться',
-    description: 'Так другие люди смогут увидеть ваши предложения и предложить вам обмен!'
+    description:
+      'Так другие люди смогут увидеть ваши предложения и предложить вам обмен!'
   }
 ];
 

@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import FooterUI from './footer';
 
 const meta = {
   title: 'Components/Footer',
   component: FooterUI,
   parameters: {
-    layout: 'fullscreen',
-  },
+    layout: 'fullscreen'
+  }
 } satisfies Meta<typeof FooterUI>;
 
 export default meta;
