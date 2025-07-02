@@ -21,7 +21,6 @@ const FilterNested = ({
   onMarkCategory,
   onUnmarkCategory
 }: Props) => {
-  // const [checkedItem, setcheckedItem] = useState<string[]>([]);
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
 
   const [showAll, setShowAll] = useState(false);
@@ -36,18 +35,6 @@ const FilterNested = ({
         : [...prev, categoryId]
     );
   };
-
-  // const toggleSkillCheck = (skillId: string) => {
-  //   setcheckedItem((prev) => {
-  //     if (prev.includes(skillId)) {
-  //       // Удаляем из массива
-  //       return prev.filter((id) => id !== skillId);
-  //     } else {
-  //       // Добавляем в массив
-  //       return [...prev, skillId];
-  //     }
-  //   });
-  // };
 
   return (
     <FilterNestedUI

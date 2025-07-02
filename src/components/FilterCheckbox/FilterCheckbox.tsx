@@ -24,15 +24,6 @@ const FilterCheckbox = ({
     setShowAll((prev) => !prev);
   };
 
-  // const handleCheckboxChange = (item: string) => {
-  //   setcheckedItem((prev) => {
-  //     if (prev.includes(item)) {
-  //       return prev.filter((i) => i !== item);
-  //     } else {
-  //       return [...prev, item];
-  //     }
-  //   });
-  // };
   return (
     <FilterCheckboxUI
       title={title}
