@@ -3,12 +3,14 @@ import skillsSlice from './slices/skillsSlice';
 import usersSlice from './slices/usersSlice';
 import citiesSlice from './slices/citiesSlice';
 import profileSlice from './slices/profileSlice';
+import filtersSlice from './slices/filtersSlice';
 
 export const rootReducer = combineSlices({
   skills: skillsSlice,
   users: usersSlice,
   cities: citiesSlice,
-  profile: profileSlice
+  profile: profileSlice,
+  filters: filtersSlice
 });
 
 export const store = configureStore({
