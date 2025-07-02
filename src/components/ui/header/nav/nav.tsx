@@ -25,7 +25,7 @@ const Nav = () => {
         className={`${styles.button} ${styles.buttonSkills}`}
         onClick={handleToggle}
       >
-        <span>Навыки</span>
+        <span>Все навыки</span>
         <img src={skillsIcon} alt='Иконка' />
       </Button>
       {isDropdownOpen && (
