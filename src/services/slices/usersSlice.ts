@@ -4,7 +4,7 @@ import {
   createSlice
 } from '@reduxjs/toolkit';
 import { getUsers } from '../../api/api';
-import type { Users } from '../../utils/types';
+import type { Users, User } from '../../utils/types';
 import type { RootState } from '../store';
 
 type UsersState = {
@@ -39,6 +39,23 @@ export const usersSlice = createSlice({
         state.isLoading = false;
         state.error = action.error.message;
       });
+  },
+  selectors: {
+    selectUsersWithSameOffer: (state, user: User) => {
+      const result: Users = [];
+      const allUsers = state.users;
+      user.skillsToTeach.forEach((skill) => {
+        allUsers.forEach((otherUser) => {
+          if (user.id !== otherUser.id) {
+            otherUser.skillsToTeach.forEach((otherSkill) => {
+              if (otherSkill.skill === skill.skill) result.push(otherUser);
+            })
+          }
+        })
+      })
+
+      return result;
+    } 
   }
 });
 
@@ -46,5 +63,6 @@ export const selectAllUsers = (state: RootState) => state.users.users;
 export const selectAllUsersCity = createSelector([selectAllUsers], (users) => [
   ...new Set(users.map((user) => user.city))
 ]);
+export const { selectUsersWithSameOffer } = usersSlice.selectors;
 
 export default usersSlice.reducer;
