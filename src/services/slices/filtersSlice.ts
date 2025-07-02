@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-type FiltersState = {
+export type FiltersState = {
   type: string;
   skills: string[];
   gender: string;
@@ -8,7 +8,7 @@ type FiltersState = {
 };
 
 const initialState: FiltersState = {
-  type: 'Все',
+  type: 'Всё',
   skills: [],
   gender: 'Не имеет значения',
   cities: []
@@ -18,17 +18,42 @@ export const filtersSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
-    setType: (state, action) => {
+    setType: (state, action: PayloadAction<string>) => {
       state.type = action.payload;
     },
-    setGender: (state, action) => {
+    setGender: (state, action: PayloadAction<string>) => {
       state.gender = action.payload;
     },
-    setSkills: (state, action) => {
-      state.skills = action.payload;
+    toggleSkill: (state, action: PayloadAction<string>) => {
+      const skillId = action.payload;
+      const index = state.skills.indexOf(skillId);
+      if (index >= 0) {
+        state.skills.splice(index, 1);
+      } else {
+        state.skills.push(skillId);
+      }
     },
-    setCities: (state, action) => {
-      state.cities = action.payload;
+    toggleCity: (state, action: PayloadAction<string>) => {
+      const city = action.payload;
+      const index = state.cities.indexOf(city);
+      if (index >= 0) {
+        state.cities.splice(index, 1);
+      } else {
+        state.cities.push(city);
+      }
+    },
+    markCategorySkills: (state, action: PayloadAction<string[]>) => {
+      const skillsToAdd = action.payload;
+      const skillSet = new Set(state.cities);
+      skillsToAdd.forEach((skillId) => skillSet.add(skillId));
+      state.skills = Array.from(skillSet);
+    },
+    unmarkCategorySkills: (state, action: PayloadAction<string[]>) => {
+      const skillsToRemove = action.payload;
+      const skillsToRemoveSet = new Set(skillsToRemove);
+      state.skills = state.skills.filter(
+        (skillId) => !skillsToRemoveSet.has(skillId)
+      );
     }
   },
   selectors: {
@@ -36,7 +61,13 @@ export const filtersSlice = createSlice({
   }
 });
 
-export const { setType, setGender, setCities, setSkills } =
-  filtersSlice.actions;
+export const {
+  setType,
+  setGender,
+  toggleSkill,
+  toggleCity,
+  markCategorySkills,
+  unmarkCategorySkills
+} = filtersSlice.actions;
 export const { selectFilters } = filtersSlice.selectors;
 export default filtersSlice.reducer;

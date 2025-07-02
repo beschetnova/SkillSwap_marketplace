@@ -16,8 +16,8 @@ type Props = {
   toggleCategoryExpand: (categoryId: string) => void;
   toggleSkillCheck: (skillId: string) => void;
   buttonName: string;
-  markSkill: (categoryId: string) => void;
-  unMarkSkill: (categoryId: string) => void;
+  onMarkCategory: (categoryId: string) => void;
+  onUnmarkCategory: (categoryId: string) => void;
 };
 
 const FilterNestedUI = ({
@@ -30,119 +30,110 @@ const FilterNestedUI = ({
   toggleCategoryExpand,
   toggleSkillCheck,
   buttonName,
-  markSkill,
-  unMarkSkill
+  onMarkCategory,
+  onUnmarkCategory
 }: Props) => {
   const visibleItems = showAll ? items : items.slice(0, 5);
 
-  const checkIfChecked = (categoryId: number) => {
-    let count = 0;
-    items[categoryId].skills.forEach((skill) => {
-      if (checkedItems.includes(skill.id)) {
-        count++;
-      }
-    });
+  const getCategoryCheckState = (category: SkillCategory) => {
+    const categorySkillIds = new Set(category.skills.map((s) => s.id));
+    const checkedInCategory = checkedItems.filter((id) =>
+      categorySkillIds.has(id)
+    ).length;
 
-    if (count === 0) {
-      return -1;
-    } else if (count < items[categoryId].skills.length) {
-      return 0;
+    if (checkedInCategory === 0) {
+      return 'none';
     }
-    return 1;
-  };
-
-  const unMarkAllCategory = (categoryId: number): void => {
-    items[categoryId].skills.forEach((skill) => {
-      unMarkSkill(skill.id);
-    });
-  };
-
-  const markAllCategory = (categoryId: number): void => {
-    items[categoryId].skills.forEach((skill) => {
-      markSkill(skill.id);
-    });
+    if (checkedInCategory === category.skills.length) {
+      return 'all';
+    }
+    return 'some';
   };
 
   return (
     <div className={styles.filterContainer}>
       {title && <h3 className={styles.title}>{title}</h3>}
-      {visibleItems.map((category, id) => (
-        <ul key={category.id} className={styles.mainList}>
-          {/* Категория с кнопкой раскрытия */}
-          <li className={styles.mainListPoint}>
-            <input type='checkbox' className={styles.checkboxInput} />
-            {checkIfChecked(id) === -1 && (
-              <img
-                src={emptyCheckBox}
-                onClick={() => {
-                  markAllCategory(id);
-                }}
-              />
-            )}
-            {checkIfChecked(id) === 0 && (
-              <img
-                src={deleteCheckBox}
-                onClick={() => {
-                  unMarkAllCategory(id);
-                }}
-              />
-            )}
-            {checkIfChecked(id) === 1 && (
-              <img
-                src={filledCheckBox}
-                onClick={() => {
-                  unMarkAllCategory(id);
-                }}
-              />
-            )}
-            <span
-              className={styles.mainListCategory}
+      {visibleItems.map((category) => {
+        const checkState = getCategoryCheckState(category);
+
+        return (
+          <ul key={category.id} className={styles.mainList}>
+            {/* Категория с кнопкой раскрытия */}
+            <li
+              className={styles.mainListPoint}
               onClick={() => toggleCategoryExpand(category.id)}
             >
-              {category.name}
-            </span>
-            <img
-              src={chevron}
-              className={clsx({
-                [styles.dNone]: !expandedCategories.includes(category.id),
-                [(styles.bottomButtonIconReverse, styles.bottomButtonIcon)]:
-                  expandedCategories.includes(category.id)
-              })}
-            />
-          </li>
-          {/* Внутри раскрытой категории список навыков */}
-          {expandedCategories.includes(category.id) && (
-            <ul className={styles.extraList}>
-              {category.skills.map((skill) => (
-                <li key={skill.id}>
-                  <label className={styles.extraListPoint}>
-                    <input
-                      type='checkbox'
-                      checked={checkedItems.includes(skill.id)}
-                      onChange={() => toggleSkillCheck(skill.id)}
-                      className={styles.checkboxInput}
-                    />
-                    {!checkedItems.includes(skill.id) && (
-                      <img src={emptyCheckBox} />
-                    )}
-                    {checkedItems.includes(skill.id) && (
-                      <img src={filledCheckBox} />
-                    )}
-                    {skill.name}
-                  </label>
-                </li>
-              ))}
-            </ul>
-          )}
-        </ul>
-      ))}
+              {checkState === 'none' && (
+                <img
+                  src={emptyCheckBox}
+                  alt='Выбрать все'
+                  onClick={() => onMarkCategory(category.id)}
+                  style={{ cursor: 'pointer' }}
+                />
+              )}
+              {checkState === 'some' && (
+                <img
+                  src={deleteCheckBox}
+                  alt='Снять все'
+                  onClick={() => onUnmarkCategory(category.id)}
+                  style={{ cursor: 'pointer' }}
+                />
+              )}
+              {checkState === 'all' && (
+                <img
+                  src={filledCheckBox}
+                  alt='Снять все'
+                  onClick={() => onUnmarkCategory(category.id)}
+                  style={{ cursor: 'pointer' }}
+                />
+              )}
+              <span className={styles.mainListCategory}>{category.name}</span>
+              <img
+                alt=''
+                src={chevron}
+                className={clsx(styles.bottomButtonIcon, {
+                  [styles.bottomButtonIconReverse]: expandedCategories.includes(
+                    category.id
+                  )
+                })}
+              />
+            </li>
+            {/* Внутри раскрытой категории список навыков */}
+            {expandedCategories.includes(category.id) && (
+              <ul className={styles.extraList}>
+                {category.skills.map((skill) => (
+                  <li key={skill.id}>
+                    <label className={styles.extraListPoint}>
+                      <input
+                        type='checkbox'
+                        checked={checkedItems.includes(skill.id)}
+                        onChange={() => toggleSkillCheck(skill.id)}
+                        className={styles.checkboxInput}
+                      />
+                      <img
+                        src={
+                          checkedItems.includes(skill.id)
+                            ? filledCheckBox
+                            : emptyCheckBox
+                        }
+                        alt=''
+                      />
+                      {skill.name}
+                    </label>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </ul>
+        );
+      })}
       {items.length > 5 && (
         <button onClick={toggleShowAll} className={styles.bottomButton}>
-          {buttonName}
+          {showAll ? 'Свернуть' : buttonName}
           <img
+            alt=''
             src={chevron}
-            className={clsx({
-              [styles.bottomButtonIcon]: true,
+            className={clsx(styles.bottomButtonIcon, {
               [styles.bottomButtonIconReverse]: showAll
             })}
           />
