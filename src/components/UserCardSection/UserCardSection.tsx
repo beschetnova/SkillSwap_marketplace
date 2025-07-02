@@ -2,6 +2,7 @@ import styles from './UserCardSection.module.css';
 import { UserCard } from '../UserCard/UserCard';
 import type { SkillCategories, User } from '../../utils/types.ts';
 import { useState } from 'react';
+import Button from '../ui/buttons/button.tsx';
 
 interface UserCardSectionProps {
   title: string;
@@ -25,9 +26,9 @@ export const UserCardSection = ({
       <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
         {!showAll && users.length > 3 && (
-          <button className={styles.button} onClick={handleShowMore}>
+          <Button type='tertiary' className={styles.button} onClick={handleShowMore}>
             Смотреть все
-          </button>
+          </Button>
         )}
       </div>
       <div className={styles.cardsGrid}>

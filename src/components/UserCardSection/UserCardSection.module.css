@@ -1,6 +1,7 @@
 .header {
   display: flex;
   margin-bottom: 32px;
+  min-height: 50px;
 }
 
 .button {
