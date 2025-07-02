@@ -17,10 +17,26 @@ const initialState: FiltersState = {
 export const filtersSlice = createSlice({
   name: 'filters',
   initialState,
-  reducers: {},
+  reducers: {
+    setType: (state, action) => {
+      state.type = action.payload;
+    },
+    setGender: (state, action) => {
+      state.gender = action.payload;
+    },
+    setSkills: (state, action) => {
+      state.skills = action.payload;
+    },
+    setCities: (state, action) => {
+      state.cities = action.payload;
+    }
+  },
   selectors: {
     selectFilters: (state) => state
   }
 });
 
+export const { setType, setGender, setCities, setSkills } =
+  filtersSlice.actions;
+export const { selectFilters } = filtersSlice.selectors;
 export default filtersSlice.reducer;
