@@ -1,14 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import FilterCheckbox from "./FilterCheckbox";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import FilterCheckbox from './FilterCheckbox';
 import { fn } from 'storybook/test';
 
 const meta = {
   title: 'components/Aside/FilterCheckbox',
   component: FilterCheckbox,
   tags: ['autodocs'],
-  args: { toggleShowAll: fn(),
-    handleCheckboxChange: fn()
-   }
+  args: { toggleShowAll: fn(), handleCheckboxChange: fn() }
 } satisfies Meta<typeof FilterCheckbox>;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -38,10 +36,10 @@ const cities = [
 
 export const FilterCheckboxUI: Story = {
   args: {
-    title: "тестовый заголовок",
+    title: 'тестовый заголовок',
     items: cities,
     checkedItems: [],
     showAll: false,
-    buttonName: "тестовое название кнопки"
+    buttonName: 'тестовое название кнопки'
   }
-}
+};

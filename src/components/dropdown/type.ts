@@ -1,6 +1,6 @@
-import type { ReactNode } from "react"
+import type { ReactNode } from 'react';
 
 export type TDropdown = {
-    trigger: ReactNode;
-    children: ReactNode;
-}
+  trigger: ReactNode;
+  children: ReactNode;
+};

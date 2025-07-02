@@ -1,4 +1,4 @@
-import briefcase  from './briefcase-icon.svg';
+import briefcase from './briefcase-icon.svg';
 import global from './global-icon.svg';
 import home from './home-icon.svg';
 import palette from './palette-icon.svg';
@@ -12,4 +12,4 @@ export const icons = {
   palette,
   book,
   lifeStile
-}
+};

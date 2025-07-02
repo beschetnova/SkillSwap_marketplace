@@ -5,9 +5,8 @@ import styles from './UserOfferDescriptionCard.module.css';
 const UserOfferDescriptionCard: FC<TUserOfferDescriptionCard> = ({
   title,
   category,
-  description,
+  description
 }) => {
-
   return (
     <div className={styles.card}>
       <div className={styles.headerContainer}>
@@ -19,4 +18,4 @@ const UserOfferDescriptionCard: FC<TUserOfferDescriptionCard> = ({
   );
 };
 
-export default UserOfferDescriptionCard
+export default UserOfferDescriptionCard;

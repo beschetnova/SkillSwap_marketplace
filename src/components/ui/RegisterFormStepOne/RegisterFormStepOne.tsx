@@ -11,11 +11,11 @@ export const RegisterFormStepOneUI = () => {
       <div className={styles.elementList}>
         <Button type='secondary' className={styles.button}>
           <img src='/Google.svg' alt='Google' className={styles.icon} />
-          <span>Продолжить с Google</span>
+          <span>Продолжить с Google</span>
         </Button>
         <Button type='secondary' className={styles.button}>
           <img src='/Apple.svg' alt='Apple' className={styles.icon} />
-          <span>Продолжить с Apple</span>
+          <span>Продолжить с Apple</span>
         </Button>
       </div>
       <div className={styles.divider}>
@@ -36,7 +36,7 @@ export const RegisterFormStepOneUI = () => {
             label='Пароль'
             placeholder='Придумайте надёжный пароль'
             type={showPassword ? 'text' : 'password'}
-            info='Пароль должен содержать не менее 8 знаков'
+            info='Пароль должен содержать не менее 8 знаков'
             rightIcon={
               <button
                 type='button'
