@@ -6,10 +6,21 @@ type Props = {
   title?: string;
   items: SkillCategory[];
   buttonName: string;
+  checkedItems: string[];
+  toggleSkillCheck: (skillId: string) => void;
+  onMarkCategory: (categoryId: string) => void;
+  onUnmarkCategory: (categoryId: string) => void;
 };
 
-const FilterNested = ({ title, items, buttonName }: Props) => {
-  const [checkedItem, setcheckedItem] = useState<string[]>([]);
+const FilterNested = ({
+  title,
+  items,
+  buttonName,
+  checkedItems,
+  toggleSkillCheck,
+  onMarkCategory,
+  onUnmarkCategory
+}: Props) => {
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
 
   const [showAll, setShowAll] = useState(false);
@@ -18,56 +29,26 @@ const FilterNested = ({ title, items, buttonName }: Props) => {
     setShowAll((prev) => !prev);
   };
   const toggleCategoryExpand = (categoryId: string) => {
-    setExpandedCategories((prev) => {
-      if (prev.includes(categoryId)) {
-        // Удаляем из массива
-        return prev.filter((id) => id !== categoryId);
-      } else {
-        // Добавляем в массив
-        return [...prev, categoryId];
-      }
-    });
-  };
-
-  const toggleSkillCheck = (skillId: string) => {
-    setcheckedItem((prev) => {
-      if (prev.includes(skillId)) {
-        // Удаляем из массива
-        return prev.filter((id) => id !== skillId);
-      } else {
-        // Добавляем в массив
-        return [...prev, skillId];
-      }
-    });
-  };
-
-  const unMarkSkill = (skillId: string) => {
-    setcheckedItem((prev) => {
-      // Удаляем из массива
-      return prev.filter((id) => id !== skillId);
-    });
-  };
-
-  const markSkill = (skillId: string) => {
-    setcheckedItem((prev) => {
-      // Добавляем в массив
-      return [...prev, skillId];
-    });
+    setExpandedCategories((prev) =>
+      prev.includes(categoryId)
+        ? prev.filter((id) => id !== categoryId)
+        : [...prev, categoryId]
+    );
   };
 
   return (
     <FilterNestedUI
       title={title}
       items={items}
-      checkedItems={checkedItem}
+      checkedItems={checkedItems}
       expandedCategories={expandedCategories}
       showAll={showAll}
       toggleShowAll={toggleShowAll}
       toggleCategoryExpand={toggleCategoryExpand}
       toggleSkillCheck={toggleSkillCheck}
       buttonName={buttonName}
-      markSkill={markSkill}
-      unMarkSkill={unMarkSkill}
+      onMarkCategory={onMarkCategory}
+      onUnmarkCategory={onUnmarkCategory}
     />
   );
 };

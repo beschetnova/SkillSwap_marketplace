@@ -10,7 +10,7 @@ const meta = {
     toggleShowAll: fn(),
     toggleCategoryExpand: fn(),
     toggleSkillCheck: fn(),
-    markSkill: fn(),
+    onMarkCategory: fn(),
     unMarkSkill: fn()
   }
 } satisfies Meta<typeof FilterNested>;

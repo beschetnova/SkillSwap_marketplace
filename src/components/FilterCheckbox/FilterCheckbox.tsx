@@ -5,35 +5,33 @@ type Props = {
   title?: string;
   items: string[];
   buttonName: string;
+  checkedItems: string[];
+  handleCheckBoxChange: (item: string) => void;
 };
 
 //TODO: Компоненты фильтров довольно похожи, может стоит их объединить, если итоговый компонент будет не слишком огромным
 
-const FilterCheckbox = ({ title, items, buttonName }: Props) => {
-  const [checkedItem, setcheckedItem] = useState<string[]>([]);
+const FilterCheckbox = ({
+  title,
+  items,
+  buttonName,
+  checkedItems,
+  handleCheckBoxChange
+}: Props) => {
   const [showAll, setShowAll] = useState(false);
 
   const toggleShowAll = () => {
     setShowAll((prev) => !prev);
   };
 
-  const handleCheckboxChange = (item: string) => {
-    setcheckedItem((prev) => {
-      if (prev.includes(item)) {
-        return prev.filter((i) => i !== item);
-      } else {
-        return [...prev, item];
-      }
-    });
-  };
   return (
     <FilterCheckboxUI
       title={title}
       items={items}
-      checkedItems={checkedItem}
+      checkedItems={checkedItems}
       showAll={showAll}
       toggleShowAll={toggleShowAll}
-      handleCheckboxChange={handleCheckboxChange}
+      handleCheckboxChange={handleCheckBoxChange}
       buttonName={buttonName}
     />
   );
