@@ -8,4 +8,4 @@ export type TUserOfferCardUI = {
   onShareClick?: () => void;
   onMoreClick?: () => void;
   onButtonClick?: () => void;
-}
+};

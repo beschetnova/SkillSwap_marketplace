@@ -11,7 +11,7 @@ const AuthButtons = ({ setIsAuth }: AuthButtonsProps) => {
       <div className={styles.buttons}>
         <Button
           htmlType='button'
-          type="secondary"
+          type='secondary'
           onClick={() => setIsAuth(true)}
         >
           Войти

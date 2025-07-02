@@ -6,11 +6,7 @@ import { memo } from 'react';
 const Logo = () => {
   return (
     <div>
-      <Button
-        type='tertiary'
-        htmlType='button'
-        className={styles.logo}
-      >
+      <Button type='tertiary' htmlType='button' className={styles.logo}>
         <img src={logoImage} alt='Логотип' />
       </Button>
     </div>
