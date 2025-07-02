@@ -1,8 +1,12 @@
 import styles from './profile.module.css';
-import profileIcon from '../../../../../public/db/profile-pics/Maria-Moscow.png';
+
 import Button from '../../../ui/buttons/button';
 
-const Profile = () => {
+type ProfileIconProps = {
+  profileIcon: string;
+};
+
+const Profile = ({ profileIcon }: ProfileIconProps) => {
   return (
     <section className={styles.section}>
       <Button

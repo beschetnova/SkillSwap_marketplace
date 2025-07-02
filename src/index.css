@@ -71,6 +71,17 @@
   box-sizing: border-box;
 }
 
+body {
+  margin: 0 auto;
+  font-family: var(--font-main);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
 h1,
 h2,
 h3,
