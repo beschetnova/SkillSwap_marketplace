@@ -2,7 +2,7 @@
   border-radius: 12px;
   padding: 20px;
   background-color: var(--card-input-color);
-  max-width: 324px;
+  width: 324px;
   display: flex;
   flex-direction: column;
   color: var(--text-color);
