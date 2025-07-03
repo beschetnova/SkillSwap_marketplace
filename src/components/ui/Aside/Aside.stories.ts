@@ -138,6 +138,18 @@ export const AsideUI: Story = {
     mainFilter: mainFilter,
     skills: skills,
     sexFilter: sexFilter,
-    cityFilter: cityFilter
+    cityFilter: cityFilter,
+    activeFilters: {
+      type: 'Всё',
+      skills: [],
+      gender: 'Не имеет значения',
+      cities: []
+    },
+    onMainFilterChange: () => {},
+    onGenderChange: () => {},
+    onSkillToggle: () => {},
+    onCityToggle: () => {},
+    onMarkCategory: () => {},
+    onUnmarkCategory: () => {}
   }
 };
