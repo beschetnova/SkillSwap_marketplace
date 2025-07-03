@@ -1,0 +1,142 @@
+.main {
+  overflow: auto;
+  padding: 32px 36px;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  height: 752px;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.profile_sidebar {
+  display: flex;
+  min-width: 324px;
+  height: 100%;
+  border-radius: 24px;
+  background-color: var(--card-input-color);
+  padding: 40px;
+}
+
+.sidebar_list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar_item {
+  width: 244px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  gap: 12px;
+  padding: 12px 20px;
+}
+
+.sidebar_item:hover {
+  background-color: var(--disabled-color);
+}
+
+.sidebar_item:active {
+  background-color: var(--button-hover-color);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.profile_info {
+  display: flex;
+  min-width: 1020px;
+  height: 100%;
+  flex: 1;
+  border-radius: 24px;
+  padding: 60px;
+  justify-content: space-between;
+  background-color: var(--card-input-color);
+}
+
+.info_content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.info_inputs_wrapper {
+  width: 460px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.email_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.change_password_link {
+  font-weight: 500;
+  color: var(--text-link-button-pressed-color);
+}
+
+.date_wrapper {
+  display: flex;
+  gap: 24px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.description_input_container {
+  display: flex;
+  border: 0.0625rem solid var(--caption-color);
+  border-radius: 0.75rem;
+  padding: 12px 20px;
+  height: 120px;
+}
+
+.description_input {
+  flex: 1;
+  height: 96px;
+  resize: none;
+  overflow: hidden;
+  outline: none;
+  border: none;
+  font: var(--font-main);
+  color: var(--text-color);
+  font-size: 16px;
+}
+
+.right_icon {
+  display: flex;
+  align-items: center;
+}
+
+.info_photo_container {
+  width: 244px;
+  height: 244px;
+  position: relative;
+}
+
+.profile_photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.photo_edit_button {
+  width: 56px;
+  height: 56px;
+  border-radius: 100px;
+  padding: 16px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
