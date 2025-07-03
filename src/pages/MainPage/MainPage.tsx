@@ -1,14 +1,12 @@
 // import { UserCardSection } from "../UserCardSection/UserCardSection";
-import Aside from '../../components/aside/aside.tsx';
-import Footer from '../../components/footer/footer.tsx';
-import Header from '../../components/ui/header/header.tsx';
-import { UserCardSection } from '../../components/UserCardSection/UserCardSection.tsx';
-import { useAppSelector } from '../../utils/hooks.ts';
 import { selectAllSkills } from '../../services/slices/skillsSlice';
 import { selectAllUsers } from '../../services/slices/usersSlice.ts';
-import styles from './MainPage.module.css';
 import { selectFilters } from '../../services/slices/filtersSlice.ts';
+import { useAppSelector } from '../../utils/hooks.ts';
 import { useMemo } from 'react';
+import { UserCardSection } from '../../components/UserCardSection/UserCardSection.tsx';
+import Aside from '../../components/aside/aside.tsx';
+import styles from './MainPage.module.css';
 import type { User } from '../../utils/types.ts';
 
 const MainPage = () => {
@@ -73,7 +71,6 @@ const MainPage = () => {
 
   return (
     <>
-      <Header />
       <main className={styles.main}>
         <Aside />
         <UserCardSection
@@ -82,7 +79,6 @@ const MainPage = () => {
           categories={skills}
         />
       </main>
-      <Footer />
     </>
   );
 };
