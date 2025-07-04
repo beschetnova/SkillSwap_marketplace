@@ -81,7 +81,7 @@ const MainPage = () => {
           categories={skills}
         />
       </main>
-      
+      <Modal title='Ваше предложение создано' message='Теперь вы можете предложить обмен' icon={userIcon} isOpen={true} onClose={() => {alert(close)}}></Modal>
     </>
   );
 };
