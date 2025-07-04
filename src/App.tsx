@@ -6,8 +6,8 @@ import { fetchUsers } from './services/slices/usersSlice.ts';
 import { useAppDispatch } from './utils/hooks.ts';
 import { useEffect } from 'react';
 import Layout from './components/Layout/layout.tsx';
-import NotFound404 from './components/NotFound404/NotFound404.tsx';
 import routes from './routes/index.tsx';
+import NotFound404 from './pages/NotFound404/NotFound404.tsx';
 
 function App() {
   const dispatch = useAppDispatch();
