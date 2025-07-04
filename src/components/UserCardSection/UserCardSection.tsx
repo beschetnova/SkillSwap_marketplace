@@ -1,7 +1,7 @@
 import styles from './UserCardSection.module.css';
 import { UserCard } from '../UserCard/UserCard';
 import type { UserCardSectionProps } from './types';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Button from '../ui/buttons/button.tsx';
 
 export const UserCardSection = ({
@@ -10,22 +10,50 @@ export const UserCardSection = ({
   categories,
   toShowAll = false
 }: UserCardSectionProps) => {
-  const [showAll, setShowAll] = useState(false);
-  const visibleUsers = toShowAll || showAll ? users : users.slice(0, 3);
-  let header = title;
+  const [visibleCount, setVisibleCount] = useState(toShowAll ? 9 : 3);
+  const [scrollEnabled, setScrollEnabled] = useState(toShowAll);
+  const lastCardRef = useRef<HTMLDivElement | null>(null);
+
+  const header =
+    title === 'Подходящие предложения'
+      ? `Подходящие предложения: ${users.length}`
+      : title;
 
   const handleShowMore = () => {
-    setShowAll(true);
+    setVisibleCount(9);
+    setScrollEnabled(true);
   };
 
-  if (title === 'Подходящие предложения') {
-    header = `Подходящие предложения: ${users.length}`;
-  }
+  useEffect(() => {
+    if (!scrollEnabled || visibleCount >= users.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          setVisibleCount((prev) => Math.min(prev + 9, users.length));
+        }
+      },
+      {
+        rootMargin: '0px',
+        threshold: 1.0
+      }
+    );
+
+    const node = lastCardRef.current;
+    if (node) observer.observe(node);
+
+    return () => {
+      if (node) observer.disconnect();
+    };
+  }, [scrollEnabled, visibleCount, users.length]);
+
+  const visibleUsers = users.slice(0, visibleCount);
   return (
     <section className={styles.section}>
       <div className={styles.header}>
         <h2 className={styles.title}>{header}</h2>
-        {!showAll && !toShowAll && users.length > 3 && (
+        {!scrollEnabled && users.length > 3 && (
           <Button
             type='tertiary'
             className={styles.button}
@@ -36,8 +64,13 @@ export const UserCardSection = ({
         )}
       </div>
       <div className={styles.cardsGrid}>
-        {visibleUsers.map((user) => (
-          <UserCard key={user.id} user={user} categories={categories} />
+        {visibleUsers.map((user, idx) => (
+          <div
+            key={user.id}
+            ref={idx === visibleUsers.length - 1 ? lastCardRef : null}
+          >
+            <UserCard user={user} categories={categories} />
+          </div>
         ))}
       </div>
     </section>
