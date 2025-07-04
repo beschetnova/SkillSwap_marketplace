@@ -1,4 +1,3 @@
-// import { UserCardSection } from "../UserCardSection/UserCardSection";
 import { selectAllSkills } from '../../services/slices/skillsSlice';
 import { selectAllUsers } from '../../services/slices/usersSlice.ts';
 import { selectFilters } from '../../services/slices/filtersSlice.ts';
@@ -8,8 +7,6 @@ import { UserCardSection } from '../../components/UserCardSection/UserCardSectio
 import Aside from '../../components/aside/aside.tsx';
 import styles from './MainPage.module.css';
 import type { User } from '../../utils/types.ts';
-import { Modal } from '../../components/modal/modal.tsx';
-import userIcon from '../../images/icons/user-circle.svg'
 
 const MainPage = () => {
   const skills = useAppSelector(selectAllSkills);
@@ -81,7 +78,6 @@ const MainPage = () => {
           categories={skills}
         />
       </main>
-      <Modal title='Ваше предложение создано' message='Теперь вы можете предложить обмен' icon={userIcon} isOpen={true} onClose={() => {alert(close)}}></Modal>
     </>
   );
 };
