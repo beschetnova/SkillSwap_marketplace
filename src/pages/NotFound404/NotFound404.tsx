@@ -13,7 +13,7 @@ export const NotFound404 = () => {
 
   return(
     <div className={styles.component}>
-      <NotFound404UI redirectHandle={redirectHandle} errorMessageHandle={errorMessageHandle} />;
+      <NotFound404UI redirectHandle={redirectHandle} errorMessageHandle={errorMessageHandle} />
     </div>
   )
 };
