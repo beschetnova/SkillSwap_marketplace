@@ -8,13 +8,6 @@ import { UserCardSection } from '../../components/UserCardSection/UserCardSectio
 import Aside from '../../components/aside/aside.tsx';
 import styles from './MainPage.module.css';
 import type { User } from '../../utils/types.ts';
-import { OfferModal } from '../../components/ui/OfferModal/OfferModal.tsx';
-
-import testImage1 from '../../images/skills/drums/drum-1.jpg';
-import testImage5 from '../../images/skills/drums/drum-1.jpg';
-import testImage2 from '../../images/skills/drums/drum-2.jpg';
-import testImage3 from '../../images/skills/drums/drum-3.jpg';
-import testImage4 from '../../images/skills/drums/drum-4.jpg';
 
 const MainPage = () => {
   const skills = useAppSelector(selectAllSkills);
@@ -76,8 +69,6 @@ const MainPage = () => {
     });
   }, [users, filters]);
 
-  const items = [testImage1, testImage2, testImage3, testImage4, testImage5];
-
   return (
     <>
       <main className={styles.main}>
@@ -86,17 +77,6 @@ const MainPage = () => {
           title='Рекомендуем'
           users={filteredUsers}
           categories={skills}
-        />
-        <OfferModal
-          isOpen={true}
-          onClose={() => {}}
-          title={'Игра на барабанах'}
-          category={'Творчество и искусство'}
-          subcategory={'Музыка и звук'}
-          description={
-            'Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры'
-          }
-          images={items}
         />
       </main>
     </>
