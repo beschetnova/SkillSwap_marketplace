@@ -1,4 +1,3 @@
-// import { UserCardSection } from "../UserCardSection/UserCardSection";
 import { selectAllSkills } from '../../services/slices/skillsSlice';
 import { selectAllUsers } from '../../services/slices/usersSlice.ts';
 import { selectFilters } from '../../services/slices/filtersSlice.ts';

@@ -2,7 +2,7 @@ import { ModalUI } from '../ui/modal/modal';
 import type { TModalProps } from './type';
 import { useCallback, useEffect } from 'react';
 
-export const Modal = ({ isOpen, onClose, children }: TModalProps) => {
+export const Modal = ({ isOpen, onClose, title, message, icon }: TModalProps) => {
   const handleEscapeClose = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -22,8 +22,12 @@ export const Modal = ({ isOpen, onClose, children }: TModalProps) => {
   }, [isOpen, handleEscapeClose]);
 
   return (
-    <ModalUI isOpen={isOpen} onClose={onClose}>
-      {children}
-    </ModalUI>
+    <ModalUI
+      isOpen={isOpen}
+      onClose={onClose}
+      title={title}
+      message={message}
+      icon={icon}
+    ></ModalUI>
   );
 };
