@@ -16,7 +16,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    console.log(fullWidth);
     return (
       <button
         type={htmlType}
