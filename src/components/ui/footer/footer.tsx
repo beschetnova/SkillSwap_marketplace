@@ -7,7 +7,7 @@ const FooterUI = () => {
       <div className={styles.footer_container}>
         <div className={styles.menu_left_part}>
           <Logo />
-          <div className={styles.copyright}>SkillSwap — 2025</div>
+          <div className={styles.copyright}>SkillSwap — 2025</div>
         </div>
         <div className={styles.menu_right_part}>
           <div className={styles.menu_column}>

@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import type { TUserOfferDescriptionCard } from './type';
 import styles from './UserOfferDescriptionCard.module.css';
 
-const UserOfferDescriptionCard: FC<TUserOfferDescriptionCard> = ({
+export const UserOfferDescriptionCard: FC<TUserOfferDescriptionCard> = ({
   title,
   category,
   description
