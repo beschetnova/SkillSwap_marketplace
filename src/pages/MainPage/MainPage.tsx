@@ -1,18 +1,27 @@
 // import { UserCardSection } from "../UserCardSection/UserCardSection";
 import { selectAllSkills } from '../../services/slices/skillsSlice';
 import { selectAllUsers } from '../../services/slices/usersSlice.ts';
-import { selectFilters } from '../../services/slices/filtersSlice.ts';
-import { useAppSelector } from '../../utils/hooks.ts';
+import {
+  selectFilters,
+  setGender,
+  setType,
+  toggleCity
+} from '../../services/slices/filtersSlice.ts';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks.ts';
 import { useMemo } from 'react';
 import { UserCardSection } from '../../components/UserCardSection/UserCardSection.tsx';
 import Aside from '../../components/aside/aside.tsx';
 import styles from './MainPage.module.css';
 import type { User } from '../../utils/types.ts';
+import type { ActiveFilterButton } from '../../components/ui/ActiveFilters/types.ts';
+import { ActiveFilters } from '../../components/ui/ActiveFilters/ActiveFilters.tsx';
 
 const MainPage = () => {
   const skills = useAppSelector(selectAllSkills);
   const users = useAppSelector(selectAllUsers);
   const filters = useAppSelector(selectFilters);
+
+  const dispatch = useAppDispatch();
 
   const filteredUsers = useMemo(() => {
     return users.filter((user: User) => {
@@ -64,20 +73,56 @@ const MainPage = () => {
         }
       }
 
-      // Если все проверки пройдены, пользователь подходит
       return true;
     });
   }, [users, filters]);
+
+  const ActiveFilterButtons = useMemo((): ActiveFilterButton[] => {
+    const tags: ActiveFilterButton[] = [];
+    if (filters.type !== 'Всё') {
+      tags.push({ id: 'type', type: 'type', label: filters.type });
+    }
+
+    if (filters.gender !== 'Не имеет значения') {
+      tags.push({ id: 'gender', type: 'gender', label: filters.gender });
+    }
+
+    filters.cities.forEach((city) => {
+      tags.push({ id: city, type: 'city', label: city });
+    });
+
+    return tags;
+  }, [filters, skills]);
+
+  const handleRemoveFilter = (filter: ActiveFilterButton) => {
+    switch (filter.type) {
+      case 'type':
+        dispatch(setType('Всё'));
+        break;
+      case 'gender':
+        dispatch(setGender('Не имеет значения'));
+        break;
+      case 'city':
+        dispatch(toggleCity(filter.id));
+        break;
+    }
+  };
 
   return (
     <>
       <main className={styles.main}>
         <Aside />
-        <UserCardSection
-          title='Рекомендуем'
-          users={filteredUsers}
-          categories={skills}
-        />
+        <div>
+          <ActiveFilters
+            filters={ActiveFilterButtons}
+            onRemoveTag={handleRemoveFilter}
+          />
+          <UserCardSection
+            title='Рекомендуем'
+            users={filteredUsers}
+            categories={skills}
+          />
+        </div>
       </main>
     </>
   );
