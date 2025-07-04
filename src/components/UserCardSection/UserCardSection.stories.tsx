@@ -13,6 +13,7 @@ type Story = StoryObj<typeof UserCardSection>;
 export const Default: Story = {
   args: {
     title: 'Популярное',
+    toShowAll: true,
     users: [
       {
         id: 1,

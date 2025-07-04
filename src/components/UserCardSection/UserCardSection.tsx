@@ -1,32 +1,36 @@
 import styles from './UserCardSection.module.css';
 import { UserCard } from '../UserCard/UserCard';
-import type { SkillCategories, User } from '../../utils/types.ts';
+import type { UserCardSectionProps } from './types';
 import { useState } from 'react';
 import Button from '../ui/buttons/button.tsx';
-
-interface UserCardSectionProps {
-  title: string;
-  users: User[];
-  categories: SkillCategories;
-}
 
 export const UserCardSection = ({
   title,
   users,
-  categories
+  categories,
+  toShowAll = false
 }: UserCardSectionProps) => {
   const [showAll, setShowAll] = useState(false);
-  const visibleUsers = showAll ? users : users.slice(0, 3);
+  const visibleUsers = toShowAll || showAll ? users : users.slice(0, 3);
+  let header = title;
 
   const handleShowMore = () => {
     setShowAll(true);
   };
+
+  if (title === 'Подходящие предложения') {
+    header = `Подходящие предложения: ${users.length}`;
+  }
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <h2 className={styles.title}>{title}</h2>
-        {!showAll && users.length > 3 && (
-          <Button type='tertiary' className={styles.button} onClick={handleShowMore}>
+        <h2 className={styles.title}>{header}</h2>
+        {!showAll && !toShowAll && users.length > 3 && (
+          <Button
+            type='tertiary'
+            className={styles.button}
+            onClick={handleShowMore}
+          >
             Смотреть все
           </Button>
         )}
