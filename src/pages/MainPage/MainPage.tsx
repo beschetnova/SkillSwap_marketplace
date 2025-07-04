@@ -5,7 +5,9 @@ import {
   selectFilters,
   setGender,
   setType,
-  toggleCity
+  toggleCity,
+  toggleSkill,
+  unmarkCategorySkills
 } from '../../services/slices/filtersSlice.ts';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks.ts';
 import { useMemo } from 'react';
@@ -91,6 +93,33 @@ const MainPage = () => {
       tags.push({ id: city, type: 'city', label: city });
     });
 
+    const skillsSet = new Set(filters.skills);
+    const checkedSkillIDs = new Set<string>();
+
+    skills.forEach((category) => {
+      const categorySkillIDs = category.skills.map((skill) => skill.id);
+      const allSelected = categorySkillIDs.every((id) => skillsSet.has(id));
+
+      if (allSelected && categorySkillIDs.length > 0) {
+        tags.push({
+          id: category.id,
+          type: 'skillCategory',
+          label: category.name
+        });
+        categorySkillIDs.forEach((id) => checkedSkillIDs.add(id));
+      }
+    });
+
+    const _skills = skills.flatMap((category) => category.skills);
+    filters.skills.forEach((id) => {
+      if (!checkedSkillIDs.has(id)) {
+        const skill = _skills.find((s) => s.id === id);
+        if (skill) {
+          tags.push({ id: id, type: 'skill', label: skill.name });
+        }
+      }
+    });
+
     return tags;
   }, [filters, skills]);
 
@@ -104,6 +133,16 @@ const MainPage = () => {
         break;
       case 'city':
         dispatch(toggleCity(filter.id));
+        break;
+      case 'skillCategory':
+        const category = skills.find((c) => c.id === filter.id);
+        if (category) {
+          const skillIdsToRemove = category.skills.map((s) => s.id);
+          dispatch(unmarkCategorySkills(skillIdsToRemove));
+        }
+        break;
+      case 'skill':
+        dispatch(toggleSkill(filter.id));
         break;
     }
   };

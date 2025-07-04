@@ -1,6 +1,6 @@
 export type ActiveFilterButton = {
   id: string;
-  type: 'type' | 'gender' | 'skill' | 'city';
+  type: 'type' | 'gender' | 'skill' | 'skillCategory' | 'city';
   label: string; 
 }
 
