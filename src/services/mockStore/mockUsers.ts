@@ -574,7 +574,7 @@ export const mockUsers = [
     "name": "Мария",
     "city": "Москва",
     "gender": "female",
-    "birthDate": "1990-06-23",
+    "birthDate": "1995-10-28",
     "bio": "Люблю учиться новому, особенно если это можно делать за чаем и в пижаме. Всегда готова пообщаться и обменяться чем‑то интересным!",
     "skillsToTeach": [
       {
@@ -605,6 +605,7 @@ export const mockUsers = [
         "subcategory": "video-editing"
       }
     ],
-    "photo": "Maria-Moscow.png"
+    "photo": "Maria-Moscow.png",
+    "email": "Mariia@gmail.com"
   }
 ]

@@ -1,16 +1,16 @@
-import Header from '../../components/ui/header/header.tsx';
-import ProfilePageUI from '../../components/ui/pages/ProfilePage/ProfilePage.tsx';
-import Footer from '../../components/footer/footer.tsx';
-
+import styles from './ProfilePage.module.css';
+import ProfileSidebar from '../../components/ui/ProfileSidebar/ProfileSidebar';
+import ProfileInfo from '../../components/ui/ProfileInfo/ProfileInfo';
 
 const ProfilePage = () => {
   return (
-    <>
-      <Header />
-      <ProfilePageUI />
-      <Footer />
-    </>
-  );
+    <main className={styles.main}>
+      <div className={styles.content}>
+        <ProfileSidebar />
+        <ProfileInfo />
+      </div>
+    </main>
+    );
 };
 
 export default ProfilePage;
