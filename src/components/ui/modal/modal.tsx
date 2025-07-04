@@ -3,7 +3,13 @@ import type { TModalUIProps } from './type';
 import styles from './modal.module.css';
 import Button from '../buttons/button';
 
-export const ModalUI: FC<TModalUIProps> = ({ isOpen, onClose, children }) => {
+export const ModalUI: FC<TModalUIProps> = ({
+  isOpen,
+  onClose,
+  icon,
+  message,
+  title
+}) => {
   if (!isOpen) return null;
 
   return (
@@ -14,7 +20,12 @@ export const ModalUI: FC<TModalUIProps> = ({ isOpen, onClose, children }) => {
           e.stopPropagation();
         }}
       >
-        {children}
+        <img className={styles.icon} src={icon} alt='Icon' />
+        <div className={styles.description}>
+          <h2>{title}</h2>
+          <p>{message}</p>
+        </div>
+
         <Button fullWidth={true} type='primary' onClick={onClose}>
           Готово
         </Button>

@@ -8,6 +8,8 @@ import { UserCardSection } from '../../components/UserCardSection/UserCardSectio
 import Aside from '../../components/aside/aside.tsx';
 import styles from './MainPage.module.css';
 import type { User } from '../../utils/types.ts';
+import { Modal } from '../../components/modal/modal.tsx';
+import userIcon from '../../images/icons/user-circle.svg'
 
 const MainPage = () => {
   const skills = useAppSelector(selectAllSkills);
@@ -79,6 +81,7 @@ const MainPage = () => {
           categories={skills}
         />
       </main>
+      
     </>
   );
 };

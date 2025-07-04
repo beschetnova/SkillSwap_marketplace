@@ -24,3 +24,14 @@
   min-height: 420px;
   min-width: 556px;
 }
+
+.icon {
+  width: 100px;
+  height: 100px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 12px
+}
