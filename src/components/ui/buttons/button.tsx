@@ -1,6 +1,7 @@
 import { forwardRef, memo } from 'react';
 import styles from './button.module.css';
 import type { ButtonProps } from './types';
+import clsx from 'clsx';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -10,14 +11,19 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       className = '',
       htmlType = 'button',
       disabled = false,
-      children
+      children,
+      fullWidth = false
     },
     ref
   ) => {
+    console.log(fullWidth);
     return (
       <button
         type={htmlType}
-        className={`${styles[type]} ${className}`}
+        className={clsx(
+          `${styles[type]} ${className}`,
+          fullWidth && `${styles.fullWidth}`
+        )}
         onClick={onClick}
         disabled={disabled}
         ref={ref}

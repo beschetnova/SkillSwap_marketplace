@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import type { TModalUIProps } from './type';
 import styles from './modal.module.css';
+import Button from '../buttons/button';
 
 export const ModalUI: FC<TModalUIProps> = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
@@ -14,6 +15,9 @@ export const ModalUI: FC<TModalUIProps> = ({ isOpen, onClose, children }) => {
         }}
       >
         {children}
+        <Button fullWidth={true} type='primary' onClick={onClose}>
+          Готово
+        </Button>
       </div>
     </div>
   );

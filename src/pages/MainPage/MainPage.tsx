@@ -8,6 +8,7 @@ import { UserCardSection } from '../../components/UserCardSection/UserCardSectio
 import Aside from '../../components/aside/aside.tsx';
 import styles from './MainPage.module.css';
 import type { User } from '../../utils/types.ts';
+import { Modal } from '../../components/modal/modal.tsx';
 
 const MainPage = () => {
   const skills = useAppSelector(selectAllSkills);
