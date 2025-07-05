@@ -44,7 +44,7 @@ export const filtersSlice = createSlice({
     },
     markCategorySkills: (state, action: PayloadAction<string[]>) => {
       const skillsToAdd = action.payload;
-      const skillSet = new Set(state.cities);
+      const skillSet = new Set(state.skills);
       skillsToAdd.forEach((skillId) => skillSet.add(skillId));
       state.skills = Array.from(skillSet);
     },
