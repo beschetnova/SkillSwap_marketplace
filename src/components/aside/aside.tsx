@@ -63,8 +63,8 @@ const Aside = () => {
       onGenderChange={handleGenderChange}
       onSkillToggle={handleSkillToggle}
       onCityToggle={handleCityToggle}
-      onMarkCategory={handleMarkCategory}       
-      onUnmarkCategory={handleUnmarkCategory}   
+      onMarkCategory={handleMarkCategory}
+      onUnmarkCategory={handleUnmarkCategory}
     />
   );
 };

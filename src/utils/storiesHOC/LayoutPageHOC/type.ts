@@ -1,3 +1,3 @@
 export type TLayoutPageHOC = {
-    children: React.ReactNode;
-}
+  children: React.ReactNode;
+};

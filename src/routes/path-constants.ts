@@ -6,6 +6,7 @@
 
 const PathConstants = {
   HOME: '/',
+  PROFILE: '/profile',
 };
 
 export default PathConstants;

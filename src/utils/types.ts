@@ -31,8 +31,8 @@ export type User = {
 };
 
 export type Profile = User & {
-  email: string
-}
+  email: string;
+};
 
 export type Users = User[];
 
