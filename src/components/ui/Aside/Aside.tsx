@@ -5,7 +5,7 @@ import FilterNested from '../../FilterNested/FilterNested';
 import FilterRadio from '../../FilterRadio/FilterRadio';
 import styles from './aside.module.css';
 
-type Props = {
+export type Props = {
   mainFilter: string[];
   skills: SkillCategories;
   sexFilter: string[];
@@ -15,7 +15,7 @@ type Props = {
   onGenderChange: (value: string) => void;
   onSkillToggle: (id: string) => void;
   onCityToggle: (city: string) => void;
-  onMarkCategory: (categoryId: string) => void;   
+  onMarkCategory: (categoryId: string) => void;
   onUnmarkCategory: (categoryId: string) => void;
 };
 
@@ -29,8 +29,8 @@ const AsideUI = ({
   onGenderChange,
   onSkillToggle,
   onCityToggle,
-  onMarkCategory,      
-  onUnmarkCategory     
+  onMarkCategory,
+  onUnmarkCategory
 }: Props) => {
   return (
     <aside className={styles.asideContainer}>

@@ -11,7 +11,7 @@ const meta = {
     toggleCategoryExpand: fn(),
     toggleSkillCheck: fn(),
     onMarkCategory: fn(),
-    unMarkSkill: fn()
+    onUnmarkCategory: fn()
   }
 } satisfies Meta<typeof FilterNested>;
 export default meta;

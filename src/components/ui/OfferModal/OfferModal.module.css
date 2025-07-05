@@ -1,0 +1,72 @@
+.overlay {
+  background-color: #8e8e8e99;
+  backdrop-filter: blur(4px);
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+}
+
+.modal {
+  position: fixed;
+  padding: 43px 60px 65px;
+  width: 100%;
+  max-width: 1024px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 12px;
+  display: flex;
+  gap: 36px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  text-align: center;
+}
+
+.text {
+  font-size: 0.75rem;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  gap: 44px;
+}
+
+.descriptionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 420px;
+  font-family: var(--font-main);
+}
+
+.buttonsContainer {
+  display: flex;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.buttonEdit,
+.buttonDone {
+  width: 100%;
+}
+
+.buttonEdit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding-inline: 27px;
+}

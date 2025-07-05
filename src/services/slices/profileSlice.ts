@@ -19,12 +19,12 @@ export const profileSlice = createSlice({
   name: 'profile',
   initialState,
   reducers: {
-    setProfile: (state, action) => {
+    setProfile: (state, action: { payload: Profile }) => {
       state.profile = action.payload;
       state.isAuth = true;
       state.accessToken = 'mock.access.jwt';
     },
-    updateProfile: (state, action) => {
+    updateProfile: (state, action: { payload: Partial<Profile> }) => {
       if (state.profile) {
         state.profile = { ...state.profile, ...action.payload };
       }
@@ -36,10 +36,10 @@ export const profileSlice = createSlice({
   },
   selectors: {
     selectProfile: (state) => {
-      state.profile;
+      return state.profile;
     },
     selectIsAuth: (state) => {
-      state.isAuth;
+      return state.isAuth;
     }
   }
 });
