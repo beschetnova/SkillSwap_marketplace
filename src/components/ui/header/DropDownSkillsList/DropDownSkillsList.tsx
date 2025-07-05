@@ -1,10 +1,11 @@
-import { selectAllSkills } from '../../../../services/slices/skillsSlice';
-import { useAppSelector } from '../../../../utils/hooks';
 import ListCategory from '../ListCategory/ListCategory';
 import styles from './dropSownSkillsList.module.css';
 
-const DropDownSkillsList = () => {
-  const skillsList = useAppSelector(selectAllSkills);
+interface DropDownSkillsListProps {
+  skillsList: Array<{ id: string; name: string; icon: string; skills: Array<{ id: string; name: string }> }>;
+}
+
+const DropDownSkillsList: React.FC<DropDownSkillsListProps> = ({ skillsList }) => {
   return (
     <ul className={styles.categoryList}>
       {skillsList.map((item) => (
@@ -15,4 +16,5 @@ const DropDownSkillsList = () => {
     </ul>
   );
 };
+
 export default DropDownSkillsList;
