@@ -17,10 +17,10 @@ const Carousel: FC<TCarousel> = ({ images, showArrow = false }) => {
     otherImagesCount: number
   ) => {
     if (otherImagesCount && index === 2) {
-      return <ImageWithCount image={image} count={otherImagesCount} />;
+      return <ImageWithCount key={index} image={image} count={otherImagesCount} />;
     }
 
-    return <img src={image} />;
+    return <img key={index} src={image} />;
   };
 
   return (

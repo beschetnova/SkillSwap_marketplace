@@ -16,12 +16,10 @@ import { calculateAge, getYearsWord } from "../../utils/date/dateUtils";
 const SkillPage = () => {
 
   const { userId } = useParams();
-
-  if (!userId) return;
-
   const selectedUser = useAppSelector((state) => getUserById(state, Number(userId)));
   const skills = useAppSelector(selectAllSkills);
-
+  
+  if (!userId) return;
   if (!selectedUser) return;
 
   const items = [testImage1, testImage2, testImage3, testImage4, testImage5];
