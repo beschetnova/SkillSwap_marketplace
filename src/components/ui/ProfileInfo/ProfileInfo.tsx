@@ -1,18 +1,26 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../../../utils/hooks.ts';
+
+import { parseISO, format } from 'date-fns';
+import { ru } from 'date-fns/locale/ru';
+
 import styles from './ProfileInfo.module.css';
+
 import Input from '../input/input.tsx';
 import DatePicker from '../../DatePicker/DatePicker.tsx';
 import Select from '../Selects/Select/Select.tsx';
 import { CitySelect } from '../Selects/CitySelect/CitySelect.tsx';
 import Button from '../buttons/button';
 import PhotoEditor from '../PhotoEditor/PhotoEditor.tsx';
-import { mockUsers } from '../../../services/mockStore/mockUsers.ts';
+
 import { profileSlice } from '../../../services/slices/profileSlice.ts';
 import type { Profile } from '../../../utils/types.ts';
+import type { RootState } from '../../../services/store.ts';
 
 export const ProfileInfo = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const userFromStore = useSelector((state: RootState) => state.profile.profile);
   const [profileData, setProfileData] = useState<Profile>({
     id: 0,
     name: '',
@@ -27,23 +35,21 @@ export const ProfileInfo = () => {
   });
 
   const [initialProfileData, setInitialProfileData] = useState<Profile | null>(null);
-  const userFromMock = mockUsers.find(user => user.id === 16);
-  const { updateProfile } = profileSlice.actions;
 
   useEffect(() => {
-    if (userFromMock) {
+    if (userFromStore) {
       setProfileData({
-        ...userFromMock,
-        email: userFromMock.email ?? ''
+        ...userFromStore,
+        email: userFromStore.email ?? ''
       });
       setInitialProfileData({
-        ...userFromMock,
-        email: userFromMock.email ?? ''
+        ...userFromStore,
+        email: userFromStore.email ?? ''
       });
     }
-  }, [userFromMock]);
+  }, [userFromStore]);
 
-  const handleChange = (field: string, value: any) => {
+  const handleChange = <K extends keyof Profile>(field: K, value: Profile[K]) => {
     setProfileData(prev => ({
       ...prev,
       [field]: value
@@ -51,15 +57,22 @@ export const ProfileInfo = () => {
   };
 
   const handleSave = () => {
-    dispatch(updateProfile(profileData));
+    dispatch(profileSlice.actions.updateProfile(profileData));
     setInitialProfileData(profileData);
   };
 
-  const isEqual = (obj1: any, obj2: any): boolean => {
+  const isEqual = (obj1: Profile, obj2: Profile): boolean => {
     return JSON.stringify(obj1) === JSON.stringify(obj2);
   };
 
-  const isChanged = initialProfileData ? !isEqual(profileData, initialProfileData) : false;
+  const isChanged = initialProfileData
+    ? !isEqual(profileData, initialProfileData)
+    : Object.values(profileData).some(value => {
+        if (Array.isArray(value)) {
+          return value.length > 0;
+        }
+        return !!value;
+      });
 
   return (
     <div className={styles.profile_info}>
@@ -102,9 +115,9 @@ export const ProfileInfo = () => {
           />
           <div className={styles.date_wrapper}>
             <DatePicker
-              value={profileData.birthDate ? new Date(profileData.birthDate) : null}
+              value={profileData.birthDate ? parseISO(profileData.birthDate) : null}
               onChange={(date) => {
-                const dateStr = date ? date.toISOString().slice(0, 10) : '';
+                const dateStr = date ? format(date, 'yyyy-MM-dd', { locale: ru }) : '';
                 handleChange('birthDate', dateStr);
               }}
             />
@@ -160,7 +173,7 @@ export const ProfileInfo = () => {
         </Button>
       </div>
       <PhotoEditor
-        photo={profileData.photo}
+        photo={profileData.photo ? `/db/profile-pics/${profileData.photo}` : ''}
         setPhoto={(photo) => handleChange('photo', photo)}
       />
     </div>
