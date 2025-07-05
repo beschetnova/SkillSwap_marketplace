@@ -1,0 +1,36 @@
+.profile_sidebar {
+  display: flex;
+  width: 324px;
+  height: 752px;
+  border-radius: 24px;
+  background-color: var(--card-input-color);
+  padding: 40px;
+}
+
+.sidebar_list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar_item {
+  width: 244px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  gap: 12px;
+  padding: 12px 20px;
+}
+
+.sidebar_item:hover {
+  background-color: var(--disabled-color);
+}
+
+.sidebar_item:active {
+  background-color: var(--button-hover-color);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}

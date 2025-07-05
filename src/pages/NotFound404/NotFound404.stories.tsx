@@ -7,7 +7,7 @@ const meta = {
   component: NotFound404,
   parameters: {
     layout: 'fullscreen'
-  },
+  }
 } satisfies Meta<typeof NotFound404>;
 
 export default meta;

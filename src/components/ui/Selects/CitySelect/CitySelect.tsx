@@ -14,7 +14,7 @@ export const CitySelect = ({ city, setCity }: CitySelectProps) => {
   const cityOptions = [
     { value: '', label: 'Не указан' },
     ...cities.map((city) => ({
-      value: city.id.toString(),
+      value: city.name,
       label: city.name
     }))
   ];

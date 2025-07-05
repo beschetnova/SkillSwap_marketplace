@@ -49,10 +49,10 @@ export const usersSlice = createSlice({
           if (user.id !== otherUser.id) {
             otherUser.skillsToTeach.forEach((otherSkill) => {
               if (otherSkill.skill === skill.skill) result.push(otherUser);
-            })
+            });
           }
-        })
-      })
+        });
+      });
 
       return result;
     }, 

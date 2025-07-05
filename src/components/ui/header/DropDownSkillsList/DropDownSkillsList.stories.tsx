@@ -20,30 +20,31 @@ const store = configureStore({
   },
   preloadedState: {
     skills: {
-      skills: [{
-        id: '1',
-        name: 'Тестовая категория',
-        icon: '#',
-        skills: [
-          {
-            id: '1',
-            name: 'Скилл 1'
-          },
-          {
-            id: '2',
-            name: 'Скилл 2'
-          },
-          {
-            id: '3',
-            name: 'Скилл 3'
-          },
-          {
-            id: '4',
-            name: 'Скилл 4'
-          },
-      ]}
-    ]
-    ,
+      skills: [
+        {
+          id: '1',
+          name: 'Тестовая категория',
+          icon: '#',
+          skills: [
+            {
+              id: '1',
+              name: 'Скилл 1'
+            },
+            {
+              id: '2',
+              name: 'Скилл 2'
+            },
+            {
+              id: '3',
+              name: 'Скилл 3'
+            },
+            {
+              id: '4',
+              name: 'Скилл 4'
+            }
+          ]
+        }
+      ],
       isLoading: false,
       error: undefined
     }
