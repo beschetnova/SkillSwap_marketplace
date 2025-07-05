@@ -26,7 +26,11 @@ export const UserCardSection = ({
       <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
         {!showAll && users.length > 3 && (
-          <Button type='tertiary' className={styles.button} onClick={handleShowMore}>
+          <Button
+            type='tertiary'
+            className={styles.button}
+            onClick={handleShowMore}
+          >
             Смотреть все
           </Button>
         )}

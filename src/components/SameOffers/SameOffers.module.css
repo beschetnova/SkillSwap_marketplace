@@ -1,40 +1,42 @@
 .component {
-    position: relative;
-    max-width: 1368px;
+  position: relative;
+  max-width: 1368px;
 }
 
 .usersList {
-    display: flex;
-    gap: 24px;
+  display: flex;
+  gap: 24px;
 }
 
 .actions {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    top: 50%;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  width: 100%;
 }
 
 .actions img {
-    width: 16px;
-    height: 16px;
+  width: 16px;
+  height: 16px;
 }
 
-.leftAction, .rightAction {
-    background-color: var(--disabled-color);
-    width: 32px;
-    height: 32px;
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.leftAction,
+.rightAction {
+  background-color: var(--disabled-color);
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.leftAction:hover, .rightAction:hover {
-    cursor: pointer;
+.leftAction:hover,
+.rightAction:hover {
+  cursor: pointer;
 }
 
 .hidden {
-    visibility: hidden;
+  visibility: hidden;
 }

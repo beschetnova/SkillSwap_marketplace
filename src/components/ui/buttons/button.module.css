@@ -58,3 +58,7 @@
   border: 1px solid transparent;
   color: var(--text-color);
 }
+
+.fullWidth {
+  width: 100%;
+}
