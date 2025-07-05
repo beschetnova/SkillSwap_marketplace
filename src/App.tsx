@@ -23,14 +23,11 @@ function App() {
       element: <Layout />,
       errorElement: <NotFound404 />,
       children: routes
-    },
+    }
   ]);
 
   return (
-    <RouterProvider
-      future={{ v7_startTransition: true }}
-      router={router}
-    />
+    <RouterProvider future={{ v7_startTransition: true }} router={router} />
   );
 }
 

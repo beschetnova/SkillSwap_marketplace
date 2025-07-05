@@ -3,13 +3,13 @@ import { mockUsers } from './mockUsers';
 import { configureStore, combineSlices } from '@reduxjs/toolkit';
 import usersSlice from '../../services/slices/usersSlice';
 import skillsSlice from '../../services/slices/skillsSlice';
-import citiesSlice from '../../services/slices/citiesSlice'
+import citiesSlice from '../../services/slices/citiesSlice';
 import { mockCities } from './mockCities';
 
 const rootReducer = combineSlices({
   skills: skillsSlice,
   users: usersSlice,
-  cities: citiesSlice,
+  cities: citiesSlice
 });
 
 export const store = configureStore({
@@ -23,12 +23,12 @@ export const store = configureStore({
     skills: {
       skills: mockSkills,
       isLoading: false,
-      error: undefined,
+      error: undefined
     },
     cities: {
       cities: mockCities,
       isLoading: false,
-      error: undefined,
+      error: undefined
     }
-  },
+  }
 });

@@ -23,7 +23,6 @@ type Story = StoryObj<typeof meta>;
 
 const items = [testImage1, testImage2, testImage3, testImage4, testImage5];
 
-
 export const Default: Story = {
   args: {
     images: items,

@@ -53,7 +53,7 @@
   line-height: 0;
   margin-left: auto;
   padding-right: 0.5rem;
-  padding-block: 2px;
+  padding-block: 0px;
 }
 
 .error {
