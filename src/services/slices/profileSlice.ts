@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-
+import { createSelector, createSlice } from '@reduxjs/toolkit';
+import type { RootState } from '../store';
 import type { Profile } from '../../utils/types';
 
 type ProfileState = {
@@ -32,6 +32,17 @@ export const profileSlice = createSlice({
     clearProfile: (state) => {
       state.profile = null;
       state.isAuth = false;
+    },
+    toggleFavorite: (state, action: { payload: number }) => {
+      if (!state.profile) return;
+
+      const id = action.payload;
+      const favorites = state.profile.favorites;
+
+      const isAlreadyFavorite = favorites.includes(id);
+      state.profile.favorites = isAlreadyFavorite
+        ? favorites.filter((favId) => favId !== id)
+        : [...favorites, id];
     }
   },
   selectors: {
@@ -45,3 +56,10 @@ export const profileSlice = createSlice({
 });
 
 export default profileSlice.reducer;
+export const { setProfile, updateProfile, clearProfile, toggleFavorite } =
+  profileSlice.actions;
+
+export const selectFavorites = createSelector(
+  (state: RootState) => state.profile.profile?.favorites,
+  (favorites) => favorites ?? []
+);
