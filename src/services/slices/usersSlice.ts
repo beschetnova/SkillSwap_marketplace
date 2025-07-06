@@ -49,13 +49,16 @@ export const usersSlice = createSlice({
           if (user.id !== otherUser.id) {
             otherUser.skillsToTeach.forEach((otherSkill) => {
               if (otherSkill.skill === skill.skill) result.push(otherUser);
-            })
+            });
           }
-        })
-      })
+        });
+      });
 
       return result;
-    } 
+    },
+    getUserById: (state, id: number) => {
+      return state.users.find((user) => user.id === id);
+    }
   }
 });
 
@@ -63,6 +66,6 @@ export const selectAllUsers = (state: RootState) => state.users.users;
 export const selectAllUsersCity = createSelector([selectAllUsers], (users) => [
   ...new Set(users.map((user) => user.city))
 ]);
-export const { selectUsersWithSameOffer } = usersSlice.selectors;
+export const { selectUsersWithSameOffer, getUserById } = usersSlice.selectors;
 
 export default usersSlice.reducer;

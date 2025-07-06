@@ -4,14 +4,14 @@
 
 .imageCover {
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgb(255 255 255 / 50%);
   display: flex;
   align-items: center;
   width: 92px;
   height: 92px;
 }
 
-p {
+.imageContainer p {
   width: 100%;
   text-align: center;
 }

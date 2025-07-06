@@ -1,0 +1,111 @@
+.userCard {
+  border-radius: 12px;
+  padding: 20px;
+  background-color: var(--card-input-color);
+  width: 324px;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color);
+  gap: 24px;
+}
+
+.userInfo {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #ccc;
+  flex-shrink: 0;
+}
+
+.userInfoText {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.name {
+  font-family: var(--font-heading);
+  line-height: 120%;
+  letter-spacing: -0.01em;
+  margin-top: 5px;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.cityAge {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  padding-top: 2px;
+  font-family: var(--font-main);
+}
+
+.skillsSection {
+  margin-top: 13px;
+}
+
+.sectionTitle {
+  font-family: var(--font-main);
+  font-size: 1rem;
+  line-height: 158%;
+  font-weight: 500;
+}
+
+.skillsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.skillPill,
+.morePill {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: var(--tag-plus-color);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+.business-and-career {
+  background-color: var(--tag-business-color);
+}
+
+.creativity-and-art {
+  background-color: var(--tag-creativity-color);
+}
+
+.foreign-languages {
+  background-color: var(--tag-languages-color);
+}
+
+.education-and-development {
+  background-color: var(--tag-education-color);
+}
+
+.home-and-comfort {
+  background-color: var(--tag-home-color);
+}
+
+.health-and-lifestyle {
+  background-color: var(--tag-health-color);
+}
+
+.description {
+  line-height: 24px;
+}
+
+.userInfoBioContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

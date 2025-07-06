@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import ListCategory from "./ListCategory";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import ListCategory from './ListCategory';
 
 const meta = {
   title: 'components/Header/ListCategory',
   component: ListCategory,
-  tags: ['autodocs'],
+  tags: ['autodocs']
 } satisfies Meta<typeof ListCategory>;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -29,13 +29,12 @@ const skillsCategory = {
     {
       id: '4',
       name: 'Скилл 4'
-    },
+    }
   ]
 };
-
 
 export const Default: Story = {
   args: {
     item: skillsCategory
   }
-}
+};

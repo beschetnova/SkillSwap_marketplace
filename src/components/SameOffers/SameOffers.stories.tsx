@@ -7,7 +7,7 @@ import { mockUsers } from '../../services/mockStore/mockUsers.ts';
 const meta: Meta<typeof SameOffers> = {
   title: 'Components/SameOffers',
   component: SameOffers,
-  tags: ['autodocs'],
+  tags: ['autodocs']
 };
 
 export default meta;
@@ -19,5 +19,5 @@ export const Default: Story = {
     <Provider store={store}>
       <SameOffers user={mockUsers[0]} />
     </Provider>
-  ),
+  )
 };

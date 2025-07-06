@@ -10,7 +10,7 @@ const meta = {
   },
   args: {
     errorMessageHandle: fn(),
-    redirectHandle: fn(),
+    redirectHandle: fn()
   }
 } satisfies Meta<typeof NotFound404UI>;
 

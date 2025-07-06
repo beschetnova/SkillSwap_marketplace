@@ -13,6 +13,49 @@ const initialState: ProfileState = {
   profile: null,
   isAuth: false,
   accessToken: null
+  /*
+  profile: {
+    id: 16,
+    name: "Мария",
+    city: "Москва",
+    gender: "female",
+    birthDate: "1995-10-28",
+    bio: "Люблю учиться новому, особенно если это можно делать за чаем и в пижаме. Всегда готова пообщаться и обменяться чем‑то интересным!",
+    skillsToTeach: [
+      {
+        skill: 'Игра на барабанах',
+        categoryId: 'creativity-and-art',
+        subcategory: 'music-and-sound'
+      }
+    ],
+    skillsToLearn: [
+      {
+        skill: 'Тайм менеджмент',
+        categoryId: 'business-and-career',
+        subcategory: 'time-management'
+      },
+      {
+        skill: 'Медитация',
+        categoryId: 'health-and-lifestyle',
+        subcategory: 'yoga-and-meditation'
+      },
+      {
+        skill: 'Фотография',
+        categoryId: 'creativity-and-art',
+        subcategory: 'photography'
+      },
+      {
+        skill: 'Видеомонтаж',
+        categoryId: 'creativity-and-art',
+        subcategory: 'video-editing'
+      }
+    ],
+    photo: "Maria-Moscow.png",
+    email: "Mariia@gmail.com"
+  },
+  isAuth: true,
+  accessToken: 'mock.access.jwt'
+  */
 };
 
 export const profileSlice = createSlice({

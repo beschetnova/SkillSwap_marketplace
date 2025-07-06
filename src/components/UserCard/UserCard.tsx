@@ -6,6 +6,7 @@ import {
   selectFavorites,
   toggleFavorite
 } from '../../services/slices/profileSlice.ts';
+import { useNavigate } from 'react-router-dom';
 
 interface UserCardProps {
   user: User;
@@ -13,6 +14,8 @@ interface UserCardProps {
 }
 
 export const UserCard = ({ user, categories }: UserCardProps) => {
+  const navigate = useNavigate();
+
   const age = calculateAge(user.birthDate);
   const ageText = `${user.city}, ${age} ${getYearsWord(age)}`;
 
@@ -27,6 +30,7 @@ export const UserCard = ({ user, categories }: UserCardProps) => {
 
   const handleMoreClick = () => {
     console.log(`Подробнее о пользователе ${user.name}`);
+    navigate(`/skill/${user.id}`);
   };
 
   return (
