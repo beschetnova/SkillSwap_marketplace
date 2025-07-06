@@ -20,11 +20,11 @@ export const RegisterFormStepOneUI = ({ onNext }: Props) => {
       <div className={styles.elementList}>
         <Button type='secondary' className={styles.button}>
           <img src='/Google.svg' alt='Google' className={styles.icon} />
-          <span>Продолжить с Google</span>
+          <span>Продолжить с Google</span>
         </Button>
         <Button type='secondary' className={styles.button}>
           <img src='/Apple.svg' alt='Apple' className={styles.icon} />
-          <span>Продолжить с Apple</span>
+          <span>Продолжить с Apple</span>
         </Button>
       </div>
       <div className={styles.divider}>

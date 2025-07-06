@@ -16,9 +16,11 @@ type Story = StoryObj<typeof RegisterFormStepTwo>;
 export const Default: Story = {
   render: () => (
     <Provider store={store}>
-      <RegisterFormStepTwo onNext={function (): void {
-        throw new Error('Function not implemented.');
-      } } />
+      <RegisterFormStepTwo
+        onNext={function (): void {
+          throw new Error('Function not implemented.');
+        }}
+      />
     </Provider>
   )
 };
