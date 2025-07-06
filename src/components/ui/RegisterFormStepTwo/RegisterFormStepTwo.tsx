@@ -72,7 +72,7 @@ const RegisterFormStepTwo = ({ onNext }: Props) => {
       <div className={styles.buttonWrapper}>
         <Button
           type='secondary'
-          htmlType='submit'
+          htmlType='button'
           className={styles.backButton}
         >
           Назад
