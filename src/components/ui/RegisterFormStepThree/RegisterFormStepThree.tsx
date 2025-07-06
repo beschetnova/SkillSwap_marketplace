@@ -61,3 +61,5 @@ export const RegisterFormStepThreeUI = () => {
     </form>
   );
 };
+
+export default RegisterFormStepThreeUI;
