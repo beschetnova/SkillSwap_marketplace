@@ -21,6 +21,7 @@
   padding: 12px 20px;
   padding-right: 54px;
   border: 1px solid var(--caption-color);
+  outline: none;
   border-radius: 12px;
   resize: none;
   overflow: hidden;

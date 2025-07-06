@@ -37,34 +37,3 @@
   display: flex;
   gap: 24px;
 }
-
-.description {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.description_input_container {
-  display: flex;
-  border: 0.0625rem solid var(--caption-color);
-  border-radius: 0.75rem;
-  padding: 12px 20px;
-  height: 120px;
-}
-
-.description_input {
-  flex: 1;
-  height: 96px;
-  resize: none;
-  overflow: hidden;
-  outline: none;
-  border: none;
-  font: var(--font-main);
-  color: var(--text-color);
-  font-size: 16px;
-}
-
-.right_icon {
-  display: flex;
-  align-items: center;
-}
