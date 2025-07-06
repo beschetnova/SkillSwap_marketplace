@@ -9,14 +9,24 @@ import { CategorySelect } from '../Selects/CategorySelect/CategorySelect.tsx';
 import { CitySelect } from '../Selects/CitySelect/CitySelect.tsx';
 import { SubCategorySelect } from '../Selects/SubCategorySelect/SubCategorySelect.tsx';
 
-const RegisterFormStepTwo = () => {
+type Props = {
+  onNext: () => void;
+};
+
+const RegisterFormStepTwo = ({ onNext }: Props) => {
   const [gender, setGender] = useState('');
   const [city, setCity] = useState('');
   const [category, setCategory] = useState('');
   const [subcategory, setSubcategory] = useState('');
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Логика для валидации и отправки данных
+    onNext();
+  };
+
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <PhotoUploader />
       <div className={styles.inputsWrapper}>
         <Input

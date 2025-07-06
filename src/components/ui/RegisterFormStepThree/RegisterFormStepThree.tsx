@@ -7,7 +7,11 @@ import { useState } from 'react';
 import Textarea from '../Textarea/Textarea';
 import { ImageDropzone } from '../ImageDropzone/ImageDropzone';
 
-export const RegisterFormStepThreeUI = () => {
+type Props = {
+  onNext: () => void;
+};
+
+export const RegisterFormStepThreeUI = ({ onNext }: Props) => {
   const [category, setCategory] = useState('');
   const [subcategory, setSubcategory] = useState('');
 
@@ -17,12 +21,18 @@ export const RegisterFormStepThreeUI = () => {
     setImages((prev) => [...prev, ...newFiles]);
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Логика для валидации и отправки данных
+    onNext();
+  };
+
   const handleRemoveImage = (index: number) => {
     setImages((prev) => prev.filter((_, i) => i !== index));
   };
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.inputList}>
         <Input
           id='titleInput'

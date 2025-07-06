@@ -4,6 +4,7 @@
   max-width: 556px;
   padding: 40px 60px;
   border-radius: 12px;
+  background-color: var(--card-input-color);
 }
 
 .inputsWrapper {

@@ -2,6 +2,7 @@
   padding: 121.5px 60px;
   border-radius: 12px;
   inline-size: 556px;
+  background-color: var(--card-input-color);
 }
 
 .elementList {
