@@ -1,5 +1,5 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit';
-import type { RootState } from '../store';
+import { createSlice } from '@reduxjs/toolkit';
+
 import type { Profile } from '../../utils/types';
 
 type ProfileState = {
@@ -13,49 +13,6 @@ const initialState: ProfileState = {
   profile: null,
   isAuth: false,
   accessToken: null
-  /*
-  profile: {
-    id: 16,
-    name: "Мария",
-    city: "Москва",
-    gender: "female",
-    birthDate: "1995-10-28",
-    bio: "Люблю учиться новому, особенно если это можно делать за чаем и в пижаме. Всегда готова пообщаться и обменяться чем‑то интересным!",
-    skillsToTeach: [
-      {
-        skill: 'Игра на барабанах',
-        categoryId: 'creativity-and-art',
-        subcategory: 'music-and-sound'
-      }
-    ],
-    skillsToLearn: [
-      {
-        skill: 'Тайм менеджмент',
-        categoryId: 'business-and-career',
-        subcategory: 'time-management'
-      },
-      {
-        skill: 'Медитация',
-        categoryId: 'health-and-lifestyle',
-        subcategory: 'yoga-and-meditation'
-      },
-      {
-        skill: 'Фотография',
-        categoryId: 'creativity-and-art',
-        subcategory: 'photography'
-      },
-      {
-        skill: 'Видеомонтаж',
-        categoryId: 'creativity-and-art',
-        subcategory: 'video-editing'
-      }
-    ],
-    photo: "Maria-Moscow.png",
-    email: "Mariia@gmail.com"
-  },
-  isAuth: true,
-  accessToken: 'mock.access.jwt'
-  */
 };
 
 export const profileSlice = createSlice({
@@ -75,17 +32,6 @@ export const profileSlice = createSlice({
     clearProfile: (state) => {
       state.profile = null;
       state.isAuth = false;
-    },
-    toggleFavorite: (state, action: { payload: number }) => {
-      if (!state.profile) return;
-
-      const id = action.payload;
-      const favorites = state.profile.favorites;
-
-      const isAlreadyFavorite = favorites.includes(id);
-      state.profile.favorites = isAlreadyFavorite
-        ? favorites.filter((favId) => favId !== id)
-        : [...favorites, id];
     }
   },
   selectors: {
@@ -94,15 +40,11 @@ export const profileSlice = createSlice({
     },
     selectIsAuth: (state) => {
       return state.isAuth;
+    },
+    selectProfileId: (state) => {
+      return state.profile?.id;
     }
   }
 });
 
 export default profileSlice.reducer;
-export const { setProfile, updateProfile, clearProfile, toggleFavorite } =
-  profileSlice.actions;
-
-export const selectFavorites = createSelector(
-  (state: RootState) => state.profile.profile?.favorites,
-  (favorites) => favorites ?? []
-);
