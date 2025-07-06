@@ -6,13 +6,16 @@ import Icons from './icons/icons';
 import Logo from '../logo/logo';
 import Profile from './profile/profile';
 import { SearchInput } from './SearchInput/SearchInput.tsx';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   const [isAuth, setIsAuth] = useState(false);
 
   return (
     <header className={styles.header}>
-      <Logo />
+      <NavLink to={'/'}>
+        <Logo />
+      </NavLink>
       <Nav />
       <SearchInput />
       <Icons isAuth={isAuth} />
