@@ -570,13 +570,13 @@ export const mockUsers = [
     photo: 'Alla.png'
   },
   {
-    "id": 16,
-    "name": "Мария",
-    "city": "Москва",
-    "gender": "female",
-    "birthDate": "1995-10-28",
-    "bio": "Люблю учиться новому, особенно если это можно делать за чаем и в пижаме. Всегда готова пообщаться и обменяться чем‑то интересным!",
-    "skillsToTeach": [
+    id: 16,
+    name: 'Мария',
+    city: 'Москва',
+    gender: 'female',
+    birthDate: '1995-10-28',
+    bio: 'Люблю учиться новому, особенно если это можно делать за чаем и в пижаме. Всегда готова пообщаться и обменяться чем‑то интересным!',
+    skillsToTeach: [
       {
         skill: 'Игра на барабанах',
         categoryId: 'creativity-and-art',
@@ -605,7 +605,7 @@ export const mockUsers = [
         subcategory: 'video-editing'
       }
     ],
-    "photo": "Maria-Moscow.png",
-    "email": "Mariia@gmail.com"
+    photo: 'Maria-Moscow.png',
+    email: 'Mariia@gmail.com'
   }
 ];

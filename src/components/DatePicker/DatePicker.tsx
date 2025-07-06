@@ -20,7 +20,9 @@ const DatePicker: React.FC<DatePickerProps> = ({ value, onChange }) => {
   const date = value ?? internalDate;
   const [showCalendar, setShowCalendar] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const [activeStartDate, setActiveStartDate] = useState<Date>(date ?? initialDate);
+  const [activeStartDate, setActiveStartDate] = useState<Date>(
+    date ?? initialDate
+  );
 
   const handleDateChange = (val: Value) => {
     if (val instanceof Date) {

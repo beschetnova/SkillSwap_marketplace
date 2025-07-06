@@ -5,8 +5,8 @@ const meta = {
   title: 'Components/ProfileSidebar',
   component: ProfileSidebar,
   parameters: {
-    layout: 'fullscreen',
-  },
+    layout: 'fullscreen'
+  }
 } satisfies Meta<typeof ProfileSidebar>;
 
 export default meta;

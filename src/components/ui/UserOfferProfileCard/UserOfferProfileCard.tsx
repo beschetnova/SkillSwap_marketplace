@@ -6,7 +6,7 @@ const UserOfferProfileCardUI = ({
   user,
   ageText,
   categories,
-  bio,
+  bio
 }: TUserOfferProfileCardUI) => {
   return (
     <div className={styles.userCard}>
@@ -24,7 +24,6 @@ const UserOfferProfileCardUI = ({
         </div>
         <span className={styles.bio}>{bio}</span>
       </div>
-      
 
       <div className={styles.skillsSection}>
         <h4 className={styles.sectionTitle}>Может научить:</h4>

@@ -7,7 +7,10 @@ interface PhotoEditorProps {
   setPhoto: (photo: string) => void;
 }
 
-export const PhotoEditor: React.FC<PhotoEditorProps> = ({ photo, setPhoto }) => {
+export const PhotoEditor: React.FC<PhotoEditorProps> = ({
+  photo,
+  setPhoto
+}) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [preview, setPreview] = useState<string | null>(photo || null);
 
@@ -36,21 +39,25 @@ export const PhotoEditor: React.FC<PhotoEditorProps> = ({ photo, setPhoto }) => 
     <div className={styles.wrapper}>
       <div className={styles.avatar}>
         {preview ? (
-          <img src={preview} alt="preview" className={styles.avatarImage} />
+          <img src={preview} alt='preview' className={styles.avatarImage} />
         ) : (
           <div className={styles.avatarPlaceholder}></div>
         )}
       </div>
-      <Button type="primary" className={styles.photo_edit_button} onClick={handleClick}>
+      <Button
+        type='primary'
+        className={styles.photo_edit_button}
+        onClick={handleClick}
+      >
         <img
-          src="src/images/icons/gallery-edit.svg"
-          alt="avatar-edit-icon"
+          src='src/images/icons/gallery-edit.svg'
+          alt='avatar-edit-icon'
           className={styles.icon}
         />
       </Button>
       <input
-        type="file"
-        accept="image/*"
+        type='file'
+        accept='image/*'
         ref={fileInputRef}
         onChange={handleFileChange}
         style={{ display: 'none' }}

@@ -27,19 +27,25 @@ const SameOffers: FC<TSameOffers> = ({ user, userListCount = 4 }) => {
 
   return (
     <div className={styles.component}>
-        <div className={styles.usersList}>
-          { userList.slice(offset, offset+userListCount).map((user) => (
-            <UserCard key={user.id} user={user} categories={skills} />
-          ))}
+      <div className={styles.usersList}>
+        {userList.slice(offset, offset + userListCount).map((user) => (
+          <UserCard key={user.id} user={user} categories={skills} />
+        ))}
+      </div>
+      <div className={styles.actions}>
+        <div
+          className={`${styles.leftAction} ${offset === 0 ? styles.hidden : ''}`}
+          onClick={prevHandle}
+        >
+          <img src={chevronLeft} />
         </div>
-        <div className={styles.actions}>
-          <div className={`${styles.leftAction} ${offset === 0 ? styles.hidden : ''}`} onClick={prevHandle}>
-            <img src={chevronLeft} />
-          </div>
-          <div className={`${styles.rightAction} ${offset+userListCount >= userList.length ? styles.hidden : ''}`} onClick={nextHandle}>
-            <img src={chevronRight}/>
-          </div>
+        <div
+          className={`${styles.rightAction} ${offset + userListCount >= userList.length ? styles.hidden : ''}`}
+          onClick={nextHandle}
+        >
+          <img src={chevronRight} />
         </div>
+      </div>
     </div>
   );
 };

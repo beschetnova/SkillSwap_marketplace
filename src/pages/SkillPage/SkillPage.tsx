@@ -1,24 +1,25 @@
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 import styles from './SkillPage.module.css';
-import { useAppSelector } from "../../utils/hooks";
-import { getUserById } from "../../services/slices/usersSlice";
-import UserOfferProfileCardUI from "../../components/ui/UserOfferProfileCard/UserOfferProfileCard";
-import UserOfferCardUI from "../../components/ui/UserOfferCard/UserOfferCard";
-import SameOffers from "../../components/SameOffers/SameOffers";
-import { selectAllSkills } from "../../services/slices/skillsSlice";
+import { useAppSelector } from '../../utils/hooks';
+import { getUserById } from '../../services/slices/usersSlice';
+import UserOfferProfileCardUI from '../../components/ui/UserOfferProfileCard/UserOfferProfileCard';
+import UserOfferCardUI from '../../components/ui/UserOfferCard/UserOfferCard';
+import SameOffers from '../../components/SameOffers/SameOffers';
+import { selectAllSkills } from '../../services/slices/skillsSlice';
 import testImage1 from '../../images/skills/drums/drum-1.jpg';
 import testImage2 from '../../images/skills/drums/drum-2.jpg';
 import testImage3 from '../../images/skills/drums/drum-3.jpg';
 import testImage4 from '../../images/skills/drums/drum-4.jpg';
 import testImage5 from '../../images/skills/drums/drum-1.jpg';
-import { calculateAge, getYearsWord } from "../../utils/date/dateUtils";
+import { calculateAge, getYearsWord } from '../../utils/date/dateUtils';
 
 const SkillPage = () => {
-
   const { userId } = useParams();
-  const selectedUser = useAppSelector((state) => getUserById(state, Number(userId)));
+  const selectedUser = useAppSelector((state) =>
+    getUserById(state, Number(userId))
+  );
   const skills = useAppSelector(selectAllSkills);
-  
+
   if (!userId) return;
   if (!selectedUser) return;
 
@@ -26,12 +27,12 @@ const SkillPage = () => {
 
   const offerHandle = () => {
     console.log('Предложить обмен!');
-  }
+  };
 
   const age = calculateAge(selectedUser.birthDate);
   const ageText = `${selectedUser.city}, ${age} ${getYearsWord(age)}`;
 
-  return(
+  return (
     <div className={styles.component}>
       <div className={styles.userInformation}>
         <UserOfferProfileCardUI
@@ -53,7 +54,7 @@ const SkillPage = () => {
         <SameOffers user={selectedUser} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default SkillPage;

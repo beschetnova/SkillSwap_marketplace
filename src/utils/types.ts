@@ -32,6 +32,7 @@ export type User = {
 
 export type Profile = User & {
   email: string;
+  favorites: number[];
 };
 
 export type Users = User[];

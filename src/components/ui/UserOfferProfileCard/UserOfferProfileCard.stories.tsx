@@ -11,16 +11,11 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-
-
 export const Default: Story = {
   args: {
     user: mockUsers[0],
     categories: mockSkills,
     bio: mockUsers[0].bio,
-    ageText: 'Санкт-Петербург, 35 лет',
+    ageText: 'Санкт-Петербург, 35 лет'
   }
 };
-
-
-

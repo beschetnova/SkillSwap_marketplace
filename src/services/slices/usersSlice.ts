@@ -55,7 +55,7 @@ export const usersSlice = createSlice({
       });
 
       return result;
-    }, 
+    },
     getUserById: (state, id: number) => {
       return state.users.find((user) => user.id === id);
     }

@@ -67,7 +67,7 @@
     "vitest": "^3.2.4"
   },
   "lint-staged": {
-    "*.{css,scss}": "npm run stylelint:fix",
+    "*.{css,scss}": "npm run lint:css:fix",
     "*.{js,jsx,ts,tsx}": "npm run lint",
     "*.{js,jsx,ts,tsx,json,css,scss,md}": "npm run format"
   }

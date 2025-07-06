@@ -20,7 +20,9 @@ import type { RootState } from '../../../services/store.ts';
 
 export const ProfileInfo = () => {
   const dispatch = useAppDispatch();
-  const userFromStore = useSelector((state: RootState) => state.profile.profile);
+  const userFromStore = useSelector(
+    (state: RootState) => state.profile.profile
+  );
   const [profileData, setProfileData] = useState<Profile>({
     id: 0,
     name: '',
@@ -31,10 +33,13 @@ export const ProfileInfo = () => {
     skillsToTeach: [],
     skillsToLearn: [],
     photo: '',
-    email: ''
+    email: '',
+    favorites: []
   });
 
-  const [initialProfileData, setInitialProfileData] = useState<Profile | null>(null);
+  const [initialProfileData, setInitialProfileData] = useState<Profile | null>(
+    null
+  );
 
   useEffect(() => {
     if (userFromStore) {
@@ -49,8 +54,11 @@ export const ProfileInfo = () => {
     }
   }, [userFromStore]);
 
-  const handleChange = <K extends keyof Profile>(field: K, value: Profile[K]) => {
-    setProfileData(prev => ({
+  const handleChange = <K extends keyof Profile>(
+    field: K,
+    value: Profile[K]
+  ) => {
+    setProfileData((prev) => ({
       ...prev,
       [field]: value
     }));
@@ -67,7 +75,7 @@ export const ProfileInfo = () => {
 
   const isChanged = initialProfileData
     ? !isEqual(profileData, initialProfileData)
-    : Object.values(profileData).some(value => {
+    : Object.values(profileData).some((value) => {
         if (Array.isArray(value)) {
           return value.length > 0;
         }
@@ -80,17 +88,17 @@ export const ProfileInfo = () => {
         <div className={styles.info_inputs_wrapper}>
           <div className={styles.email_wrapper}>
             <Input
-              id="emailInput"
-              label="Почта"
-              type="email"
-              placeholder="Введите вашу почту"
+              id='emailInput'
+              label='Почта'
+              type='email'
+              placeholder='Введите вашу почту'
               required
               value={profileData.email}
               onChange={(e) => handleChange('email', e.target.value)}
               rightIcon={
                 <img
-                  src="src/images/icons/edit.svg"
-                  alt="edit-icon"
+                  src='src/images/icons/edit.svg'
+                  alt='edit-icon'
                   className={styles.icon}
                 />
               }
@@ -98,32 +106,36 @@ export const ProfileInfo = () => {
             <p className={styles.change_password_link}>Изменить пароль</p>
           </div>
           <Input
-            id="nameInput"
-            label="Имя"
-            type="text"
-            placeholder="Введите ваше имя"
+            id='nameInput'
+            label='Имя'
+            type='text'
+            placeholder='Введите ваше имя'
             required
             value={profileData.name}
             onChange={(e) => handleChange('name', e.target.value)}
             rightIcon={
               <img
-                src="src/images/icons/edit.svg"
-                alt="edit-icon"
+                src='src/images/icons/edit.svg'
+                alt='edit-icon'
                 className={styles.icon}
               />
             }
           />
           <div className={styles.date_wrapper}>
             <DatePicker
-              value={profileData.birthDate ? parseISO(profileData.birthDate) : null}
+              value={
+                profileData.birthDate ? parseISO(profileData.birthDate) : null
+              }
               onChange={(date) => {
-                const dateStr = date ? format(date, 'yyyy-MM-dd', { locale: ru }) : '';
+                const dateStr = date
+                  ? format(date, 'yyyy-MM-dd', { locale: ru })
+                  : '';
                 handleChange('birthDate', dateStr);
               }}
             />
             <Select
-              id="genderInput"
-              label="Пол"
+              id='genderInput'
+              label='Пол'
               value={profileData.gender}
               onChange={(e) => handleChange('gender', e.target.value)}
               options={[
@@ -134,8 +146,8 @@ export const ProfileInfo = () => {
               ]}
               rightIcon={
                 <img
-                  src="src/images/icons/chevron-down.svg"
-                  alt="chevron-down"
+                  src='src/images/icons/chevron-down.svg'
+                  alt='chevron-down'
                   className={styles.arrow}
                 />
               }
@@ -149,8 +161,8 @@ export const ProfileInfo = () => {
             <label>О себе</label>
             <div className={styles.description_input_container}>
               <textarea
-                id="description_input"
-                placeholder="Расскажите о себе"
+                id='description_input'
+                placeholder='Расскажите о себе'
                 required
                 rows={4}
                 className={styles.description_input}
@@ -158,14 +170,14 @@ export const ProfileInfo = () => {
                 onChange={(e) => handleChange('bio', e.target.value)}
               />
               <span className={styles.right_icon}>
-                <img src="src/images/icons/edit.svg" alt="edit-icon" />
+                <img src='src/images/icons/edit.svg' alt='edit-icon' />
               </span>
             </div>
           </div>
         </div>
         <Button
-          type="primary"
-          htmlType="submit"
+          type='primary'
+          htmlType='submit'
           onClick={handleSave}
           disabled={!isChanged}
         >

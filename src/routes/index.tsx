@@ -1,7 +1,7 @@
-import MainPage from "../pages/MainPage/MainPage";
+import MainPage from '../pages/MainPage/MainPage';
 import SkillPage from '../pages/SkillPage/SkillPage';
-import ProfilePage from "../pages/ProfilePage/ProfilePage";
-import PathConstants from "./path-constants";
+import ProfilePage from '../pages/ProfilePage/ProfilePage';
+import PathConstants from './path-constants';
 
 // Здесь добавляются константы для путей маршрутов приложения.
 // path - константа из path-constants.ts

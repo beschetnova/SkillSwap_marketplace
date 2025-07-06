@@ -10,7 +10,7 @@ const ProfilePage = () => {
         <ProfileInfo />
       </div>
     </main>
-    );
+  );
 };
 
 export default ProfilePage;

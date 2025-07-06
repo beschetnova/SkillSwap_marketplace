@@ -134,11 +134,14 @@ const MainPage = () => {
         dispatch(toggleCity(filter.id));
         break;
       case 'skillCategory':
-        const category = skills.find((c) => c.id === filter.id);
-        if (category) {
-          const skillIdsToRemove = category.skills.map((s) => s.id);
-          dispatch(unmarkCategorySkills(skillIdsToRemove));
+        {
+          const category = skills.find((c) => c.id === filter.id);
+          if (category) {
+            const skillIdsToRemove = category.skills.map((s) => s.id);
+            dispatch(unmarkCategorySkills(skillIdsToRemove));
+          }
         }
+
         break;
       case 'skill':
         dispatch(toggleSkill(filter.id));
