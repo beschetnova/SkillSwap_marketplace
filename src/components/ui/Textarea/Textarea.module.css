@@ -1,10 +1,10 @@
 .container {
   display: flex;
   flex-direction: column;
+  gap: 4px;
 }
 
 .label {
-  margin-block-end: 4px;
   font-weight: 400;
   font-family: var(--font-main);
   line-height: 1.5em;
@@ -19,9 +19,11 @@
   width: 100%;
   min-height: 96px;
   padding: 12px 20px;
+  padding-right: 54px;
   border: 1px solid var(--caption-color);
   border-radius: 12px;
-  resize: vertical;
+  resize: none;
+  overflow: hidden;
   font-family: var(--font-main);
   font-size: 16px;
   line-height: 1.5em;
@@ -34,12 +36,17 @@
 .errorText {
   color: var(--error-color);
   font-size: 12px;
-  margin-block-start: 20px;
 }
 
 .infoText {
   color: var(--text-color);
   font-size: 12px;
-  margin-block-start: 4px;
   font-family: var(--font-main);
+}
+
+.iconWrapper {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
 }
