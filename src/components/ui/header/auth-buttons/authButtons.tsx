@@ -1,5 +1,6 @@
 import styles from './authButtons.module.css';
 import Button from '../../../ui/buttons/button';
+import { NavLink } from 'react-router-dom';
 
 type AuthButtonsProps = {
   setIsAuth: (value: boolean) => void;
@@ -16,13 +17,11 @@ const AuthButtons = ({ setIsAuth }: AuthButtonsProps) => {
         >
           Войти
         </Button>
-        <Button
-          htmlType='button'
-          type='primary'
-          onClick={() => setIsAuth(true)}
-        >
-          Зарегистрироваться
-        </Button>
+        <NavLink to={'/register'}>
+          <Button htmlType='button' type='primary'>
+            Зарегистрироваться
+          </Button>
+        </NavLink>
       </div>
     </div>
   );
