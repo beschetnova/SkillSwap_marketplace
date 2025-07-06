@@ -13,6 +13,10 @@ export const RegisterPage = () => {
     setCurrentStep((prevStep) => Math.min(prevStep + 1, 3) as 1 | 2 | 3);
   };
 
+  const handlePrevStep = () => {
+    setCurrentStep((prevStep) => Math.min(prevStep - 1, 1) as 1 | 2 | 3);
+  };
+
   const stepContent = [
     {
       image: '/light-bulb.svg',
@@ -39,9 +43,9 @@ export const RegisterPage = () => {
       case 1:
         return <RegisterFormStepOneUI onNext={handleNextStep} />;
       case 2:
-        return <RegisterFormStepTwoUI onNext={handleNextStep} />;
+        return <RegisterFormStepTwoUI onNext={handleNextStep} onPrev={handlePrevStep} />;
       case 3:
-        return <RegisterFormStepThreeUI onNext={handleNextStep} />;
+        return <RegisterFormStepThreeUI onNext={handleNextStep} onPrev={handlePrevStep} />;
       default:
         return null;
     }

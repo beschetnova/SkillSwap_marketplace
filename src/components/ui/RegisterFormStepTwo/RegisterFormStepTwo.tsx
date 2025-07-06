@@ -11,9 +11,10 @@ import { SubCategorySelect } from '../Selects/SubCategorySelect/SubCategorySelec
 
 type Props = {
   onNext: () => void;
+  onPrev: () => void;
 };
 
-const RegisterFormStepTwo = ({ onNext }: Props) => {
+const RegisterFormStepTwo = ({ onNext, onPrev }: Props) => {
   const [gender, setGender] = useState('');
   const [city, setCity] = useState('');
   const [category, setCategory] = useState('');
@@ -23,6 +24,10 @@ const RegisterFormStepTwo = ({ onNext }: Props) => {
     e.preventDefault();
     // Логика для валидации и отправки данных
     onNext();
+  };
+
+  const handleBack = () => {
+    onPrev();
   };
 
   return (
@@ -74,6 +79,7 @@ const RegisterFormStepTwo = ({ onNext }: Props) => {
           type='secondary'
           htmlType='button'
           className={styles.backButton}
+          onClick={handleBack}
         >
           Назад
         </Button>

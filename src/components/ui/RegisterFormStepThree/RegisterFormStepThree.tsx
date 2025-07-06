@@ -9,9 +9,10 @@ import { ImageDropzone } from '../ImageDropzone/ImageDropzone';
 
 type Props = {
   onNext: () => void;
+  onPrev: () => void;
 };
 
-export const RegisterFormStepThreeUI = ({ onNext }: Props) => {
+export const RegisterFormStepThreeUI = ({ onNext, onPrev }: Props) => {
   const [category, setCategory] = useState('');
   const [subcategory, setSubcategory] = useState('');
 
@@ -25,6 +26,10 @@ export const RegisterFormStepThreeUI = ({ onNext }: Props) => {
     e.preventDefault();
     // Логика для валидации и отправки данных
     onNext();
+  };
+
+  const handleBack = () => {
+    onPrev();
   };
 
   const handleRemoveImage = (index: number) => {
@@ -61,7 +66,7 @@ export const RegisterFormStepThreeUI = ({ onNext }: Props) => {
         />
       </div>
       <div className={styles.buttonList}>
-        <Button type='secondary' className={styles.button}>
+        <Button type='secondary' className={styles.button} onClick={handleBack}>
           Назад
         </Button>
         <Button type='primary' htmlType='submit' className={styles.button}>
