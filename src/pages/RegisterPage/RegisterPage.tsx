@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { RegisterSteps } from '../RegisterSteps/RegisterSteps';
+import { RegisterSteps } from '../../components/ui/RegisterSteps/RegisterSteps';
 import styles from './RegisterPage.module.css';
-import { RegisterFormStepOneUI } from '../RegisterFormStepOne/RegisterFormStepOne';
-import RegisterFormStepTwoUI from '../RegisterFormStepTwo/RegisterFormStepTwo';
-import { RegisterFormStepThreeUI } from '../RegisterFormStepThree/RegisterFormStepThree';
-import { RegistrationVisual } from '../RegistrationVisual/RegistrationVisual';
+import { RegisterFormStepOneUI } from '../../components/ui/RegisterFormStepOne/RegisterFormStepOne';
+import RegisterFormStepTwoUI from '../../components/ui/RegisterFormStepTwo/RegisterFormStepTwo';
+import { RegisterFormStepThreeUI } from '../../components/ui/RegisterFormStepThree/RegisterFormStepThree';
+import { RegistrationVisual } from '../../components/ui/RegistrationVisual/RegistrationVisual';
 
 export const RegisterPage = () => {
   const [currentStep, setCurrentStep] = useState<1 | 2 | 3>(1);
@@ -17,17 +17,20 @@ export const RegisterPage = () => {
     {
       image: '/light-bulb.svg',
       title: 'Добро пожаловать в SkillSwap!',
-      description: 'Присоединяйтесь к SkillSwap и обменивайтесь знаниями и навыками с другими людьми'
+      description:
+        'Присоединяйтесь к SkillSwap и обменивайтесь знаниями и навыками с другими людьми'
     },
     {
       image: '/user info.svg',
       title: 'Расскажите немного о себе',
-      description: 'Это поможет другим людям лучше вас узнать, чтобы выбрать для обмена'
+      description:
+        'Это поможет другим людям лучше вас узнать, чтобы выбрать для обмена'
     },
     {
       image: '/school-board.svg',
       title: 'Укажите, чем вы готовы поделиться',
-      description: 'Так другие люди смогут увидеть ваши предложения и предложить вам обмен!'
+      description:
+        'Так другие люди смогут увидеть ваши предложения и предложить вам обмен!'
     }
   ];
 
