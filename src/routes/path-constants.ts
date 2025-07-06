@@ -7,7 +7,8 @@
 const PathConstants = {
   HOME: '/',
   SKILL: '/skill/:userId',
-  PROFILE: '/profile'
+  PROFILE: '/profile',
+  REGISTRATION: '/register'
 };
 
 export default PathConstants;

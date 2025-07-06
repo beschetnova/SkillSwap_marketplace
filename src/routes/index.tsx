@@ -2,6 +2,7 @@ import MainPage from '../pages/MainPage/MainPage';
 import SkillPage from '../pages/SkillPage/SkillPage';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import PathConstants from './path-constants';
+import { RegisterPage } from '../pages/RegisterPage/RegisterPage';
 
 // Здесь добавляются константы для путей маршрутов приложения.
 // path - константа из path-constants.ts
@@ -9,7 +10,8 @@ import PathConstants from './path-constants';
 const routes = [
   { path: PathConstants.HOME, element: <MainPage /> },
   { path: PathConstants.SKILL, element: <SkillPage /> },
-  { path: PathConstants.PROFILE, element: <ProfilePage /> }
+  { path: PathConstants.PROFILE, element: <ProfilePage /> },
+  { path: PathConstants.REGISTRATION, element: <RegisterPage /> }
 ];
 
 export default routes;

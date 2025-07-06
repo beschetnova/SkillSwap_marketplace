@@ -82,6 +82,10 @@ body {
   letter-spacing: 0.02em;
 }
 
+a {
+  text-decoration: none;
+}
+
 h1,
 h2,
 h3,
