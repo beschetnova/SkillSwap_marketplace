@@ -11,3 +11,20 @@ export const getSkillCategory = (
   }
   return null;
 };
+
+export const categoryAndSubcategoryTranslate = (
+  categoryId: string,
+  subcategoryId: string,
+  categories: SkillCategory[]
+) => {
+  const result = { category: '', subcategory: '' };
+  categories.forEach((category) => {
+    if (category.id === categoryId) {
+      category.skills.forEach((skill) => {
+        if (skill.id === subcategoryId) result.subcategory = skill.name;
+      });
+      result.category = category.name;
+    }
+  });
+  return result;
+};
