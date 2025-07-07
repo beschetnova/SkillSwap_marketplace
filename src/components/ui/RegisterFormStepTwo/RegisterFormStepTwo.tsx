@@ -8,13 +8,15 @@ import { useState } from 'react';
 import { CategorySelect } from '../Selects/CategorySelect/CategorySelect.tsx';
 import { CitySelect } from '../Selects/CitySelect/CitySelect.tsx';
 import { SubCategorySelect } from '../Selects/SubCategorySelect/SubCategorySelect.tsx';
+import type { RegisterFormType, StepTwoType } from '../../../utils/schemas/registrationSchemas.ts';
 
 type Props = {
-  onNext: () => void;
+  onNext: (data: StepTwoType) => void;
   onPrev: () => void;
+  defaultValues: RegisterFormType;
 };
 
-const RegisterFormStepTwo = ({ onNext, onPrev }: Props) => {
+const RegisterFormStepTwo = ({ onNext, onPrev, defaultValues }: Props) => {
   const [gender, setGender] = useState('');
   const [city, setCity] = useState('');
   const [category, setCategory] = useState('');
@@ -23,7 +25,7 @@ const RegisterFormStepTwo = ({ onNext, onPrev }: Props) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Логика для валидации и отправки данных
-    onNext();
+    // onNext();
   };
 
   const handleBack = () => {

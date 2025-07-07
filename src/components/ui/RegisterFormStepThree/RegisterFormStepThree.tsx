@@ -6,13 +6,15 @@ import { SubCategorySelect } from '../Selects/SubCategorySelect/SubCategorySelec
 import { useState } from 'react';
 import Textarea from '../Textarea/Textarea';
 import { ImageDropzone } from '../ImageDropzone/ImageDropzone';
+import type { RegisterFormType, StepThreeType } from '../../../utils/schemas/registrationSchemas';
 
 type Props = {
-  onNext: () => void;
+  onNext: (data: StepThreeType) => void;
   onPrev: () => void;
+  defaultValues: RegisterFormType;
 };
 
-export const RegisterFormStepThreeUI = ({ onNext, onPrev }: Props) => {
+export const RegisterFormStepThreeUI = ({ onNext, onPrev, defaultValues }: Props) => {
   const [category, setCategory] = useState('');
   const [subcategory, setSubcategory] = useState('');
 
@@ -25,7 +27,7 @@ export const RegisterFormStepThreeUI = ({ onNext, onPrev }: Props) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Логика для валидации и отправки данных
-    onNext();
+    // onNext();
   };
 
   const handleBack = () => {

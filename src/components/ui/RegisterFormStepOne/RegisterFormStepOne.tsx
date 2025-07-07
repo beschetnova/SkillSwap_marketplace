@@ -2,17 +2,19 @@ import { useState } from 'react';
 import styles from './RegisterFormStepOne.module.css';
 import Input from '../input/input';
 import Button from '../buttons/button';
+import type { RegisterFormType, StepOneType } from '../../../utils/schemas/registrationSchemas';
 
 type Props = {
-  onNext: () => void;
+  onNext: (data: StepOneType) => void;
+  defaultValues: RegisterFormType;
 };
 
-export const RegisterFormStepOneUI = ({ onNext }: Props) => {
+export const RegisterFormStepOneUI = ({ onNext, defaultValues }: Props) => {
   const [showPassword, setShowPassword] = useState(false);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Логика для валидации и отправки данных
-    onNext();
+    // onNext();
   };
 
   return (
