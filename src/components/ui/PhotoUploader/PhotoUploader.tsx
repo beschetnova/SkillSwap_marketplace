@@ -48,7 +48,7 @@ const PhotoUploader = ({ onChange }: PhotoUploaderProps) => {
         accept='image/png, image/jpeg, image/jpg'
         ref={fileInputRef}
         onChange={handleFileChange}
-        // style={{ display: 'none' }}
+        style={{ display: 'none' }}
       />
     </div>
   );
