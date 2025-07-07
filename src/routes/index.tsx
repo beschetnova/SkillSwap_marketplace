@@ -11,7 +11,8 @@ const routes = [
   { path: PathConstants.HOME, element: <MainPage /> },
   { path: PathConstants.SKILL, element: <SkillPage /> },
   { path: PathConstants.PROFILE, element: <ProfilePage /> },
-  { path: PathConstants.REGISTRATION, element: <RegisterPage /> }
+  { path: PathConstants.REGISTRATION, element: <RegisterPage /> },
+  { path: PathConstants.FAVORITES, element: <RegisterPage /> }
 ];
 
 export default routes;
