@@ -18,15 +18,15 @@ export const RegisterSteps = ({ step, onStepChange }: TRegisterSteps) => {
       <div className={styles.progressBar}>
         <button
           className={`${styles.line} ${step >= 1 ? styles.active : ''}`}
-          onClick={() => handleClick(1)}
+          // onClick={() => handleClick(1)}
         ></button>
         <button
           className={`${styles.line} ${step >= 2 ? styles.active : ''}`}
-          onClick={() => handleClick(2)}
+          // onClick={() => handleClick(2)}
         ></button>
         <button
           className={`${styles.line} ${step >= 3 ? styles.active : ''}`}
-          onClick={() => handleClick(3)}
+          // onClick={() => handleClick(3)}
         ></button>
       </div>
     </div>
