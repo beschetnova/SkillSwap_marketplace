@@ -2,7 +2,13 @@ import { useState } from 'react';
 import styles from './RegisterFormStepOne.module.css';
 import Input from '../input/input';
 import Button from '../buttons/button';
-import type { RegisterFormType, StepOneType } from '../../../utils/schemas/registrationSchemas';
+import {
+  stepOneSchema,
+  type RegisterFormType,
+  type StepOneType
+} from '../../../utils/schemas/registrationSchemas';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 type Props = {
   onNext: (data: StepOneType) => void;
@@ -10,15 +16,23 @@ type Props = {
 };
 
 export const RegisterFormStepOneUI = ({ onNext, defaultValues }: Props) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid }
+  } = useForm<StepOneType>({
+    resolver: zodResolver(stepOneSchema),
+    mode: 'onBlur',
+    defaultValues: {
+      email: defaultValues.email,
+      password: defaultValues.password
+    }
+  });
+
   const [showPassword, setShowPassword] = useState(false);
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Логика для валидации и отправки данных
-    // onNext();
-  };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit(onNext)}>
       <div className={styles.elementList}>
         <Button type='secondary' className={styles.button}>
           <img src='/Google.svg' alt='Google' className={styles.icon} />
@@ -39,6 +53,8 @@ export const RegisterFormStepOneUI = ({ onNext, defaultValues }: Props) => {
           label='Email'
           type='email'
           placeholder='Введите email'
+          {...register('email')}
+          error={errors.email?.message}
         ></Input>
 
         <div className={styles.passwordWrapper}>
@@ -48,6 +64,8 @@ export const RegisterFormStepOneUI = ({ onNext, defaultValues }: Props) => {
             placeholder='Придумайте надёжный пароль'
             type={showPassword ? 'text' : 'password'}
             info='Пароль должен содержать не менее 8 знаков'
+            {...register('password')}
+            error={errors.password?.message}
             rightIcon={
               <button
                 type='button'
@@ -60,7 +78,12 @@ export const RegisterFormStepOneUI = ({ onNext, defaultValues }: Props) => {
           ></Input>
         </div>
       </div>
-      <Button type='primary' htmlType='submit' className={styles.submitButton}>
+      <Button
+        type='primary'
+        htmlType='submit'
+        className={styles.submitButton}
+        disabled={!isValid}
+      >
         Далее
       </Button>
     </form>
