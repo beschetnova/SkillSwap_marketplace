@@ -71,3 +71,5 @@ export const RegisterFormStepThreeUI = ({ onNext }: Props) => {
     </form>
   );
 };
+
+export default RegisterFormStepThreeUI;
