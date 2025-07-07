@@ -4,7 +4,6 @@ import Input from '../input/input.tsx';
 import Button from '../buttons/button.tsx';
 import DatePicker from '../../DatePicker/DatePicker.tsx';
 import Select from '../Selects/Select/Select.tsx';
-import { useState } from 'react';
 import { CategorySelect } from '../Selects/CategorySelect/CategorySelect.tsx';
 import { CitySelect } from '../Selects/CitySelect/CitySelect.tsx';
 import { SubCategorySelect } from '../Selects/SubCategorySelect/SubCategorySelect.tsx';
@@ -13,7 +12,7 @@ import {
   type RegisterFormType,
   type StepTwoType
 } from '../../../utils/schemas/registrationSchemas.ts';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 type Props = {
@@ -23,28 +22,36 @@ type Props = {
 };
 
 const RegisterFormStepTwo = ({ onNext, onPrev, defaultValues }: Props) => {
-  const [gender, setGender] = useState('');
-  const [city, setCity] = useState('');
-  const [category, setCategory] = useState('');
-  const [subcategory, setSubcategory] = useState('');
-
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
+    control,
+    watch
   } = useForm<StepTwoType>({
     resolver: zodResolver(stepTwoSchema),
     mode: 'onBlur',
     defaultValues
   });
 
+  const watchedCategoryToLearn = watch('categoryToLearn');
   const handleBack = () => {
     onPrev();
   };
-
   return (
     <form className={styles.form} onSubmit={handleSubmit(onNext)}>
-      <PhotoUploader />
+      {/* I don't know why it's not working */}
+      {/* <Controller
+        name='avatar'
+        control={control}
+        render={({ field: { onChange, value }, fieldState: { error } }) => (
+          <div>
+            <PhotoUploader onChange={onChange} value={value} />
+            {<p>{errors.avatar?.message}</p>}
+          </div>
+        )}/> */}
+      <PhotoUploader onChange={() => {}} />
+
       <div className={styles.inputsWrapper}>
         <Input
           id='nameInput'
@@ -55,12 +62,21 @@ const RegisterFormStepTwo = ({ onNext, onPrev, defaultValues }: Props) => {
           error={errors.name?.message}
         ></Input>
         <div className={styles.dateWrapper}>
-          <DatePicker />
+          <Controller
+            name='birthDate'
+            control={control}
+            render={({ field, fieldState: { error } }) => (
+              <div>
+                <DatePicker value={field.value} onChange={field.onChange} />
+                {error && <p>{error.message}</p>}
+              </div>
+            )}
+          />
           <Select
             id='genderInput'
             label='Пол'
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
+            {...register('gender')}
+            error={errors.gender?.message}
             options={[
               { value: '', label: 'Не указан' },
               { value: 'male', label: 'Мужской' },
@@ -76,15 +92,15 @@ const RegisterFormStepTwo = ({ onNext, onPrev, defaultValues }: Props) => {
             }
           ></Select>
         </div>
-        <CitySelect city={city} setCity={setCity}></CitySelect>
+        <CitySelect {...register('city')} error={errors.city?.message} />
         <CategorySelect
-          category={category}
-          setCategory={setCategory}
-        ></CategorySelect>
+          {...register('categoryToLearn')}
+          error={errors.categoryToLearn?.message}
+        />
         <SubCategorySelect
-          subcategory={subcategory}
-          setSubcategory={setSubcategory}
-          category={category}
+          {...register('subcategoryToLearn')}
+          category={watchedCategoryToLearn}
+          error={errors.subcategoryToLearn?.message}
         ></SubCategorySelect>
       </div>
       <div className={styles.buttonWrapper}>

@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { forwardRef, memo } from 'react';
 import clsx from 'clsx';
 import styles from './Select.module.css';
 
@@ -15,51 +15,56 @@ interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   options: Option[];
 }
 
-const Select = ({
-  id,
-  label,
-  error,
-  info,
-  leftIcon,
-  rightIcon,
-  options,
-  ...props
-}: SelectProps) => {
-  return (
-    <div className={styles.container}>
-      {label && (
-        <label htmlFor={id} className={styles.label}>
-          {label}
-        </label>
-      )}
-      <div className={clsx(styles.selectContainer, error && styles.error)}>
-        {leftIcon && <span className={styles.leftIcon}>{leftIcon}</span>}
+const Select = forwardRef<HTMLSelectElement, SelectProps>(
+  (
+    {
+      id,
+      label,
+      error,
+      info,
+      leftIcon,
+      rightIcon,
+      options,
+      ...props
+    },
+    ref 
+  ) => {
+    return (
+      <div className={styles.container}>
+        {label && (
+          <label htmlFor={id} className={styles.label}>
+            {label}
+          </label>
+        )}
+        <div className={clsx(styles.selectContainer, error && styles.error)}>
+          {leftIcon && <span className={styles.leftIcon}>{leftIcon}</span>}
 
-        <select required id={id} className={styles.select} {...props}>
-          {options.map((opt) =>
-            'options' in opt ? (
-              <optgroup key={opt.label} label={opt.label}>
-                {opt.options.map((item) => (
-                  <option key={item.value} value={item.value}>
-                    {item.label}
-                  </option>
-                ))}
-              </optgroup>
-            ) : (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
-              </option>
-            )
-          )}
-        </select>
+          <select required id={id} className={styles.select} {...props} ref={ref}>
+            {options.map((opt) =>
+              'options' in opt ? (
+                <optgroup key={opt.label} label={opt.label}>
+                  {opt.options.map((item) => (
+                    <option key={item.value} value={item.value}>
+                      {item.label}
+                    </option>
+                  ))}
+                </optgroup>
+              ) : (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              )
+            )}
+          </select>
 
-        {rightIcon && <span className={styles.rightIcon}>{rightIcon}</span>}
+          {rightIcon && <span className={styles.rightIcon}>{rightIcon}</span>}
+        </div>
+
+        {error && <p className={styles.errorText}>{error}</p>}
+        {!error && info && <p className={styles.infoText}>{info}</p>}
       </div>
-
-      {error && <p className={styles.errorText}>{error}</p>}
-      {!error && info && <p className={styles.infoText}>{info}</p>}
-    </div>
-  );
-};
+    );
+  }
+);
 
 export default memo(Select);
