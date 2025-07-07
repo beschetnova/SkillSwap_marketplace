@@ -8,7 +8,13 @@ import { useState } from 'react';
 import { CategorySelect } from '../Selects/CategorySelect/CategorySelect.tsx';
 import { CitySelect } from '../Selects/CitySelect/CitySelect.tsx';
 import { SubCategorySelect } from '../Selects/SubCategorySelect/SubCategorySelect.tsx';
-import type { RegisterFormType, StepTwoType } from '../../../utils/schemas/registrationSchemas.ts';
+import {
+  stepTwoSchema,
+  type RegisterFormType,
+  type StepTwoType
+} from '../../../utils/schemas/registrationSchemas.ts';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 type Props = {
   onNext: (data: StepTwoType) => void;
@@ -22,18 +28,22 @@ const RegisterFormStepTwo = ({ onNext, onPrev, defaultValues }: Props) => {
   const [category, setCategory] = useState('');
   const [subcategory, setSubcategory] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Логика для валидации и отправки данных
-    // onNext();
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm<StepTwoType>({
+    resolver: zodResolver(stepTwoSchema),
+    mode: 'onBlur',
+    defaultValues
+  });
 
   const handleBack = () => {
     onPrev();
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit(onNext)}>
       <PhotoUploader />
       <div className={styles.inputsWrapper}>
         <Input
@@ -41,7 +51,8 @@ const RegisterFormStepTwo = ({ onNext, onPrev, defaultValues }: Props) => {
           label='Имя'
           type='text'
           placeholder='Введите ваше имя'
-          required
+          {...register('name')}
+          error={errors.name?.message}
         ></Input>
         <div className={styles.dateWrapper}>
           <DatePicker />
@@ -85,7 +96,12 @@ const RegisterFormStepTwo = ({ onNext, onPrev, defaultValues }: Props) => {
         >
           Назад
         </Button>
-        <Button type='primary' htmlType='submit' className={styles.nextButton}>
+        <Button
+          type='primary'
+          htmlType='submit'
+          className={styles.nextButton}
+          disabled={!isValid}
+        >
           Продолжить
         </Button>
       </div>
