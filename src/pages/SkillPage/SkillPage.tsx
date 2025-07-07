@@ -12,6 +12,7 @@ import testImage3 from '../../images/skills/drums/drum-3.jpg';
 import testImage4 from '../../images/skills/drums/drum-4.jpg';
 import testImage5 from '../../images/skills/drums/drum-1.jpg';
 import { calculateAge, getYearsWord } from '../../utils/date/dateUtils';
+import { categoryAndSubcategoryTranslate } from '../../utils/skill-category/getSkillCategory';
 
 const SkillPage = () => {
   const { userId } = useParams();
@@ -32,6 +33,11 @@ const SkillPage = () => {
   const age = calculateAge(selectedUser.birthDate);
   const ageText = `${selectedUser.city}, ${age} ${getYearsWord(age)}`;
 
+  const { skill, description, categoryId, subcategory } =
+    selectedUser.skillsToTeach[0];
+  const { category: categoryLabel, subcategory: subcategoryLabel } =
+    categoryAndSubcategoryTranslate(categoryId, subcategory, skills);
+
   return (
     <div className={styles.component}>
       <div className={styles.userInformation}>
@@ -43,9 +49,9 @@ const SkillPage = () => {
         />
         <UserOfferCardUI
           images={items}
-          title='Игра на барабанах'
-          category='Творчество и искусство / Музыка и звук'
-          description='Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры'
+          title={skill}
+          category={`${categoryLabel} / ${subcategoryLabel}`}
+          description={description ?? ''}
           onButtonClick={offerHandle}
         />
       </div>

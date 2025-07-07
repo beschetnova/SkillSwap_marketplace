@@ -8,7 +8,8 @@ const PathConstants = {
   HOME: '/',
   SKILL: '/skill/:userId',
   PROFILE: '/profile',
-  REGISTRATION: '/register'
+  REGISTRATION: '/register',
+  CREATE: '/create'
 };
 
 export default PathConstants;

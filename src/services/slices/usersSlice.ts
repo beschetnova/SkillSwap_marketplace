@@ -4,7 +4,7 @@ import {
   createSlice
 } from '@reduxjs/toolkit';
 import { getUsers } from '../../api/api';
-import type { Users, User } from '../../utils/types';
+import type { Users, User, UserCardSkill } from '../../utils/types';
 import type { RootState } from '../store';
 
 type UsersState = {
@@ -24,7 +24,16 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', getUsers);
 export const usersSlice = createSlice({
   name: 'users',
   initialState,
-  reducers: {},
+  reducers: {
+    setUserSkillToTeach: (
+      state,
+      action: { payload: { id: number; skill: UserCardSkill } }
+    ) => {
+      const { id, skill } = action.payload;
+      const user = state.users.find((user) => user.id === id);
+      if (user) user.skillsToTeach = [skill];
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchUsers.pending, (state) => {
@@ -67,5 +76,6 @@ export const selectAllUsersCity = createSelector([selectAllUsers], (users) => [
   ...new Set(users.map((user) => user.city))
 ]);
 export const { selectUsersWithSameOffer, getUserById } = usersSlice.selectors;
+export const { setUserSkillToTeach } = usersSlice.actions;
 
 export default usersSlice.reducer;

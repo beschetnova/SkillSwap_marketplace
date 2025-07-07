@@ -11,7 +11,7 @@ import tseslint from "typescript-eslint";
 // [config-inspector](https://eslint.org/blog/2024/04/eslint-config-inspector/) experience.
 import eslintConfigPrettier from "eslint-config-prettier/flat";
 
-export default tseslint.config({ ignores: ["dist", "node_modules"] }, {
+export default tseslint.config({ ignores: ["dist", "node_modules", "**/*.stories.tsx", "**/*.stories.ts"] }, {
   extends: [
     js.configs.recommended,
     ...tseslint.configs.recommendedTypeChecked,
