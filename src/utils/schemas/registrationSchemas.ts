@@ -12,7 +12,7 @@ export const stepOneSchema = z.object({
 
 export const stepTwoSchema = z.object({
   avatar: z
-    .instanceof(File, {message: 'Требуется фотография'})
+    .instanceof(File, { message: 'Требуется фотография' })
     .refine(
       (file) => file.size <= max_image_size,
       'Максимальный размер фотографии - 2 МБ'

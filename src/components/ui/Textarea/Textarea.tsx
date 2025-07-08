@@ -38,12 +38,7 @@ const Textarea = ({
           {label}
         </label>
       )}
-      <div
-        className={clsx(
-          styles.textareaContainer,
-          icon && styles.withIcon
-        )}
-      >
+      <div className={clsx(styles.textareaContainer, icon && styles.withIcon)}>
         <textarea
           ref={textareaRef}
           className={clsx(styles.textarea, error && styles.error)}
