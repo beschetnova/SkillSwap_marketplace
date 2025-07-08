@@ -16,19 +16,7 @@ interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
 }
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  (
-    {
-      id,
-      label,
-      error,
-      info,
-      leftIcon,
-      rightIcon,
-      options,
-      ...props
-    },
-    ref 
-  ) => {
+  ({ id, label, error, info, leftIcon, rightIcon, options, ...props }, ref) => {
     return (
       <div className={styles.container}>
         {label && (
@@ -39,7 +27,13 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
         <div className={clsx(styles.selectContainer, error && styles.error)}>
           {leftIcon && <span className={styles.leftIcon}>{leftIcon}</span>}
 
-          <select required id={id} className={styles.select} {...props} ref={ref}>
+          <select
+            required
+            id={id}
+            className={styles.select}
+            {...props}
+            ref={ref}
+          >
             {options.map((opt) =>
               'options' in opt ? (
                 <optgroup key={opt.label} label={opt.label}>

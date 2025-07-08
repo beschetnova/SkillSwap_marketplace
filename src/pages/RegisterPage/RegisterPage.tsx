@@ -18,7 +18,7 @@ export const RegisterPage = () => {
       setCurrentStep((prevStep) => Math.min(prevStep + 1, 3) as 1 | 2 | 3);
     } else {
       // TODO: здесь сохранять в слайс
-      console.log('Данные регистрации:', updatedData)
+      console.log('Данные регистрации:', updatedData);
     }
   };
 
@@ -50,7 +50,12 @@ export const RegisterPage = () => {
   const renderStepForm = () => {
     switch (currentStep) {
       case 1:
-        return <RegisterFormStepOneUI onNext={handleNextStep} defaultValues={formData}  />;
+        return (
+          <RegisterFormStepOneUI
+            onNext={handleNextStep}
+            defaultValues={formData}
+          />
+        );
       case 2:
         return (
           <RegisterFormStepTwoUI
