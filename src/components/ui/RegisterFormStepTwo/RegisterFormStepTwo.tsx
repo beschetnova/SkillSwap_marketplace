@@ -33,20 +33,24 @@ const RegisterFormStepTwo = ({ onNext, onPrev, defaultValues }: Props) => {
     mode: 'all',
     defaultValues
   });
-
+  const onSubmit = (e: React.FormEvent) => {
+    void handleSubmit(onNext)(e);
+  };
   const watchedCategoryToLearn = watch('categoryToLearn');
   const handleBack = () => {
     onPrev();
   };
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onNext)}>
+    <form className={styles.form} onSubmit={onSubmit}>
       <Controller
         name='avatar'
         control={control}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <div className={styles.photoUploader}>
             <PhotoUploader onChange={onChange} value={value} />
-            {error && <p className={styles.errorText}>{errors.avatar?.message}</p>}
+            {error && (
+              <p className={styles.errorText}>{errors.avatar?.message}</p>
+            )}
           </div>
         )}
       />

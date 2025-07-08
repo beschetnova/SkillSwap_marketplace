@@ -30,9 +30,12 @@ export const RegisterFormStepOneUI = ({ onNext, defaultValues }: Props) => {
   });
 
   const [showPassword, setShowPassword] = useState(false);
+  const onSubmit = (e: React.FormEvent) => {
+    void handleSubmit(onNext)(e);
+  };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onNext)}>
+    <form className={styles.form} onSubmit={onSubmit}>
       <div className={styles.elementList}>
         <Button type='secondary' className={styles.button}>
           <img src='/Google.svg' alt='Google' className={styles.icon} />

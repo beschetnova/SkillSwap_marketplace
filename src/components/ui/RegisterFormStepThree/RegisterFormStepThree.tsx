@@ -37,13 +37,15 @@ export const RegisterFormStepThreeUI = ({
   });
 
   const watchedCategory = watch('categoryToTeach');
-
+  const onSubmit = (e: React.FormEvent) => {
+    void handleSubmit(onNext)(e);
+  };
   const handleBack = () => {
     onPrev();
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onNext)}>
+    <form className={styles.form} onSubmit={onSubmit}>
       <div className={styles.inputList}>
         <Input
           id='titleInput'
@@ -86,7 +88,9 @@ export const RegisterFormStepThreeUI = ({
                   field.onChange(newImages);
                 }}
               />
-              {fieldState.error && <p className={styles.errorText}>{fieldState.error.message}</p>}
+              {fieldState.error && (
+                <p className={styles.errorText}>{fieldState.error.message}</p>
+              )}
             </div>
           )}
         />
