@@ -94,6 +94,9 @@ export const profileSlice = createSlice({
     },
     selectIsAuth: (state) => {
       return state.isAuth;
+    },
+    selectProfileId: (state) => {
+      return state.profile?.id;
     }
   }
 });
@@ -106,3 +109,6 @@ export const selectFavorites = createSelector(
   (state: RootState) => state.profile.profile?.favorites,
   (favorites) => favorites ?? []
 );
+
+export const { selectProfile, selectIsAuth, selectProfileId } =
+  profileSlice.selectors;
