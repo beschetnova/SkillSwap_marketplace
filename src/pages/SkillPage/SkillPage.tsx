@@ -7,12 +7,13 @@ import UserOfferCardUI from '../../components/ui/UserOfferCard/UserOfferCard';
 import SameOffers from '../../components/SameOffers/SameOffers';
 import { selectAllSkills } from '../../services/slices/skillsSlice';
 import testImage1 from '../../images/skills/drums/drum-1.jpg';
+import testImage5 from '../../images/skills/drums/drum-1.jpg';
 import testImage2 from '../../images/skills/drums/drum-2.jpg';
 import testImage3 from '../../images/skills/drums/drum-3.jpg';
 import testImage4 from '../../images/skills/drums/drum-4.jpg';
-import testImage5 from '../../images/skills/drums/drum-1.jpg';
 import { calculateAge, getYearsWord } from '../../utils/date/dateUtils';
 import { categoryAndSubcategoryTranslate } from '../../utils/skill-category/getSkillCategory';
+import UserNotFound from '../../components/ui/UserNotFound/UserNotFound';
 
 const SkillPage = () => {
   const { userId } = useParams();
@@ -22,7 +23,7 @@ const SkillPage = () => {
   const skills = useAppSelector(selectAllSkills);
 
   if (!userId) return;
-  if (!selectedUser) return;
+  if (!selectedUser) return <UserNotFound />;
 
   const items = [testImage1, testImage2, testImage3, testImage4, testImage5];
 
