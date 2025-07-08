@@ -3,13 +3,22 @@ import styles from './Textarea.module.css';
 import clsx from 'clsx';
 import type { TTextareaProps } from './type';
 
-const Textarea = ({ label, error, info, icon, value, onChange, ...props }: TTextareaProps) => {
+const Textarea = ({
+  label,
+  error,
+  info,
+  icon,
+  value,
+  onChange,
+  ...props
+}: TTextareaProps) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const adjustHeight = () => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
-      textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
+      textareaRef.current.style.height =
+        textareaRef.current.scrollHeight + 'px';
     }
   };
 
@@ -29,7 +38,13 @@ const Textarea = ({ label, error, info, icon, value, onChange, ...props }: TText
           {label}
         </label>
       )}
-      <div className={clsx(styles.textareaContainer, error && styles.error, icon && styles.withIcon)}>
+      <div
+        className={clsx(
+          styles.textareaContainer,
+          error && styles.error,
+          icon && styles.withIcon
+        )}
+      >
         <textarea
           ref={textareaRef}
           className={styles.textarea}
@@ -39,7 +54,7 @@ const Textarea = ({ label, error, info, icon, value, onChange, ...props }: TText
         ></textarea>
         {icon && (
           <div className={styles.iconWrapper}>
-            <img src={icon} alt="icon" />
+            <img src={icon} alt='icon' />
           </div>
         )}
       </div>

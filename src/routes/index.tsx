@@ -5,6 +5,7 @@ import PathConstants from './path-constants';
 import { RegisterPage } from '../pages/RegisterPage/RegisterPage';
 import { CreatePage } from '../pages/CreatePage/CreatePage';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
+import { FavoritesPage } from '../pages/FavoritesPage/FavoritesPage';
 
 // Здесь добавляются константы для путей маршрутов приложения.
 // path - константа из path-constants.ts
@@ -26,6 +27,14 @@ const routes = [
     element: (
       <PrivateRoute>
         <CreatePage />
+      </PrivateRoute>
+    )
+  },
+  {
+    path: PathConstants.FAVORITES,
+    element: (
+      <PrivateRoute>
+        <FavoritesPage />
       </PrivateRoute>
     )
   }

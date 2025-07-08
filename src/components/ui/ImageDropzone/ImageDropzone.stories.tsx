@@ -5,7 +5,7 @@ import { ImageDropzone } from './ImageDropzone';
 const meta: Meta<typeof ImageDropzone> = {
   title: 'Ui/ImageDropzone',
   component: ImageDropzone,
-  tags: ['autodocs'],
+  tags: ['autodocs']
 };
 
 export default meta;
@@ -20,8 +20,10 @@ export const Default: Story = {
       <ImageDropzone
         images={images}
         onDrop={(files) => setImages((prev) => [...prev, ...files])}
-        onRemove={(index) => setImages((prev) => prev.filter((_, i) => i !== index))}
+        onRemove={(index) =>
+          setImages((prev) => prev.filter((_, i) => i !== index))
+        }
       />
     );
-  },
+  }
 };

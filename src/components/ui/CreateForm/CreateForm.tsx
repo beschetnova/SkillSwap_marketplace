@@ -8,7 +8,6 @@ import Textarea from '../Textarea/Textarea';
 import { ImageDropzone } from '../ImageDropzone/ImageDropzone';
 import type { TSkillForm, TCreateFormProps } from './type';
 
-
 export const CreateFormUI = ({ createSkill }: TCreateFormProps) => {
   const [category, setCategory] = useState('');
   const [subcategory, setSubcategory] = useState('');
@@ -30,7 +29,7 @@ export const CreateFormUI = ({ createSkill }: TCreateFormProps) => {
         skillName,
         skillDescription,
         images
-      }
+      };
       createSkill(skill);
     }
   };
@@ -48,7 +47,9 @@ export const CreateFormUI = ({ createSkill }: TCreateFormProps) => {
           type='text'
           placeholder='Введите название вашего навыка'
           value={skillName}
-          onChange={(e) => {setSkillName(e.target.value)}}
+          onChange={(e) => {
+            setSkillName(e.target.value);
+          }}
         ></Input>
         <CategorySelect
           category={category}
@@ -64,7 +65,9 @@ export const CreateFormUI = ({ createSkill }: TCreateFormProps) => {
           label='Описание'
           placeholder='Коротко опишите, чему можете научить'
           value={skillDescription}
-          onChange={(e) => {setSkillDescription(e.target.value)}}
+          onChange={(e) => {
+            setSkillDescription(e.target.value);
+          }}
         ></Textarea>
         <ImageDropzone
           images={images}

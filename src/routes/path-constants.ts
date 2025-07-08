@@ -9,6 +9,7 @@ const PathConstants = {
   SKILL: '/skill/:userId',
   PROFILE: '/profile',
   REGISTRATION: '/register',
+  FAVORITES: '/favorites',
   CREATE: '/create'
 };
 
