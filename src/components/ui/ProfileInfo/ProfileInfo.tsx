@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../../utils/hooks.ts';
 
-import { parseISO, format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import { ru } from 'date-fns/locale/ru';
 
 import styles from './ProfileInfo.module.css';
@@ -155,8 +155,8 @@ export const ProfileInfo = () => {
             />
           </div>
           <CitySelect
-            city={profileData.city}
-            setCity={(city) => handleChange('city', city)}
+            value={profileData.city}
+            onChange={(e) => handleChange('city', e.target.value)}
           />
           <Textarea
             label='О себе'
