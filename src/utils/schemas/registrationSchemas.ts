@@ -11,16 +11,16 @@ export const stepOneSchema = z.object({
 });
 
 export const stepTwoSchema = z.object({
-  // avatar: z
-  //   .instanceof(File, {message: 'Требуется фотография'})
-  //   .refine(
-  //     (file) => file.size <= max_image_size,
-  //     'Максимальный размер фотографии - 2 МБ'
-  //   )
-  //   .refine(
-  //     (file) => image_types.includes(file.type),
-  //     'Доступны фотографии только JPEG и PNG формата'
-  //   ),
+  avatar: z
+    .instanceof(File, {message: 'Требуется фотография'})
+    .refine(
+      (file) => file.size <= max_image_size,
+      'Максимальный размер фотографии - 2 МБ'
+    )
+    .refine(
+      (file) => image_types.includes(file.type),
+      'Доступны фотографии только JPEG и PNG формата'
+    ),
   name: z.string().nonempty({ message: 'Требуется указать имя' }),
   birthDate: z.date({
     required_error: 'Укажите дату рождения'

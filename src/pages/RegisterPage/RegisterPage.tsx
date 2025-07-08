@@ -17,7 +17,8 @@ export const RegisterPage = () => {
     if (currentStep < 3) {
       setCurrentStep((prevStep) => Math.min(prevStep + 1, 3) as 1 | 2 | 3);
     } else {
-      // хочу отправлять данные в слайс здесь, а не в 3 шаге (так по идее правильнее)
+      // TODO: здесь сохранять в слайс
+      console.log('Данные регистрации:', updatedData)
     }
   };
 

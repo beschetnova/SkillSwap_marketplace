@@ -30,7 +30,7 @@ const RegisterFormStepTwo = ({ onNext, onPrev, defaultValues }: Props) => {
     watch
   } = useForm<StepTwoType>({
     resolver: zodResolver(stepTwoSchema),
-    mode: 'onBlur',
+    mode: 'all',
     defaultValues
   });
 
@@ -40,17 +40,16 @@ const RegisterFormStepTwo = ({ onNext, onPrev, defaultValues }: Props) => {
   };
   return (
     <form className={styles.form} onSubmit={handleSubmit(onNext)}>
-      {/* I don't know why it's not working */}
-      {/* <Controller
+      <Controller
         name='avatar'
         control={control}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
-          <div>
+          <div className={styles.photoUploader}>
             <PhotoUploader onChange={onChange} value={value} />
-            {<p>{errors.avatar?.message}</p>}
+            {error && <p className={styles.errorText}>{errors.avatar?.message}</p>}
           </div>
-        )}/> */}
-      <PhotoUploader onChange={() => {}} />
+        )}
+      />
 
       <div className={styles.inputsWrapper}>
         <Input
