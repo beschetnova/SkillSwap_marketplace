@@ -19,6 +19,7 @@ export type UserCardSkill = {
 };
 
 export type User = {
+  offer: any;
   id: number;
   name: string;
   city: string;
@@ -31,8 +32,12 @@ export type User = {
 };
 
 export type Profile = User & {
-  email: string
-}
+  email: string;
+};
+
+export type Login = Profile & {
+  password: string;
+};
 
 export type Users = User[];
 
