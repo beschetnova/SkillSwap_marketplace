@@ -49,7 +49,6 @@ export const stepThreeSchema = z.object({
     .string()
     .max(500, { message: 'Описание не должно превышать 500 символов' })
     .optional(),
-  // не уверен, что заработает
   images: z
     .array(z.instanceof(File))
     .min(1, 'Загрузите хотя бы одно изображение.')

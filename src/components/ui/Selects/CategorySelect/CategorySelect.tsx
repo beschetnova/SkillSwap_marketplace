@@ -4,12 +4,11 @@ import { selectAllSkills } from '../../../../services/slices/skillsSlice.ts';
 import Select from '../Select/Select.tsx';
 import styles from '../../RegisterFormStepTwo/RegisterFormStepTwo.module.css';
 
-// Определяем тип для входящих пропсов
+
 interface CategorySelectProps {
   error?: string;
 }
 
-// Оборачиваем компонент в forwardRef
 export const CategorySelect = forwardRef<HTMLSelectElement, CategorySelectProps>(
   ({ error, ...props }, ref) => {
     const skillCategories = useAppSelector(selectAllSkills);
