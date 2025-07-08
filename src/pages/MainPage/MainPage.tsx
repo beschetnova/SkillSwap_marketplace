@@ -149,6 +149,15 @@ const MainPage = () => {
     }
   };
 
+  const isDefaultFilters = useMemo(() => {
+    return (
+      filters.type === 'Всё' &&
+      filters.gender === 'Не имеет значения' &&
+      filters.cities.length === 0 &&
+      filters.skills.length === 0
+    );
+  }, [filters]);
+
   return (
     <>
       <main className={styles.main}>
@@ -159,7 +168,7 @@ const MainPage = () => {
             onRemoveTag={handleRemoveFilter}
           />
           <UserCardSection
-            title='Рекомендуем'
+            title={isDefaultFilters ? 'Рекомендуем' : 'Подходящие предложения'}
             users={filteredUsers}
             categories={skills}
           />
