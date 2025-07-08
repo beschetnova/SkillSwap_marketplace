@@ -41,13 +41,12 @@ const Textarea = ({
       <div
         className={clsx(
           styles.textareaContainer,
-          error && styles.error,
           icon && styles.withIcon
         )}
       >
         <textarea
           ref={textareaRef}
-          className={styles.textarea}
+          className={clsx(styles.textarea, error && styles.error)}
           value={value}
           onChange={handleChange}
           {...props}
@@ -57,9 +56,9 @@ const Textarea = ({
             <img src={icon} alt='icon' />
           </div>
         )}
+        {error && <p className={styles.errorText}>{error}</p>}
+        {!error && info && <p className={styles.infoText}>{info}</p>}
       </div>
-      {error && <p className={styles.errorText}>{error}</p>}
-      {!error && info && <p className={styles.infoText}>{info}</p>}
     </div>
   );
 };
