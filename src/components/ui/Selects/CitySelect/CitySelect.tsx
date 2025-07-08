@@ -4,7 +4,8 @@ import Select from '../Select/Select.tsx';
 import styles from '../../RegisterFormStepTwo/RegisterFormStepTwo.module.css';
 import { selectAllCities } from '../../../../services/slices/citiesSlice.ts';
 
-interface CitySelectProps {
+interface CitySelectProps
+  extends React.SelectHTMLAttributes<HTMLSelectElement> {
   error?: string;
 }
 
