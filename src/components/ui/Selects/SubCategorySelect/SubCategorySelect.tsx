@@ -1,19 +1,18 @@
+import { forwardRef } from 'react';
 import { useAppSelector } from '../../../../utils/hooks.ts';
 import { selectAllSkills } from '../../../../services/slices/skillsSlice.ts';
 import Select from '../Select/Select.tsx';
 import styles from '../../RegisterFormStepTwo/RegisterFormStepTwo.module.css';
 
 interface SubCategorySelectProps {
-  subcategory: string;
-  setSubcategory: (value: string) => void;
   category: string;
+  error?: string;
 }
 
-export const SubCategorySelect = ({
-  subcategory,
-  setSubcategory,
-  category
-}: SubCategorySelectProps) => {
+export const SubCategorySelect = forwardRef<
+  HTMLSelectElement,
+  SubCategorySelectProps
+>(({ category, error, ...props }, ref) => {
   const skillCategories = useAppSelector(selectAllSkills);
 
   const selectedCategory = skillCategories.find((cat) => cat.id === category);
@@ -27,13 +26,16 @@ export const SubCategorySelect = ({
         }))
       ]
     : [{ value: '', label: 'Сначала выберите категорию' }];
+
   return (
     <Select
       id='subcategoryInput'
-      label='Подкатегория навыка, которому хотите научиться'
-      value={subcategory}
-      onChange={(e) => setSubcategory(e.target.value)}
+      label='Подкатегория навыка'
       options={subcategoryOptions}
+      disabled={!category}
+      ref={ref} 
+      error={error}
+      {...props} 
       rightIcon={
         <img
           src='/icons/chevron-down.svg'
@@ -41,6 +43,6 @@ export const SubCategorySelect = ({
           className={styles.arrow}
         />
       }
-    ></Select>
+    />
   );
-};
+});

@@ -19,6 +19,7 @@
   block-size: 4px;
   border-radius: 8px;
   background-color: var(--disabled-color);
+  cursor: auto;
 }
 
 .active {

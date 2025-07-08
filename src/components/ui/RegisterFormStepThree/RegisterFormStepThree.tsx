@@ -3,68 +3,108 @@ import Input from '../input/input';
 import Button from '../buttons/button';
 import { CategorySelect } from '../Selects/CategorySelect/CategorySelect';
 import { SubCategorySelect } from '../Selects/SubCategorySelect/SubCategorySelect';
-import { useState } from 'react';
 import Textarea from '../Textarea/Textarea';
 import { ImageDropzone } from '../ImageDropzone/ImageDropzone';
+import {
+  stepThreeSchema,
+  type RegisterFormType,
+  type StepThreeType
+} from '../../../utils/schemas/registrationSchemas';
+import { Controller, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 type Props = {
-  onNext: () => void;
+  onNext: (data: StepThreeType) => void;
+  onPrev: () => void;
+  defaultValues: RegisterFormType;
 };
 
-export const RegisterFormStepThreeUI = ({ onNext }: Props) => {
-  const [category, setCategory] = useState('');
-  const [subcategory, setSubcategory] = useState('');
+export const RegisterFormStepThreeUI = ({
+  onNext,
+  onPrev,
+  defaultValues
+}: Props) => {
+  const {
+    register,
+    control,
+    handleSubmit,
+    watch,
+    formState: { errors, isValid }
+  } = useForm<StepThreeType>({
+    resolver: zodResolver(stepThreeSchema),
+    mode: 'all',
+    defaultValues
+  });
 
-  const [images, setImages] = useState<File[]>([]);
-
-  const handleImageDrop = (newFiles: File[]) => {
-    setImages((prev) => [...prev, ...newFiles]);
+  const watchedCategory = watch('categoryToTeach');
+  const onSubmit = (e: React.FormEvent) => {
+    void handleSubmit(onNext)(e);
   };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Логика для валидации и отправки данных
-    onNext();
-  };
-
-  const handleRemoveImage = (index: number) => {
-    setImages((prev) => prev.filter((_, i) => i !== index));
+  const handleBack = () => {
+    onPrev();
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={onSubmit}>
       <div className={styles.inputList}>
         <Input
           id='titleInput'
           label='Название навыка'
           type='text'
           placeholder='Введите название вашего навыка'
-        ></Input>
+          {...register('title')}
+          error={errors.title?.message}
+        />
         <CategorySelect
-          category={category}
-          setCategory={setCategory}
-        ></CategorySelect>
+          {...register('categoryToTeach')}
+          error={errors.categoryToTeach?.message}
+        />
         <SubCategorySelect
-          subcategory={subcategory}
-          setSubcategory={setSubcategory}
-          category={category}
-        ></SubCategorySelect>
+          {...register('subcategoryToTeach')}
+          category={watchedCategory}
+          error={errors.subcategoryToTeach?.message}
+        />
         <Textarea
           id='descriptionInput'
           label='Описание'
           placeholder='Коротко опишите, чему можете научить'
-        ></Textarea>
-        <ImageDropzone
-          images={images}
-          onDrop={handleImageDrop}
-          onRemove={handleRemoveImage}
+          {...register('description')}
+          error={errors.description?.message}
+        />
+        <Controller
+          name='images'
+          control={control}
+          defaultValue={[]}
+          render={({ field, fieldState }) => (
+            <div>
+              <ImageDropzone
+                images={field.value || []}
+                onDrop={(acceptedFiles) => {
+                  field.onChange([...(field.value || []), ...acceptedFiles]);
+                }}
+                onRemove={(index) => {
+                  const newImages = [...(field.value || [])];
+                  newImages.splice(index, 1);
+                  field.onChange(newImages);
+                }}
+              />
+              {fieldState.error && (
+                <p className={styles.errorText}>{fieldState.error.message}</p>
+              )}
+            </div>
+          )}
         />
       </div>
       <div className={styles.buttonList}>
-        <Button type='secondary' className={styles.button}>
+        <Button type='secondary' className={styles.button} onClick={handleBack}>
           Назад
         </Button>
-        <Button type='primary' htmlType='submit' className={styles.button}>
+        <Button
+          type='primary'
+          htmlType='submit'
+          className={styles.button}
+          disabled={!isValid}
+        >
           Продолжить
         </Button>
       </div>

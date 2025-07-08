@@ -1,7 +1,12 @@
 import { useRef, useState } from 'react';
 import styles from './PhotoUploader.module.css';
 
-const PhotoUploader = () => {
+type PhotoUploaderProps = {
+  onChange: (file: File | null) => void;
+  value?: File | null;
+};
+
+const PhotoUploader = ({ onChange }: PhotoUploaderProps) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [preview, setPreview] = useState<string | null>(null);
 
@@ -10,13 +15,17 @@ const PhotoUploader = () => {
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
+    const file = event.target.files?.[0] || null;
+    onChange(file);
+
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreview(reader.result as string);
       };
       reader.readAsDataURL(file);
+    } else {
+      setPreview(null);
     }
   };
 
@@ -36,7 +45,7 @@ const PhotoUploader = () => {
       </div>
       <input
         type='file'
-        accept='image/*'
+        accept='image/png, image/jpeg, image/jpg'
         ref={fileInputRef}
         onChange={handleFileChange}
         style={{ display: 'none' }}
