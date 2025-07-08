@@ -4,7 +4,7 @@ import {
   createSlice
 } from '@reduxjs/toolkit';
 import { getUsers } from '../../api/api';
-import type { Users, User, UserCardSkill } from '../../utils/types';
+import type { User, UserCardSkill, Users } from '../../utils/types';
 import type { RootState } from '../store';
 
 type UsersState = {
@@ -50,21 +50,6 @@ export const usersSlice = createSlice({
       });
   },
   selectors: {
-    selectUsersWithSameOffer: (state, user: User) => {
-      const result: Users = [];
-      const allUsers = state.users;
-      user.skillsToTeach.forEach((skill) => {
-        allUsers.forEach((otherUser) => {
-          if (user.id !== otherUser.id) {
-            otherUser.skillsToTeach.forEach((otherSkill) => {
-              if (otherSkill.skill === skill.skill) result.push(otherUser);
-            });
-          }
-        });
-      });
-
-      return result;
-    },
     getUserById: (state, id: number) => {
       return state.users.find((user) => user.id === id);
     }
@@ -75,7 +60,29 @@ export const selectAllUsers = (state: RootState) => state.users.users;
 export const selectAllUsersCity = createSelector([selectAllUsers], (users) => [
   ...new Set(users.map((user) => user.city))
 ]);
-export const { selectUsersWithSameOffer, getUserById } = usersSlice.selectors;
+
+export const selectUsersWithSameOffer = createSelector(
+  [selectAllUsers, (_: RootState, user: User) => user],
+  (allUsers, user): Users => {
+    const result: Users = [];
+
+    user.skillsToTeach.forEach((skill) => {
+      allUsers.forEach((otherUser) => {
+        if (user.id !== otherUser.id) {
+          const hasSameSkill = otherUser.skillsToTeach.some(
+            (otherSkill) => otherSkill.skill === skill.skill
+          );
+          if (hasSameSkill) {
+            result.push(otherUser);
+          }
+        }
+      });
+    });
+
+    return result;
+  }
+);
+export const { getUserById } = usersSlice.selectors;
 export const { setUserSkillToTeach } = usersSlice.actions;
 
 export default usersSlice.reducer;

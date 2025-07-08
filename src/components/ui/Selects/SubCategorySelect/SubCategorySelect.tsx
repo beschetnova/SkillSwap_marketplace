@@ -33,9 +33,9 @@ export const SubCategorySelect = forwardRef<
       label='Подкатегория навыка'
       options={subcategoryOptions}
       disabled={!category}
-      ref={ref} 
+      ref={ref}
       error={error}
-      {...props} 
+      {...props}
       rightIcon={
         <img
           src='/icons/chevron-down.svg'
