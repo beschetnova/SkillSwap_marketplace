@@ -13,6 +13,7 @@ import Select from '../Selects/Select/Select.tsx';
 import { CitySelect } from '../Selects/CitySelect/CitySelect.tsx';
 import Button from '../buttons/button';
 import PhotoEditor from '../PhotoEditor/PhotoEditor.tsx';
+import Textarea from '../Textarea/Textarea.tsx';
 
 import { profileSlice } from '../../../services/slices/profileSlice.ts';
 import type { Profile } from '../../../utils/types.ts';
@@ -157,23 +158,13 @@ export const ProfileInfo = () => {
             city={profileData.city}
             setCity={(city) => handleChange('city', city)}
           />
-          <div className={styles.description}>
-            <label>О себе</label>
-            <div className={styles.description_input_container}>
-              <textarea
-                id='description_input'
-                placeholder='Расскажите о себе'
-                required
-                rows={4}
-                className={styles.description_input}
-                value={profileData.bio}
-                onChange={(e) => handleChange('bio', e.target.value)}
-              />
-              <span className={styles.right_icon}>
-                <img src='src/images/icons/edit.svg' alt='edit-icon' />
-              </span>
-            </div>
-          </div>
+          <Textarea
+            label='О себе'
+            placeholder='Расскажите о себе'
+            icon='src/images/icons/edit.svg'
+            value={profileData.bio}
+            onChange={(e) => handleChange('bio', e.target.value)}
+          />
         </div>
         <Button
           type='primary'
