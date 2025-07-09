@@ -35,7 +35,7 @@ export type User = {
 
 export type Profile = User & {
   email: string;
-  favorites: number[];
+  favorites: string[];
 };
 
 export type Login = Profile & {
