@@ -40,6 +40,8 @@ export const RegisterPage = () => {
                   subcategory: updatedData.subcategoryToTeach,
                   description: updatedData.description,
                   images: updatedData.images
+                    ? updatedData.images.map((file) => file.name)
+                    : []
                 }
               ]
             : [],
