@@ -26,7 +26,7 @@ export type User = {
   city: string;
   gender: string;
   birthDate: string;
-  bio: string;
+  bio?: string;
   skillsToTeach: UserCardSkill[];
   skillsToLearn: UserCardSkill[];
   photo: string;
