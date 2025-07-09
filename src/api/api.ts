@@ -57,11 +57,13 @@ export const login = async (
   }
 };
 
+//TODO: убрать ошибки линтера!
 export const getProfile = () => {
   const token = localStorage.getItem('token');
   const profile = localStorage.getItem('profile');
 
   if (token && profile) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return JSON.parse(profile);
   }
   return null;

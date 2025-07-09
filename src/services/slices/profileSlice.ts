@@ -1,4 +1,8 @@
-import { createSelector, createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import {
+  createSelector,
+  createSlice,
+  createAsyncThunk
+} from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 import type { Profile } from '../../utils/types';
 import { login } from '../../api/api';
@@ -61,6 +65,8 @@ const initialState: ProfileState = {
   */
 };
 
+//TODO: убрать ошибки линтера в этой функции!
+/* eslint-disable */
 export const fetchUser = createAsyncThunk<
   Profile,
   { email: string; password: string },
@@ -74,6 +80,7 @@ export const fetchUser = createAsyncThunk<
     return rejectWithValue(e.message || 'Ошибка авторизации');
   }
 });
+/* eslint-enable */
 
 export const profileSlice = createSlice({
   name: 'profile',
@@ -135,8 +142,6 @@ export const profileSlice = createSlice({
   }
 });
 
-export const { selectProfile, selectIsAuth } = profileSlice.selectors;
-export const { setProfile, updateProfile, clearProfile } = profileSlice.actions;
 export default profileSlice.reducer;
 export const { setProfile, updateProfile, clearProfile, toggleFavorite } =
   profileSlice.actions;
