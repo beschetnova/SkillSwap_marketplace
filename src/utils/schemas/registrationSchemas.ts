@@ -62,6 +62,16 @@ export const stepThreeSchema = z.object({
     )
 });
 
+export const createFormSchema = z.object({
+  skillName: stepThreeSchema.shape.title,
+  category: stepThreeSchema.shape.categoryToTeach,
+  subcategory: stepThreeSchema.shape.subcategoryToTeach,
+  skillDescription: stepThreeSchema.shape.description,
+  images: stepThreeSchema.shape.images
+});
+
+export type CreateFormData = z.infer<typeof createFormSchema>;
+
 export type StepOneType = z.infer<typeof stepOneSchema>;
 export type StepTwoType = z.infer<typeof stepTwoSchema>;
 export type StepThreeType = z.infer<typeof stepThreeSchema>;

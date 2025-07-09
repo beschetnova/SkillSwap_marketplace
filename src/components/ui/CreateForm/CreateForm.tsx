@@ -1,82 +1,121 @@
 import styles from './CreateForm.module.css';
-import Input from '../input/input';
 import Button from '../buttons/button';
 import { CategorySelect } from '../Selects/CategorySelect/CategorySelect';
 import { SubCategorySelect } from '../Selects/SubCategorySelect/SubCategorySelect';
-import { useState } from 'react';
 import Textarea from '../Textarea/Textarea';
 import { ImageDropzone } from '../ImageDropzone/ImageDropzone';
 import type { TSkillForm, TCreateFormProps } from './type';
+import { Controller, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import Input from '../input/input';
+import {
+  createFormSchema,
+  type CreateFormData
+} from '../../../utils/schemas/registrationSchemas';
 
 export const CreateFormUI = ({ createSkill }: TCreateFormProps) => {
-  const [category, setCategory] = useState('');
-  const [subcategory, setSubcategory] = useState('');
-  const [skillName, setSkillName] = useState('');
-  const [skillDescription, setSkillDescription] = useState('');
+  const {
+    register,
+    control,
+    handleSubmit,
+    watch,
+    formState: { errors, isValid }
+  } = useForm<CreateFormData>({
+    resolver: zodResolver(createFormSchema),
+    mode: 'all',
+    defaultValues: {
+      skillName: '',
+      category: '',
+      subcategory: '',
+      skillDescription: '',
+      images: []
+    }
+  });
 
-  const [images, setImages] = useState<File[]>([]);
+  const watchedCategory = watch('category');
 
-  const handleImageDrop = (newFiles: File[]) => {
-    setImages((prev) => [...prev, ...newFiles]);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = (data: CreateFormData) => {
     if (createSkill) {
       const skill: TSkillForm = {
-        category,
-        subcategory,
-        skillName,
-        skillDescription,
-        images
+        category: data.category,
+        subcategory: data.subcategory,
+        skillName: data.skillName,
+        skillDescription: data.skillDescription || '',
+        images: data.images
       };
       createSkill(skill);
     }
   };
 
-  const handleRemoveImage = (index: number) => {
-    setImages((prev) => prev.filter((_, i) => i !== index));
-  };
-
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form
+      className={styles.form}
+      onSubmit={(e) => {
+        e.preventDefault();
+        void handleSubmit(onSubmit)(e);
+      }}
+    >
       <div className={styles.inputList}>
         <Input
           id='titleInput'
           label='Название навыка'
           type='text'
           placeholder='Введите название вашего навыка'
-          value={skillName}
-          onChange={(e) => {
-            setSkillName(e.target.value);
-          }}
-        ></Input>
+          {...register('skillName')}
+          error={errors.skillName?.message}
+        />
+
         <CategorySelect
-          category={category}
-          setCategory={setCategory}
-        ></CategorySelect>
+          {...register('category')}
+          error={errors.category?.message}
+        />
+
         <SubCategorySelect
-          subcategory={subcategory}
-          setSubcategory={setSubcategory}
-          category={category}
-        ></SubCategorySelect>
+          {...register('subcategory')}
+          category={watchedCategory}
+          error={errors.subcategory?.message}
+        />
+
         <Textarea
           id='descriptionInput'
           label='Описание'
           placeholder='Коротко опишите, чему можете научить'
-          value={skillDescription}
-          onChange={(e) => {
-            setSkillDescription(e.target.value);
-          }}
-        ></Textarea>
-        <ImageDropzone
-          images={images}
-          onDrop={handleImageDrop}
-          onRemove={handleRemoveImage}
+          {...register('skillDescription')}
+          error={errors.skillDescription?.message}
+        />
+
+        <Controller
+          name='images'
+          control={control}
+          defaultValue={[]}
+          render={({ field, fieldState }) => (
+            <div>
+              <ImageDropzone
+                images={field.value || []}
+                onDrop={(acceptedFiles) => {
+                  field.onChange([...(field.value || []), ...acceptedFiles]);
+                }}
+                onRemove={(index) => {
+                  const newImages = [...(field.value || [])];
+                  newImages.splice(index, 1);
+                  field.onChange(newImages);
+                }}
+              />
+              {fieldState.error && (
+                <p className={styles.errorText}>{fieldState.error.message}</p>
+              )}
+            </div>
+          )}
         />
       </div>
+
       <div className={styles.buttonList}>
-        <Button type='primary' htmlType='submit' className={styles.button}>
+        <Button
+          type='primary'
+          htmlType='submit'
+          className={styles.button}
+          disabled={!isValid}
+        >
           Создать
         </Button>
       </div>
