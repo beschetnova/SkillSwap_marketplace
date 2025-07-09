@@ -4,7 +4,10 @@ import PhotoEditor from './PhotoEditor';
 const meta: Meta<typeof PhotoEditor> = {
   title: 'Ui/PhotoEditor',
   component: PhotoEditor,
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  args: {
+    photo: 'src/images/skills/drums/drum-1.jpg'
+  }
 };
 
 export default meta;
@@ -12,5 +15,9 @@ export default meta;
 type Story = StoryObj<typeof PhotoEditor>;
 
 export const Default: Story = {
-  render: () => <PhotoEditor />
+  render: (args) => <PhotoEditor {...args} />
+};
+
+export const WithError: Story = {
+  render: (args) => <PhotoEditor {...args} error='Ошибка загрузки фото' />
 };

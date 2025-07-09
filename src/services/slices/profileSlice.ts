@@ -51,7 +51,8 @@ const initialState: ProfileState = {
       }
     ],
     photo: "Maria-Moscow.png",
-    email: "Mariia@gmail.com"
+    email: "Mariia@gmail.com",
+    favorites: [1,2]
   },
   isAuth: true,
   accessToken: 'mock.access.jwt'
