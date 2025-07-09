@@ -1,4 +1,10 @@
-import type { Cities, Login, SkillCategories, Users } from '../utils/types';
+import type {
+  Cities,
+  Login,
+  Profile,
+  SkillCategories,
+  Users
+} from '../utils/types';
 
 const URL = '';
 const USER_URL = 'db/user.json';
@@ -57,14 +63,17 @@ export const login = async (
   }
 };
 
-//TODO: убрать ошибки линтера!
-export const getProfile = () => {
+export const getProfile = (): Profile | null => {
   const token = localStorage.getItem('token');
   const profile = localStorage.getItem('profile');
 
   if (token && profile) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return JSON.parse(profile);
+    try {
+      return JSON.parse(profile) as Profile;
+    } catch (error) {
+      console.error('Ошибка при разборе профиля:', error);
+      return null;
+    }
   }
   return null;
 };
