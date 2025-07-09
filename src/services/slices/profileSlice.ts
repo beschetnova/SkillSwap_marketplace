@@ -4,7 +4,7 @@ import {
   createAsyncThunk
 } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
-import type { Profile } from '../../utils/types';
+import type { Profile, UserCardSkill } from '../../utils/types';
 import { login } from '../../api/api';
 
 type ProfileState = {
@@ -20,14 +20,13 @@ const initialState: ProfileState = {
   isAuth: false,
   accessToken: null,
   error: null
-  /*
-  profile: {
-    id: 16,
-    name: "Мария",
-    city: "Москва",
-    gender: "female",
-    birthDate: "1995-10-28",
-    bio: "Люблю учиться новому, особенно если это можно делать за чаем и в пижаме. Всегда готова пообщаться и обменяться чем‑то интересным!",
+  /*   profile: {
+    id: 'testId',
+    name: 'TestUser',
+    city: 'Москва',
+    gender: 'female',
+    birthDate: '1995-10-28',
+    bio: 'Люблю учиться новому, особенно если это можно делать за чаем и в пижаме. Всегда готова пообщаться и обменяться чем‑то интересным!',
     skillsToTeach: [
       {
         skill: 'Игра на барабанах',
@@ -57,13 +56,12 @@ const initialState: ProfileState = {
         subcategory: 'video-editing'
       }
     ],
-    photo: "Maria-Moscow.png",
-    email: "Mariia@gmail.com",
-    favorites: [1,2]
+    photo: 'Maria-Moscow.png',
+    email: 'Mariia@gmail.com',
+    favorites: ['1', '2']
   },
   isAuth: true,
-  accessToken: 'mock.access.jwt'
-  */
+  accessToken: 'mock.access.jwt' */
 };
 
 export const fetchUser = createAsyncThunk<
@@ -111,6 +109,16 @@ export const profileSlice = createSlice({
       state.profile.favorites = isAlreadyFavorite
         ? favorites.filter((favId) => favId !== id)
         : [...favorites, id];
+    },
+    setUserSkillToTeach: (
+      state,
+      action: { payload: { skill: UserCardSkill; id: string } }
+    ) => {
+      if (state.profile) {
+        state.profile.skillsToTeach = [action.payload.skill];
+      } else {
+        console.error('state.profile is null');
+      }
     }
   },
   extraReducers: (builder) => {
@@ -144,8 +152,13 @@ export const profileSlice = createSlice({
 });
 
 export default profileSlice.reducer;
-export const { setProfile, updateProfile, clearProfile, toggleFavorite } =
-  profileSlice.actions;
+export const {
+  setProfile,
+  updateProfile,
+  clearProfile,
+  toggleFavorite,
+  setUserSkillToTeach
+} = profileSlice.actions;
 
 export const selectFavorites = createSelector(
   (state: RootState) => state.profile.profile?.favorites,
