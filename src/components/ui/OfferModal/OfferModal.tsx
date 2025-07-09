@@ -8,6 +8,7 @@ import Button from '../buttons/button';
 export const OfferModal = ({
   isOpen,
   onClose,
+  onConfirm,
   title,
   category,
   subcategory,
@@ -65,7 +66,7 @@ export const OfferModal = ({
                 <img src='icons/edit.svg' alt='edit icon' />
               </Button>
               <Button
-                onClick={onClose}
+                onClick={onConfirm}
                 type={'primary'}
                 className={styles.buttonDone}
               >

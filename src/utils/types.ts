@@ -45,3 +45,8 @@ export type City = {
 };
 
 export type Cities = City[];
+
+export type LocationStateType = {
+  from?: string;
+  showSuccessModal?: boolean;
+};
