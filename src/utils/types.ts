@@ -17,17 +17,17 @@ export type UserCardSkill = {
   categoryId: string;
   subcategory: string;
   description?: string;
-  images?: File[];
+  images?: string[];
 };
 
 export type User = {
   // offer: any;
-  id: number;
+  id: string;
   name: string;
   city: string;
   gender: string;
   birthDate: string;
-  bio: string;
+  bio?: string;
   skillsToTeach: UserCardSkill[];
   skillsToLearn: UserCardSkill[];
   photo: string;
