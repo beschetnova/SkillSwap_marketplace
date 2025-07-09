@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../../utils/hooks.ts';
 
@@ -6,6 +6,13 @@ import { format, parseISO } from 'date-fns';
 import { ru } from 'date-fns/locale/ru';
 
 import styles from './ProfileInfo.module.css';
+
+import { Controller, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  profileInfoSchema,
+  type profileInfoType
+} from '../../../utils/schemas/profileSchemas';
 
 import Input from '../input/input.tsx';
 import DatePicker from '../../DatePicker/DatePicker.tsx';
@@ -16,7 +23,6 @@ import PhotoEditor from '../PhotoEditor/PhotoEditor.tsx';
 import Textarea from '../Textarea/Textarea.tsx';
 
 import { profileSlice } from '../../../services/slices/profileSlice.ts';
-import type { Profile } from '../../../utils/types.ts';
 import type { RootState } from '../../../services/store.ts';
 
 export const ProfileInfo = () => {
@@ -24,67 +30,68 @@ export const ProfileInfo = () => {
   const userFromStore = useSelector(
     (state: RootState) => state.profile.profile
   );
-  const [profileData, setProfileData] = useState<Profile>({
-    id: 0,
-    name: '',
-    city: '',
-    gender: '',
-    birthDate: '',
-    bio: '',
-    skillsToTeach: [],
-    skillsToLearn: [],
-    photo: '',
-    email: '',
-    favorites: []
-  });
 
-  const [initialProfileData, setInitialProfileData] = useState<Profile | null>(
-    null
-  );
+  const {
+    register,
+    control,
+    handleSubmit,
+    watch,
+    formState: { errors, isValid },
+    setValue
+  } = useForm<profileInfoType>({
+    resolver: zodResolver(profileInfoSchema),
+    mode: 'all',
+    defaultValues: {
+      email: '',
+      name: '',
+      description: '',
+      city: '',
+      gender: '',
+      birthDate: '',
+      avatar: ''
+    }
+  });
 
   useEffect(() => {
     if (userFromStore) {
-      setProfileData({
-        ...userFromStore,
-        email: userFromStore.email ?? ''
-      });
-      setInitialProfileData({
-        ...userFromStore,
-        email: userFromStore.email ?? ''
-      });
+      setValue('email', userFromStore.email ?? '');
+      setValue('name', userFromStore.name ?? '');
+      setValue('description', userFromStore.bio ?? '');
+      setValue('city', userFromStore.city ?? '');
+      setValue('gender', userFromStore.gender ?? '');
+      setValue('birthDate', userFromStore.birthDate ?? '');
+      setValue(
+        'avatar',
+        userFromStore.photo ? `/db/profile-pics/${userFromStore.photo}` : ''
+      );
     }
-  }, [userFromStore]);
+  }, [userFromStore, setValue]);
 
-  const handleChange = <K extends keyof Profile>(
-    field: K,
-    value: Profile[K]
-  ) => {
-    setProfileData((prev) => ({
-      ...prev,
-      [field]: value
-    }));
+  const onSubmit = (data: profileInfoType) => {
+    if (!userFromStore) return;
+
+    const updatedProfile = {
+      ...userFromStore,
+      email: data.email,
+      name: data.name,
+      bio: data.description,
+      city: data.city,
+      gender: data.gender,
+      birthDate: data.birthDate,
+      photo: data.avatar
+    };
+
+    dispatch(profileSlice.actions.updateProfile(updatedProfile));
   };
-
-  const handleSave = () => {
-    dispatch(profileSlice.actions.updateProfile(profileData));
-    setInitialProfileData(profileData);
-  };
-
-  const isEqual = (obj1: Profile, obj2: Profile): boolean => {
-    return JSON.stringify(obj1) === JSON.stringify(obj2);
-  };
-
-  const isChanged = initialProfileData
-    ? !isEqual(profileData, initialProfileData)
-    : Object.values(profileData).some((value) => {
-        if (Array.isArray(value)) {
-          return value.length > 0;
-        }
-        return !!value;
-      });
 
   return (
-    <div className={styles.profile_info}>
+    <form
+      className={styles.profile_info}
+      onSubmit={(e) => {
+        e.preventDefault();
+        void handleSubmit(onSubmit)(e);
+      }}
+    >
       <div className={styles.info_content}>
         <div className={styles.info_inputs_wrapper}>
           <div className={styles.email_wrapper}>
@@ -94,8 +101,8 @@ export const ProfileInfo = () => {
               type='email'
               placeholder='Введите вашу почту'
               required
-              value={profileData.email}
-              onChange={(e) => handleChange('email', e.target.value)}
+              {...register('email')}
+              error={errors.email?.message}
               rightIcon={
                 <img
                   src='src/images/icons/edit.svg'
@@ -112,8 +119,8 @@ export const ProfileInfo = () => {
             type='text'
             placeholder='Введите ваше имя'
             required
-            value={profileData.name}
-            onChange={(e) => handleChange('name', e.target.value)}
+            {...register('name')}
+            error={errors.name?.message}
             rightIcon={
               <img
                 src='src/images/icons/edit.svg'
@@ -123,22 +130,28 @@ export const ProfileInfo = () => {
             }
           />
           <div className={styles.date_wrapper}>
-            <DatePicker
-              value={
-                profileData.birthDate ? parseISO(profileData.birthDate) : null
-              }
-              onChange={(date) => {
-                const dateStr = date
-                  ? format(date, 'yyyy-MM-dd', { locale: ru })
-                  : '';
-                handleChange('birthDate', dateStr);
-              }}
+            <Controller
+              name='birthDate'
+              control={control}
+              render={({ field }) => (
+                <DatePicker
+                  value={field.value ? parseISO(field.value) : null}
+                  onChange={(date) => {
+                    const dateStr = date
+                      ? format(date, 'yyyy-MM-dd', { locale: ru })
+                      : '';
+                    field.onChange(dateStr);
+                  }}
+                />
+              )}
             />
             <Select
               id='genderInput'
               label='Пол'
-              value={profileData.gender}
-              onChange={(e) => handleChange('gender', e.target.value)}
+              value={watch('gender') || ''}
+              onChange={(e) =>
+                setValue('gender', e.target.value, { shouldValidate: true })
+              }
               options={[
                 { value: '', label: 'Не указан' },
                 { value: 'male', label: 'Мужской' },
@@ -152,34 +165,40 @@ export const ProfileInfo = () => {
                   className={styles.arrow}
                 />
               }
+              error={errors.gender?.message}
             />
           </div>
           <CitySelect
-            value={profileData.city}
-            onChange={(e) => handleChange('city', e.target.value)}
+            value={watch('city') || ''}
+            onChange={(e) =>
+              setValue('city', e.target.value, { shouldValidate: true })
+            }
+            error={errors.city?.message}
           />
           <Textarea
             label='О себе'
             placeholder='Расскажите о себе'
             icon='src/images/icons/edit.svg'
-            value={profileData.bio}
-            onChange={(e) => handleChange('bio', e.target.value)}
+            {...register('description')}
+            error={errors.description?.message}
           />
         </div>
-        <Button
-          type='primary'
-          htmlType='submit'
-          onClick={handleSave}
-          disabled={!isChanged}
-        >
+        <Button type='primary' htmlType='submit' disabled={!isValid}>
           Сохранить
         </Button>
       </div>
-      <PhotoEditor
-        photo={profileData.photo ? `/db/profile-pics/${profileData.photo}` : ''}
-        setPhoto={(photo) => handleChange('photo', photo)}
+      <Controller
+        name='avatar'
+        control={control}
+        render={({ field }) => (
+          <PhotoEditor
+            photo={field.value || ''}
+            setPhoto={(photo) => field.onChange(photo)}
+            error={errors.avatar?.message}
+          />
+        )}
       />
-    </div>
+    </form>
   );
 };
 

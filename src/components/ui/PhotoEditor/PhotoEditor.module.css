@@ -34,3 +34,11 @@
   width: 24px;
   height: 24px;
 }
+
+.errorText {
+  color: var(--error-color);
+  font-size: var(--caption-font-size);
+  line-height: var(--caption-font-line-height);
+  margin-top: 10px;
+  text-align: center;
+}
