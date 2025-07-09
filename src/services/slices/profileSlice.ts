@@ -66,8 +66,6 @@ const initialState: ProfileState = {
   */
 };
 
-//TODO: убрать ошибки линтера в этой функции!
-/* eslint-disable */
 export const fetchUser = createAsyncThunk<
   Profile,
   { email: string; password: string },
@@ -75,13 +73,15 @@ export const fetchUser = createAsyncThunk<
 >('user/loginUser', async ({ email, password }, { rejectWithValue }) => {
   try {
     const user = await login(email, password);
-    const { password: _, ...profile } = user; // для безопасности удаляем пароль
+    const { ...profile } = user;
+    profile.password = '';
     return profile;
-  } catch (e: any) {
-    return rejectWithValue(e.message || 'Ошибка авторизации');
+  } catch (e) {
+    return e instanceof Error
+      ? rejectWithValue(e.message)
+      : rejectWithValue('Ошибка авторизации');
   }
 });
-/* eslint-enable */
 
 export const profileSlice = createSlice({
   name: 'profile',
