@@ -16,6 +16,8 @@ export type UserCardSkill = {
   skill: string;
   categoryId: string;
   subcategory: string;
+  description?: string;
+  images?: File[];
 };
 
 export type User = {

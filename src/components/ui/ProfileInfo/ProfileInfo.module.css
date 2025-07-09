@@ -1,0 +1,39 @@
+.profile_info {
+  display: flex;
+  min-width: 1020px;
+  height: 100%;
+  flex: 1;
+  border-radius: 24px;
+  padding: 60px;
+  justify-content: space-between;
+  background-color: var(--card-input-color);
+}
+
+.info_content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.info_inputs_wrapper {
+  width: 460px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.email_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.change_password_link {
+  font-weight: 500;
+  color: var(--text-link-button-pressed-color);
+}
+
+.date_wrapper {
+  display: flex;
+  gap: 24px;
+}

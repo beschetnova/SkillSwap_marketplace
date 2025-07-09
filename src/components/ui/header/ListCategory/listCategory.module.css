@@ -33,3 +33,7 @@
   align-items: center;
   border-radius: 100px;
 }
+
+.activeSkill {
+  color: var(--text-link-button-pressed-color);
+}

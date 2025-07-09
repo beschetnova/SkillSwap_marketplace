@@ -4,6 +4,7 @@
   max-width: 556px;
   padding: 40px 60px;
   border-radius: 12px;
+  background-color: var(--card-input-color);
 }
 
 .inputsWrapper {
@@ -30,4 +31,16 @@
   font-family: var(--font-main);
   font-size: 1rem;
   font-weight: 400;
+}
+
+.photoUploader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.errorText {
+  color: var(--error-color);
+  font-size: var(--caption-font-size);
+  line-height: var(--caption-font-line-height);
 }

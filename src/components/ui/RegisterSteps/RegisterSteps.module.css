@@ -1,0 +1,27 @@
+.container {
+  inline-size: 212px;
+}
+
+.title {
+  line-height: 1.16em;
+  text-align: center;
+  font-family: var(--font-heading);
+  margin-block-end: 12px;
+}
+
+.progressBar {
+  display: flex;
+  gap: 16px;
+}
+
+.line {
+  inline-size: 60px;
+  block-size: 4px;
+  border-radius: 8px;
+  background-color: var(--disabled-color);
+  cursor: auto;
+}
+
+.active {
+  background-color: var(--accent-color);
+}

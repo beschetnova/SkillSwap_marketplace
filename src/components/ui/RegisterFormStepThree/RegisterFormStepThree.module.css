@@ -22,3 +22,9 @@
 .button {
   inline-size: calc((100% - 20px) / 2);
 }
+
+.errorText {
+  color: var(--error-color);
+  font-size: var(--caption-font-size);
+  line-height: var(--caption-font-line-height);
+}

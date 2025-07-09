@@ -4,35 +4,82 @@ import Input from '../input/input.tsx';
 import Button from '../buttons/button.tsx';
 import DatePicker from '../../DatePicker/DatePicker.tsx';
 import Select from '../Selects/Select/Select.tsx';
-import { useState } from 'react';
 import { CategorySelect } from '../Selects/CategorySelect/CategorySelect.tsx';
 import { CitySelect } from '../Selects/CitySelect/CitySelect.tsx';
 import { SubCategorySelect } from '../Selects/SubCategorySelect/SubCategorySelect.tsx';
+import {
+  stepTwoSchema,
+  type RegisterFormType,
+  type StepTwoType
+} from '../../../utils/schemas/registrationSchemas.ts';
+import { Controller, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-const RegisterFormStepTwo = () => {
-  const [gender, setGender] = useState('');
-  const [city, setCity] = useState('');
-  const [category, setCategory] = useState('');
-  const [subcategory, setSubcategory] = useState('');
+type Props = {
+  onNext: (data: StepTwoType) => void;
+  onPrev: () => void;
+  defaultValues: RegisterFormType;
+};
 
+const RegisterFormStepTwo = ({ onNext, onPrev, defaultValues }: Props) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    control,
+    watch
+  } = useForm<StepTwoType>({
+    resolver: zodResolver(stepTwoSchema),
+    mode: 'all',
+    defaultValues
+  });
+  const onSubmit = (e: React.FormEvent) => {
+    void handleSubmit(onNext)(e);
+  };
+  const watchedCategoryToLearn = watch('categoryToLearn');
+  const handleBack = () => {
+    onPrev();
+  };
   return (
-    <form className={styles.form}>
-      <PhotoUploader />
+    <form className={styles.form} onSubmit={onSubmit}>
+      <Controller
+        name='avatar'
+        control={control}
+        render={({ field: { onChange, value }, fieldState: { error } }) => (
+          <div className={styles.photoUploader}>
+            <PhotoUploader onChange={onChange} value={value} />
+            {error && (
+              <p className={styles.errorText}>{errors.avatar?.message}</p>
+            )}
+          </div>
+        )}
+      />
+
       <div className={styles.inputsWrapper}>
         <Input
           id='nameInput'
           label='Имя'
           type='text'
           placeholder='Введите ваше имя'
-          required
+          {...register('name')}
+          error={errors.name?.message}
         ></Input>
         <div className={styles.dateWrapper}>
-          <DatePicker />
+          <Controller
+            name='birthDate'
+            control={control}
+            render={({ field, fieldState: { error } }) => (
+              <div>
+                <DatePicker value={field.value} onChange={field.onChange} />
+                {error && <p>{error.message}</p>}
+              </div>
+            )}
+          />
           <Select
             id='genderInput'
             label='Пол'
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
+            {...register('gender')}
+            error={errors.gender?.message}
             options={[
               { value: '', label: 'Не указан' },
               { value: 'male', label: 'Мужской' },
@@ -48,26 +95,32 @@ const RegisterFormStepTwo = () => {
             }
           ></Select>
         </div>
-        <CitySelect city={city} setCity={setCity}></CitySelect>
+        <CitySelect {...register('city')} error={errors.city?.message} />
         <CategorySelect
-          category={category}
-          setCategory={setCategory}
-        ></CategorySelect>
+          {...register('categoryToLearn')}
+          error={errors.categoryToLearn?.message}
+        />
         <SubCategorySelect
-          subcategory={subcategory}
-          setSubcategory={setSubcategory}
-          category={category}
+          {...register('subcategoryToLearn')}
+          category={watchedCategoryToLearn}
+          error={errors.subcategoryToLearn?.message}
         ></SubCategorySelect>
       </div>
       <div className={styles.buttonWrapper}>
         <Button
           type='secondary'
-          htmlType='submit'
+          htmlType='button'
           className={styles.backButton}
+          onClick={handleBack}
         >
           Назад
         </Button>
-        <Button type='primary' htmlType='submit' className={styles.nextButton}>
+        <Button
+          type='primary'
+          htmlType='submit'
+          className={styles.nextButton}
+          disabled={!isValid}
+        >
           Продолжить
         </Button>
       </div>

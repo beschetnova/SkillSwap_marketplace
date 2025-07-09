@@ -16,5 +16,11 @@ export default meta;
 type Story = StoryObj<typeof RegisterFormStepOneUI>;
 
 export const Default: Story = {
-  render: () => <RegisterFormStepOneUI />
+  render: () => (
+    <RegisterFormStepOneUI
+      onNext={function (): void {
+        throw new Error('Function not implemented.');
+      }}
+    />
+  )
 };

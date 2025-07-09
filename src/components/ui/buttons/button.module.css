@@ -5,6 +5,9 @@
   padding: 0.75rem 2.125rem;
   cursor: pointer;
   transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .primary {
@@ -57,4 +60,8 @@
   background-color: var(--card-input-color);
   border: 1px solid transparent;
   color: var(--text-color);
+}
+
+.fullWidth {
+  width: 100%;
 }

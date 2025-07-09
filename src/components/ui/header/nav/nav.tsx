@@ -1,12 +1,18 @@
 import { memo, useState } from 'react';
+import { useAppSelector } from '../../../../utils/hooks';
+
+import styles from './nav.module.css';
+
+import { selectAllSkills } from '../../../../services/slices/skillsSlice';
 import skillsIcon from '../../../../images/icons/chevron-down.svg';
 import Button from '../../../ui/buttons/button';
-import styles from './nav.module.css';
 import DropDownSkillsList from '../DropDownSkillsList/DropDownSkillsList';
 import { Dropdown } from '../../../dropdown/dropdown';
 
 const Nav = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const skills = useAppSelector(selectAllSkills);
+
   const handleToggle = () => {
     setDropdownOpen((prev) => !prev);
   };
@@ -30,7 +36,7 @@ const Nav = () => {
       </Button>
       {isDropdownOpen && (
         <Dropdown isOpen={isDropdownOpen} onClose={closeDropdown}>
-          <DropDownSkillsList />
+          <DropDownSkillsList skillsList={skills} />
         </Dropdown>
       )}
     </div>

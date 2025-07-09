@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
+import { createSelector, createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import type { RootState } from '../store';
 import type { Profile } from '../../utils/types';
 import { login } from '../../api/api';
 
@@ -16,6 +16,49 @@ const initialState: ProfileState = {
   isAuth: false,
   accessToken: null,
   error: null
+  /*
+  profile: {
+    id: 16,
+    name: "Мария",
+    city: "Москва",
+    gender: "female",
+    birthDate: "1995-10-28",
+    bio: "Люблю учиться новому, особенно если это можно делать за чаем и в пижаме. Всегда готова пообщаться и обменяться чем‑то интересным!",
+    skillsToTeach: [
+      {
+        skill: 'Игра на барабанах',
+        categoryId: 'creativity-and-art',
+        subcategory: 'music-and-sound'
+      }
+    ],
+    skillsToLearn: [
+      {
+        skill: 'Тайм менеджмент',
+        categoryId: 'business-and-career',
+        subcategory: 'time-management'
+      },
+      {
+        skill: 'Медитация',
+        categoryId: 'health-and-lifestyle',
+        subcategory: 'yoga-and-meditation'
+      },
+      {
+        skill: 'Фотография',
+        categoryId: 'creativity-and-art',
+        subcategory: 'photography'
+      },
+      {
+        skill: 'Видеомонтаж',
+        categoryId: 'creativity-and-art',
+        subcategory: 'video-editing'
+      }
+    ],
+    photo: "Maria-Moscow.png",
+    email: "Mariia@gmail.com"
+  },
+  isAuth: true,
+  accessToken: 'mock.access.jwt'
+  */
 };
 
 export const fetchUser = createAsyncThunk<
@@ -36,12 +79,12 @@ export const profileSlice = createSlice({
   name: 'profile',
   initialState,
   reducers: {
-    setProfile: (state, action) => {
+    setProfile: (state, action: { payload: Profile }) => {
       state.profile = action.payload;
       state.isAuth = true;
       state.accessToken = 'mock.access.jwt';
     },
-    updateProfile: (state, action) => {
+    updateProfile: (state, action: { payload: Partial<Profile> }) => {
       if (state.profile) {
         state.profile = { ...state.profile, ...action.payload };
       }
@@ -49,6 +92,17 @@ export const profileSlice = createSlice({
     clearProfile: (state) => {
       state.profile = null;
       state.isAuth = false;
+    },
+    toggleFavorite: (state, action: { payload: number }) => {
+      if (!state.profile) return;
+
+      const id = action.payload;
+      const favorites = state.profile.favorites;
+
+      const isAlreadyFavorite = favorites.includes(id);
+      state.profile.favorites = isAlreadyFavorite
+        ? favorites.filter((favId) => favId !== id)
+        : [...favorites, id];
     }
   },
   extraReducers: (builder) => {
@@ -69,11 +123,28 @@ export const profileSlice = createSlice({
       });
   },
   selectors: {
-    selectProfile: (state) => state.profile,
-    selectIsAuth: (state) => state.isAuth
+    selectProfile: (state) => {
+      return state.profile;
+    },
+    selectIsAuth: (state) => {
+      return state.isAuth;
+    },
+    selectProfileId: (state) => {
+      return state.profile?.id;
+    }
   }
 });
 
 export const { selectProfile, selectIsAuth } = profileSlice.selectors;
 export const { setProfile, updateProfile, clearProfile } = profileSlice.actions;
 export default profileSlice.reducer;
+export const { setProfile, updateProfile, clearProfile, toggleFavorite } =
+  profileSlice.actions;
+
+export const selectFavorites = createSelector(
+  (state: RootState) => state.profile.profile?.favorites,
+  (favorites) => favorites ?? []
+);
+
+export const { selectProfile, selectIsAuth, selectProfileId } =
+  profileSlice.selectors;

@@ -6,22 +6,29 @@
   "scripts": {
     "dev": "vite --open",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "lint": "eslint . --ignore-pattern '**/*.stories.tsx' --ignore-pattern '**/*.stories.ts'",
     "preview": "vite preview",
     "lint:css": "stylelint \"**/*.css\"",
     "lint:css:fix": "stylelint \"**/*.css\" --fix",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepare": "husky"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.1.1",
     "@reduxjs/toolkit": "^2.8.2",
     "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
     "react": "^19.1.0",
     "react-calendar": "^6.0.0",
     "react-dom": "^19.1.0",
     "react-dropzone": "^14.3.8",
-    "react-redux": "^9.2.0"
+    "react-hook-form": "^7.59.0",
+    "react-redux": "^9.2.0",
+    "react-router": "^7.6.3",
+    "react-router-dom": "^6.30.1",
+    "zod": "^3.25.73"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.1",
@@ -47,6 +54,8 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "eslint-plugin-storybook": "^9.0.12",
     "globals": "^16.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
     "playwright": "^1.53.1",
     "prettier": "3.5.3",
     "storybook": "^9.0.12",
@@ -56,5 +65,10 @@
     "typescript-eslint": "^8.30.1",
     "vite": "^6.3.5",
     "vitest": "^3.2.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,scss,md}": "npm run format",
+    "*.{css,scss}": "npm run lint:css:fix",
+    "*.{js,jsx,ts,tsx}": "npm run lint"
   }
 }

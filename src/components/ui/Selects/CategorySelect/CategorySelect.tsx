@@ -1,17 +1,17 @@
+import { forwardRef } from 'react';
 import { useAppSelector } from '../../../../utils/hooks.ts';
 import { selectAllSkills } from '../../../../services/slices/skillsSlice.ts';
 import Select from '../Select/Select.tsx';
 import styles from '../../RegisterFormStepTwo/RegisterFormStepTwo.module.css';
 
 interface CategorySelectProps {
-  category: string;
-  setCategory: (category: string) => void;
+  error?: string;
 }
 
-export const CategorySelect = ({
-  category,
-  setCategory
-}: CategorySelectProps) => {
+export const CategorySelect = forwardRef<
+  HTMLSelectElement,
+  CategorySelectProps
+>(({ error, ...props }, ref) => {
   const skillCategories = useAppSelector(selectAllSkills);
 
   const skillCategoryOptions = [
@@ -21,13 +21,15 @@ export const CategorySelect = ({
       label: cat.name
     }))
   ];
+
   return (
     <Select
       id='categoryInput'
-      label='Категория навыка, которому хотите научиться'
-      value={category}
-      onChange={(e) => setCategory(e.target.value)}
+      label='Категория навыка'
       options={skillCategoryOptions}
+      ref={ref}
+      error={error}
+      {...props}
       rightIcon={
         <img
           src='/icons/chevron-down.svg'
@@ -35,6 +37,6 @@ export const CategorySelect = ({
           className={styles.arrow}
         />
       }
-    ></Select>
+    />
   );
-};
+});

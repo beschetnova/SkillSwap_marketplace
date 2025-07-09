@@ -1,37 +1,41 @@
+import { forwardRef } from 'react';
 import { useAppSelector } from '../../../../utils/hooks.ts';
 import Select from '../Select/Select.tsx';
 import styles from '../../RegisterFormStepTwo/RegisterFormStepTwo.module.css';
 import { selectAllCities } from '../../../../services/slices/citiesSlice.ts';
 
-interface CitySelectProps {
-  city: string;
-  setCity: (city: string) => void;
+interface CitySelectProps
+  extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  error?: string;
 }
 
-export const CitySelect = ({ city, setCity }: CitySelectProps) => {
-  const cities = useAppSelector(selectAllCities);
+export const CitySelect = forwardRef<HTMLSelectElement, CitySelectProps>(
+  ({ error, ...props }, ref) => {
+    const cities = useAppSelector(selectAllCities);
+    const cityOptions = [
+      { value: '', label: 'Не указан' },
+      ...cities.map((city) => ({
+        value: city.name,
+        label: city.name
+      }))
+    ];
 
-  const cityOptions = [
-    { value: '', label: 'Не указан' },
-    ...cities.map((city) => ({
-      value: city.id.toString(),
-      label: city.name
-    }))
-  ];
-  return (
-    <Select
-      id='cityInput'
-      label='Город'
-      value={city}
-      onChange={(e) => setCity(e.target.value)}
-      options={cityOptions}
-      rightIcon={
-        <img
-          src='/icons/chevron-down.svg'
-          alt='Стрелка вниз'
-          className={styles.arrow}
-        />
-      }
-    ></Select>
-  );
-};
+    return (
+      <Select
+        id='cityInput'
+        label='Город'
+        options={cityOptions}
+        ref={ref}
+        {...props}
+        error={error}
+        rightIcon={
+          <img
+            src='/icons/chevron-down.svg'
+            alt='Стрелка вниз'
+            className={styles.arrow}
+          />
+        }
+      />
+    );
+  }
+);
