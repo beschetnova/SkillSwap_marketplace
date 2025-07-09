@@ -11,6 +11,7 @@ import type { LocationStateType, Profile } from '../../utils/types';
 import { setProfile } from '../../services/slices/profileSlice';
 import { OfferModal } from '../../components/ui/OfferModal/OfferModal';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 
 export const RegisterPage = () => {
   const [currentStep, setCurrentStep] = useState<1 | 2 | 3>(1);
@@ -34,7 +35,7 @@ export const RegisterPage = () => {
       setCurrentStep((prevStep) => Math.min(prevStep + 1, 3) as 1 | 2 | 3);
     } else {
       const profile: Profile = {
-        id: Date.now(),
+        id: nanoid(),
         name: updatedData.name || '',
         city: updatedData.city || '',
         gender: updatedData.gender || '',

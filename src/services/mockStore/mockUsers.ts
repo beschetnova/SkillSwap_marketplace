@@ -1,6 +1,6 @@
 export const mockUsers = [
   {
-    id: 1,
+    id: '1',
     name: 'Иван',
     city: 'Санкт-Петербург',
     gender: 'male',
@@ -10,7 +10,9 @@ export const mockUsers = [
       {
         skill: 'Игра на барабанах',
         categoryId: 'creativity-and-art',
-        subcategory: 'music-and-sound'
+        subcategory: 'music-and-sound',
+        description:
+          'Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры'
       }
     ],
     skillsToLearn: [
@@ -38,7 +40,7 @@ export const mockUsers = [
     photo: 'Ivan.png'
   },
   {
-    id: 2,
+    id: '2',
     name: 'Анна',
     city: 'Казань',
     gender: 'female',
@@ -48,7 +50,9 @@ export const mockUsers = [
       {
         skill: 'Английский язык',
         categoryId: 'foreign-languages',
-        subcategory: 'english'
+        subcategory: 'english',
+        description:
+          'Обучение английскому языку для всех уровней: от начинающих до продвинутых. Помогу улучшить разговорные навыки, грамматику, словарный запас и подготовиться к экзаменам. Индивидуальный подход и гибкий график занятий.'
       }
     ],
     skillsToLearn: [
@@ -76,7 +80,7 @@ export const mockUsers = [
     photo: 'Anna.png'
   },
   {
-    id: 3,
+    id: '3',
     name: 'Максим',
     city: 'Москва',
     gender: 'male',
@@ -86,7 +90,9 @@ export const mockUsers = [
       {
         skill: 'Бизнес-план',
         categoryId: 'business-and-career',
-        subcategory: 'entrepreneurship'
+        subcategory: 'entrepreneurship',
+        description:
+          'Обучение созданию эффективных бизнес-планов: от разработки идеи до финансового моделирования. Помогу понять ключевые компоненты, структурировать бизнес-план и подготовиться к презентации инвесторам. Индивидуальный подход и практические кейсы.'
       }
     ],
     skillsToLearn: [
@@ -114,7 +120,7 @@ export const mockUsers = [
     photo: 'Maxim.png'
   },
   {
-    id: 4,
+    id: '4',
     name: 'Илона',
     city: 'Екатеринбург',
     gender: 'female',
@@ -124,7 +130,9 @@ export const mockUsers = [
       {
         skill: 'Английский язык',
         categoryId: 'foreign-languages',
-        subcategory: 'english'
+        subcategory: 'english',
+        description:
+          'Обучение английскому языку для всех уровней: от начинающих до продвинутых. Помогу улучшить разговорные навыки, грамматику, словарный запас и подготовиться к экзаменам. Индивидуальный подход и гибкий график занятий.'
       }
     ],
     skillsToLearn: [
@@ -152,7 +160,7 @@ export const mockUsers = [
     photo: 'Ilona.png'
   },
   {
-    id: 5,
+    id: '5',
     name: 'Михаил',
     city: 'Новосибирск',
     gender: 'male',
@@ -162,7 +170,9 @@ export const mockUsers = [
       {
         skill: 'Английский язык',
         categoryId: 'foreign-languages',
-        subcategory: 'english'
+        subcategory: 'english',
+        description:
+          'Обучение английскому языку для всех уровней: от начинающих до продвинутых. Помогу улучшить разговорные навыки, грамматику, словарный запас и подготовиться к экзаменам. Индивидуальный подход и гибкий график занятий.'
       }
     ],
     skillsToLearn: [
@@ -190,7 +200,7 @@ export const mockUsers = [
     photo: 'Michael.png'
   },
   {
-    id: 6,
+    id: '6',
     name: 'Мария',
     city: 'Краснодар',
     gender: 'female',
@@ -200,7 +210,9 @@ export const mockUsers = [
       {
         skill: 'Английский язык',
         categoryId: 'foreign-languages',
-        subcategory: 'english'
+        subcategory: 'english',
+        description:
+          'Обучение английскому языку для всех уровней: от начинающих до продвинутых. Помогу улучшить разговорные навыки, грамматику, словарный запас и подготовиться к экзаменам. Индивидуальный подход и гибкий график занятий.'
       }
     ],
     skillsToLearn: [
@@ -228,7 +240,7 @@ export const mockUsers = [
     photo: 'Maria.png'
   },
   {
-    id: 7,
+    id: '7',
     name: 'Виктория',
     city: 'Кемерово',
     gender: 'female',
@@ -238,7 +250,9 @@ export const mockUsers = [
       {
         skill: 'Игра на барабанах',
         categoryId: 'creativity-and-art',
-        subcategory: 'music-and-sound'
+        subcategory: 'music-and-sound',
+        description:
+          'Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры'
       }
     ],
     skillsToLearn: [
@@ -266,7 +280,7 @@ export const mockUsers = [
     photo: 'Victoria.png'
   },
   {
-    id: 8,
+    id: '8',
     name: 'Елизавета',
     city: 'Владивосток',
     gender: 'female',
@@ -276,7 +290,9 @@ export const mockUsers = [
       {
         skill: 'Игра на барабанах',
         categoryId: 'creativity-and-art',
-        subcategory: 'music-and-sound'
+        subcategory: 'music-and-sound',
+        description:
+          'Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры'
       }
     ],
     skillsToLearn: [
@@ -304,7 +320,7 @@ export const mockUsers = [
     photo: 'Elizaveta.png'
   },
   {
-    id: 9,
+    id: '9',
     name: 'Виктория',
     city: 'Сочи',
     gender: 'female',
@@ -314,7 +330,9 @@ export const mockUsers = [
       {
         skill: 'Игра на барабанах',
         categoryId: 'creativity-and-art',
-        subcategory: 'music-and-sound'
+        subcategory: 'music-and-sound',
+        description:
+          'Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры'
       }
     ],
     skillsToLearn: [
@@ -342,7 +360,7 @@ export const mockUsers = [
     photo: 'Victoria-Sochi.png'
   },
   {
-    id: 10,
+    id: '10',
     name: 'Елена',
     city: 'Красноярск',
     gender: 'female',
@@ -352,7 +370,9 @@ export const mockUsers = [
       {
         skill: 'Игра на барабанах',
         categoryId: 'creativity-and-art',
-        subcategory: 'music-and-sound'
+        subcategory: 'music-and-sound',
+        description:
+          'Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры'
       }
     ],
     skillsToLearn: [
@@ -380,7 +400,7 @@ export const mockUsers = [
     photo: 'Elena.png'
   },
   {
-    id: 11,
+    id: '11',
     name: 'Константин',
     city: 'Иркутск',
     gender: 'male',
@@ -390,7 +410,9 @@ export const mockUsers = [
       {
         skill: 'Игра на барабанах',
         categoryId: 'creativity-and-art',
-        subcategory: 'music-and-sound'
+        subcategory: 'music-and-sound',
+        description:
+          'Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры'
       }
     ],
     skillsToLearn: [
@@ -418,7 +440,7 @@ export const mockUsers = [
     photo: 'Konstantin.png'
   },
   {
-    id: 12,
+    id: '12',
     name: 'София',
     city: 'Абакан',
     gender: 'female',
@@ -428,7 +450,9 @@ export const mockUsers = [
       {
         skill: 'Игра на барабанах',
         categoryId: 'creativity-and-art',
-        subcategory: 'music-and-sound'
+        subcategory: 'music-and-sound',
+        description:
+          'Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры'
       }
     ],
     skillsToLearn: [
@@ -456,7 +480,7 @@ export const mockUsers = [
     photo: 'Sofia.png'
   },
   {
-    id: 13,
+    id: '13',
     name: 'Екатерина',
     city: 'Пермь',
     gender: 'female',
@@ -466,7 +490,9 @@ export const mockUsers = [
       {
         skill: 'Игра на барабанах',
         categoryId: 'creativity-and-art',
-        subcategory: 'music-and-sound'
+        subcategory: 'music-and-sound',
+        description:
+          'Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры'
       }
     ],
     skillsToLearn: [
@@ -494,7 +520,7 @@ export const mockUsers = [
     photo: 'Ekaterina.png'
   },
   {
-    id: 14,
+    id: '14',
     name: 'Дарья',
     city: 'Ярославль',
     gender: 'female',
@@ -504,7 +530,9 @@ export const mockUsers = [
       {
         skill: 'Игра на барабанах',
         categoryId: 'creativity-and-art',
-        subcategory: 'music-and-sound'
+        subcategory: 'music-and-sound',
+        description:
+          'Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры'
       }
     ],
     skillsToLearn: [
@@ -532,7 +560,7 @@ export const mockUsers = [
     photo: 'Daria.png'
   },
   {
-    id: 15,
+    id: '15',
     name: 'Алла',
     city: 'Архангельск',
     gender: 'female',
@@ -542,7 +570,9 @@ export const mockUsers = [
       {
         skill: 'Игра на барабанах',
         categoryId: 'creativity-and-art',
-        subcategory: 'music-and-sound'
+        subcategory: 'music-and-sound',
+        description:
+          'Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры'
       }
     ],
     skillsToLearn: [
@@ -570,17 +600,19 @@ export const mockUsers = [
     photo: 'Alla.png'
   },
   {
-    id: 16,
+    id: '16',
     name: 'Мария',
     city: 'Москва',
     gender: 'female',
-    birthDate: '1995-10-28',
+    birthDate: '1990-06-23',
     bio: 'Люблю учиться новому, особенно если это можно делать за чаем и в пижаме. Всегда готова пообщаться и обменяться чем‑то интересным!',
     skillsToTeach: [
       {
         skill: 'Игра на барабанах',
         categoryId: 'creativity-and-art',
-        subcategory: 'music-and-sound'
+        subcategory: 'music-and-sound',
+        description:
+          'Привет! Я играю на барабанах уже больше 10 лет — от репетиций в гараже до выступлений на сцене с живыми группами. Научу основам техники (и как не отбить себе пальцы), играть любимые ритмы и разбирать песни, импровизировать и звучать уверенно даже без паритуры'
       }
     ],
     skillsToLearn: [
@@ -605,7 +637,6 @@ export const mockUsers = [
         subcategory: 'video-editing'
       }
     ],
-    photo: 'Maria-Moscow.png',
-    email: 'Mariia@gmail.com'
+    photo: 'Maria-Moscow.png'
   }
 ];

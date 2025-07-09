@@ -22,7 +22,7 @@ export type UserCardSkill = {
 
 export type User = {
   // offer: any;
-  id: number;
+  id: string;
   name: string;
   city: string;
   gender: string;
