@@ -21,6 +21,7 @@ export type UserCardSkill = {
 };
 
 export type User = {
+  // offer: any;
   id: number;
   name: string;
   city: string;
@@ -37,6 +38,10 @@ export type Profile = User & {
   favorites: number[];
 };
 
+export type Login = Profile & {
+  password: string;
+};
+
 export type Users = User[];
 
 export type City = {
@@ -45,3 +50,8 @@ export type City = {
 };
 
 export type Cities = City[];
+
+export type LocationStateType = {
+  from?: string;
+  showSuccessModal?: boolean;
+};

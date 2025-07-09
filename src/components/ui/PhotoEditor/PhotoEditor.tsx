@@ -5,11 +5,13 @@ import Button from '../buttons/button';
 interface PhotoEditorProps {
   photo: string;
   setPhoto: (photo: string) => void;
+  error?: string;
 }
 
 export const PhotoEditor: React.FC<PhotoEditorProps> = ({
   photo,
-  setPhoto
+  setPhoto,
+  error
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [preview, setPreview] = useState<string | null>(photo || null);
@@ -62,6 +64,7 @@ export const PhotoEditor: React.FC<PhotoEditorProps> = ({
         onChange={handleFileChange}
         style={{ display: 'none' }}
       />
+      {error && <p className={styles.errorText}>{error}</p>}
     </div>
   );
 };

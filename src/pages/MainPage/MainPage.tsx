@@ -9,13 +9,15 @@ import {
   unmarkCategorySkills
 } from '../../services/slices/filtersSlice.ts';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks.ts';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { UserCardSection } from '../../components/UserCardSection/UserCardSection.tsx';
 import Aside from '../../components/aside/aside.tsx';
 import styles from './MainPage.module.css';
-import type { User } from '../../utils/types.ts';
+import type { LocationStateType, User } from '../../utils/types.ts';
 import type { ActiveFilterButton } from '../../components/ui/ActiveFilters/types.ts';
 import { ActiveFilters } from '../../components/ui/ActiveFilters/ActiveFilters.tsx';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Modal } from '../../components/modal/modal.tsx';
 
 const MainPage = () => {
   const skills = useAppSelector(selectAllSkills);
@@ -23,6 +25,18 @@ const MainPage = () => {
   const filters = useAppSelector(selectFilters);
 
   const dispatch = useAppDispatch();
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  useEffect(() => {
+    const state = location.state as LocationStateType | null;
+    if (state?.showSuccessModal) {
+      setShowSuccessModal(true);
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location, navigate]);
 
   const filteredUsers = useMemo(() => {
     return users.filter((user: User) => {
@@ -174,6 +188,13 @@ const MainPage = () => {
           />
         </div>
       </main>
+      <Modal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        icon='Done.svg'
+        title='Ваше предложение создано'
+        message='Теперь вы можете предложить обмен'
+      />
     </>
   );
 };
