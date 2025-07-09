@@ -27,7 +27,7 @@ export const usersSlice = createSlice({
   reducers: {
     setUserSkillToTeach: (
       state,
-      action: { payload: { id: number; skill: UserCardSkill } }
+      action: { payload: { id: string; skill: UserCardSkill } }
     ) => {
       const { id, skill } = action.payload;
       const user = state.users.find((user) => user.id === id);
@@ -50,7 +50,7 @@ export const usersSlice = createSlice({
       });
   },
   selectors: {
-    getUserById: (state, id: number) => {
+    getUserById: (state, id: string) => {
       return state.users.find((user) => user.id === id);
     }
   }

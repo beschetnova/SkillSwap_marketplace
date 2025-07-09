@@ -18,7 +18,7 @@ import UserNotFound from '../../components/ui/UserNotFound/UserNotFound';
 const SkillPage = () => {
   const { userId } = useParams();
   const selectedUser = useAppSelector((state) =>
-    getUserById(state, Number(userId))
+    userId ? getUserById(state, userId) : undefined
   );
   const skills = useAppSelector(selectAllSkills);
 
@@ -46,7 +46,7 @@ const SkillPage = () => {
           user={selectedUser}
           categories={skills}
           ageText={ageText}
-          bio={selectedUser.bio}
+          bio={selectedUser.bio ?? ''}
         />
         <UserOfferCardUI
           images={items}
