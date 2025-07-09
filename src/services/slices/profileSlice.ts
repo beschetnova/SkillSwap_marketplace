@@ -101,7 +101,7 @@ export const profileSlice = createSlice({
       state.profile = null;
       state.isAuth = false;
     },
-    toggleFavorite: (state, action: { payload: number }) => {
+    toggleFavorite: (state, action: { payload: string }) => {
       if (!state.profile) return;
 
       const id = action.payload;
