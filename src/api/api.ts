@@ -1,6 +1,7 @@
-import type { Cities, SkillCategories, Users } from '../utils/types';
+import type { Cities, Login, SkillCategories, Users } from '../utils/types';
 
 const URL = '';
+const USER_URL = 'db/user.json';
 
 export const getSkill = async (): Promise<SkillCategories> => {
   const response = await fetch(`${URL}/db/skills.json`);
@@ -30,4 +31,45 @@ export const getCities = async (): Promise<Cities> => {
 
   const data = (await response.json()) as Cities;
   return data;
+};
+
+export const login = async (
+  email: string,
+  password: string
+): Promise<Login> => {
+  const response = await fetch(`${URL}/${USER_URL}`);
+
+  if (!response.ok) {
+    throw new Error('Не удалось загрузить пользователя. ' + response.status);
+  }
+
+  const user = (await response.json()) as Login;
+
+  if (user.email === email && user.password === password) {
+    const token = `mock-token-${user.id}`;
+
+    localStorage.setItem('token', token);
+    localStorage.setItem('profile', JSON.stringify(user));
+
+    return user;
+  } else {
+    throw new Error('Неверный логин или пароль');
+  }
+};
+
+//TODO: убрать ошибки линтера!
+export const getProfile = () => {
+  const token = localStorage.getItem('token');
+  const profile = localStorage.getItem('profile');
+
+  if (token && profile) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return JSON.parse(profile);
+  }
+  return null;
+};
+
+export const logout = () => {
+  localStorage.removeItem('token');
+  localStorage.removeItem('profile');
 };

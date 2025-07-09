@@ -1,0 +1,40 @@
+{
+  "id": 99,
+  "name": "Тестовый пользователь",
+  "email": "test@example.com",
+  "password": "password123",
+  "city": "Москва",
+  "gender": "male",
+  "birthDate": "1985-05-15",
+  "bio": "Это тестовый пользователь для входа в систему.",
+  "skillsToTeach": [
+    {
+      "skill": "Игра на барабанах",
+      "categoryId": "creativity-and-art",
+      "subcategory": "music-and-sound"
+    }
+  ],
+  "skillsToLearn": [
+    {
+      "skill": "Тайм менеджмент",
+      "categoryId": "business-and-career",
+      "subcategory": "time-management"
+    },
+    {
+      "skill": "Медитация",
+      "categoryId": "health-and-lifestyle",
+      "subcategory": "yoga-and-meditation"
+    },
+    {
+      "skill": "Фотография",
+      "categoryId": "creativity-and-art",
+      "subcategory": "photography"
+    },
+    {
+      "skill": "Видеомонтаж",
+      "categoryId": "creativity-and-art",
+      "subcategory": "video-editing"
+    }
+  ],
+  "photo": "TestUser.png"
+}
