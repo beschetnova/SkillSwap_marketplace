@@ -3,7 +3,7 @@ export type TSkillForm = {
   subcategory: string;
   skillName: string;
   skillDescription: string;
-  images: File[];
+  images: string[];
 };
 
 export type TCreateFormProps = {

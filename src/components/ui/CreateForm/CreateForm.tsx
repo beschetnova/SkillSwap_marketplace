@@ -4,13 +4,13 @@ import { CategorySelect } from '../Selects/CategorySelect/CategorySelect';
 import { SubCategorySelect } from '../Selects/SubCategorySelect/SubCategorySelect';
 import Textarea from '../Textarea/Textarea';
 import { ImageDropzone } from '../ImageDropzone/ImageDropzone';
-import type { TSkillForm, TCreateFormProps } from './type';
+import type { TCreateFormProps, TSkillForm } from './type';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Input from '../input/input';
 import {
-  createFormSchema,
-  type CreateFormData
+  type CreateFormData,
+  createFormSchema
 } from '../../../utils/schemas/registrationSchemas';
 
 export const CreateFormUI = ({ createSkill }: TCreateFormProps) => {
@@ -41,7 +41,7 @@ export const CreateFormUI = ({ createSkill }: TCreateFormProps) => {
         subcategory: data.subcategory,
         skillName: data.skillName,
         skillDescription: data.skillDescription || '',
-        images: data.images
+        images: data.images ? data.images.map((file) => file.name) : []
       };
       createSkill(skill);
     }
