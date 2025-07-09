@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "name": "Иван",
     "city": "Санкт-Петербург",
     "gender": "male",
@@ -39,7 +39,7 @@
     "photo": "Ivan.png"
   },
   {
-    "id": 2,
+    "id": "2",
     "name": "Анна",
     "city": "Казань",
     "gender": "female",
@@ -78,7 +78,7 @@
     "photo": "Anna.png"
   },
   {
-    "id": 3,
+    "id": "3",
     "name": "Максим",
     "city": "Москва",
     "gender": "male",
@@ -117,7 +117,7 @@
     "photo": "Maxim.png"
   },
   {
-    "id": 4,
+    "id": "4",
     "name": "Илона",
     "city": "Екатеринбург",
     "gender": "female",
@@ -156,7 +156,7 @@
     "photo": "Ilona.png"
   },
   {
-    "id": 5,
+    "id": "5",
     "name": "Михаил",
     "city": "Новосибирск",
     "gender": "male",
@@ -195,7 +195,7 @@
     "photo": "Michael.png"
   },
   {
-    "id": 6,
+    "id": "6",
     "name": "Мария",
     "city": "Краснодар",
     "gender": "female",
@@ -234,7 +234,7 @@
     "photo": "Maria.png"
   },
   {
-    "id": 7,
+    "id": "7",
     "name": "Виктория",
     "city": "Кемерово",
     "gender": "female",
@@ -273,7 +273,7 @@
     "photo": "Victoria.png"
   },
   {
-    "id": 8,
+    "id": "8",
     "name": "Елизавета",
     "city": "Владивосток",
     "gender": "female",
@@ -312,7 +312,7 @@
     "photo": "Elizaveta.png"
   },
   {
-    "id": 9,
+    "id": "9",
     "name": "Виктория",
     "city": "Сочи",
     "gender": "female",
@@ -351,7 +351,7 @@
     "photo": "Victoria-Sochi.png"
   },
   {
-    "id": 10,
+    "id": "10",
     "name": "Елена",
     "city": "Красноярск",
     "gender": "female",
@@ -390,7 +390,7 @@
     "photo": "Elena.png"
   },
   {
-    "id": 11,
+    "id": "11",
     "name": "Константин",
     "city": "Иркутск",
     "gender": "male",
@@ -429,7 +429,7 @@
     "photo": "Konstantin.png"
   },
   {
-    "id": 12,
+    "id": "12",
     "name": "София",
     "city": "Абакан",
     "gender": "female",
@@ -468,7 +468,7 @@
     "photo": "Sofia.png"
   },
   {
-    "id": 13,
+    "id": "13",
     "name": "Екатерина",
     "city": "Пермь",
     "gender": "female",
@@ -507,7 +507,7 @@
     "photo": "Ekaterina.png"
   },
   {
-    "id": 14,
+    "id": "14",
     "name": "Дарья",
     "city": "Ярославль",
     "gender": "female",
@@ -546,7 +546,7 @@
     "photo": "Daria.png"
   },
   {
-    "id": 15,
+    "id": "15",
     "name": "Алла",
     "city": "Архангельск",
     "gender": "female",
@@ -585,7 +585,7 @@
     "photo": "Alla.png"
   },
   {
-    "id": 16,
+    "id": "16",
     "name": "Мария",
     "city": "Москва",
     "gender": "female",

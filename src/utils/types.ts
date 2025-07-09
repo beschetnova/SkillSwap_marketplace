@@ -22,12 +22,12 @@ export type UserCardSkill = {
 
 export type User = {
   // offer: any;
-  id: number;
+  id: string;
   name: string;
   city: string;
   gender: string;
   birthDate: string;
-  bio: string;
+  bio?: string;
   skillsToTeach: UserCardSkill[];
   skillsToLearn: UserCardSkill[];
   photo: string;

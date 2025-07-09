@@ -6,9 +6,12 @@ import RegisterFormStepTwoUI from '../../components/ui/RegisterFormStepTwo/Regis
 import { RegisterFormStepThreeUI } from '../../components/ui/RegisterFormStepThree/RegisterFormStepThree';
 import { RegistrationVisual } from '../../components/ui/RegistrationVisual/RegistrationVisual';
 import { type RegisterFormType } from '../../utils/schemas/registrationSchemas';
+import { useAppDispatch } from '../../utils/hooks';
+import type { LocationStateType, Profile } from '../../utils/types';
+import { setProfile } from '../../services/slices/profileSlice';
 import { OfferModal } from '../../components/ui/OfferModal/OfferModal';
 import { useLocation, useNavigate } from 'react-router-dom';
-import type { LocationStateType } from '../../utils/types';
+import { nanoid } from 'nanoid';
 
 export const RegisterPage = () => {
   const [currentStep, setCurrentStep] = useState<1 | 2 | 3>(1);
@@ -19,6 +22,7 @@ export const RegisterPage = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const state = location.state as LocationStateType | null;
   const fromPath = state?.from || '/';
@@ -30,6 +34,50 @@ export const RegisterPage = () => {
     if (currentStep < 3) {
       setCurrentStep((prevStep) => Math.min(prevStep + 1, 3) as 1 | 2 | 3);
     } else {
+      const profile: Profile = {
+        id: nanoid(),
+        name: updatedData.name || '',
+        city: updatedData.city || '',
+        gender: updatedData.gender || '',
+        birthDate:
+          updatedData.birthDate instanceof Date
+            ? updatedData.birthDate.toISOString().split('T')[0]
+            : '',
+
+        skillsToTeach:
+          updatedData.title && updatedData.subcategoryToTeach
+            ? [
+                {
+                  skill: updatedData.title,
+                  categoryId: updatedData.categoryToTeach || '',
+                  subcategory: updatedData.subcategoryToTeach,
+                  description: updatedData.description,
+                  images: updatedData.images
+                    ? updatedData.images.map((file) => file.name)
+                    : []
+                }
+              ]
+            : [],
+
+        skillsToLearn: updatedData.subcategoryToLearn
+          ? [
+              {
+                skill: updatedData.subcategoryToLearn,
+                categoryId: updatedData.categoryToLearn || '',
+                subcategory: updatedData.subcategoryToLearn
+              }
+            ]
+          : [],
+
+        photo: updatedData.avatar?.name || '',
+
+        email: updatedData.email || '',
+        favorites: []
+      };
+
+      dispatch(setProfile(profile));
+      console.log('✅ Профиль сохранён:', profile);
+
       setIsOfferModalOpen(true);
     }
   };
