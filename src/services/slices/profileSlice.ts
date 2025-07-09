@@ -16,11 +16,11 @@ type ProfileState = {
 };
 
 const initialState: ProfileState = {
-  //profile: null,
-  //isAuth: false,
-  //accessToken: null,
-  error: null,
-  profile: {
+  profile: null,
+  isAuth: false,
+  accessToken: null,
+  error: null
+  /*   profile: {
     id: 'testId',
     name: 'TestUser',
     city: 'Москва',
@@ -61,7 +61,7 @@ const initialState: ProfileState = {
     favorites: ['1', '2']
   },
   isAuth: true,
-  accessToken: 'mock.access.jwt'
+  accessToken: 'mock.access.jwt' */
 };
 
 export const fetchUser = createAsyncThunk<
