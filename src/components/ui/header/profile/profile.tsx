@@ -1,20 +1,28 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './profile.module.css';
-
 import Button from '../../../ui/buttons/button';
 
 type ProfileIconProps = {
   profileIcon: string;
+  userName: string;
 };
 
-const Profile = ({ profileIcon }: ProfileIconProps) => {
+const Profile = ({ profileIcon, userName }: ProfileIconProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/profile');
+  };
+
   return (
     <section className={styles.section}>
       <Button
         type='tertiary'
         htmlType='button'
         className={`${styles.button} ${styles.user}`}
+        onClick={handleClick}
       >
-        <span>Имя пользователя</span>
+        <span>{userName || 'Имя пользователя'}</span>
         <img src={profileIcon} alt='Иконка профиля' className={styles.icon} />
       </Button>
     </section>
