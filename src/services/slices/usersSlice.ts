@@ -32,6 +32,9 @@ export const usersSlice = createSlice({
       const { id, skill } = action.payload;
       const user = state.users.find((user) => user.id === id);
       if (user) user.skillsToTeach = [skill];
+    },
+    addUser: (state, action: { payload: User }) => {
+      state.users.unshift(action.payload);
     }
   },
   extraReducers: (builder) => {
@@ -83,6 +86,6 @@ export const selectUsersWithSameOffer = createSelector(
   }
 );
 export const { getUserById } = usersSlice.selectors;
-export const { setUserSkillToTeach } = usersSlice.actions;
+export const { setUserSkillToTeach, addUser } = usersSlice.actions;
 
 export default usersSlice.reducer;

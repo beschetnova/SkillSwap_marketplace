@@ -6,12 +6,14 @@ import RegisterFormStepTwoUI from '../../components/ui/RegisterFormStepTwo/Regis
 import { RegisterFormStepThreeUI } from '../../components/ui/RegisterFormStepThree/RegisterFormStepThree';
 import { RegistrationVisual } from '../../components/ui/RegistrationVisual/RegistrationVisual';
 import { type RegisterFormType } from '../../utils/schemas/registrationSchemas';
-import { useAppDispatch } from '../../utils/hooks';
-import type { LocationStateType, Profile } from '../../utils/types';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks';
+import type { LocationStateType, Profile, User } from '../../utils/types';
 import { setProfile } from '../../services/slices/profileSlice';
 import { OfferModal } from '../../components/ui/OfferModal/OfferModal';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import { addUser } from '../../services/slices/usersSlice';
+import { selectAllSkills } from '../../services/slices/skillsSlice';
 
 export const RegisterPage = () => {
   const [currentStep, setCurrentStep] = useState<1 | 2 | 3>(1);
@@ -19,6 +21,7 @@ export const RegisterPage = () => {
     {} as RegisterFormType
   );
   const [isOfferModalOpen, setIsOfferModalOpen] = useState(false);
+  const skills = useAppSelector(selectAllSkills);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -34,6 +37,13 @@ export const RegisterPage = () => {
     if (currentStep < 3) {
       setCurrentStep((prevStep) => Math.min(prevStep + 1, 3) as 1 | 2 | 3);
     } else {
+      const subcategoryId = updatedData.subcategoryToLearn;
+      const categoryId = updatedData.categoryToLearn;
+
+      const category = skills.find((cat) => cat.id === categoryId);
+      const subcategory = category?.skills.find(
+        (skill) => skill.id === subcategoryId
+      );
       const profile: Profile = {
         id: nanoid(),
         name: updatedData.name || '',
@@ -62,8 +72,8 @@ export const RegisterPage = () => {
         skillsToLearn: updatedData.subcategoryToLearn
           ? [
               {
-                skill: updatedData.subcategoryToLearn,
-                categoryId: updatedData.categoryToLearn || '',
+                skill: subcategory?.name || '',
+                categoryId: categoryId || '',
                 subcategory: updatedData.subcategoryToLearn
               }
             ]
@@ -75,7 +85,20 @@ export const RegisterPage = () => {
         favorites: []
       };
 
+      const user: User = {
+        id: profile.id,
+        name: profile.name,
+        city: profile.city,
+        gender: profile.gender,
+        birthDate: profile.birthDate,
+        bio: profile.bio,
+        skillsToTeach: profile.skillsToTeach,
+        skillsToLearn: profile.skillsToLearn,
+        photo: profile.photo
+      };
+
       dispatch(setProfile(profile));
+      dispatch(addUser(user));
       console.log('✅ Профиль сохранён:', profile);
 
       setIsOfferModalOpen(true);
