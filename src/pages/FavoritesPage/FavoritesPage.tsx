@@ -33,12 +33,14 @@ export const FavoritesPage = () => {
           </Link>
         </div>
       )}
-      {hasUsers && <UserCardSection
-        title='Избранное'
-        users={favoriteUsers}
-        categories={categories}
-        toShowAll={true}
-      /> }
+      {hasUsers && (
+        <UserCardSection
+          title='Избранное'
+          users={favoriteUsers}
+          categories={categories}
+          toShowAll={true}
+        />
+      )}
     </main>
   );
 };
