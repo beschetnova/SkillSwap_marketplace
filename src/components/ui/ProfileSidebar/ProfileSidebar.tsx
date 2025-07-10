@@ -1,4 +1,6 @@
+import { NavLink } from 'react-router-dom';
 import styles from './ProfileSidebar.module.css';
+import PathConstants from '../../../routes/path-constants';
 
 export const ProfileSidebar = () => {
   return (
@@ -28,14 +30,17 @@ export const ProfileSidebar = () => {
           />
           <span>Избранное</span>
         </div>
-        <div className={styles.sidebar_item}>
-          <img
-            src='src/images/icons/idea.svg'
-            alt='idea-icon'
-            className={styles.icon}
-          />
-          <span>Мои навыки</span>
-        </div>
+        <NavLink to={PathConstants.CREATE}>
+          <div className={styles.sidebar_item}>
+            <img
+              src='src/images/icons/idea.svg'
+              alt='idea-icon'
+              className={styles.icon}
+            />
+            <span>Мои навыки</span>
+          </div>
+        </NavLink>
+
         <div className={styles.sidebar_item}>
           <img
             src='src/images/icons/user.svg'
