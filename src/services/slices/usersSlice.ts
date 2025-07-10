@@ -49,7 +49,7 @@ export const usersSlice = createSlice({
       if (index !== -1) {
         state.users[index] = action.payload;
       } else {
-        state.users.unshift(action.payload); // fallback, если вдруг не нашли
+        state.users.unshift(action.payload);
       }
     }
   },
@@ -62,8 +62,6 @@ export const usersSlice = createSlice({
       .addCase(fetchUsers.fulfilled, (state, action) => {
         state.isLoading = false;
         const fetchedUsers = action.payload;
-
-        // Объединяем: добавляем только тех, кого ещё нет
         const existingIds = new Set(state.users.map((u) => u.id));
         const newUsers = fetchedUsers.filter((u) => !existingIds.has(u.id));
 

@@ -1,8 +1,4 @@
-import {
-  createAsyncThunk,
-  createSelector,
-  createSlice
-} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 import type { Profile, UserCardSkill } from '../../utils/types';
 import { login } from '../../api/api';
@@ -165,10 +161,8 @@ export const {
   setUserSkillToTeach
 } = profileSlice.actions;
 
-export const selectFavorites = createSelector(
-  (state: RootState) => state.profile.profile?.favorites,
-  (favorites) => favorites ?? []
-);
+export const selectFavorites = (state: RootState): string[] =>
+  state.profile.profile?.favorites ?? [];
 
 export const { selectProfile, selectIsAuth, selectProfileId } =
   profileSlice.selectors;

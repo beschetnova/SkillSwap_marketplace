@@ -7,10 +7,12 @@ import { useNavigate } from 'react-router-dom';
 import PathConstants from '../../routes/path-constants';
 import {
   selectProfile,
-  setUserSkillToTeach
+  setUserSkillToTeach,
+  updateProfile
 } from '../../services/slices/profileSlice';
 import type { User, UserCardSkill } from '../../utils/types';
 import { updateUser } from '../../services/slices/usersSlice';
+import store from '../../services/store';
 
 export const CreatePage = () => {
   const dispatch = useAppDispatch();
@@ -40,6 +42,10 @@ export const CreatePage = () => {
 
     dispatch(updateUser(updatedUser));
 
+    const users = store.getState().users.users;
+    localStorage.setItem('users', JSON.stringify(users));
+    dispatch(updateProfile(updatedUser));
+    localStorage.setItem('profile', JSON.stringify(updatedUser));
     navigate(PathConstants.HOME);
   };
 
