@@ -1,8 +1,4 @@
-import {
-  createSelector,
-  createSlice,
-  createAsyncThunk
-} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 import type { Profile, UserCardSkill } from '../../utils/types';
 import { login } from '../../api/api';
@@ -14,55 +10,13 @@ type ProfileState = {
   error: string | null;
 };
 
+const savedProfile = localStorage.getItem('profile');
+
 const initialState: ProfileState = {
-  profile: null,
-  isAuth: false,
-  accessToken: null,
+  profile: savedProfile ? (JSON.parse(savedProfile) as Profile) : null,
+  isAuth: !!savedProfile,
+  accessToken: savedProfile ? 'mock.access.jwt' : '',
   error: null
-  /*profile: {
-      id: 'testId',
-      name: 'Мария',
-      city: 'Москва',
-      gender: 'female',
-      birthDate: '1995-10-28',
-      bio: 'Люблю учиться новому, особенно если это можно делать за чаем и в пижаме. Всегда готова пообщаться и обменяться чем‑то интересным!',
-      skillsToTeach: [
-        {
-          skill: 'Игра на барабанах',
-          categoryId: 'creativity-and-art',
-          subcategory: 'music-and-sound'
-        }
-      ],
-      skillsToLearn: [
-        {
-          skill: 'Тайм менеджмент',
-          categoryId: 'business-and-career',
-          subcategory: 'time-management'
-        },
-        {
-          skill: 'Медитация',
-          categoryId: 'health-and-lifestyle',
-          subcategory: 'yoga-and-meditation'
-        },
-        {
-          skill: 'Фотография',
-          categoryId: 'creativity-and-art',
-          subcategory: 'photography'
-        },
-        {
-          skill: 'Видеомонтаж',
-          categoryId: 'creativity-and-art',
-          subcategory: 'video-editing'
-        }
-      ],
-      photo: 'Maria-Moscow.png',
-      email: 'Mariia@gmail.com',
-      favorites: ['1', '2']
-    },
-    isAuth: true,
-    accessToken: 'mock.access.jwt',
-    error: null
-    */
 };
 
 export const fetchUser = createAsyncThunk<
@@ -89,7 +43,9 @@ export const profileSlice = createSlice({
     setProfile: (state, action: { payload: Profile }) => {
       state.profile = action.payload;
       state.isAuth = true;
+      // state.accessToken = 'mock.access.jwt';
       state.accessToken = localStorage.getItem('token') || null;
+      localStorage.setItem('profile', JSON.stringify(state.profile));
     },
     updateProfile: (state, action: { payload: Partial<Profile> }) => {
       if (state.profile) {
@@ -115,9 +71,9 @@ export const profileSlice = createSlice({
       state,
       action: { payload: { skill: UserCardSkill } }
     ) => {
-      //Не знаю есть ли вариант лучше чем if проверка
       if (state.profile) {
         state.profile.skillsToTeach = [action.payload.skill];
+        localStorage.setItem('profile', JSON.stringify(state.profile));
       } else {
         console.error('state.profile is null');
       }
@@ -162,10 +118,8 @@ export const {
   setUserSkillToTeach
 } = profileSlice.actions;
 
-export const selectFavorites = createSelector(
-  (state: RootState) => state.profile.profile?.favorites,
-  (favorites) => favorites ?? []
-);
+export const selectFavorites = (state: RootState): string[] =>
+  state.profile.profile?.favorites ?? [];
 
 export const { selectProfile, selectIsAuth, selectProfileId } =
   profileSlice.selectors;
