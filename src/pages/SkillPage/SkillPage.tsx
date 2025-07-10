@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styles from './SkillPage.module.css';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import { getUserById } from '../../services/slices/usersSlice';
@@ -22,6 +22,7 @@ import { selectProfileId } from '../../services/slices/profileSlice';
 const SkillPage = () => {
   const { userId } = useParams();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const selectedUser = useAppSelector((state) =>
     userId ? getUserById(state, userId) : null
@@ -40,7 +41,10 @@ const SkillPage = () => {
   const items = [testImage1, testImage2, testImage3, testImage4, testImage5];
 
   const offerHandle = () => {
-    if (!fromUserId || !userId) return;
+    if (!fromUserId) {
+      navigate('/register', { state: { from: `/skill/${userId}` } });
+      return;
+    }
 
     try {
       dispatch(
