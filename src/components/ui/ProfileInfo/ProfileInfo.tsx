@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from '../../../utils/hooks.ts';
+import { useAppDispatch, useAppSelector } from '../../../utils/hooks.ts';
 
 import { format, parseISO } from 'date-fns';
 import { ru } from 'date-fns/locale/ru';
@@ -21,15 +20,14 @@ import { CitySelect } from '../Selects/CitySelect/CitySelect.tsx';
 import Button from '../buttons/button';
 import PhotoEditor from '../PhotoEditor/PhotoEditor.tsx';
 import Textarea from '../Textarea/Textarea.tsx';
-
-import { profileSlice } from '../../../services/slices/profileSlice.ts';
-import type { RootState } from '../../../services/store.ts';
+import {
+  selectProfile,
+  updateProfile
+} from '../../../services/slices/profileSlice.ts';
 
 export const ProfileInfo = () => {
   const dispatch = useAppDispatch();
-  const userFromStore = useSelector(
-    (state: RootState) => state.profile.profile
-  );
+  const userFromStore = useAppSelector(selectProfile);
 
   const {
     register,
@@ -80,8 +78,7 @@ export const ProfileInfo = () => {
       birthDate: data.birthDate,
       photo: data.avatar
     };
-
-    dispatch(profileSlice.actions.updateProfile(updatedProfile));
+    dispatch(updateProfile(updatedProfile));
   };
 
   return (
