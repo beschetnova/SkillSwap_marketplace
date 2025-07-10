@@ -6,6 +6,7 @@ import {
 import { getUsers } from '../../api/api';
 import type { User, UserCardSkill, Users } from '../../utils/types';
 import type { RootState } from '../store';
+import type { FiltersState } from './filtersSlice';
 
 type UsersState = {
   users: Users;
@@ -103,6 +104,78 @@ export const selectUsersWithSameOffer = createSelector(
     });
 
     return result;
+  }
+);
+
+export const getFilteredUsers = createSelector(
+  [selectAllUsers, (_: RootState, filters: FiltersState) => filters],
+  (allUsers, filters: FiltersState) => {
+    return allUsers.filter((user: User) => {
+      if (filters.gender !== 'Не имеет значения') {
+        const genderMap: { [key: string]: string } = {
+          Мужской: 'male',
+          Женский: 'female'
+        };
+        if (user.gender !== genderMap[filters.gender]) {
+          return false;
+        }
+      }
+
+      if (filters.cities.length > 0 && !filters.cities.includes(user.city)) {
+        return false;
+      }
+
+      if (filters.skills.length > 0) {
+        const skillsToTeachIds = user.skillsToTeach.map((s) => s.subcategory);
+        const skillsToLearnIds = user.skillsToLearn.map((s) => s.subcategory);
+
+        const hasSkill = (skillId: string) =>
+          skillsToTeachIds.includes(skillId) ||
+          skillsToLearnIds.includes(skillId);
+
+        const hasSkillToTeach = (skillId: string) =>
+          skillsToTeachIds.includes(skillId);
+
+        const hasSkillToLearn = (skillId: string) =>
+          skillsToLearnIds.includes(skillId);
+
+        switch (filters.type) {
+          case 'Могу научить':
+            if (!filters.skills.some(hasSkillToTeach)) {
+              return false;
+            }
+            break;
+          case 'Хочу научиться':
+            if (!filters.skills.some(hasSkillToLearn)) {
+              return false;
+            }
+            break;
+          case 'Всё':
+          default:
+            if (!filters.skills.some(hasSkill)) {
+              return false;
+            }
+            break;
+        }
+      }
+
+      if (filters.search) {
+        const findInSkillsToLearn = user.skillsToLearn.some((skillItem) =>
+          skillItem.skill
+            .toLocaleLowerCase()
+            .includes(filters.search.toLocaleLowerCase())
+        );
+        const findInSkillsToTeach = user.skillsToTeach.some((skillItem) =>
+          skillItem.skill
+            .toLocaleLowerCase()
+            .includes(filters.search.toLocaleLowerCase())
+        );
+
+        return findInSkillsToLearn || findInSkillsToTeach;
+      }
+
+      return true;
+    });
   }
 );
 export const { getUserById } = usersSlice.selectors;
