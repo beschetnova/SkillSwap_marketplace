@@ -24,7 +24,7 @@ export const FavoritesPage = () => {
           <img className={styles.icon} src={icon} alt='Icon' />
           <div className={styles.description}>
             <h2>В избранных никого нет</h2>
-            <p>Добавьте в избранные пользователей с главного страницы</p>
+            <p>Добавьте в избранные пользователей с главной страницы</p>
           </div>
           <Link to={PathConstants.HOME}>
             <Button fullWidth={true} type='primary'>
