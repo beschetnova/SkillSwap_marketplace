@@ -1,7 +1,7 @@
 import {
+  createAsyncThunk,
   createSelector,
-  createSlice,
-  createAsyncThunk
+  createSlice
 } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 import type { Profile, UserCardSkill } from '../../utils/types';
@@ -15,10 +15,12 @@ type ProfileState = {
   error: string | null;
 };
 
+const savedProfile = localStorage.getItem('profile');
+
 const initialState: ProfileState = {
-  profile: null,
-  isAuth: false,
-  accessToken: null,
+  profile: savedProfile ? (JSON.parse(savedProfile) as Profile) : null,
+  isAuth: !!savedProfile,
+  accessToken: savedProfile ? 'mock.access.jwt' : '',
   error: null
   /*   profile: {
     id: 'testId',
@@ -89,6 +91,8 @@ export const profileSlice = createSlice({
       state.profile = action.payload;
       state.isAuth = true;
       state.accessToken = 'mock.access.jwt';
+
+      localStorage.setItem('profile', JSON.stringify(state.profile));
     },
     updateProfile: (state, action: { payload: Partial<Profile> }) => {
       if (state.profile) {
@@ -114,9 +118,9 @@ export const profileSlice = createSlice({
       state,
       action: { payload: { skill: UserCardSkill } }
     ) => {
-      //Не знаю есть ли вариант лучше чем if проверка
       if (state.profile) {
         state.profile.skillsToTeach = [action.payload.skill];
+        localStorage.setItem('profile', JSON.stringify(state.profile));
       } else {
         console.error('state.profile is null');
       }

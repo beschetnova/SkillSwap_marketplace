@@ -2,27 +2,44 @@ import styles from './CreatePage.module.css';
 import type { TSkillForm } from '../../components/ui/CreateForm/type';
 import { RegistrationVisual } from '../../components/ui/RegistrationVisual/RegistrationVisual';
 import { CreateFormUI } from '../../components/ui/CreateForm/CreateForm';
-import { useAppDispatch } from '../../utils/hooks';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import { useNavigate } from 'react-router-dom';
 import PathConstants from '../../routes/path-constants';
-import { setUserSkillToTeach } from '../../services/slices/profileSlice';
+import {
+  selectProfile,
+  setUserSkillToTeach
+} from '../../services/slices/profileSlice';
+import type { User, UserCardSkill } from '../../utils/types';
+import { updateUser } from '../../services/slices/usersSlice';
 
 export const CreatePage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const profile = useAppSelector(selectProfile);
+  console.log('Profile:', profile);
+  if (!profile) {
+    console.error('❌ Profile not found');
+    return;
+  }
 
   const createSkill = (skill: TSkillForm) => {
-    const skillParams = {
+    const skillParams: UserCardSkill = {
       skill: skill.skillName,
       categoryId: skill.category,
       subcategory: skill.subcategory,
       description: skill.skillDescription,
       images: skill.images
     };
-    //поменял логику на то что скилл меняется именно у профиля а не у карточки с определенным id
-    //TODO: Сделать так что при создании профиля на главной странице появлялась карточка
+
     dispatch(setUserSkillToTeach({ skill: skillParams }));
-    //TODO: Сделать редирект только если диспатч прошёл успешно
+
+    const updatedUser: User = {
+      ...profile,
+      skillsToTeach: [skillParams]
+    };
+
+    dispatch(updateUser(updatedUser));
+
     navigate(PathConstants.HOME);
   };
 

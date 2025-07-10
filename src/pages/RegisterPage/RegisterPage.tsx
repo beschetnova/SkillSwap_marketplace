@@ -98,6 +98,7 @@ export const RegisterPage = () => {
       };
 
       dispatch(setProfile(profile));
+      localStorage.setItem('profile', JSON.stringify(profile));
       dispatch(addUser(user));
       console.log('✅ Профиль сохранён:', profile);
 

@@ -13,6 +13,7 @@ import { FavoritesPage } from '../pages/FavoritesPage/FavoritesPage';
 const routes = [
   { path: PathConstants.HOME, element: <MainPage /> },
   { path: PathConstants.SKILL, element: <SkillPage /> },
+  { path: PathConstants.CREATE, element: <CreatePage /> },
   {
     path: PathConstants.PROFILE,
     element: (
@@ -22,14 +23,14 @@ const routes = [
     )
   },
   { path: PathConstants.REGISTRATION, element: <RegisterPage /> },
-  {
-    path: PathConstants.CREATE,
-    element: (
-      <PrivateRoute>
-        <CreatePage />
-      </PrivateRoute>
-    )
-  },
+  // {
+  //   path: PathConstants.CREATE,
+  //   element: (
+  //     <PrivateRoute>
+  //       <CreatePage />
+  //     </PrivateRoute>
+  //   )
+  // },
   {
     path: PathConstants.FAVORITES,
     element: (

@@ -13,8 +13,10 @@ type UsersState = {
   error: string | undefined;
 };
 
+const savedUsers = localStorage.getItem('users');
+
 const initialState: UsersState = {
-  users: [],
+  users: savedUsers ? (JSON.parse(savedUsers) as Users) : [],
   isLoading: false,
   error: undefined
 };
@@ -31,10 +33,24 @@ export const usersSlice = createSlice({
     ) => {
       const { id, skill } = action.payload;
       const user = state.users.find((user) => user.id === id);
-      if (user) user.skillsToTeach = [skill];
+      if (user) {
+        user.skillsToTeach = [skill];
+        localStorage.setItem('users', JSON.stringify(state.users));
+      }
     },
     addUser: (state, action: { payload: User }) => {
       state.users.unshift(action.payload);
+      localStorage.setItem('users', JSON.stringify(state.users));
+    },
+    updateUser: (state, action: { payload: User }) => {
+      const index = state.users.findIndex(
+        (user) => user.id === action.payload.id
+      );
+      if (index !== -1) {
+        state.users[index] = action.payload;
+      } else {
+        state.users.unshift(action.payload); // fallback, если вдруг не нашли
+      }
     }
   },
   extraReducers: (builder) => {
@@ -45,7 +61,13 @@ export const usersSlice = createSlice({
       })
       .addCase(fetchUsers.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.users = action.payload;
+        const fetchedUsers = action.payload;
+
+        // Объединяем: добавляем только тех, кого ещё нет
+        const existingIds = new Set(state.users.map((u) => u.id));
+        const newUsers = fetchedUsers.filter((u) => !existingIds.has(u.id));
+
+        state.users = [...state.users, ...newUsers];
       })
       .addCase(fetchUsers.rejected, (state, action) => {
         state.isLoading = false;
@@ -86,6 +108,6 @@ export const selectUsersWithSameOffer = createSelector(
   }
 );
 export const { getUserById } = usersSlice.selectors;
-export const { setUserSkillToTeach, addUser } = usersSlice.actions;
+export const { setUserSkillToTeach, addUser, updateUser } = usersSlice.actions;
 
 export default usersSlice.reducer;
