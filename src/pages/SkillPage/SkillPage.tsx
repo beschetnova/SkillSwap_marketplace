@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import styles from './SkillPage.module.css';
-import { useAppSelector } from '../../utils/hooks';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import { getUserById } from '../../services/slices/usersSlice';
 import UserOfferProfileCardUI from '../../components/ui/UserOfferProfileCard/UserOfferProfileCard';
 import UserOfferCardUI from '../../components/ui/UserOfferCard/UserOfferCard';
@@ -14,21 +14,45 @@ import testImage4 from '../../images/skills/drums/drum-4.jpg';
 import { calculateAge, getYearsWord } from '../../utils/date/dateUtils';
 import { categoryAndSubcategoryTranslate } from '../../utils/skill-category/getSkillCategory';
 import UserNotFound from '../../components/ui/UserNotFound/UserNotFound';
+import { useState } from 'react';
+import { Modal } from '../../components/modal/modal';
+import { proposeExchange } from '../../services/slices/exchangeSlice';
+import { selectProfileId } from '../../services/slices/profileSlice';
 
 const SkillPage = () => {
   const { userId } = useParams();
+  const dispatch = useAppDispatch();
+
   const selectedUser = useAppSelector((state) =>
-    userId ? getUserById(state, userId) : undefined
+    userId ? getUserById(state, userId) : null
   );
   const skills = useAppSelector(selectAllSkills);
+  const isProposed = useAppSelector((state) =>
+    userId ? state.exchange.proposed[userId] : false
+  );
+  const fromUserId = useAppSelector(selectProfileId);
 
-  if (!userId) return;
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  if (!userId) return null;
   if (!selectedUser) return <UserNotFound />;
 
   const items = [testImage1, testImage2, testImage3, testImage4, testImage5];
 
   const offerHandle = () => {
-    console.log('Предложить обмен!');
+    if (!fromUserId || !userId) return;
+
+    try {
+      dispatch(
+        proposeExchange({
+          toUserId: userId,
+          fromUserId
+        })
+      );
+      setShowSuccessModal(true);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const age = calculateAge(selectedUser.birthDate);
@@ -49,17 +73,28 @@ const SkillPage = () => {
           bio={selectedUser.bio ?? ''}
         />
         <UserOfferCardUI
+          userId={userId}
           images={items}
           title={skill}
           category={`${categoryLabel} / ${subcategoryLabel}`}
           description={description ?? ''}
+          isProposed={isProposed}
           onButtonClick={offerHandle}
         />
       </div>
+
       <div className={styles.sameOffers}>
         <h2>Похожие предложения</h2>
         <SameOffers user={selectedUser} />
       </div>
+
+      <Modal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        icon='/notification.svg'
+        title='Вы предложили обмен'
+        message='Теперь дождитесь подтверждения. Вам придёт уведомление'
+      />
     </div>
   );
 };

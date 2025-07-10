@@ -36,3 +36,20 @@
   height: 48px;
   justify-content: center;
 }
+
+.proposeButton {
+  gap: 8px;
+  border: 1px solid var(--accent-color);
+  background-color: var(--card-input-color);
+}
+
+.proposeButton:hover {
+  background-color: inherit;
+  cursor: auto;
+  border-color: var(--accent-color);
+}
+
+.icon {
+  inline-size: 24px;
+  aspect-ratio: 1/1;
+}

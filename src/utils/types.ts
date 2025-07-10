@@ -52,6 +52,8 @@ export type City = {
 export type Cities = City[];
 
 export type LocationStateType = {
+  message: string;
+  title: string;
   from?: string;
   showSuccessModal?: boolean;
 };
