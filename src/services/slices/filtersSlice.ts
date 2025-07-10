@@ -5,13 +5,15 @@ export type FiltersState = {
   skills: string[];
   gender: string;
   cities: string[];
+  search: string;
 };
 
 const initialState: FiltersState = {
   type: 'Всё',
   skills: [],
   gender: 'Не имеет значения',
-  cities: []
+  cities: [],
+  search: ''
 };
 
 export const filtersSlice = createSlice({
@@ -54,6 +56,9 @@ export const filtersSlice = createSlice({
       state.skills = state.skills.filter(
         (skillId) => !skillsToRemoveSet.has(skillId)
       );
+    },
+    setSearchFilter: (state, action: PayloadAction<string>) => {
+      state.search = action.payload;
     }
   },
   selectors: {
@@ -67,7 +72,8 @@ export const {
   toggleSkill,
   toggleCity,
   markCategorySkills,
-  unmarkCategorySkills
+  unmarkCategorySkills,
+  setSearchFilter
 } = filtersSlice.actions;
 export const { selectFilters } = filtersSlice.selectors;
 export default filtersSlice.reducer;
