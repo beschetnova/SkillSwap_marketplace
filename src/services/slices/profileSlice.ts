@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 import type { Profile, UserCardSkill } from '../../utils/types';
-import { login } from '../../api/api';
+import { login, logout } from '../../api/api';
 
 type ProfileState = {
   profile: Profile | null;
@@ -35,6 +35,8 @@ export const fetchUser = createAsyncThunk<
       : rejectWithValue('Ошибка авторизации');
   }
 });
+
+export const logoutUser = createAsyncThunk('user/logout', logout);
 
 export const profileSlice = createSlice({
   name: 'profile',
@@ -94,6 +96,18 @@ export const profileSlice = createSlice({
       .addCase(fetchUser.rejected, (state, action) => {
         state.isAuth = false;
         state.error = action.error.message || 'Ошибка';
+      })
+      .addCase(logoutUser.pending, (state) => {
+        state.error = null;
+        state.isAuth = true;
+      })
+      .addCase(logoutUser.rejected, (state, action) => {
+        state.error = action.error.message || 'Ошибка';
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        state.isAuth = false;
+        state.profile = null;
+        state.accessToken = null;
       });
   },
   selectors: {

@@ -1,8 +1,16 @@
 import { NavLink } from 'react-router-dom';
 import styles from './ProfileSidebar.module.css';
 import PathConstants from '../../../routes/path-constants';
+import { useAppDispatch } from '../../../utils/hooks';
+import { logoutUser } from '../../../services/slices/profileSlice';
 
 export const ProfileSidebar = () => {
+  const dispatch = useAppDispatch();
+
+  const handleLogout = () => {
+    void dispatch(logoutUser());
+  };
+
   return (
     <div className={styles.profile_sidebar}>
       <div className={styles.sidebar_list}>
@@ -50,6 +58,14 @@ export const ProfileSidebar = () => {
             className={styles.icon}
           />
           <span>Личные данные</span>
+        </div>
+        <div className={styles.sidebar_item} onClick={handleLogout}>
+          <img
+            src='src/images/icons/user.svg'
+            alt='logout-icon'
+            className={styles.icon}
+          />
+          <span>Выйти из аккаунта</span>
         </div>
       </div>
     </div>
