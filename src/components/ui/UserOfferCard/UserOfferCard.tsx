@@ -13,6 +13,7 @@ import { Modal } from '../../modal/modal';
 import { useAppDispatch, useAppSelector } from '../../../utils/hooks';
 import { proposeExchange } from '../../../services/slices/exchangeSlice';
 import { selectProfileId } from '../../../services/slices/profileSlice';
+import { useNavigate } from 'react-router-dom';
 
 const UserOfferCardUI: FC<TUserOfferCardUI> = ({
   userId,
@@ -26,6 +27,7 @@ const UserOfferCardUI: FC<TUserOfferCardUI> = ({
   onMoreClick
 }) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const isProposed = useAppSelector((state) => state.exchange.proposed[userId]);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const fromUserId = useAppSelector(selectProfileId);
@@ -33,10 +35,13 @@ const UserOfferCardUI: FC<TUserOfferCardUI> = ({
   const handleProposeExchange = () => {
     if (isProposed) return;
 
-    const senderId = fromUserId ?? 'guest';
+    if (!fromUserId) {
+      navigate('/register', { state: { from: window.location.pathname } });
+      return;
+    }
 
     try {
-      dispatch(proposeExchange({ fromUserId: senderId, toUserId: userId }));
+      dispatch(proposeExchange({ fromUserId, toUserId: userId }));
       setShowSuccessModal(true);
     } catch (error) {
       console.error('Ошибка при отправке обмена:', error);
