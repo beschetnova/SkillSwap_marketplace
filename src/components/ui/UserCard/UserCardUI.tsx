@@ -9,6 +9,7 @@ type UserCardUIProps = {
   categories: SkillCategories;
   onLikeClick: () => void;
   onMoreClick: () => void;
+  isProposed: boolean;
 };
 
 const UserCardUI = ({
@@ -17,7 +18,8 @@ const UserCardUI = ({
   liked,
   categories,
   onLikeClick,
-  onMoreClick
+  onMoreClick,
+  isProposed
 }: UserCardUIProps) => {
   return (
     <div className={styles.userCard}>
@@ -26,7 +28,7 @@ const UserCardUI = ({
           className={styles.avatar}
           src={`/db/profile-pics/${user.photo}`}
           alt={user.name}
-        ></img>
+        />
         <div className={styles.userInfoText}>
           <img
             src={liked ? '/icons/LikeFilled.svg' : '/icons/Like.svg'}
@@ -85,9 +87,19 @@ const UserCardUI = ({
         </div>
       </div>
 
-      <button className={styles.detailsButton} onClick={onMoreClick}>
-        Подробнее
-      </button>
+      {!isProposed ? (
+        <button className={styles.detailsButton} onClick={onMoreClick}>
+          Подробнее
+        </button>
+      ) : (
+        <button
+          className={`${styles.detailsButton} ${styles.proposeButton}`}
+          disabled
+        >
+          <img src='/clock.svg' alt='clock icon' className={styles.icon} />
+          Обмен предложен
+        </button>
+      )}
     </div>
   );
 };

@@ -5,4 +5,5 @@ export interface UserCardSectionProps {
   users: User[];
   categories: SkillCategories;
   toShowAll?: boolean;
+  onPropose?: () => void;
 }

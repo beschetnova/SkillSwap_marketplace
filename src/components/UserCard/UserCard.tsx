@@ -24,6 +24,10 @@ export const UserCard = ({ user, categories }: UserCardProps) => {
 
   const liked = favorites.includes(user.id);
 
+  const isProposed = useAppSelector(
+    (state) => state.exchange.proposed[user.id]
+  );
+
   const handleLike = () => {
     dispatch(toggleFavorite(user.id));
   };
@@ -41,6 +45,7 @@ export const UserCard = ({ user, categories }: UserCardProps) => {
       categories={categories}
       onLikeClick={handleLike}
       onMoreClick={handleMoreClick}
+      isProposed={isProposed}
     />
   );
 };

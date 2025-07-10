@@ -191,7 +191,7 @@ const MainPage = () => {
       <Modal
         isOpen={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
-        icon='Done.svg'
+        icon='/Done.svg'
         title='Ваше предложение создано'
         message='Теперь вы можете предложить обмен'
       />

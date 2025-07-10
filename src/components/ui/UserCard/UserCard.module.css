@@ -75,6 +75,20 @@
   width: 100%;
 }
 
+.proposeButton {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid var(--accent-color);
+  background-color: var(--card-input-color);
+}
+
+.proposeButton:hover {
+  background-color: inherit;
+  cursor: auto;
+  border-color: var(--accent-color);
+}
+
 .skillsRow {
   display: flex;
   flex-wrap: wrap;
