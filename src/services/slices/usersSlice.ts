@@ -138,10 +138,14 @@ export const getFilteredUsers = createSelector(
 
       if (filters.search) {
         const findInSkillsToLearn = user.skillsToLearn.some((skillItem) =>
-          skillItem.skill.includes(filters.search)
+          skillItem.skill
+            .toLocaleLowerCase()
+            .includes(filters.search.toLocaleLowerCase())
         );
         const findInSkillsToTeach = user.skillsToTeach.some((skillItem) =>
-          skillItem.skill.includes(filters.search)
+          skillItem.skill
+            .toLocaleLowerCase()
+            .includes(filters.search.toLocaleLowerCase())
         );
 
         return findInSkillsToLearn || findInSkillsToTeach;
