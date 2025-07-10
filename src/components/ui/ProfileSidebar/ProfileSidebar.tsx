@@ -22,14 +22,16 @@ export const ProfileSidebar = () => {
           />
           <span>Мои обмены</span>
         </div>
-        <div className={styles.sidebar_item}>
-          <img
-            src='src/images/icons/like2.svg'
-            alt='like-icon'
-            className={styles.icon}
-          />
-          <span>Избранное</span>
-        </div>
+        <NavLink to={PathConstants.FAVORITES}>
+          <div className={styles.sidebar_item}>
+            <img
+              src='src/images/icons/like2.svg'
+              alt='like-icon'
+              className={styles.icon}
+            />
+            <span>Избранное</span>
+          </div>
+        </NavLink>
         <NavLink to={PathConstants.CREATE}>
           <div className={styles.sidebar_item}>
             <img
