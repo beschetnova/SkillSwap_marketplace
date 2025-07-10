@@ -1,15 +1,16 @@
 import styles from './footer.module.css';
 import Logo from '../logo/logo';
-import { NavLink } from 'react-router-dom';
 
-const FooterUI = () => {
+type Props = {
+  handleLogoClick: () => void;
+};
+
+const FooterUI = ({ handleLogoClick }: Props) => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footer_container}>
-        <div className={styles.menu_left_part}>
-          <NavLink to={'/'}>
-            <Logo />
-          </NavLink>
+        <div className={styles.menu_left_part} onClick={handleLogoClick}>
+          <Logo />
           <div className={styles.copyright}>SkillSwap — 2025</div>
         </div>
         <div className={styles.menu_right_part}>
