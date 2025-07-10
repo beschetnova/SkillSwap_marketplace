@@ -3,7 +3,7 @@ import Button from '../../../ui/buttons/button';
 import { NavLink } from 'react-router-dom';
 
 type AuthButtonsProps = {
-  setIsAuth: (value: boolean) => void;
+  setIsAuth?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const AuthButtons = ({ setIsAuth }: AuthButtonsProps) => {
@@ -13,7 +13,7 @@ const AuthButtons = ({ setIsAuth }: AuthButtonsProps) => {
         <Button
           htmlType='button'
           type='secondary'
-          onClick={() => setIsAuth(true)}
+          onClick={() => setIsAuth && setIsAuth(true)}
         >
           Войти
         </Button>

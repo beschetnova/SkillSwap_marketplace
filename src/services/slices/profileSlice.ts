@@ -6,7 +6,6 @@ import { login } from '../../api/api';
 type ProfileState = {
   profile: Profile | null;
   isAuth: boolean;
-  // Temporary, save in localstorage later
   accessToken: string | null;
   error: string | null;
 };
@@ -18,48 +17,6 @@ const initialState: ProfileState = {
   isAuth: !!savedProfile,
   accessToken: savedProfile ? 'mock.access.jwt' : '',
   error: null
-  /*   profile: {
-    id: 'testId',
-    name: 'TestUser',
-    city: 'Москва',
-    gender: 'female',
-    birthDate: '1995-10-28',
-    bio: 'Люблю учиться новому, особенно если это можно делать за чаем и в пижаме. Всегда готова пообщаться и обменяться чем‑то интересным!',
-    skillsToTeach: [
-      {
-        skill: 'Игра на барабанах',
-        categoryId: 'creativity-and-art',
-        subcategory: 'music-and-sound'
-      }
-    ],
-    skillsToLearn: [
-      {
-        skill: 'Тайм менеджмент',
-        categoryId: 'business-and-career',
-        subcategory: 'time-management'
-      },
-      {
-        skill: 'Медитация',
-        categoryId: 'health-and-lifestyle',
-        subcategory: 'yoga-and-meditation'
-      },
-      {
-        skill: 'Фотография',
-        categoryId: 'creativity-and-art',
-        subcategory: 'photography'
-      },
-      {
-        skill: 'Видеомонтаж',
-        categoryId: 'creativity-and-art',
-        subcategory: 'video-editing'
-      }
-    ],
-    photo: 'Maria-Moscow.png',
-    email: 'Mariia@gmail.com',
-    favorites: ['1', '2']
-  },
-  isAuth: true,
-  accessToken: 'mock.access.jwt' */
 };
 
 export const fetchUser = createAsyncThunk<
@@ -86,8 +43,8 @@ export const profileSlice = createSlice({
     setProfile: (state, action: { payload: Profile }) => {
       state.profile = action.payload;
       state.isAuth = true;
-      state.accessToken = 'mock.access.jwt';
-
+      // state.accessToken = 'mock.access.jwt';
+      state.accessToken = localStorage.getItem('token') || null;
       localStorage.setItem('profile', JSON.stringify(state.profile));
     },
     updateProfile: (state, action: { payload: Partial<Profile> }) => {

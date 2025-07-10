@@ -102,6 +102,9 @@ export const RegisterPage = () => {
       dispatch(addUser(user));
       console.log('✅ Профиль сохранён:', profile);
 
+      localStorage.setItem('profile', JSON.stringify(profile));
+      localStorage.setItem('token', 'mock.access.jwt');
+
       setIsOfferModalOpen(true);
     }
   };

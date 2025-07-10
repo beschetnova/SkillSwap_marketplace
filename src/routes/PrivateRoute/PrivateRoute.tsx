@@ -5,13 +5,16 @@ import { useAppSelector } from '../../utils/hooks';
 import { useNavigate } from 'react-router-dom';
 import PathConstants from '../path-constants';
 
-export const PrivateRoute: FC<TPrivateRoute> = ({ children }) => {
+export const PrivateRoute: FC<TPrivateRoute> = ({ children, onlyUnAuth }) => {
   const navigate = useNavigate();
   const isAuth = useAppSelector(selectIsAuth);
 
   useEffect(() => {
-    if (!isAuth) {
+    if (!onlyUnAuth && !isAuth) {
       navigate(PathConstants.REGISTRATION);
+    }
+    if (onlyUnAuth && isAuth) {
+      navigate(PathConstants.HOME);
     }
   }, [isAuth, navigate]);
 

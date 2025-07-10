@@ -8,9 +8,24 @@ import { useEffect } from 'react';
 import Layout from './components/Layout/layout.tsx';
 import routes from './routes/index.tsx';
 import NotFound404 from './pages/NotFound404/NotFound404.tsx';
+import { setProfile } from './services/slices/profileSlice.ts';
+import type { Profile } from './utils/types.ts';
 
 function App() {
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const profileStr = localStorage.getItem('profile');
+    const token = localStorage.getItem('token');
+    console.log('Загруженный токен:', token);
+    console.log('Загруженный профиль:', profileStr);
+
+    if (profileStr && token) {
+      const profile = JSON.parse(profileStr) as Profile;
+      dispatch(setProfile(profile));
+    }
+  }, [dispatch]);
+
   useEffect(() => {
     void dispatch(fetchSkills());
     void dispatch(fetchUsers());

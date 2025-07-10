@@ -21,7 +21,14 @@ const routes = [
       </PrivateRoute>
     )
   },
-  { path: PathConstants.REGISTRATION, element: <RegisterPage /> },
+  {
+    path: PathConstants.REGISTRATION,
+    element: (
+      <PrivateRoute onlyUnAuth>
+        <RegisterPage />
+      </PrivateRoute>
+    )
+  },
   {
     path: PathConstants.CREATE,
     element: (
