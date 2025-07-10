@@ -10,7 +10,6 @@ import { login } from '../../api/api';
 type ProfileState = {
   profile: Profile | null;
   isAuth: boolean;
-  // Temporary, save in localstorage later
   accessToken: string | null;
   error: string | null;
 };
@@ -88,7 +87,7 @@ export const profileSlice = createSlice({
     setProfile: (state, action: { payload: Profile }) => {
       state.profile = action.payload;
       state.isAuth = true;
-      state.accessToken = 'mock.access.jwt';
+      state.accessToken = localStorage.getItem('token') || null;
     },
     updateProfile: (state, action: { payload: Partial<Profile> }) => {
       if (state.profile) {
